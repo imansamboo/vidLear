@@ -20,7 +20,7 @@ class ProductsController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('role:admin');
+        //$this->middleware('role:admin');
     }
     /**
      * Display a listing of the resource.
@@ -31,7 +31,6 @@ class ProductsController extends Controller
     {
         $q = $request->get('q');
         $products = Product::where('name', 'LIKE', '%'.$q.'%')
-        ->orWhere('model', 'LIKE', '%'.$q.'%')
         ->orderBy('name')->paginate(10);
         return view('products.index', compact('products', 'q'));
     }
@@ -54,14 +53,14 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
+
       $this->validate($request, [
           'name' => 'required|unique:products',
-          'model' => 'required',
-          'photo' => 'mimes:jpeg,png|max:10240',
-          'weight' => 'required|numeric|min:1',
+          'description' => 'required',
+          'photo' => 'mimes:jpeg,png,jpg|max:10000240',
           'price' => 'required|numeric|min:1000'
       ]);
-      $data = $request->only('name', 'model', 'price', 'weight');
+      $data = $request->only('name', 'price', 'description');
 
       if ($request->hasFile('photo')) {
           $data['photo'] = $this->savePhoto($request->file('photo'));
@@ -108,13 +107,12 @@ class ProductsController extends Controller
     {
         $product = Product::findOrFail($id);
         $this->validate($request, [
-            'name' => 'required|unique:products,name,'. $product->id,
-            'model' => 'required',
-            'photo' => 'mimes:jpeg,png|max:10240',
-            'weight' => 'required|numeric|min:1',
+            'name' => 'required|unique:products',
+            'description' => 'required',
+            'photo' => 'mimes:jpeg,png,jpg|max:10000240',
             'price' => 'required|numeric|min:1000'
         ]);
-        $data = $request->only('name', 'model', 'price');
+        $data = $request->only('name', 'price', 'description');
 
         if ($request->hasFile('photo')) {
             $data['photo'] = $this->savePhoto($request->file('photo'));

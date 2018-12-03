@@ -7,7 +7,7 @@
         <h3>Product <small><a href="{{ route('products.create') }}" class="btn btn-warning btn-sm">New Product</a></small></h3>
         {!! Form::open(['url' => 'products', 'method'=>'get', 'class'=>'form-inline']) !!}
             <div class="form-group {!! $errors->has('q') ? 'has-error' : '' !!}">
-              {!! Form::text('q', isset($q) ? $q : null, ['class'=>'form-control', 'placeholder' => 'Type name / model...']) !!}
+              {!! Form::text('q', isset($q) ? $q : null, ['class'=>'form-control', 'placeholder' => 'Type name ...']) !!}
               {!! $errors->first('q', '<p class="help-block">:message</p>') !!}
             </div>
 
@@ -17,8 +17,9 @@
           <thead>
             <tr>
               <td>Name</td>
-              <td>Model</td>
+              <td>description</td>
               <td>Category</td>
+              <td>Price</td>
               <td></td>
             </tr>
           </thead>
@@ -26,7 +27,7 @@
             @foreach($products as $product)
             <tr>
               <td>{{ $product->name }}</td>
-              <td>{{ $product->model}}</td>
+              <td>{{ $product->description}}</td>
               <td>
                 @foreach ($product->categories as $category)
                   <span class="label label-primary">
@@ -34,9 +35,10 @@
                   {{ $category->title }}</span>
                 @endforeach
               </td>
+              <td>{{ $product->price}}</td>
               <td>
                 {!! Form::model($product, ['route' => ['products.destroy', $product], 'method' => 'delete', 'class' => 'form-inline'] ) !!}
-                 <a href="{{ route('products.edit', $product->id)}}">Edit</a> |
+                 <a href="{{ route('products.edit', $product->id)}}" class="btn btn-xs btn-success" style="margin-right: 2%;">Edit</a>
                   {!! Form::submit('delete', ['class'=>'btn btn-xs btn-danger js-submit-confirm']) !!}
                 {!! Form::close()!!}
               </td>

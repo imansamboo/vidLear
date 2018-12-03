@@ -8,6 +8,7 @@ use App\Fee;
 class Product extends Model
 {
     protected $fillable = ['name', 'photo',  'price', 'description'];
+    protected $appends = ['photo_path'];
 
 
     public function categories()
