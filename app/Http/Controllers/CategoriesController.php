@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use Flash;
+
 
 class CategoriesController extends Controller
 {
@@ -40,12 +42,12 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    private function store(Request $request)
+    public function store(Request $request)
     {
-      /*$this->validate($request, [
+      $this->validate($request, [
           'title' => 'required|string|max:255|unique:categories',
-      ]);*/
-      dd($request);
+          'description' => 'required|string|unique:categories',
+      ]);
       Category::create($request->all());
       flash($request->get('title') . ' category saved.')->success()->important();
       return redirect()->route('categories.index');
@@ -73,6 +75,25 @@ class CategoriesController extends Controller
         $category = Category::findOrFail($id);
         return view('categories.edit', compact('category'));
     }
+
+    /*
+    * Update the specified resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
+        public function update(Request $request, $id)
+        {
+            $category = Category::findOrFail($id);
+            $this->validate($request, [
+                'title' => 'required|string|max:255|unique:categories,title,' . $category->id,
+                'description' => 'required|string'
+            ]);
+            $category->update($request->all());
+            flash($request->get('title') . ' category updated.')->success()->important();
+            return redirect()->route('categories.index');
+        }
 
     /**
      * Remove the specified resource from storage.

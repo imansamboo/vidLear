@@ -1,25 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-    {{ Form::open(array('url' => 'foo/bar')) }}
-    //
-    {{ Form::close() }}
 
-{{--<div class="container">
+
+<div class="container">
   <div class="row">
     <div class="col-md-12">
       <h3>دسته بندی جدید</h3>
+        {!! Form::open(['route' => 'categories.store'])!!}
+        @include('categories._form')
+        {!! Form::close() !!}
 
-        <form action="{{url('/categories/store')}}" method="post">
+    {{--{{ Form::open(array('url' => 'categories/store' ,  'method' => 'post'))}}
             <div class="row" style="padding: 1%">
                 <div class="col-lg-6">
                     <div class="input-group">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button"> نام دسته بندی</button>
-      </span>
-                        <input id="title" required name="title" type="text" class="form-control" placeholder="نام دسته بندی را وارد کنید">
-                    </div><!-- /input-group -->
-                </div><!-- /.col-lg-6 -->
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"> نام دسته بندی</button>
+                    </span>
+                    <input id="title" required name="title" type="text" class="form-control" placeholder="نام دسته بندی را وارد کنید">
+                    </div>
+                    <!-- /input-group -->
+                </div>
+                <!-- /.col-lg-6 -->
 
 
             </div><!-- /.row -->
@@ -40,9 +43,9 @@
                     <button class="btn btn-primary right" style="float: right; margin-right: 10%;" id="submit">ذخیره</button>
                 </div>
             </div>
-        </form>
+    {{ Form::close() }}--}}
 
     </div>
   </div>
-</div>--}}
+</div>
 @endsection

@@ -1,50 +1,40 @@
 @extends('layouts.app')
 @section('content')
-{{--
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="container" style="width: 1000px" xmlns="">
-        <div class="table-title">
-          <div class="row">
-            <div class="col-sm-8"><h2> <b>دسته بندی ها</b></h2></div>
-            <div class="col-sm-4" style="padding-top: 0px;padding-left: 91%;">
-              <a href="{{url('/categories/create')}}"><button type="button" class="btn btn-info"><i></i> دسته بندی جدید</button></a>
-            </div>
-          </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3>Category <small><a href="{{ route('categories.create') }}" class="btn btn-warning btn-sm">New Category</a></small></h3>
+        {!! Form::open(['url' => 'categories', 'method'=>'get', 'class'=>'form-inline']) !!}
+        <div class="form-group {!! $errors->has('q') ? 'has-error' : '' !!}">
+          {!! Form::text('q', isset($q) ? $q : null, ['class'=>'form-control', 'placeholder' => 'Type category..']) !!}
+          {!! $errors->first('q', '<p class="help-block">:message</p>') !!}
         </div>
-        <table class="table">
+        {!! Form::submit('Search', ['class'=>'btn btn-primary']) !!}
+        {!! Form::close() !!}
+        <table class="table table-hover">
           <thead>
           <tr>
-            <th>#</th>
-            <th>عنوان دسته بندی</th>
-            <th>توضیحاتی پیرامون دسته بندی</th>
+            <td> عنوان دسته بندی</td>
+            <td>توضیحاتی درباره دسته بندی</td>
           </tr>
           </thead>
           <tbody>
           @foreach($categories as $category)
-          <tr>
-            <td>{{$loop->iteration}}</td>
-            <td>{{ $category->title }}</td>
-            <td>{{ $category->description }}</td>
-            <td>
-              <a href="{{url('/categories/create')}}" class="add" title="" data-toggle="tooltip" data-original-title="Add"><span class="glyphicon glyphicon-eye-open" style="color:greenyellow"></span></a>
-              <a href="{{url('/categories/edit')}}/{{$category->id}}" class="edit" title="" data-toggle="tooltip" data-original-title="Edit"><span class="glyphicon glyphicon-pencil" style="color: darkorange"></span></a>
-              <a href="{{url('/categories/destroy')}}/{{$category->id}}" class="delete" title="" data-toggle="tooltip" data-original-title="Delete"><span class="glyphicon glyphicon-trash" style="color: red"></span></a>
-            </td>
-          </tr>
+            <tr>
+              <td>{{ $category->title }}</td>
+              <td>{{ $category->description}}</td>
+              <td>
+                {!! Form::model($category, ['route' => ['categories.destroy', $category], 'method' => 'delete', 'class' => 'form-inline'] ) !!}
+                <a href="{{ route('categories.edit', $category->id)}}" class="btn btn-xs btn-success">Edit</a>
+                {!! Form::submit('delete', ['class'=>'btn btn-xs btn-danger js-submit-confirm']) !!}
+                {!! Form::close()!!}
+              </td>
+            </tr>
           @endforeach
           </tbody>
         </table>
-      </div>
-{{ $categories->appends(compact('q'))->links() }}
-
---}}
-
-
-
-
+        {{ $categories->appends(compact('q'))->links() }}
       </div>
     </div>
-</div>
+  </div>
 @endsection
