@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Province;
 
-class ProviencesController extends Controller
+class ProvincesController extends Controller
 {
     public function __construct()
     {
@@ -21,9 +21,9 @@ class ProviencesController extends Controller
     public function index(Request $request)
     {
         $q = $request->get('q');
-        $proviences = Province::where('name', 'LIKE', '%'.$q.'%')
+        $provinces = Province::where('name', 'LIKE', '%'.$q.'%')
             ->orderBy('name')->paginate(10);
-        return view('proviences.index', compact('proviences', 'q'));
+        return view('provinces.index', compact('provinces', 'q'));
     }
 
     /**
@@ -33,7 +33,7 @@ class ProviencesController extends Controller
      */
     public function create()
     {
-        return view('proviences.create');
+        return view('provinces.create');
     }
 
 
@@ -46,12 +46,12 @@ class ProviencesController extends Controller
     {
 
         $this->validate($request, [
-            'name' => 'required|unique:proviences',
+            'name' => 'required|unique:provinces',
         ]);
         $data = $request->only('name');
-        $provience = Province::create($data);
-        flash($provience->name . ' saved.')->success()->important();
-        return redirect()->route('proviences.index');
+        $province = Province::create($data);
+        flash($province->name . ' saved.')->success()->important();
+        return redirect()->route('provinces.index');
     }
 
     /**
@@ -73,8 +73,8 @@ class ProviencesController extends Controller
      */
     public function edit($id)
     {
-        $provience = Province::findOrFail($id);
-        return view('proviences.edit', compact('provience'));
+        $province = Province::findOrFail($id);
+        return view('provinces.edit', compact('province'));
     }
 
 
@@ -86,14 +86,14 @@ class ProviencesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $provience = Province::findOrFail($id);
+        $province = Province::findOrFail($id);
         $this->validate($request, [
-            'name' => 'required|unique:proviences',
+            'name' => 'required|unique:provinces',
         ]);
         $data = $request->only('name');
-        $provience->update($data);
-        flash($provience->name . ' updated.')->success()->important();
-        return redirect()->route('proviences.index');
+        $province->update($data);
+        flash($province->name . ' updated.')->success()->important();
+        return redirect()->route('provinces.index');
     }
 
     /**
@@ -104,9 +104,9 @@ class ProviencesController extends Controller
      */
     public function destroy($id)
     {
-        $provience = Province::find($id);
-        $provience->delete();
-        flash($provience->name . ' deleted.')->success()->important();
-        return redirect()->route('proviences.index');
+        $province = Province::find($id);
+        $province->delete();
+        flash($province->name . ' deleted.')->success()->important();
+        return redirect()->route('provinces.index');
     }
 }
