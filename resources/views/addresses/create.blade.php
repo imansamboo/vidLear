@@ -5,8 +5,8 @@
     <div class="row">
       <div class="col-md-12">
         <h3>New Province</h3>
-        {!! Form::open(['route' => 'cities.store'])!!}
-          @include('cities._form')
+        {!! Form::open(['route' => 'addresses.store'])!!}
+          @include('addresses._form')
         {!! Form::close() !!}
       </div>
     </div>

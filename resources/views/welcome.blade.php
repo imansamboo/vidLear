@@ -85,13 +85,12 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                    <a href="{{url("/")}}/addresses">Addresses</a>
+                    <a href="{{url("/")}}/categories">categories</a>
+                    <a href="{{url("/")}}/cities">Cities</a>
+                    <a href="{{url("/")}}/products">Products</a>
+                    <a href="{{url("/")}}/provinces">Provinces</a>
+
             </div>
         </div>
     </body>

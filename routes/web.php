@@ -29,6 +29,7 @@ Route::resource('categories', 'CategoriesController');
 Route::resource('products', 'ProductsController');
 Route::resource('provinces', 'ProvincesController');
 Route::resource('cities', 'CitiesController');
+Route::resource('addresses', 'AddressesController');
 Route::post('/varifyWithSms','SMSController@varify');
 Route::get('/resendSms','SMSController@reSend');
 \Phonedotcom\SmsVerification\SmsVerificationProvider::registerRoutes($router);

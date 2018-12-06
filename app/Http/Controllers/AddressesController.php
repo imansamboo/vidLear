@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Regency;
+use App\Address;
 
-class AddressController extends Controller
+class AddressesController extends Controller
 {
     public function regencies(Request $request)
     {
@@ -30,9 +31,9 @@ class AddressController extends Controller
     public function index(Request $request)
     {
         $q = $request->get('q');
-        $cities = City::where('name', 'LIKE', '%'.$q.'%')
+        $addresses = Address::where('name', 'LIKE', '%'.$q.'%')
             ->orderBy('name')->paginate(10);
-        return view('cities.index', compact('cities', 'q'));
+        return view('addresses.index', compact('addresses', 'q'));
     }
 
     /**
@@ -42,7 +43,7 @@ class AddressController extends Controller
      */
     public function create()
     {
-        return view('cities.create');
+        return view('addresses.create');
     }
 
     /**
@@ -54,14 +55,15 @@ class AddressController extends Controller
     {
 
         $this->validate($request, [
-            'name' => 'required|unique:cities',
-            'province_id' => 'required',
+            'name' => 'required|unique:addresses',
+            'detail' => 'required',
+            'city_id' => 'required|integer|exists:cities,id',
         ]);
         $data = $request->only('name', 'province_id');
         $data['id'] = mt_rand(1000,2000);
-        $city = City::create($data);
-        flash($city->name . ' saved.')->success()->important();
-        return redirect()->route('cities.index');
+        $address = Address::create($data);
+        flash($address->name . ' saved.')->success()->important();
+        return redirect()->route('addresses.index');
     }
 
     /**
@@ -80,8 +82,8 @@ class AddressController extends Controller
      */
     public function edit($id)
     {
-        $city = City::findOrFail($id);
-        return view('cities.edit', compact('city'));
+        $address = Address::findOrFail($id);
+        return view('addresses.edit', compact('address'));
     }
 
     /**
@@ -92,16 +94,16 @@ class AddressController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $city = City::findOrFail($id);
+        $address = Address::findOrFail($id);
         $this->validate($request, [
-            'name' => 'required|unique:cities',
+            'name' => 'required|unique:addresses',
             'province_id' => 'required|integer',
         ]);
         $data = $request->only('name', 'province_id');
-        $data['id'] = City ::orderBy('id', 'desc')->first()->id + 1;
-        $city->update($data);
-        flash($city->name . ' updated.')->success()->important();
-        return redirect()->route('cities.index');
+        $data['id'] = Address ::orderBy('id', 'desc')->first()->id + 1;
+        $address->update($data);
+        flash($address->name . ' updated.')->success()->important();
+        return redirect()->route('addresses.index');
     }
 
     /**
@@ -112,9 +114,9 @@ class AddressController extends Controller
      */
     public function destroy($id)
     {
-        $city = City::find($id);
-        $city->delete();
-        flash($city->name . ' deleted.')->success()->important();
-        return redirect()->route('cities.index');
+        $address = Address::find($id);
+        $address->delete();
+        flash($address->name . ' deleted.')->success()->important();
+        return redirect()->route('addresses.index');
     }
 }
