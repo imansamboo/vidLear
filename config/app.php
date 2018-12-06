@@ -165,6 +165,7 @@ return [
          */
         Laracasts\Flash\FlashServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        \Phonedotcom\SmsVerification\SmsVerificationProvider::class,
 
         /*
          * Application Service Providers...

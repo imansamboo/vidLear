@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request as Request;
+
 
 class RegisterController extends Controller
 {
@@ -64,13 +67,41 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $lastSendSMSCose = $this->sendSmsCode($data)[1];
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'mobile' =>$data['mobile'],
             'nationalCode' =>$data['nationalCode'],
-            'isAdmin' =>0,
+            'isAdmin' => 0,
+            'last_sent_sms_code' => intval($lastSendSMSCose),
         ]);
+
+    }
+
+    public function sendSmsCode($data){
+        $apiKey = 'b12ff8f6ebc6e316d7955bf74e7dfc65';
+        $number = $data['mobile'];
+        $message = 'کد تایید هویت شما';
+        $key = mt_rand(1000,9999);
+        $message .= "\n" . $key . "\n" ." می باشد.";
+
+        $params = array('api' => $apiKey, 'number' => $number, 'msg' => $message);
+
+        $curl_options = array(
+            CURLOPT_URL => 'http://www.pushit.ir/api',
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => http_build_query($params),
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HEADER => false
+        );
+
+        $curl = curl_init();
+        curl_setopt_array($curl, $curl_options);
+        $result = curl_exec($curl);
+        curl_close($curl);
+        $return = array($result, $key);
+        return $return;
     }
 }
