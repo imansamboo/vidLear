@@ -4,8 +4,8 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h3>Product <small><a href="{{ route('products.create') }}" class="btn btn-warning btn-sm">New Product</a></small></h3>
-        {!! Form::open(['url' => 'products', 'method'=>'get', 'class'=>'form-inline']) !!}
+        <h3>Product <small><a href="{{ route('admin.products.create') }}" class="btn btn-warning btn-sm">New Product</a></small></h3>
+        {!! Form::open(['url' => 'admin.products', 'method'=>'get', 'class'=>'form-inline']) !!}
             <div class="form-group {!! $errors->has('q') ? 'has-error' : '' !!}">
               {!! Form::text('q', isset($q) ? $q : null, ['class'=>'form-control', 'placeholder' => 'Type name ...']) !!}
               {!! $errors->first('q', '<p class="help-block">:message</p>') !!}
@@ -37,8 +37,8 @@
               </td>
               <td>{{ $product->price}}</td>
               <td>
-                {!! Form::model($product, ['route' => ['products.destroy', $product], 'method' => 'delete', 'class' => 'form-inline'] ) !!}
-                 <a href="{{ route('products.edit', $product->id)}}" class="btn btn-xs btn-success" style="margin-right: 2%;">Edit</a>
+                {!! Form::model($product, ['route' => ['admin.products.destroy', $product], 'method' => 'delete', 'class' => 'form-inline'] ) !!}
+                 <a href="{{ route('admin.products.edit', $product->id)}}" class="btn btn-xs btn-success" style="margin-right: 2%;">Edit</a>
                   {!! Form::submit('delete', ['class'=>'btn btn-xs btn-danger js-submit-confirm']) !!}
                 {!! Form::close()!!}
               </td>

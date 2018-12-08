@@ -4,9 +4,9 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h3>New Address</h3>
-        {!! Form::open(['route' => 'addresses.store'])!!}
-          @include('addresses._form')
+        <h3>New Province</h3>
+        {!! Form::open(['admin.route' => 'provinces.store'])!!}
+          @include('admin.provinces._form')
         {!! Form::close() !!}
       </div>
     </div>

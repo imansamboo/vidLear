@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Province;
+use App\Http\Controllers\Controller as Controller;
+
 
 class ProvincesController extends Controller
 {
@@ -23,7 +25,7 @@ class ProvincesController extends Controller
         $q = $request->get('q');
         $provinces = Province::where('name', 'LIKE', '%'.$q.'%')
             ->orderBy('name')->paginate(10);
-        return view('provinces.index', compact('provinces', 'q'));
+        return view('admin.provinces.index', compact('provinces', 'q'));
     }
 
     /**
@@ -33,7 +35,7 @@ class ProvincesController extends Controller
      */
     public function create()
     {
-        return view('provinces.create');
+        return view('admin.provinces.create');
     }
 
 
@@ -51,7 +53,7 @@ class ProvincesController extends Controller
         $data = $request->only('name');
         $province = Province::create($data);
         flash($province->name . ' saved.')->success()->important();
-        return redirect()->route('provinces.index');
+        return redirect()->route('admin.provinces.index');
     }
 
     /**
@@ -74,7 +76,7 @@ class ProvincesController extends Controller
     public function edit($id)
     {
         $province = Province::findOrFail($id);
-        return view('provinces.edit', compact('province'));
+        return view('admin.provinces.edit', compact('province'));
     }
 
 
@@ -93,7 +95,7 @@ class ProvincesController extends Controller
         $data = $request->only('name');
         $province->update($data);
         flash($province->name . ' updated.')->success()->important();
-        return redirect()->route('provinces.index');
+        return redirect()->route('admin.provinces.index');
     }
 
     /**
@@ -107,6 +109,6 @@ class ProvincesController extends Controller
         $province = Province::find($id);
         $province->delete();
         flash($province->name . ' deleted.')->success()->important();
-        return redirect()->route('provinces.index');
+        return redirect()->route('admin.provinces.index');
     }
 }

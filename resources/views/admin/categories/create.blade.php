@@ -7,8 +7,8 @@
   <div class="row">
     <div class="col-md-12">
       <h3>دسته بندی جدید</h3>
-        {!! Form::open(['route' => 'categories.store'])!!}
-        @include('categories._form')
+        {!! Form::open(['route' => 'admin.categories.store'])!!}
+        @include('admin.categories._form')
         {!! Form::close() !!}
 
     {{--{{ Form::open(array('url' => 'categories/store' ,  'method' => 'post'))}}

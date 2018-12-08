@@ -85,11 +85,11 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{url("/")}}/addresses">Addresses</a>
-                    <a href="{{url("/")}}/categories">categories</a>
-                    <a href="{{url("/")}}/cities">Cities</a>
-                    <a href="{{url("/")}}/products">Products</a>
-                    <a href="{{url("/")}}/provinces">Provinces</a>
+                    <a href="{{url("/admin/")}}/addresses">Addresses</a>
+                    <a href="{{url("/admin/")}}/categories">categories</a>
+                    <a href="{{url("/admin/")}}/cities">Cities</a>
+                    <a href="{{url("/admin/")}}/products">Products</a>
+                    <a href="{{url("/admin/")}}/provinces">Provinces</a>
 
             </div>
         </div>

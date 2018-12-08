@@ -3,8 +3,8 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h3>Category <small><a href="{{ route('categories.create') }}" class="btn btn-warning btn-sm">New Category</a></small></h3>
-        {!! Form::open(['url' => 'categories', 'method'=>'get', 'class'=>'form-inline']) !!}
+        <h3>Category <small><a href="{{ route('admin.categories.create') }}" class="btn btn-warning btn-sm">New Category</a></small></h3>
+        {!! Form::open(['url' => 'admin.categories', 'method'=>'get', 'class'=>'form-inline']) !!}
         <div class="form-group {!! $errors->has('q') ? 'has-error' : '' !!}">
           {!! Form::text('q', isset($q) ? $q : null, ['class'=>'form-control', 'placeholder' => 'Type category..']) !!}
           {!! $errors->first('q', '<p class="help-block">:message</p>') !!}
@@ -24,8 +24,8 @@
               <td>{{ $category->title }}</td>
               <td>{{ $category->description}}</td>
               <td>
-                {!! Form::model($category, ['route' => ['categories.destroy', $category], 'method' => 'delete', 'class' => 'form-inline'] ) !!}
-                <a href="{{ route('categories.edit', $category->id)}}" class="btn btn-xs btn-success" style="margin-right: 2%;">Edit</a>
+                {!! Form::model($category, ['route' => ['admin.categories.destroy', $category], 'method' => 'delete', 'class' => 'form-inline'] ) !!}
+                <a href="{{ route('admin.categories.edit', $category->id)}}" class="btn btn-xs btn-success" style="margin-right: 2%;">Edit</a>
                 {!! Form::submit('delete', ['class'=>'btn btn-xs btn-danger js-submit-confirm']) !!}
                 {!! Form::close()!!}
               </td>

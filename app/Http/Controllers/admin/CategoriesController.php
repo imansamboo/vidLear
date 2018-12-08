@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Category;
 use Flash;
+use App\Http\Controllers\Controller as Controller;
+
 
 
 class CategoriesController extends Controller
@@ -23,7 +25,7 @@ class CategoriesController extends Controller
     {
       $q = $request->get('q');
       $categories = Category::where('title', 'LIKE', '%'.$q.'%')->orderBy('title')->paginate(5);
-      return view('categories.index', compact('categories', 'q'));
+      return view('admin.categories.index', compact('categories', 'q'));
     }
 
     /**
@@ -33,7 +35,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('categories.create');
+        return view('admin.categories.create');
     }
 
     /**
@@ -50,7 +52,7 @@ class CategoriesController extends Controller
       ]);
       Category::create($request->all());
       flash($request->get('title') . ' category saved.')->success()->important();
-      return redirect()->route('categories.index');
+      return redirect()->route('admin.categories.index');
     }
 
     /**
@@ -73,7 +75,7 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         $category = Category::findOrFail($id);
-        return view('categories.edit', compact('category'));
+        return view('admin.categories.edit', compact('category'));
     }
 
     /*
@@ -92,7 +94,7 @@ class CategoriesController extends Controller
             ]);
             $category->update($request->all());
             flash($request->get('title') . ' category updated.')->success()->important();
-            return redirect()->route('categories.index');
+            return redirect()->route('admin.categories.index');
         }
 
     /**
@@ -105,6 +107,6 @@ class CategoriesController extends Controller
     {
         Category::find($id)->delete();
         flash($request->get('title') . ' category deleted.')->success()->important();
-        return redirect()->route('categories.index');
+        return redirect()->route('admin.categories.index');
     }
 }

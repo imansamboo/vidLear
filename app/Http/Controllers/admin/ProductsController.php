@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Product;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use File;
+use App\Http\Controllers\Controller as Controller;
+
 
 class ProductsController extends Controller
 {
@@ -32,7 +34,7 @@ class ProductsController extends Controller
         $q = $request->get('q');
         $products = Product::where('name', 'LIKE', '%'.$q.'%')
         ->orderBy('name')->paginate(10);
-        return view('products.index', compact('products', 'q'));
+        return view('admin.products.index', compact('products', 'q'));
     }
 
     /**
@@ -42,7 +44,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        return view('admin.products.create');
     }
 
 
@@ -70,7 +72,7 @@ class ProductsController extends Controller
       $product->categories()->sync($request->get('category_lists'));
 
       flash($product->name . ' saved.')->success()->important();
-      return redirect()->route('products.index');
+      return redirect()->route('admin.products.index');
     }
 
     /**
@@ -93,7 +95,7 @@ class ProductsController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-        return view('products.edit', compact('product'));
+        return view('admin.products.edit', compact('product'));
     }
 
 
@@ -107,7 +109,7 @@ class ProductsController extends Controller
     {
         $product = Product::findOrFail($id);
         $this->validate($request, [
-            'name' => 'required|unique:products',
+            'name' => 'required',
             'description' => 'required',
             'photo' => 'mimes:jpeg,png,jpg|max:10000240',
             'price' => 'required|numeric|min:1000'
@@ -128,7 +130,7 @@ class ProductsController extends Controller
         }
 
         flash($product->name . ' updated.')->success()->important();
-        return redirect()->route('products.index');
+        return redirect()->route('admin.products.index');
     }
 
     /**
@@ -143,7 +145,7 @@ class ProductsController extends Controller
         if ($product->photo !== '') $this->deletePhoto($product->photo);
         $product->delete();
         flash($product->name . ' deleted.')->success()->important();
-        return redirect()->route('products.index');
+        return redirect()->route('admin.products.index');
     }
 
     public function deletePhoto($filename)

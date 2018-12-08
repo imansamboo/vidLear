@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Address;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller as Controller;
+
 
 
 class AddressesController extends Controller
@@ -22,7 +24,7 @@ class AddressesController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        //$this->middleware('role:admin');
+        $this->middleware('admin');
     }
     /**
      * Display a listing of the resource.
@@ -34,7 +36,7 @@ class AddressesController extends Controller
         $q = $request->get('q');
         $addresses = Address::where('name', 'LIKE', '%'.$q.'%')
             ->orderBy('name')->paginate(10);
-        return view('addresses.index', compact('addresses', 'q'));
+        return view('admin.addresses.index', compact('addresses', 'q'));
     }
 
     /**
@@ -44,7 +46,7 @@ class AddressesController extends Controller
      */
     public function create()
     {
-        return view('addresses.create');
+        return view('admin.addresses.create');
     }
 
     /**
@@ -64,7 +66,7 @@ class AddressesController extends Controller
         $data['user_id'] = Auth::user()->id;
         $address = Address::create($data);
         flash($address->name . ' saved.')->success()->important();
-        return redirect()->route('addresses.index');
+        return redirect()->route('admin.addresses.index');
     }
 
     /**
@@ -84,7 +86,7 @@ class AddressesController extends Controller
     public function edit($id)
     {
         $address = Address::findOrFail($id);
-        return view('addresses.edit', compact('address'));
+        return view('admin.addresses.edit', compact('address'));
     }
 
     /**
@@ -104,7 +106,7 @@ class AddressesController extends Controller
         $data = $request->only('name', 'city_id', 'detail');
         $address->update($data);
         flash($address->name . ' updated.')->success()->important();
-        return redirect()->route('addresses.index');
+        return redirect()->route('admin.addresses.index');
     }
 
     /**
@@ -118,6 +120,6 @@ class AddressesController extends Controller
         $address = Address::find($id);
         $address->delete();
         flash($address->name . ' deleted.')->success()->important();
-        return redirect()->route('addresses.index');
+        return redirect()->route('admin.addresses.index');
     }
 }

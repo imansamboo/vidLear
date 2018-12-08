@@ -25,11 +25,14 @@ Route::get('profile', function () {
 
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('categories', 'CategoriesController');
-Route::resource('products', 'ProductsController');
-Route::resource('provinces', 'ProvincesController');
-Route::resource('cities', 'CitiesController');
-Route::resource('addresses', 'AddressesController');
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
+    Route::resource('categories', 'CategoriesController');
+    Route::resource('products', 'ProductsController');
+    Route::resource('provinces', 'ProvincesController');
+    Route::resource('cities', 'CitiesController');
+    Route::resource('addresses', 'AddressesController');
+});
+
 Route::post('/varifyWithSms','SMSController@varify');
 Route::get('/resendSms','SMSController@reSend');
 \Phonedotcom\SmsVerification\SmsVerificationProvider::registerRoutes($router);

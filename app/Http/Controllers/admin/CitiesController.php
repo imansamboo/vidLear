@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\City;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Http\Controllers\Controller as Controller;
+
 
 class CitiesController extends Controller
 {
@@ -25,7 +27,7 @@ class CitiesController extends Controller
         $q = $request->get('q');
         $cities = City::where('name', 'LIKE', '%'.$q.'%')
         ->orderBy('name')->paginate(10);
-        return view('cities.index', compact('cities', 'q'));
+        return view('admin.cities.index', compact('cities', 'q'));
     }
 
     /**
@@ -35,7 +37,7 @@ class CitiesController extends Controller
      */
     public function create()
     {
-        return view('cities.create');
+        return view('admin.cities.create');
     }
 
     /**
@@ -55,7 +57,7 @@ class CitiesController extends Controller
       $data['user_id'] =
       $city = City::create($data);
       flash($city->name . ' saved.')->success()->important();
-      return redirect()->route('cities.index');
+      return redirect()->route('admin.cities.index');
     }
 
     /**
@@ -75,7 +77,7 @@ class CitiesController extends Controller
     public function edit($id)
     {
         $city = City::findOrFail($id);
-        return view('cities.edit', compact('city'));
+        return view('admin.cities.edit', compact('city'));
     }
 
     /**
@@ -95,7 +97,7 @@ class CitiesController extends Controller
         $data['id'] = City ::orderBy('id', 'desc')->first()->id + 1;
         $city->update($data);
         flash($city->name . ' updated.')->success()->important();
-        return redirect()->route('cities.index');
+        return redirect()->route('admin.cities.index');
     }
 
     /**
@@ -109,7 +111,7 @@ class CitiesController extends Controller
         $city = City::find($id);
         $city->delete();
         flash($city->name . ' deleted.')->success()->important();
-        return redirect()->route('cities.index');
+        return redirect()->route('admin.cities.index');
     }
 
 }
