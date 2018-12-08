@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Regency;
 use App\Address;
+use Illuminate\Support\Facades\Auth;
+
 
 class AddressesController extends Controller
 {
@@ -59,8 +60,8 @@ class AddressesController extends Controller
             'detail' => 'required',
             'city_id' => 'required|integer|exists:cities,id',
         ]);
-        $data = $request->only('name', 'province_id');
-        $data['id'] = mt_rand(1000,2000);
+        $data = $request->only('name', 'city_id', 'detail');
+        $data['user_id'] = Auth::user()->id;
         $address = Address::create($data);
         flash($address->name . ' saved.')->success()->important();
         return redirect()->route('addresses.index');
@@ -96,11 +97,11 @@ class AddressesController extends Controller
     {
         $address = Address::findOrFail($id);
         $this->validate($request, [
-            'name' => 'required|unique:addresses',
-            'province_id' => 'required|integer',
+            'name' => 'required',
+            'detail' => 'required',
+            'city_id' => 'required|integer|exists:cities,id',
         ]);
-        $data = $request->only('name', 'province_id');
-        $data['id'] = Address ::orderBy('id', 'desc')->first()->id + 1;
+        $data = $request->only('name', 'city_id', 'detail');
         $address->update($data);
         flash($address->name . ' updated.')->success()->important();
         return redirect()->route('addresses.index');

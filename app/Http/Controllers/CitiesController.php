@@ -47,11 +47,12 @@ class CitiesController extends Controller
     {
 
       $this->validate($request, [
-          'name' => 'required|unique:cities',
-          'province_id' => 'required',
+          'name' => 'required|unique:addresses',
+          'city_id' => 'required',
+          'detail' => 'required',
       ]);
-      $data = $request->only('name', 'province_id');
-      $data['id'] = mt_rand(1000,2000);
+      $data = $request->only('name', 'city_id', 'detail');
+      $data['user_id'] =
       $city = City::create($data);
       flash($city->name . ' saved.')->success()->important();
       return redirect()->route('cities.index');

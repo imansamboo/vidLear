@@ -33,5 +33,15 @@ Route::resource('addresses', 'AddressesController');
 Route::post('/varifyWithSms','SMSController@varify');
 Route::get('/resendSms','SMSController@reSend');
 \Phonedotcom\SmsVerification\SmsVerificationProvider::registerRoutes($router);
+Route::get('/homepage', function () {
+    return view('homepage');
+});
 
+Route::get('/index', function () {
+    return view('index');
+});
+
+Route::get('/view', function () {
+    return view('view');
+});
 
