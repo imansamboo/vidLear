@@ -5,7 +5,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-10">
       <h3>دسته بندی جدید</h3>
         {!! Form::open(['route' => 'admin.categories.store'])!!}
         @include('admin.categories._form')

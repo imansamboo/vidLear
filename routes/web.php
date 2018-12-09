@@ -48,3 +48,15 @@ Route::get('/view', function () {
     return view('view');
 });
 
+Route::get('/admin', function () { return redirect('/admin/home'); });
+
+Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::get('/home', 'HomeController@index');
+    Route::resource('users', 'Admin\UsersController');
+    Route::post('users_mass_destroy', ['uses' => 'Admin\UsersController@massDestroy', 'as' => 'users.mass_destroy']);
+
+});
+
+
+
+

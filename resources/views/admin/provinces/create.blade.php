@@ -3,7 +3,7 @@
 @section('content')
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-10">
         <h3>New Province</h3>
         {!! Form::open(['admin.route' => 'provinces.store'])!!}
           @include('admin.provinces._form')

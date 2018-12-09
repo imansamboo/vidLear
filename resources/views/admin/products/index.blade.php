@@ -3,7 +3,7 @@
 @section('content')
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-10">
         <h3>Product <small><a href="{{ route('admin.products.create') }}" class="btn btn-warning btn-sm">New Product</a></small></h3>
         {!! Form::open(['url' => 'admin.products', 'method'=>'get', 'class'=>'form-inline']) !!}
             <div class="form-group {!! $errors->has('q') ? 'has-error' : '' !!}">
