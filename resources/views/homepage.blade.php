@@ -117,7 +117,7 @@
                 <h4 class="modal-title">ورود به پنل کاربری</h4>
             </div>
             <div class="modal-body">
-                <form method="post" onsubmit="">
+                <form method="post" id="login" onsubmit="" data-type="json" action="{{url('/login')}}">
                     <label for="email">
                         ایمیل :
                     </label>
@@ -129,7 +129,7 @@
                     <input type="password" class="form-control" name="lpassword" id="lpassword" required>
                     <br>
                     <div class="forgot_section">
-                        <a href="#forgot" class="forgot_link">رمز عبور را فراموش کردم</a>
+                        <a href="{{url('/password/reset')}}" class="forgot_link">رمز عبور را فراموش کردم</a>
                     </div>
 
                     <input type="submit" name="login" id="login" class="login_btn" value="ورود">
@@ -167,8 +167,23 @@
                         <label for="passwordConfirm">
                             تکرار رمز عبور :
                         </label>
-                        <input type="password" class="form-control" name="passwordConfirm" id="passwordConfirm"
+                        <input type="password" class="form-control" name="password_confirmation" id="passwordConfirm"
                                required>
+                        <br/>
+
+                        <br/>
+                        <label for="mobile">
+                            موبایل:
+                        </label>
+                        <input type="text" class="form-control" name="mobile" id="mobile"
+                               required>
+                        <br/>
+                        <label for="nationalCode">
+                            کد ملی:
+                        </label>
+                        <input type="text" class="form-control" name="nationalCode" id="nationalCode"
+                               required>
+
                         <br/>
                         <input type="submit" name="register" id="register" class="register_btn" value="ثبت نام">
                     </form>
@@ -950,5 +965,40 @@
 <script src="js2/holder.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="js2/ie10-viewport-bug-workaround.js"></script>
+<script>
+    $(function() {
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $('form.login:first').on('submit', function(e){
+            e.preventDefault();
+
+            var $this = $(this);
+
+            $.ajax({
+                type: $this.attr('method'),
+                url: $this.attr('action'),
+                data: $this.serializeArray(),
+                dataType: $this.data('type'),
+                success: function (response) {
+                    if(response.success) {
+                        location.reload();
+                    }
+                },
+                error: function (jqXHR) {
+                    var response = $.parseJSON(jqXHR.responseText);
+                    if(response.message) {
+                        alert(response.message);
+                    }
+                }
+            });
+        });
+
+    });
+</script>
 </body>
 </html>

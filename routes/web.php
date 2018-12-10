@@ -24,8 +24,8 @@ Route::get('profile', function () {
 })->middleware('verified');
 
 Auth::routes(['verify' => true]);
-Route::get('/home', 'HomeController@index')->name('home');
-Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
+Route::get('/home', 'HomeController@index')->name('home')->middleware('admin');
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('admin')->group(function () {
     Route::resource('categories', 'CategoriesController');
     Route::resource('products', 'ProductsController');
     Route::resource('provinces', 'ProvincesController');
@@ -48,7 +48,7 @@ Route::get('/view', function () {
     return view('view');
 });
 
-Route::get('/admin', function () { return redirect('/admin/home'); });
+Route::get('/admin', function () { return redirect('/admin/home'); })->middleware('admin');
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/home', 'HomeController@index');
