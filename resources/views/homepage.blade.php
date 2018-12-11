@@ -55,7 +55,25 @@
                             </button>
                             <a class="navbar-brand" href="index.html">LOGO</a>
                         </div>
-                        <div id="navbar" class="navbar-collapse collapse">
+                        @if ($user = Auth::user())
+                            <ul class="nav navbar-nav menu-right">
+                                <li>
+                                    <a href="{{url('/logout')}}"  class="header-font"><i
+                                                class="fa fa-sign-out"
+                                                aria-hidden="true"></i>خروج از سامانه
+                                    </a>
+                                </li>
+                                <li>
+                                    @if ($user = Auth::user()->isAdmin == 1)
+                                    <a href="{{url('/admin')}}"  class="header-font"><i
+                                                class="fa fa-user"
+                                                aria-hidden="true"></i> داشبورد
+                                    </a>
+                                    @endif
+
+                                </li>
+                            </ul>
+                        @else
                             <ul class="nav navbar-nav menu-right">
                                 <li><a href="#" data-toggle="modal" data-target="#loginAction" class="header-font"><i
                                                 class="fa fa-sign-in"
@@ -67,6 +85,9 @@
                                                 aria-hidden="true"></i> عضویت </a>
                                 </li>
                             </ul>
+                        @endif
+                        <div id="navbar" class="navbar-collapse collapse">
+
                             <div class="col-md-6">
                                 <form class="form-inline">
                                     <div class="all-search" id="imaginary_container_n">
@@ -117,20 +138,29 @@
                 <h4 class="modal-title">ورود به پنل کاربری</h4>
             </div>
             <div class="modal-body">
-                <form method="post" id="login" onsubmit="" data-type="json" action="{{url('/login')}}">
+                <form method="POST" id="login" onsubmit="" data-type="json" action="{{url('/login')}}">
                     <label for="email">
                         ایمیل :
                     </label>
-                    <input type="email" class="form-control" name="lemail" id="lemail" required>
+                    <input type="email" class="form-control" name="email" id="email" required>
                     <br/>
                     <label for="password">
                         رمز عبور :
                     </label>
-                    <input type="password" class="form-control" name="lpassword" id="lpassword" required>
+                    <input type="password" class="form-control" name="password" id="password" required>
                     <br>
-                    <div class="forgot_section">
-                        <a href="{{url('/password/reset')}}" class="forgot_link">رمز عبور را فراموش کردم</a>
+                    <div class="form-check">
+                        <input class="form-check-input" name="remember" id="remember" type="checkbox">
+
+                        <label class="form-check-label" for="remember">
+                            Remember Me
+                        </label>
                     </div>
+                    <div class="forgot_section">
+                        <a href="#" class="forgot_link">رمز عبور را فراموش کردم</a>
+                    </div>
+                    {!! Form::token() !!}
+
 
                     <input type="submit" name="login" id="login" class="login_btn" value="ورود">
                 </form>
@@ -153,7 +183,12 @@
             <div class="modal-body">
                 <p id="message"></p>
                 <div class="register_container">
-                    <form method="post" onsubmit="">
+                    <form method="POST" onsubmit="" action="{{url("/register")}}">
+                        <label for="name">
+                            نام :
+                        </label>
+                        <input type="name" class="form-control" name="name" id="name" required>
+                        <br/>
                         <label for="email">
                             ایمیل :
                         </label>
@@ -181,6 +216,7 @@
                         <label for="nationalCode">
                             کد ملی:
                         </label>
+                        {!! Form::token() !!}
                         <input type="text" class="form-control" name="nationalCode" id="nationalCode"
                                required>
 
@@ -217,13 +253,16 @@
                 <div id="top-btns">
                     <ul class="ul-main">
                         <li><img src="img2/view-grid.png" class="grid-icon"></li>
-                        <li><a href="#" class="ul-btn">تنظیم آهنگ</a></li>
+                        @foreach($categories as $category)
+                            <li><a href="#" class="ul-btn">{{$category->title}}</a></li>
+                        @endforeach
+                       {{-- <li><a href="#" class="ul-btn">تنظیم آهنگ</a></li>
                         <li><a href="#" class="ul-btn">نوازندگی</a></li>
                         <li><a href="#" class="ul-btn">میکس و مستر</a></li>
                         <li><a href="#" class="ul-btn">پیانو</a></li>
                         <li><a href="#" class="ul-btn">ساکسیفون</a></li>
                         <li><a href="#" class="ul-btn">درامز</a></li>
-                        <li><a href="#" class="ul-btn">گیتار الکتریک</a></li>
+                        <li><a href="#" class="ul-btn">گیتار الکتریک</a></li>--}}
                         <li><img src="img2/view-grid.png" class="grid-icon"></li>
                     </ul>
                 </div>
@@ -965,40 +1004,6 @@
 <script src="js2/holder.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="js2/ie10-viewport-bug-workaround.js"></script>
-<script>
-    $(function() {
 
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        $('form.login:first').on('submit', function(e){
-            e.preventDefault();
-
-            var $this = $(this);
-
-            $.ajax({
-                type: $this.attr('method'),
-                url: $this.attr('action'),
-                data: $this.serializeArray(),
-                dataType: $this.data('type'),
-                success: function (response) {
-                    if(response.success) {
-                        location.reload();
-                    }
-                },
-                error: function (jqXHR) {
-                    var response = $.parseJSON(jqXHR.responseText);
-                    if(response.message) {
-                        alert(response.message);
-                    }
-                }
-            });
-        });
-
-    });
-</script>
 </body>
 </html>

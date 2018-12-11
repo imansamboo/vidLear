@@ -11,12 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/varify', function () {
-    return view('varify');
+
+Route::get('/', function () {
+    return redirect(route('homepage'));
+});
+Route::get('/homepage', 'HomePageController@index')->name('homepage');
+
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+Route::get('/verify', function () {
+    return view('auth.verify');
 });
 
 Route::get('profile', function () {
@@ -24,8 +29,18 @@ Route::get('profile', function () {
 })->middleware('verified');
 
 Auth::routes(['verify' => true]);
-Route::get('/home', 'HomeController@index')->name('home')->middleware('admin');
-Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('admin')->group(function () {
+Route::get('/login', function () {
+    return redirect(route('homepage'));
+})->name('login');
+
+Route::get('/register', function () {
+    return redirect(route('homepage'));
+});
+Route::get('/sms/varification', 'HomeController@index')->name('home');
+Route::get('/home', function () {
+    return redirect(route('homepage'));
+});
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('categories', 'CategoriesController');
     Route::resource('products', 'ProductsController');
     Route::resource('provinces', 'ProvincesController');
@@ -36,9 +51,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('admin')-
 Route::post('/varifyWithSms','SMSController@varify');
 Route::get('/resendSms','SMSController@reSend');
 \Phonedotcom\SmsVerification\SmsVerificationProvider::registerRoutes($router);
-Route::get('/homepage', function () {
-    return view('homepage');
-});
+
 
 Route::get('/index', function () {
     return view('index');
@@ -48,7 +61,7 @@ Route::get('/view', function () {
     return view('view');
 });
 
-Route::get('/admin', function () { return redirect('/admin/home'); })->middleware('admin');
+Route::get('/admin', function () { return redirect('/admin/home'); })->middleware('auth');
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/home', 'HomeController@index');

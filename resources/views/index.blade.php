@@ -55,39 +55,37 @@
                             <a class="navbar-brand" href="index.html">LOGO</a>
                         </div>
                         <div id="navbar" class="navbar-collapse collapse">
-                            <ul class="nav navbar-nav menu-right">
-                                <li><a href="#" data-toggle="modal" data-target="#loginAction" class="header-font"><i
-                                                class="fa fa-sign-in"
-                                                aria-hidden="true"></i> ورود به سامانه
-                                    </a>
-                                </li>
-                                <li><a href="#" data-toggle="modal" data-target="#registerAction" class="header-font"><i
-                                                class="fa fa-user-plus"
-                                                aria-hidden="true"></i> عضویت </a>
-                                </li>
-                                <li class="nav-item dropdown category">
-                                    <a class="nav-link dropdown-toggle header-font" href="#" id="navbarDropdown"
-                                       role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img src="img2/view-grid-menu.png">
-                                        دسته بندی
-                                    </a>
-                                    <div class="dropdown-menu nav-dropdown" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item nav-drop-item" href="#">تنظیم آهنگ</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item nav-drop-item" href="#">نوازندگی</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item nav-drop-item" href="#">میکس و مستر</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item nav-drop-item" href="#">پیانو</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item nav-drop-item" href="#">ساکسیفون</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item nav-drop-item" href="#">درامز</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item nav-drop-item" href="#">گیتار الکتریک</a>
-                                    </div>
-                                </li>
-                            </ul>
+                            @if ($user = Auth::user())
+                                <ul class="nav navbar-nav menu-right">
+                                    <li>
+                                        <a href="{{url('/logout')}}"  class="header-font"><i
+                                                    class="fa fa-sign-out"
+                                                    aria-hidden="true"></i>خروج از سامانه
+                                        </a>
+                                    </li>
+                                    <li>
+                                        @if ($user = Auth::user()->isAdmin == 1)
+                                            <a href="{{url('/admin')}}"  class="header-font"><i
+                                                        class="fa fa-user"
+                                                        aria-hidden="true"></i> داشبورد
+                                            </a>
+                                        @endif
+
+                                    </li>
+                                </ul>
+                            @else
+                                <ul class="nav navbar-nav menu-right">
+                                    <li><a href="#" data-toggle="modal" data-target="#loginAction" class="header-font"><i
+                                                    class="fa fa-sign-in"
+                                                    aria-hidden="true"></i> ورود به سامانه
+                                        </a>
+                                    </li>
+                                    <li><a href="#" data-toggle="modal" data-target="#registerAction" class="header-font"><i
+                                                    class="fa fa-user-plus"
+                                                    aria-hidden="true"></i> عضویت </a>
+                                    </li>
+                                </ul>
+                            @endif
                             <div class="col-md-6">
                                 <form class="form-inline">
                                     <div class="all-search" id="imaginary_container_n">
@@ -138,20 +136,29 @@
                 <h4 class="modal-title">ورود به پنل کاربری</h4>
             </div>
             <div class="modal-body">
-                <form method="post" onsubmit="">
+                <form method="POST" id="login" onsubmit="" data-type="json" action="{{url('/login')}}">
                     <label for="email">
                         ایمیل :
                     </label>
-                    <input type="email" class="form-control" name="lemail" id="lemail" required>
+                    <input type="email" class="form-control" name="email" id="email" required>
                     <br/>
                     <label for="password">
                         رمز عبور :
                     </label>
-                    <input type="password" class="form-control" name="lpassword" id="lpassword" required>
+                    <input type="password" class="form-control" name="password" id="password" required>
                     <br>
-                    <div class="forgot_section">
-                        <a href="#forgot" class="forgot_link">رمز عبور را فراموش کردم</a>
+                    <div class="form-check">
+                        <input class="form-check-input" name="remember" id="remember" type="checkbox">
+
+                        <label class="form-check-label" for="remember">
+                            Remember Me
+                        </label>
                     </div>
+                    <div class="forgot_section">
+                        <a href="#" class="forgot_link">رمز عبور را فراموش کردم</a>
+                    </div>
+                    {!! Form::token() !!}
+
 
                     <input type="submit" name="login" id="login" class="login_btn" value="ورود">
                 </form>
@@ -174,7 +181,12 @@
             <div class="modal-body">
                 <p id="message"></p>
                 <div class="register_container">
-                    <form method="post" onsubmit="">
+                    <form method="POST" onsubmit="" action="{{url("/register")}}">
+                        <label for="name">
+                            نام :
+                        </label>
+                        <input type="name" class="form-control" name="name" id="name" required>
+                        <br/>
                         <label for="email">
                             ایمیل :
                         </label>
@@ -188,8 +200,24 @@
                         <label for="passwordConfirm">
                             تکرار رمز عبور :
                         </label>
-                        <input type="password" class="form-control" name="passwordConfirm" id="passwordConfirm"
+                        <input type="password" class="form-control" name="password_confirmation" id="passwordConfirm"
                                required>
+                        <br/>
+
+                        <br/>
+                        <label for="mobile">
+                            موبایل:
+                        </label>
+                        <input type="text" class="form-control" name="mobile" id="mobile"
+                               required>
+                        <br/>
+                        <label for="nationalCode">
+                            کد ملی:
+                        </label>
+                        {!! Form::token() !!}
+                        <input type="text" class="form-control" name="nationalCode" id="nationalCode"
+                               required>
+
                         <br/>
                         <input type="submit" name="register" id="register" class="register_btn" value="ثبت نام">
                     </form>

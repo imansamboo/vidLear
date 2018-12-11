@@ -27,7 +27,7 @@ class SMSController extends Controller
                     'sms_varified' => 1
                 )
             );
-            return redirect( '/home');
+            return redirect( '/homepage');
         }else{
             return redirect( 'email/verify');
 
