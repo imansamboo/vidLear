@@ -54,12 +54,16 @@ Route::get('/resendSms','SMSController@reSend');
 
 
 Route::get('/index', function () {
-    return view('index');
+    return view('homepage2');
 });
 
+Route::get('/products', 'HomePageController@indexProducts');
+//Route::get('/products/{product}', ['uses' =>'HomePageController@viewProduct']);
+Route::get('/products/{product}', ['uses' =>'HomePageController@viewProduct']);
 Route::get('/view', function () {
     return view('view');
 });
+
 
 Route::get('/admin', function () { return redirect('/admin/home'); })->middleware('auth');
 

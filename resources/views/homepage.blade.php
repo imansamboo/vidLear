@@ -53,7 +53,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="index.html">LOGO</a>
+                            <a class="navbar-brand" href="{{url('/')}}">LOGO</a>
                         </div>
                         @if ($user = Auth::user())
                             <ul class="nav navbar-nav menu-right">
@@ -295,301 +295,79 @@
                         </a>
                         <a href="#new-products" data-slide="next" class="more-product"><i
                                     class="left fa fa-angle-double-left" aria-hidden="true"></i></a>
-                        <a href="product.html" class="more-product">بیشتر</a>
+                        <a href="{{url('/products')}}" class="more-product">بیشتر</a>
                     </div>
                 </div>
             </div>
             <div id="new-products" class="carousel slide" data-ride="carousel" data-interval="false">
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
-                    <div class="item active">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="col-item">
-                                    <div class="photo">
-                                        <img src="img2/350x260.png" class="img-responsive" alt="a"/>
-                                    </div>
-                                    <div class="info">
-                                        <div class="row">
-                                            <div class="price col-md-12">
-                                                <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
-                                                    پیانو سطح مقدماتی</a>
+                    @foreach($products as $newProducts)
+                        @if ($loop->last)
+                            <div class="item  active">
+                        @else
+                            <div class="item">
+                        @endif
+                            <div class="row">
+                                @foreach($newProducts as $newProduct)
+                                    <div class="col-sm-3">
+                                        <div class="col-item">
+                                            <div class="photo">
+                                                <img src="img2/350x260.png" class="img-responsive" alt="a"/>
                                             </div>
-                                            <div class="rating col-md-6">
-                                                <p class="product-tsize new-product">مهران عباسی</p>
+                                            <div class="info">
+                                                <div class="row">
+                                                    <div class="price col-md-12">
+                                                        <a class="product-fsize" href="{{url('/products')}}/{{$newProduct->id}}">{{$newProduct->name}}</a>
+                                                    </div>
+                                                    <div class="rating col-md-6">
+                                                        <p class="product-tsize new-product">مهران عباسی</p>
+                                                    </div>
+                                                    <div class="rating col-md-6">
+                                                        <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
+                                                        </i><i class="gold-star fa fa-star"></i><i class="fa fa-star">
+                                                        </i><i class="fa fa-star"></i>
+                                                    </div>
+                                                </div>
+                                                <p class="product-off left-float"> تومان {{$newProduct->price}} </p>
+                                                <div class="clear-left">
+                                                    <p class="right-float">
+                                                        <img src="img2/clock-outline.png">07:48:29</p>
+                                                    <p class="left-float product-price"> تومان {{0.9*$newProduct->price}} </p>
+                                                </div>
+                                                <div class="clearfix">
+                                                </div>
                                             </div>
-                                            <div class="rating col-md-6">
-                                                <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                </i><i class="gold-star fa fa-star"></i><i class="fa fa-star">
-                                                </i><i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <p class="product-off left-float">180.000</p>
-                                        <div class="clear-left">
-                                            <p class="right-float">
-                                                <img src="img2/clock-outline.png">07:48:29</p>
-                                            <p class="left-float product-price">
-                                                145.000 تومان</p>
-                                        </div>
-                                        <div class="clearfix">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="col-item">
-                                    <div class="photo">
-                                        <img src="img2/350x260.png" class="img-responsive" alt="a"/>
-                                    </div>
-                                    <div class="info">
-                                        <div class="row">
-                                            <div class="price col-md-12">
-                                                <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
-                                                    پیانو سطح مقدماتی</a>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <p class="product-tsize new-product">مهران عباسی</p>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                </i><i class="fa fa-star"></i><i class="fa fa-star">
-                                                </i><i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <p class="product-off left-float">180.000</p>
-                                        <div class="clear-left">
-                                            <p class="right-float">
-                                                <img src="img2/clock-outline.png">07:48:29</p>
-                                            <p class="left-float product-price">
-                                                145.000 تومان</p>
-                                        </div>
-                                        <div class="clearfix">
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="col-item">
-                                    <div class="photo">
-                                        <img src="img2/350x260.png" class="img-responsive" alt="a"/>
-                                    </div>
-                                    <div class="info">
-                                        <div class="row">
-                                            <div class="price col-md-12">
-                                                <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
-                                                    پیانو سطح مقدماتی</a>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <p class="product-tsize new-product">مهران عباسی</p>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <i class="gold-star fa fa-star"></i><i class="fa fa-star">
-                                                </i><i class="fa fa-star"></i><i class="fa fa-star">
-                                                </i><i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <p class="product-off left-float">180.000</p>
-                                        <div class="clear-left">
-                                            <p class="right-float">
-                                                <img src="img2/clock-outline.png">07:48:29</p>
-                                            <p class="left-float product-price">
-                                                145.000 تومان</p>
-                                        </div>
-                                        <div class="clearfix">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="col-item">
-                                    <div class="photo">
-                                        <img src="img2/350x260.png" class="img-responsive" alt="a"/>
-                                    </div>
-                                    <div class="info">
-                                        <div class="row">
-                                            <div class="price col-md-12">
-                                                <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
-                                                    پیانو سطح مقدماتی</a>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <p class="product-tsize new-product">مهران عباسی</p>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                </i><i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                </i><i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <p class="product-off left-float">180.000</p>
-                                        <div class="clear-left">
-                                            <p class="right-float">
-                                                <img src="img2/clock-outline.png">07:48:29</p>
-                                            <p class="left-float product-price">
-                                                145.000 تومان</p>
-                                        </div>
-                                        <div class="clearfix">
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
-                    </div>
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="col-item">
-                                    <div class="photo">
-                                        <img src="img2/350x260.png" class="img-responsive" alt="a"/>
-                                    </div>
-                                    <div class="info">
-                                        <div class="row">
-                                            <div class="price col-md-12">
-                                                <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
-                                                    پیانو سطح مقدماتی</a>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <p class="product-tsize new-product">مهران عباسی</p>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                </i><i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                </i><i class="gold-star fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <p class="product-off left-float">180.000</p>
-                                        <div class="clear-left">
-                                            <p class="right-float">
-                                                <img src="img2/clock-outline.png">07:48:29</p>
-                                            <p class="left-float product-price">
-                                                145.000 تومان</p>
-                                        </div>
-                                        <div class="clearfix">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="col-item">
-                                    <div class="photo">
-                                        <img src="img2/350x260.png" class="img-responsive" alt="a"/>
-                                    </div>
-                                    <div class="info">
-                                        <div class="row">
-                                            <div class="price col-md-12">
-                                                <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
-                                                    پیانو سطح مقدماتی</a>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <p class="product-tsize new-product">مهران عباسی</p>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                </i><i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                </i><i class="gold-star fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <p class="product-off left-float">180.000</p>
-                                        <div class="clear-left">
-                                            <p class="right-float">
-                                                <img src="img2/clock-outline.png">07:48:29</p>
-                                            <p class="left-float product-price">
-                                                145.000 تومان</p>
-                                        </div>
-                                        <div class="clearfix">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="col-item">
-                                    <div class="photo">
-                                        <img src="img2/350x260.png" class="img-responsive" alt="a"/>
-                                    </div>
-                                    <div class="info">
-                                        <div class="row">
-                                            <div class="price col-md-12">
-                                                <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
-                                                    پیانو سطح مقدماتی</a>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <p class="product-tsize new-product">مهران عباسی</p>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                </i><i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                </i><i class="gold-star fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <p class="product-off left-float">180.000</p>
-                                        <div class="clear-left">
-                                            <p class="right-float">
-                                                <img src="img2/clock-outline.png">07:48:29</p>
-                                            <p class="left-float product-price">
-                                                145.000 تومان</p>
-                                        </div>
-                                        <div class="clearfix">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="col-item">
-                                    <div class="photo">
-                                        <img src="img2/350x260.png" class="img-responsive" alt="a"/>
-                                    </div>
-                                    <div class="info">
-                                        <div class="row">
-                                            <div class="price col-md-12">
-                                                <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
-                                                    پیانو سطح مقدماتی</a>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <p class="product-tsize new-product">مهران عباسی</p>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                </i><i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                </i><i class="gold-star fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <p class="product-off left-float">180.000</p>
-                                        <div class="clear-left">
-                                            <p class="right-float">
-                                                <img src="img2/clock-outline.png">07:48:29</p>
-                                            <p class="left-float product-price">
-                                                145.000 تومان</p>
-                                        </div>
-                                        <div class="clearfix">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
-</div>
+ </div>
 
 <!-- Learning Section -->
-<div id="learning">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 learning-txt">
-                <h1 class="learning">
-                    دوره های تخصصی
-                </h1>
-                <h1 class="learning">
-                    Drums & Percussion Instruments
-                </h1>
-            </div>
-            <div class="col-md-6 learning-img">
-                <img src="img2/saz-music.png" class="left-float" id="learning-image">
+    <div id="learning">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 learning-txt">
+                    <h1 class="learning">
+                        دوره های تخصصی
+                    </h1>
+                    <h1 class="learning">
+                        Drums & Percussion Instruments
+                    </h1>
+                </div>
+                <div class="col-md-6 learning-img">
+                    <img src="img2/saz-music.png" class="left-float" id="learning-image">
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 <!-- Sales Products -->
@@ -610,389 +388,166 @@
                         </a>
                         <a href="#product-sales" data-slide="next" class="more-product"><i
                                     class="left fa fa-angle-double-left" aria-hidden="true"></i></a>
-                        <a href="product.html" class="more-product">بیشتر</a>
+                        <a href="{{url('/products')}}" class="more-product">بیشتر</a>
                     </div>
                 </div>
             </div>
             <div id="product-sales" class="carousel slide" data-ride="carousel" data-interval="false">
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
-                    <div class="item active">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="col-item">
-                                    <div class="photo">
-                                        <img src="img2/350x260.png" class="img-responsive" alt="a"/>
-                                    </div>
-                                    <div class="info">
+                    @foreach($products as $newProducts)
+                        @if ($loop->last)
+                            <div class="item  active">
+                                @else
+                                    <div class="item">
+                                        @endif
                                         <div class="row">
-                                            <div class="price col-md-12">
-                                                <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
-                                                    پیانو سطح مقدماتی 1</a>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <p class="product-tsize new-product">مهران عباسی</p>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                </i><i class="gold-star fa fa-star"></i><i class="fa fa-star">
-                                                </i><i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <p class="product-off left-float">180.000</p>
-                                        <div class="clear-left">
-                                            <p class="right-float">
-                                                <img src="img2/clock-outline.png">07:48:29</p>
-                                            <p class="left-float product-price">
-                                                145.000 تومان</p>
-                                        </div>
-                                        <div class="clearfix">
+                                            @foreach($newProducts as $newProduct)
+                                                <div class="col-sm-3">
+                                                    <div class="col-item">
+                                                        <div class="photo">
+                                                            <img src="img2/350x260.png" class="img-responsive" alt="a"/>
+                                                        </div>
+                                                        <div class="info">
+                                                            <div class="row">
+                                                                <div class="price col-md-12">
+                                                                    <a class="product-fsize" href="{{url('/products')}}/{{$newProduct->id}}">{{$newProduct->name}}</a>
+                                                                </div>
+                                                                <div class="rating col-md-6">
+                                                                    <p class="product-tsize new-product">مهران عباسی</p>
+                                                                </div>
+                                                                <div class="rating col-md-6">
+                                                                    <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
+                                                                    </i><i class="gold-star fa fa-star"></i><i class="fa fa-star">
+                                                                    </i><i class="fa fa-star"></i>
+                                                                </div>
+                                                            </div>
+                                                            <p class="product-off left-float"> تومان {{$newProduct->price}} </p>
+                                                            <div class="clear-left">
+                                                                <p class="right-float">
+                                                                    <img src="img2/clock-outline.png">07:48:29</p>
+                                                                <p class="left-float product-price"> تومان {{0.9*$newProduct->price}} </p>
+                                                            </div>
+                                                            <div class="clearfix">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
-                                </div>
+                                    @endforeach
                             </div>
-                            <div class="col-sm-3">
-                                <div class="col-item">
-                                    <div class="photo">
-                                        <img src="img2/350x260.png" class="img-responsive" alt="a"/>
-                                    </div>
-                                    <div class="info">
-                                        <div class="row">
-                                            <div class="price col-md-12">
-                                                <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
-                                                    پیانو سطح مقدماتی 1</a>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <p class="product-tsize new-product">مهران عباسی</p>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                </i><i class="gold-star fa fa-star"></i><i class="fa fa-star">
-                                                </i><i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <p class="product-off left-float">180.000</p>
-                                        <div class="clear-left">
-                                            <p class="right-float">
-                                                <img src="img2/clock-outline.png">07:48:29</p>
-                                            <p class="left-float product-price">
-                                                145.000 تومان</p>
-                                        </div>
-                                        <div class="clearfix">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="col-item">
-                                    <div class="photo">
-                                        <img src="img2/350x260.png" class="img-responsive" alt="a"/>
-                                    </div>
-                                    <div class="info">
-                                        <div class="row">
-                                            <div class="price col-md-12">
-                                                <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
-                                                    پیانو سطح مقدماتی 1</a>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <p class="product-tsize new-product">مهران عباسی</p>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                </i><i class="gold-star fa fa-star"></i><i class="fa fa-star">
-                                                </i><i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <p class="product-off left-float">180.000</p>
-                                        <div class="clear-left">
-                                            <p class="right-float">
-                                                <img src="img2/clock-outline.png">07:48:29</p>
-                                            <p class="left-float product-price">
-                                                145.000 تومان</p>
-                                        </div>
-                                        <div class="clearfix">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="col-item">
-                                    <div class="photo">
-                                        <img src="img2/350x260.png" class="img-responsive" alt="a"/>
-                                    </div>
-                                    <div class="info">
-                                        <div class="row">
-                                            <div class="price col-md-12">
-                                                <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
-                                                    پیانو سطح مقدماتی 1</a>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <p class="product-tsize new-product">مهران عباسی</p>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                </i><i class="gold-star fa fa-star"></i><i class="fa fa-star">
-                                                </i><i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <p class="product-off left-float">180.000</p>
-                                        <div class="clear-left">
-                                            <p class="right-float">
-                                                <img src="img2/clock-outline.png">07:48:29</p>
-                                            <p class="left-float product-price">
-                                                145.000 تومان</p>
-                                        </div>
-                                        <div class="clearfix">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="col-item">
-                                    <div class="photo">
-                                        <img src="img2/350x260.png" class="img-responsive" alt="a"/>
-                                    </div>
-                                    <div class="info">
-                                        <div class="row">
-                                            <div class="price col-md-12">
-                                                <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
-                                                    پیانو سطح مقدماتی 2</a>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <p class="product-tsize new-product">مهران عباسی</p>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                </i><i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                </i><i class="gold-star fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <p class="product-off left-float">180.000</p>
-                                        <div class="clear-left">
-                                            <p class="right-float">
-                                                <img src="img2/clock-outline.png">07:48:29</p>
-                                            <p class="left-float product-price">
-                                                145.000 تومان</p>
-                                        </div>
-                                        <div class="clearfix">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="col-item">
-                                    <div class="photo">
-                                        <img src="img2/350x260.png" class="img-responsive" alt="a"/>
-                                    </div>
-                                    <div class="info">
-                                        <div class="row">
-                                            <div class="price col-md-12">
-                                                <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
-                                                    پیانو سطح مقدماتی 3</a>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <p class="product-tsize new-product">مهران عباسی</p>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                </i><i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                </i><i class="gold-star fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <p class="product-off left-float">180.000</p>
-                                        <div class="clear-left">
-                                            <p class="right-float">
-                                                <img src="img2/clock-outline.png">07:48:29</p>
-                                            <p class="left-float product-price">
-                                                145.000 تومان</p>
-                                        </div>
-                                        <div class="clearfix">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="col-item">
-                                    <div class="photo">
-                                        <img src="img2/350x260.png" class="img-responsive" alt="a"/>
-                                    </div>
-                                    <div class="info">
-                                        <div class="row">
-                                            <div class="price col-md-12">
-                                                <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
-                                                    پیانو سطح مقدماتی 4</a>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <p class="product-tsize new-product">مهران عباسی</p>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                </i><i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                </i><i class="gold-star fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <p class="product-off left-float">180.000</p>
-                                        <div class="clear-left">
-                                            <p class="right-float">
-                                                <img src="img2/clock-outline.png">07:48:29</p>
-                                            <p class="left-float product-price">
-                                                145.000 تومان</p>
-                                        </div>
-                                        <div class="clearfix">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="col-item">
-                                    <div class="photo">
-                                        <img src="img2/350x260.png" class="img-responsive" alt="a"/>
-                                    </div>
-                                    <div class="info">
-                                        <div class="row">
-                                            <div class="price col-md-12">
-                                                <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
-                                                    پیانو سطح مقدماتی 5</a>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <p class="product-tsize new-product">مهران عباسی</p>
-                                            </div>
-                                            <div class="rating col-md-6">
-                                                <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                </i><i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                </i><i class="gold-star fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <p class="product-off left-float">180.000</p>
-                                        <div class="clear-left">
-                                            <p class="right-float">
-                                                <img src="img2/clock-outline.png">07:48:29</p>
-                                            <p class="left-float product-price">
-                                                145.000 تومان</p>
-                                        </div>
-                                        <div class="clearfix">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
 
 <!--footer-->
-<footer class="nb-footer fixed-bottom">
-    <div class="container">
-        <div class="row" id="footsize">
-            <div class="col-sm-12">
-                <div class="about">
-                    <div class="social-media">
-                        <!--///////////////////////// for mobile ////////////////////////////////////// -->
-                        <div class="col-sm-12 col-xs-12 col-md-3" id="footer-menu-mobile">
-                            <p>منو</p>
+    <footer class="nb-footer fixed-bottom">
+        <div class="container">
+            <div class="row" id="footsize">
+                <div class="col-sm-12">
+                    <div class="about">
+                        <div class="social-media">
+                            <!--///////////////////////// for mobile ////////////////////////////////////// -->
+                            <div class="col-sm-12 col-xs-12 col-md-3" id="footer-menu-mobile">
+                                <p>منو</p>
 
-                            <div>
-                                <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link">
-                                    درباره ما </a>
-                                <br><br>
-                                <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link"> تماس
-                                    باما </a>
-                                <br><br>
-                                <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link">
-                                    قوانین و مقررات </a>
-                                <br><br>
-                                <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link">
-                                    عضویت در سایت </a>
+                                <div>
+                                    <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link">
+                                        درباره ما </a>
+                                    <br><br>
+                                    <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link"> تماس
+                                        باما </a>
+                                    <br><br>
+                                    <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link">
+                                        قوانین و مقررات </a>
+                                    <br><br>
+                                    <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link">
+                                        عضویت در سایت </a>
+                                </div>
+                                <br>
                             </div>
-                            <br>
-                        </div>
-                        <div class="col-sm-12 col-xs-12 col-md-3" id="footer-cr-mobile">
-                            <p class="logo-size">LOGO</p>
-                            <p>پلتفرم آموزش موسیقی در بستر اینترنت</p>
+                            <div class="col-sm-12 col-xs-12 col-md-3" id="footer-cr-mobile">
+                                <p class="logo-size">LOGO</p>
+                                <p>پلتفرم آموزش موسیقی در بستر اینترنت</p>
 
-                            <br>
-                            <div class="footer-border">
-                                <i class="fa fa-2x fa-twitter" aria-hidden="true"></i>
-                                <i class="fa fa-2x fa-facebook footer-icon" aria-hidden="true"></i>
-                                <i class="fa fa-2x fa-instagram footer-icon" aria-hidden="true"></i>
+                                <br>
+                                <div class="footer-border">
+                                    <i class="fa fa-2x fa-twitter" aria-hidden="true"></i>
+                                    <i class="fa fa-2x fa-facebook footer-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-2x fa-instagram footer-icon" aria-hidden="true"></i>
+                                    <p></p>
+                                </div>
+
+
+                                <p>تمامی حقوق برای مهران عباسی محفوظ میباشد.</p>
                                 <p></p>
                             </div>
+                            <!--///////////////////////// end for mobile ////////////////////////////////////// -->
+                            <div class="col-md-3" id="footer-cr">
+                                <p class="logo-size">LOGO</p>
+                                <p>پلتفرم آموزش موسیقی در بستر اینترنت</p>
+
+                                <br>
+                                <div class="footer-border">
+                                    <i class="fa fa-2x fa-twitter" aria-hidden="true"></i>
+                                    <i class="fa fa-2x fa-facebook footer-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-2x fa-instagram footer-icon" aria-hidden="true"></i>
+                                    <p></p>
+                                </div>
 
 
-                            <p>تمامی حقوق برای مهران عباسی محفوظ میباشد.</p>
-                            <p></p>
-                        </div>
-                        <!--///////////////////////// end for mobile ////////////////////////////////////// -->
-                        <div class="col-md-3" id="footer-cr">
-                            <p class="logo-size">LOGO</p>
-                            <p>پلتفرم آموزش موسیقی در بستر اینترنت</p>
-
-                            <br>
-                            <div class="footer-border">
-                                <i class="fa fa-2x fa-twitter" aria-hidden="true"></i>
-                                <i class="fa fa-2x fa-facebook footer-icon" aria-hidden="true"></i>
-                                <i class="fa fa-2x fa-instagram footer-icon" aria-hidden="true"></i>
+                                <p>تمامی حقوق برای مهران عباسی محفوظ میباشد.</p>
                                 <p></p>
                             </div>
+                            <div class="col-md-6">
+                                <div class="footer-blog">
+                                    <p>وبلاگ</p>
 
-
-                            <p>تمامی حقوق برای مهران عباسی محفوظ میباشد.</p>
-                            <p></p>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="footer-blog">
-                                <p>وبلاگ</p>
-
-                                <a href="#" class="footer-link"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                                    عنوان مطلب مرتبط با وبلاگ در این
-                                    بخش درج میشود. </a>
-                                <br>
-                                <a href="#" class="footer-link"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                                    عنوان مطلب مرتبط با وبلاگ در این
-                                    بخش درج میشود. </a>
-                                <br>
-                                <a href="#" class="footer-link"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                                    عنوان مطلب مرتبط با وبلاگ در این
-                                    بخش درج میشود. </a>
-                                <br>
-                                <a href="#" class="footer-link"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                                    عنوان مطلب مرتبط با وبلاگ در این
-                                    بخش درج میشود. </a>
+                                    <a href="#" class="footer-link"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                        عنوان مطلب مرتبط با وبلاگ در این
+                                        بخش درج میشود. </a>
+                                    <br>
+                                    <a href="#" class="footer-link"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                        عنوان مطلب مرتبط با وبلاگ در این
+                                        بخش درج میشود. </a>
+                                    <br>
+                                    <a href="#" class="footer-link"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                        عنوان مطلب مرتبط با وبلاگ در این
+                                        بخش درج میشود. </a>
+                                    <br>
+                                    <a href="#" class="footer-link"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                        عنوان مطلب مرتبط با وبلاگ در این
+                                        بخش درج میشود. </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-3" id="footer-end">
-                            <p>منو</p>
+                            <div class="col-md-3" id="footer-end">
+                                <p>منو</p>
 
-                            <div>
-                                <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link">
-                                    درباره ما </a>
-                                <br><br>
-                                <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link"> تماس
-                                    باما </a>
-                                <br><br>
-                                <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link">
-                                    قوانین و مقررات </a>
-                                <br><br>
-                                <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link">
-                                    عضویت در سایت </a>
+                                <div>
+                                    <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link">
+                                        درباره ما </a>
+                                    <br><br>
+                                    <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link"> تماس
+                                        باما </a>
+                                    <br><br>
+                                    <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link">
+                                        قوانین و مقررات </a>
+                                    <br><br>
+                                    <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link">
+                                        عضویت در سایت </a>
+                                </div>
+
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</footer>
-<!--end-footer-->
+    </footer>
+    <!--end-footer-->
 
 <!-- Bootstrap core JavaScript
 ================================================== -->

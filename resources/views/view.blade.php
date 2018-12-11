@@ -14,16 +14,16 @@
     <title>دوره های تخصصی موسیقی - دوره آموزش نواختن پیانو سطح مقدماتی</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css2/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css2/font-awesome.min.css">
+    <link href="{{asset('css2/bootstrap.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css2/font-awesome.min.css')}}">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="css2/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="{{asset('css2/ie10-viewport-bug-workaround.css')}}" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]>
-    <script src="js2/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="js2/ie-emulation-modes-warning.js"></script>
+    <script src="{{asset('js2/ie8-responsive-file-warning.js')}}"></script><![endif]-->
+    <script src="{{asset('js2/ie-emulation-modes-warning.js')}}"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -32,7 +32,7 @@
     <![endif]-->
 
     <!-- Custom styles for this template -->
-    <link href="css2/style.css" rel="stylesheet">
+    <link href="{{asset('css2/style.css')}}" rel="stylesheet">
 
 </head>
 <!-- NAVBAR
@@ -52,7 +52,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="index.html">LOGO</a>
+                            <a class="navbar-brand" href="{{url('/')}}">LOGO</a>
                         </div>
                         <div id="navbar" class="navbar-collapse collapse">
                             @if ($user = Auth::user())
@@ -214,7 +214,7 @@
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
             <p class="sp-head-title">
-                دوره آموزش نواختن پیانو سطح مقدماتی
+                {{$product->name}}
             </p>
             <p>
                 <a href="index.html" class="sp-head-link">صفحه نخست</a>
@@ -243,23 +243,23 @@
                     <p class="sp-sidebar-data-title">اطلاعات دوره :</p>
 
                     <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
-                        <img src="img2/format-list-checkbox.png">
+                        <img src="{{url('img2/format-list-checkbox.png')}}">
                         <p class="sp-sidebar-data">تعداد ویدئوها</p>
                         <p class="sp-sidebar-data">12</p>
                     </div>
                     <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
-                        <img src="img2/clock-outline.png">
+                        <img src="{{url('img2/clock-outline.png')}}">
                         <p class="sp-sidebar-data">مدت زمان دوره</p>
                         <p class="sp-sidebar-data">07:48:29</p>
                     </div>
                     <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
-                        <img src="img2/account-group.png">
+                        <img src="{{url('img2/account-group.png')}}">
                         <p class="sp-sidebar-data">تعداد دانشجویان</p>
                         <p class="sp-sidebar-data">125</p>
                     </div>
                 </div>
                 <div class="sp-sidebar-buy-main">
-                    <a class="sp-sidebar-buy" href="#buy">دانلود کامل دوره | 145000</a>
+                    <a class="sp-sidebar-buy" href="#buy">دانلود کامل دوره | {{$product->price}}</a>
                 </div>
                 <div class="sp-sidebar-favor">
                     <p><i class="fa fa-2x fa-heart" aria-hidden="true"></i> افزودن به لیست مورد علاقه ها</p>
@@ -268,7 +268,7 @@
             <!-- ///////////////// menu 2 /////////////////////// -->
             <div class="sp-sidebar">
                 <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 sp-sidebar-owner-main">
-                    <img src="pics/user-pic.jpeg" class="sp-sidebar-owner-pic">
+                    <img src="{{url('pics/user-pic.jpeg')}}" class="sp-sidebar-owner-pic">
                     <p class="sp-sidebar-owner-name">حامد خالقی اصفهانی</p>
                 </div>
                 <p class="sp-sidebar-owner-desc">تیم تولید محتوای رستا آی تی آماده مشاوره رایگان ویژه دانشجویان فرانش
@@ -306,26 +306,26 @@
             <!-- ////////////////// Body /////////////////// -->
             <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 sp-body">
                 <div class="sp-img">
-                    <img src="img2/video-cover.png" class="img-responsive">
+                    <img src="{{url('img2/video-cover.png')}}" class="img-responsive">
                 </div>
             </div>
             <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 sp-body">
                 <div class="sp-body-data">
                     <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4">
                         <p>
-                            <img src="img2/the_key.png" class="img-key">
+                            <img src="{{url('img2/the_key.png')}}" class="img-key">
                             دسترسی سریع
                         </p>
                     </div>
                     <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4">
                         <p>
-                            <img src="img2/the_chat.png" class="img-other">
+                            <img src="{{url('img2/the_chat.png')}}" class="img-other">
                             ارتباط با استاد
                         </p>
                     </div>
                     <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4">
                         <p>
-                            <img src="img2/the_wallet.png" class="img-other">
+                            <img src="{{url('img2/the_wallet.png')}}" class="img-other">
                             امکان بازگشت وجه
                         </p>
                     </div>
@@ -481,7 +481,7 @@
                                 <div class="col-sm-3 col-md-4">
                                     <div class="col-item">
                                         <div class="photo">
-                                            <img src="img2/350x260.png" class="img-responsive" alt="a"/>
+                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
                                         </div>
                                         <div class="info">
                                             <div class="row">
@@ -501,7 +501,7 @@
                                             <p class="product-off left-float">180.000</p>
                                             <div class="clear-left">
                                                 <p class="right-float">
-                                                    <img src="img2/clock-outline.png">07:48:29</p>
+                                                    <img src="{{url('img2/clock-outline.png')}}">07:48:29</p>
                                                 <p class="left-float product-price">
                                                     145.000 تومان</p>
                                             </div>
@@ -513,7 +513,7 @@
                                 <div class="col-sm-3 col-md-4">
                                     <div class="col-item">
                                         <div class="photo">
-                                            <img src="img2/350x260.png" class="img-responsive" alt="a"/>
+                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
                                         </div>
                                         <div class="info">
                                             <div class="row">
@@ -533,7 +533,7 @@
                                             <p class="product-off left-float">180.000</p>
                                             <div class="clear-left">
                                                 <p class="right-float">
-                                                    <img src="img2/clock-outline.png">07:48:29</p>
+                                                    <img src="{{url('img2/clock-outline.png')}}">07:48:29</p>
                                                 <p class="left-float product-price">
                                                     145.000 تومان</p>
                                             </div>
@@ -545,7 +545,7 @@
                                 <div class="col-sm-3 col-md-4">
                                     <div class="col-item">
                                         <div class="photo">
-                                            <img src="img2/350x260.png" class="img-responsive" alt="a"/>
+                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
                                         </div>
                                         <div class="info">
                                             <div class="row">
@@ -565,7 +565,7 @@
                                             <p class="product-off left-float">180.000</p>
                                             <div class="clear-left">
                                                 <p class="right-float">
-                                                    <img src="img2/clock-outline.png">07:48:29</p>
+                                                    <img src="{{url('img2/clock-outline.png')}}">07:48:29</p>
                                                 <p class="left-float product-price">
                                                     145.000 تومان</p>
                                             </div>
@@ -581,7 +581,7 @@
                                 <div class="col-sm-3 col-md-4">
                                     <div class="col-item">
                                         <div class="photo">
-                                            <img src="img2/350x260.png" class="img-responsive" alt="a"/>
+                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
                                         </div>
                                         <div class="info">
                                             <div class="row">
@@ -601,7 +601,7 @@
                                             <p class="product-off left-float">180.000</p>
                                             <div class="clear-left">
                                                 <p class="right-float">
-                                                    <img src="img2/clock-outline.png">07:48:29</p>
+                                                    <img src="{{url('img2/clock-outline.png')}}">07:48:29</p>
                                                 <p class="left-float product-price">
                                                     145.000 تومان</p>
                                             </div>
@@ -613,7 +613,7 @@
                                 <div class="col-sm-3 col-md-4">
                                     <div class="col-item">
                                         <div class="photo">
-                                            <img src="img2/350x260.png" class="img-responsive" alt="a"/>
+                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
                                         </div>
                                         <div class="info">
                                             <div class="row">
@@ -633,7 +633,7 @@
                                             <p class="product-off left-float">180.000</p>
                                             <div class="clear-left">
                                                 <p class="right-float">
-                                                    <img src="img2/clock-outline.png">07:48:29</p>
+                                                    <img src="{{url('img2/clock-outline.png')}}">07:48:29</p>
                                                 <p class="left-float product-price">
                                                     145.000 تومان</p>
                                             </div>
@@ -645,7 +645,7 @@
                                 <div class="col-sm-3 col-md-4">
                                     <div class="col-item">
                                         <div class="photo">
-                                            <img src="img2/350x260.png" class="img-responsive" alt="a"/>
+                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
                                         </div>
                                         <div class="info">
                                             <div class="row">
@@ -665,7 +665,7 @@
                                             <p class="product-off left-float">180.000</p>
                                             <div class="clear-left">
                                                 <p class="right-float">
-                                                    <img src="img2/clock-outline.png">07:48:29</p>
+                                                    <img src="{{url('img2/clock-outline.png')}}">07:48:29</p>
                                                 <p class="left-float product-price">
                                                     145.000 تومان</p>
                                             </div>
@@ -705,7 +705,7 @@
                                 <div class="col-sm-3 col-md-4">
                                     <div class="col-item">
                                         <div class="photo">
-                                            <img src="img2/350x260.png" class="img-responsive" alt="a"/>
+                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
                                         </div>
                                         <div class="info">
                                             <div class="row">
@@ -725,7 +725,7 @@
                                             <p class="product-off left-float">180.000</p>
                                             <div class="clear-left">
                                                 <p class="right-float">
-                                                    <img src="img2/clock-outline.png">07:48:29</p>
+                                                    <img src="{{url('img2/clock-outline.png')}}">07:48:29</p>
                                                 <p class="left-float product-price">
                                                     145.000 تومان</p>
                                             </div>
@@ -741,7 +741,7 @@
                                 <div class="col-sm-3 col-md-4">
                                     <div class="col-item">
                                         <div class="photo">
-                                            <img src="img2/350x260.png" class="img-responsive" alt="a"/>
+                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
                                         </div>
                                         <div class="info">
                                             <div class="row">
@@ -761,7 +761,7 @@
                                             <p class="product-off left-float">180.000</p>
                                             <div class="clear-left">
                                                 <p class="right-float">
-                                                    <img src="img2/clock-outline.png">07:48:29</p>
+                                                    <img src="{{url('img2/clock-outline.png')}}">07:48:29</p>
                                                 <p class="left-float product-price">
                                                     145.000 تومان</p>
                                             </div>
@@ -777,7 +777,7 @@
                                 <div class="col-sm-3 col-md-4">
                                     <div class="col-item">
                                         <div class="photo">
-                                            <img src="img2/350x260.png" class="img-responsive" alt="a"/>
+                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
                                         </div>
                                         <div class="info">
                                             <div class="row">
@@ -797,7 +797,7 @@
                                             <p class="product-off left-float">180.000</p>
                                             <div class="clear-left">
                                                 <p class="right-float">
-                                                    <img src="img2/clock-outline.png">07:48:29</p>
+                                                    <img src="{{url('img2/clock-outline.png')}}')}}">07:48:29</p>
                                                 <p class="left-float product-price">
                                                     145.000 تومان</p>
                                             </div>
@@ -926,13 +926,13 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="js2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js2/jquery.min.js"><\/script>')</script>
-<script src="js2/bootstrap.min.js"></script>
+<script src="{{asset('js2/jquery.min.js')}}"></script>
+<script>window.jQuery || document.write('<script src="{{asset('js2/jquery.min.js')}}"><\/script>')</script>
+<script src="{{asset('js2/bootstrap.min.js')}}"></script>
 <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-<script src="js2/holder.min.js"></script>
+<script src="{{asset('js2/holder.min.js')}}"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="js2/ie10-viewport-bug-workaround.js"></script>
+<script src="{{asset('js2/ie10-viewport-bug-workaround.js')}}"></script>
 
 <script>
     $(document).ready(function () {
