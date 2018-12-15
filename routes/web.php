@@ -58,8 +58,10 @@ Route::get('/index', function () {
 });
 
 Route::get('/products', 'HomePageController@indexProducts');
+Route::get('/categories', 'HomePageController@indexCategories');
 //Route::get('/products/{product}', ['uses' =>'HomePageController@viewProduct']);
 Route::get('/products/{product}', ['uses' =>'HomePageController@viewProduct']);
+Route::get('/categories/{category_id}/products', ['uses' =>'HomePageController@indexProductsOfCategory']);
 Route::get('/view', function () {
     return view('view');
 });

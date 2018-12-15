@@ -247,14 +247,14 @@
                     <br>
                     - مقرون بصرفه
                 </p>
-                <p><a class="btn btn-success" href="#" role="button"> دسته بندی دوره ها <i class="fa fa-arrow-left"
+                <p><a class="btn btn-success" href="{{url('/')}}/categories" role="button"> دسته بندی دوره ها <i class="fa fa-arrow-left"
                                                                                            aria-hidden="true"></i>
                     </a></p>
                 <div id="top-btns">
                     <ul class="ul-main">
                         <li><img src="img2/view-grid.png" class="grid-icon"></li>
                         @foreach($categories as $category)
-                            <li><a href="#" class="ul-btn">{{$category->title}}</a></li>
+                            <li><a href="{{url('/')}}/categories/{{$category->id}}/products" class="ul-btn">{{$category->title}}</a></li>
                         @endforeach
                        {{-- <li><a href="#" class="ul-btn">تنظیم آهنگ</a></li>
                         <li><a href="#" class="ul-btn">نوازندگی</a></li>

@@ -238,7 +238,7 @@
             <p class="new-product"><i class="fa fa-bars" aria-hidden="true"></i>
                 محصولات</p>
         </div>
-        @foreach($products as $product)
+        @foreach($categories as $category)
         <div class="col-md-3">
             <div class="product-item">
                 <div class="col-item">
@@ -248,7 +248,7 @@
                     <div class="info">
                         <div class="row">
                             <div class="price col-md-12">
-                                <a class="product-fsize" href="{{url('/products')}}/{{$product->id}}">{{$product->name}}</a>
+                                <a class="product-fsize" href="{{url('/categories')}}/{{$category->id}}/products">{{$category->title}}</a>
                             </div>
                             <div class="rating col-md-6">
                                 <p class="product-tsize new-product">مهران عباسی</p>
@@ -259,13 +259,6 @@
                                 </i><i class="fa fa-star"></i>
                             </div>
                         </div>
-                        <p class="product-off left-float"> {{$product->price}}</p>
-                        <div class="clear-left">
-                            <p class="right-float">
-                                <img src="{{asset('img2/clock-outline.png')}}">07:48:29</p>
-                            <p class="left-float product-price">
-                                {{0.9*$product->price}}</p>
-                        </div>
                         <div class="clearfix">
                         </div>
                     </div>
@@ -275,7 +268,7 @@
         @endforeach
 
     </div>
-    {!! $products->appends(compact('q'))->links() !!}
+    {!! $categories->appends(compact('q'))->links() !!}
 </div>
 
 
