@@ -46,11 +46,13 @@ class ProvincesController extends Controller
      */
     private function store(Request $request)
     {
+        dd($request);
 
         $this->validate($request, [
             'name' => 'required|unique:provinces',
         ]);
         $data = $request->only('name');
+        $data['id'] = intval(Province ::orderBy('id', 'desc')->first()->id) + 1;
         $province = Province::create($data);
         flash($province->name . ' saved.')->success()->important();
         return redirect()->route('admin.provinces.index');

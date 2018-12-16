@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-md-10">
         <h3>Province <small><a href="{{ route('admin.provinces.create') }}" class="btn btn-warning btn-sm">New Province</a></small></h3>
-        {!! Form::open(['url' => 'admin.provinces', 'method'=>'get', 'class'=>'form-inline']) !!}
+        {!! Form::open(['url' => 'admin/provinces', 'method'=>'get', 'class'=>'form-inline']) !!}
             <div class="form-group {!! $errors->has('q') ? 'has-error' : '' !!}">
               {!! Form::text('q', isset($q) ? $q : null, ['class'=>'form-control', 'placeholder' => 'Type name ...']) !!}
               {!! $errors->first('q', '<p class="help-block">:message</p>') !!}

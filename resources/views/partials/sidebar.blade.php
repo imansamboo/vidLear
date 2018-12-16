@@ -18,19 +18,19 @@
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{{ $request->segment(2) == 'permissions' ? 'active active-sub' : '' }}">
+                    <li class="{{ $request->segment(2) == 'addresses' ? 'active active-sub' : '' }}">
                         <a href="{{ route('admin.addresses.index') }}">
                             <i class="fa fa-briefcase"></i>
                             <span class="title">Addresses</span>
                         </a>
                     </li>
-                    <li class="{{ $request->segment(2) == 'roles' ? 'active active-sub' : '' }}">
+                    <li class="{{ $request->segment(2) == 'cities' ? 'active active-sub' : '' }}">
                         <a href="{{ route('admin.cities.index') }}">
                             <i class="fa fa-briefcase"></i>
                             <span class="title">Cities</span>
                         </a>
                     </li>
-                    <li class="{{ $request->segment(2) == 'users' ? 'active active-sub' : '' }}">
+                    <li class="{{ $request->segment(2) == 'provinces' ? 'active active-sub' : '' }}">
                         <a href="{{ route('admin.provinces.index') }}">
                             <i class="fa fa-user"></i>
                             <span class="title">Provinces</span>
@@ -45,13 +45,13 @@
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{{ $request->segment(2) == 'permissions' ? 'active active-sub' : '' }}">
+                    <li class="{{ $request->segment(2) == 'categories' ? 'active active-sub' : '' }}">
                         <a href="{{ route('admin.categories.index') }}">
                             <i class="fa fa-briefcase"></i>
                             <span class="title">Categories</span>
                         </a>
                     </li>
-                    <li class="{{ $request->segment(2) == 'roles' ? 'active active-sub' : '' }}">
+                    <li class="{{ $request->segment(2) == 'products' ? 'active active-sub' : '' }}">
                         <a href="{{ route('admin.products.index') }}">
                             <i class="fa fa-briefcase"></i>
                             <span class="title">Products</span>
@@ -59,6 +59,22 @@
                     </li>
                 </ul>
             </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-users"></i>
+                    <span class="title">Manage Fees</span>
+                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ $request->segment(2) == 'fees' ? 'active active-sub' : '' }}">
+                        <a href="{{ route('admin.fees.index') }}">
+                            <i class="fa fa-briefcase"></i>
+                            <span class="title">Fees</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-users"></i>
@@ -86,8 +102,6 @@
                     </li>
                 </ul>
             </li>
-            </li>
-
             <li class="{{ $request->segment(1) == 'change_password' ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-key"></i>

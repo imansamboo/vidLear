@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-md-10">
         <h3>Category <small><a href="{{ route('admin.categories.create') }}" class="btn btn-warning btn-sm">New Category</a></small></h3>
-        {!! Form::open(['url' => 'admin.categories', 'method'=>'get', 'class'=>'form-inline']) !!}
+        {!! Form::open(['url' => 'admin/categories', 'method'=>'get', 'class'=>'form-inline']) !!}
         <div class="form-group {!! $errors->has('q') ? 'has-error' : '' !!}">
           {!! Form::text('q', isset($q) ? $q : null, ['class'=>'form-control', 'placeholder' => 'Type category..']) !!}
           {!! $errors->first('q', '<p class="help-block">:message</p>') !!}
