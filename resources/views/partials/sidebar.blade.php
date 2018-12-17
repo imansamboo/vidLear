@@ -82,8 +82,8 @@
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{{ $request->segment(2) == 'permissions' ? 'active active-sub' : '' }}">
-                        <a href="#">
+                    <li class="{{ $request->segment(2) == 'invoices' ? 'active active-sub' : '' }}">
+                        <a href="{{ route('admin.invoices.index') }}">
                             <i class="fa fa-briefcase"></i>
                             <span class="title">Invoices</span>
                         </a>

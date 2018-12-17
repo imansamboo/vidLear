@@ -47,6 +47,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('auth')->
     Route::resource('cities', 'CitiesController');
     Route::resource('addresses', 'AddressesController');
     Route::resource('fees', 'FeesController');
+    Route::resource('invoices', 'InvoicesController');
 });
 
 Route::post('/varifyWithSms','SMSController@varify');

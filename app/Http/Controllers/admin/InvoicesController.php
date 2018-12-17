@@ -3,28 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Address;
+use App\Invoice;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller as Controller;
 
 
 
-class AddressesController extends Controller
+class InvoicesController extends Controller
 {
-    public function regencies(Request $request)
-    {
-        $this->validate($request, [
-            'province_id' => 'required|exists:provinces,id'
-        ]);
-
-        return Regency::where('province_id', $request->get('province_id'))
-            ->get();
-    }
-
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('admin');
     }
     /**
      * Display a listing of the resource.
@@ -34,9 +23,9 @@ class AddressesController extends Controller
     public function index(Request $request)
     {
         $q = $request->get('q');
-        $addresses = Address::where('name', 'LIKE', '%'.$q.'%')
-            ->orderBy('name')->paginate(10);
-        return view('admin.addresses.index', compact('addresses', 'q'));
+        $invoices = Invoice::where('id', 'LIKE', '%'.$q.'%')
+            ->orderBy('id')->paginate(10);
+        return view('admin.invoices.index', compact('invoices', 'q'));
     }
 
     /**
@@ -46,7 +35,7 @@ class AddressesController extends Controller
      */
     public function create()
     {
-        return view('admin.addresses.create');
+        return view('admin.invoices.create');
     }
 
     /**
@@ -58,15 +47,15 @@ class AddressesController extends Controller
     {
 
         $this->validate($request, [
-            'name' => 'required|unique:addresses',
+            'name' => 'required|unique:invoices',
             'detail' => 'required',
             'city_id' => 'required|integer|exists:cities,id',
         ]);
         $data = $request->only('name', 'city_id', 'detail');
         $data['user_id'] = Auth::user()->id;
-        $address = Address::create($data);
-        flash($address->name . ' saved.')->success()->important();
-        return redirect()->route('admin.addresses.index');
+        $invoice = Invoice::create($data);
+        flash($invoice->name . ' saved.')->success()->important();
+        return redirect()->route('admin.invoices.index');
     }
 
     /**
@@ -85,8 +74,8 @@ class AddressesController extends Controller
      */
     public function edit($id)
     {
-        $address = Address::findOrFail($id);
-        return view('admin.addresses.edit', compact('address'));
+        $invoice = Invoice::findOrFail($id);
+        return view('admin.invoices.edit', compact('invoice'));
     }
 
     /**
@@ -97,16 +86,16 @@ class AddressesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $address = Address::findOrFail($id);
+        $invoice = Invoice::findOrFail($id);
         $this->validate($request, [
             'name' => 'required',
             'detail' => 'required',
             'city_id' => 'required|integer|exists:cities,id',
         ]);
         $data = $request->only('name', 'city_id', 'detail');
-        $address->update($data);
-        flash($address->name . ' updated.')->success()->important();
-        return redirect()->route('admin.addresses.index');
+        $invoice->update($data);
+        flash($invoice->name . ' updated.')->success()->important();
+        return redirect()->route('admin.invoices.index');
     }
 
     /**
@@ -117,9 +106,9 @@ class AddressesController extends Controller
      */
     public function destroy($id)
     {
-        $address = Address::find($id);
-        $address->delete();
-        flash($address->name . ' deleted.')->success()->important();
-        return redirect()->route('admin.addresses.index');
+        $invoice = Invoice::find($id);
+        $invoice->delete();
+        flash($invoice->name . ' deleted.')->success()->important();
+        return redirect()->route('admin.invoices.index');
     }
 }
