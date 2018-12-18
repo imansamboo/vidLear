@@ -12,6 +12,22 @@
     {!! $errors->first('user', '<p class="help-block">:message</p>') !!}
 </div>
 
+<div class="form-group {!! $errors->has('product') ? 'has-error' : '' !!}">
+    {!! Form::label('product', 'Product') !!}
+    {{-- Simplify things, no need to implement ajax for now --}}
+    {!! Form::select('product_id', [''=>'']+App\Product::pluck('name','id')->all(), null, ['class'=>'form-control js-selectize']) !!}
+
+    {!! $errors->first('product', '<p class="help-block">:message</p>') !!}
+</div>
+
+<div class="form-group {!! $errors->has('quantity') ? 'has-error' : '' !!}">
+    {!! Form::label('quantity', 'Quantity') !!}
+    {{-- Simplify things, no need to implement ajax for now --}}
+    {!! Form::number('quantity') !!}
+
+    {!! $errors->first('quantity', '<p class="help-block">:message</p>') !!}
+</div>
+
 <div class="form-group {!! $errors->has('address') ? 'has-error' : '' !!}">
     {!! Form::label('address', 'Address') !!}
     {{-- Simplify things, no need to implement ajax for now --}}
@@ -31,7 +47,7 @@
 <div class="form-group {!! $errors->has('taxed') ? 'has-error' : '' !!}">
     {!! Form::label('taxed', 'Taxed') !!}
     {{-- Simplify things, no need to implement ajax for now --}}
-    {!! Form::checkbox('taxed', 'taxed', false) !!}
+    {!! Form::checkbox('taxed', 1, false) !!}
 
     {!! $errors->first('taxed', '<p class="help-block">:message</p>') !!}
 </div>

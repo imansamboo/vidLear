@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class InvoiceItem extends Model
 {
-    protected $fillable = ['user_id', 'product_id','invoice_id', 'quantity', 'taxed'];
+    protected $table = 'invoiceItems';
+    protected $fillable = ['user_id', 'product_id','invoice_id', 'quantity', 'taxed', 'price'];
 
     public function user()
     {

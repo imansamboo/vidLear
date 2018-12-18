@@ -48,6 +48,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('auth')->
     Route::resource('addresses', 'AddressesController');
     Route::resource('fees', 'FeesController');
     Route::resource('invoices', 'InvoicesController');
+    Route::resource('invoiceItems', 'InvoiceItemsController');
+    Route::get('invoiceItems/create/{invoice_id}', 'InvoiceItemsController@create');
 });
 
 Route::post('/varifyWithSms','SMSController@varify');

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Address;
+use App\Fee;
+use App\InvoiceItem;
 use Illuminate\Http\Request;
 use App\Invoice;
+use App\Product;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller as Controller;
 
@@ -38,32 +42,87 @@ class InvoicesController extends Controller
         return view('admin.invoices.create');
     }
 
+
     /**
      * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
+        if(0){
 
-        $this->validate($request, [
-            'name' => 'required|unique:invoices',
-            'detail' => 'required',
-            'city_id' => 'required|integer|exists:cities,id',
-        ]);
-        $data = $request->only('name', 'city_id', 'detail');
-        $data['user_id'] = Auth::user()->id;
-        $invoice = Invoice::create($data);
-        flash($invoice->name . ' saved.')->success()->important();
-        return redirect()->route('admin.invoices.index');
+        }else{
+            $this->validate($request, [
+                'user_id' => 'required|exists:users,id',
+                'product_id' => 'required|exists:products,id',
+                'quantity' => 'required',
+                'address_id' => 'required|exists:addresses,id',
+                'status' => 'required',
+            ]);
+            $invoiceData = $request->only('user_id', 'address_id', 'status');
+            $invoiceData['fee'] = number_format(
+                (float)Fee::where(
+                    'destination',
+                    '=',
+                    Address::find($request['address_id'])->city->province->id
+                )->get()[0]->cost,
+                2,
+                '.',
+                '');
+            $invoice = Invoice::create($invoiceData);
+            $invoiceItemData = $request->only('user_id', 'product_id', 'quantity', 'taxed');
+            $invoiceItemData['price'] = Product::find($request['product_id'])->price;
+            $invoiceItemData['invoice_id'] = $invoice->id;
+            InvoiceItem::create($invoiceItemData);
+            return $this->finalStore($invoice->id);
+
+        }
+
+
     }
+
+
+    /**
+     * @param $invoice_id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function finalStore($invoice_id)
+    {
+        $invoiceInsert = array();
+        $invoiceInsert['sub_total_payment'] = 0;
+        $invoiceInsert['tax_payment'] = 0;
+        $invoiceInsert['total_payment'] = 0;
+        $invoice = Invoice::find($invoice_id);
+        $invoiceItems = $invoice->items;
+        foreach ($invoiceItems as $invoiceItem){
+            $invoiceInsert['sub_total_payment'] +=  $invoiceItem->quantity * $invoiceItem->price;
+            $invoiceInsert['tax_payment'] +=  ($invoiceItem->taxed == 1) ? $invoiceItem->quantity * 0.09*$invoiceItem->price : 0.00;
+            $invoiceInsert['total_payment'] +=  ($invoiceItem->taxed == 1)?
+                                                                            ( $invoiceItem->quantity * 1.09*$invoiceItem->price) + $invoice->fee
+                                                                          : ( $invoiceItem->quantity * $invoiceItem->price);
+        }
+        $invoice['total_payment'] +=  $invoice->fee;
+        (Invoice::find($invoice_id))->update(
+            array(
+                'sub_total_payment' => $invoiceInsert['sub_total_payment'],
+                'tax_payment' => $invoiceInsert['tax_payment'],
+                'total_payment' => $invoiceInsert['total_payment'] + $invoice->fee,
+            )
+        );
+        return $this->show($invoice_id);
+
+    }
+
 
     /**
      * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
-        //
+        flash('invoice id: ' . $id . ' saved.')->success()->important();
+        return view('admin.invoices.view', ['invoice' => Invoice::find($id)]);
     }
 
     /**
