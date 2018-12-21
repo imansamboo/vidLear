@@ -26,4 +26,25 @@ class City extends Model
         }
         return $this->provinces->pluck('id')->all();
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function addresses()
+    {
+        return $this->hasMany('App\Address');
+    }
+
+    /**
+     *
+     */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function($model) {
+            // remove relations to cities
+            $model->addresses()->delete();
+        });
+    }
 }

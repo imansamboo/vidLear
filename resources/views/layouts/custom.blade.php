@@ -15,16 +15,16 @@
     <title>دوره های تخصصی موسیقی</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css2/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css2/font-awesome.min.css">
+    <link href="{{asset('css2/bootstrap.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css2/font-awesome.min.css')}}">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="css2/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="{{asset('css2/ie10-viewport-bug-workaround.css')}}" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]>
-    <script src="js2/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="js2/ie-emulation-modes-warning.js"></script>
+    <script src="{{asset('js2/ie8-responsive-file-warning.js')}}"></script><![endif]-->
+    <script src="{{asset('js2/ie-emulation-modes-warning.js')}}"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -33,7 +33,7 @@
     <![endif]-->
 
     <!-- Custom styles for this template -->
-    <link href="css2/style.css" rel="stylesheet">
+    <link href="{{asset('css2/style.css')}}" rel="stylesheet">
 
 </head>
 <!-- NAVBAR

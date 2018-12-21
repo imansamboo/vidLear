@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Category;
-use Flash;
 use App\Http\Controllers\Controller as Controller;
+use File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 
 
@@ -15,6 +16,29 @@ class CategoriesController extends Controller
     {
         $this->middleware('auth');
         //$this->middleware('role:admin');
+    }
+
+    /**
+     * @param UploadedFile $photo
+     * @return string
+     */
+    protected function savePhoto(UploadedFile $photo)
+    {
+        $fileName = str_random(40) . '.' . $photo->guessClientExtension();
+        $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img';
+        $photo->move($destinationPath, $fileName);
+        return $fileName;
+    }
+
+    /**
+     * @param $filename
+     * @return mixed
+     */
+    public function deletePhoto($filename)
+    {
+        $path = public_path() . DIRECTORY_SEPARATOR . 'img'
+            . DIRECTORY_SEPARATOR . $filename;
+        return File::delete($path);
     }
     /**
      * Display a listing of the resource.
@@ -38,21 +62,26 @@ class CategoriesController extends Controller
         return view('admin.categories.create');
     }
 
+
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
-      $this->validate($request, [
-          'title' => 'required|string|max:255|unique:categories',
-          'description' => 'required|string|unique:categories',
-      ]);
-      Category::create($request->all());
-      flash($request->get('title') . ' category saved.')->success()->important();
-      return redirect()->route('admin.categories.index');
+        $this->validate($request, [
+            'title' => 'required|string|max:255|unique:categories',
+            'description' => 'required|string|unique:categories',
+            'photo' => 'mimes:jpeg,png,jpg|max:10000240',
+        ]);
+        $data = $request->only('title','description');
+        if ($request->hasFile('photo')) {
+            $data['photo'] = $this->savePhoto($request->file('photo'));
+        }
+        Category::create($data);
+        flash($request->get('title') . ' category saved.')->success()->important();
+        return redirect()->route('admin.categories.index');
     }
 
     /**
@@ -90,9 +119,15 @@ class CategoriesController extends Controller
             $category = Category::findOrFail($id);
             $this->validate($request, [
                 'title' => 'required|string|max:255|unique:categories,title,' . $category->id,
-                'description' => 'required|string'
+                'description' => 'required|string',
+                'photo' => 'mimes:jpeg,png,jpg|max:10000240',
             ]);
-            $category->update($request->all());
+            $data = $request->only('name', 'description');
+            if ($request->hasFile('photo')) {
+                $data['photo'] = $this->savePhoto($request->file('photo'));
+                if ($category->photo !== '') $this->deletePhoto($category->photo);
+            }
+            $category->update($data);
             flash($request->get('title') . ' category updated.')->success()->important();
             return redirect()->route('admin.categories.index');
         }
@@ -105,8 +140,11 @@ class CategoriesController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        Category::find($id)->delete();
+        $category = Category::find($id);
+        if ($category->photo !== '') $this->deletePhoto($category->photo);
+        $category->delete();
         flash($request->get('title') . ' category deleted.')->success()->important();
         return redirect()->route('admin.categories.index');
     }
+
 }

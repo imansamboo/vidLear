@@ -148,6 +148,10 @@ class ProductsController extends Controller
         return redirect()->route('admin.products.index');
     }
 
+    /**
+     * @param $filename
+     * @return mixed
+     */
     public function deletePhoto($filename)
     {
         $path = public_path() . DIRECTORY_SEPARATOR . 'img'

@@ -9,9 +9,25 @@ class Province extends Model
 {
     protected $fillable = ['id', 'name'];
 
-    public function province()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function cities()
     {
         return $this->hasMany('App\City');
+    }
+
+    /**
+     *
+     */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function($model) {
+            // remove relations to cities
+            $model->cities()->delete();
+        });
     }
 
 }

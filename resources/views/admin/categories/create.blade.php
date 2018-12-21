@@ -7,7 +7,7 @@
   <div class="row">
     <div class="col-md-10">
       <h3>دسته بندی جدید</h3>
-        {!! Form::open(['route' => 'admin.categories.store'])!!}
+        {!! Form::open(['route' => 'admin.categories.store', 'files' => true])!!}
         @include('admin.categories._form')
         {!! Form::close() !!}
 
