@@ -97,7 +97,9 @@ class InvoicesController extends Controller
         $invoiceItems = $invoice->items;
         foreach ($invoiceItems as $invoiceItem){
             $invoiceInsert['sub_total_payment'] +=  $invoiceItem->quantity * $invoiceItem->price;
-            $invoiceInsert['tax_payment'] +=  ($invoiceItem->taxed == 1) ? $invoiceItem->quantity * 0.09*$invoiceItem->price : 0.00;
+            $invoiceInsert['tax_payment'] +=  ($invoiceItem->taxed == 1) ?
+                                                                            $invoiceItem->quantity * 0.09*$invoiceItem->price
+                                                                         :  0.00;
             $invoiceInsert['total_payment'] +=  ($invoiceItem->taxed == 1)?
                                                                             ( $invoiceItem->quantity * 1.09*$invoiceItem->price) + $invoice->fee
                                                                           : ( $invoiceItem->quantity * $invoiceItem->price);

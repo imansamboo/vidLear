@@ -38,12 +38,18 @@
 <!-- NAVBAR
 ================================================== -->
 <body>
+
 <div class="navbar-wrapper-single">
+
     <div class="container">
+
         <div class="row">
+
             <div class="col-md-5">
                 <nav class="navbar navbar-inverse navbar-static-top navbar-full">
+
                     <div class="container">
+
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                                     data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -54,6 +60,7 @@
                             </button>
                             <a class="navbar-brand" href="{{url('/')}}">LOGO</a>
                         </div>
+
                         <div id="navbar" class="navbar-collapse collapse">
                             @if ($user = Auth::user())
                                 <ul class="nav navbar-nav menu-right">
@@ -86,9 +93,12 @@
                                     </li>
                                 </ul>
                             @endif
-                            <div class="col-md-6">
+
+                                <div class="col-md-6">
                                 <form class="form-inline">
+
                                     <div class="all-search" id="imaginary_container_n">
+
                                         <div class="input-group stylish-input-group" id="search-box-btn">
                                             <input type="text" class="form-control search-font" id="search-box"
                                                    placeholder="جستجو در دوره های آنلاین موسیقی...">
@@ -105,9 +115,12 @@
                     </div>
                 </nav>
             </div>
+
             <div class="col-md-6">
                 <form class="form-inline">
+
                     <div class="all-search-main" id="imaginary_container">
+
                         <div class="input-group stylish-input-group">
                             <input type="text" class="form-control search-font"
                                    placeholder="جستجو در دوره های آنلاین موسیقی...">
@@ -126,15 +139,20 @@
 
 <!-- The Login Modal -->
 <!-- Login Modal -->
+
 <div class="modal fade" id="loginAction" role="dialog">
+
     <div class="modal-dialog modal-sm">
 
         <!-- Login Modal content-->
+
         <div class="modal-content">
+
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">ورود به پنل کاربری</h4>
             </div>
+
             <div class="modal-body">
                 <form method="POST" id="login" onsubmit="" data-type="json" action="{{url('/login')}}">
                     <label for="email">
@@ -147,6 +165,7 @@
                     </label>
                     <input type="password" class="form-control" name="password" id="password" required>
                     <br>
+
                     <div class="form-check">
                         <input class="form-check-input" name="remember" id="remember" type="checkbox">
 
@@ -154,6 +173,7 @@
                             Remember Me
                         </label>
                     </div>
+
                     <div class="forgot_section">
                         <a href="#" class="forgot_link">رمز عبور را فراموش کردم</a>
                     </div>
@@ -169,17 +189,23 @@
 </div>
 <!-- end Login Modal -->
 <!-- Register Modal -->
+
 <div class="modal fade" id="registerAction" role="dialog">
+
     <div class="modal-dialog modal-sm">
 
         <!-- Register Modal content-->
+
         <div class="modal-content">
+
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">ثبت نام</h4>
             </div>
+
             <div class="modal-body">
                 <p id="message"></p>
+
                 <div class="register_container">
                     <form method="post" onsubmit="">
                         <label for="email">
@@ -210,8 +236,11 @@
 
 
 <!------ Products ---------->
+
 <div class="container sp-head">
+
     <div class="row">
+
         <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
             <p class="sp-head-title">
                 {{$product->name}}
@@ -229,11 +258,16 @@
     </div>
 </div>
 
+
 <div class="container">
+
     <div class="row">
+
         <div class="col-md-3 col-xs-12 col-sm-12 col-lg-3 sp-sidebar-main">
             <!-- ////////////////// Sidebar /////////////////// -->
+
             <div class="sp-sidebar">
+
                 <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 rating sp-sidebar-rating">
                     <i class="fa fa-2x fa-star"></i><i class="fa fa-2x fa-star">
                     </i><i class="fa fa-2x fa-star"></i><i class="fa fa-2x fa-star">
@@ -302,12 +336,17 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-9 col-xs-12 col-sm-12 col-lg-9 sp-body-main">
+        <div class="col-md-9 col-xs-12 col-sm-12 col-lg-9 sp-body-main" >
             <!-- ////////////////// Body /////////////////// -->
             <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 sp-body">
-                <div class="sp-img">
-                    <img src="{{url('img2/video-cover.png')}}" class="img-responsive">
+                <div align="center" id="on-click-play">
+                    <div id="append-iframe"></div>
+
+                    <div class="sp-img">
+                        <img src="{{url('img2/video-cover.png')}}" class="img-responsive" >
+                    </div>
                 </div>
+
             </div>
             <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 sp-body">
                 <div class="sp-body-data">
@@ -961,7 +1000,28 @@
             });
 
         }
+        var click=0;
+        $('#on-click-play').click(function () {
+            if(click == 0){
+                click++;
+                $('div.sp-img').hide();
+                $('#append-iframe').append('<div id="wait"><p> لطفا کمی صبرکنید </p>' +
+                    '<div id="Stellar_video_player" style="z-index: 1; position: relative;">' +
+                    '<div class="stellar_vp_mainContainer stellar_vp_effect1" align="left" style="width: 100%; height: 432px; position: absolute; background: rgb(0, 0, 0) none repeat scroll 0% 0%; z-index: 999999;align-content: center">' +
+                    '</div>' +
+                    '</div>')
+                $('#append-iframe').append('<iframe src="{{url('videos')}}" id="iframe" class="sp-img" width="860.5px" height="485.5px" class="img-responsive" scrolling="no" frameBorder="0" align="center"></iframe>');
+                document.getElementById("iframe").onload=function(){
+                    $('#wait').hide();
+                    $('.stellar_vp_mainContainer').removeAttr("style")
+                    $('.stellar_vp_mainContainer').css("style", "width: 100%; height: 432px; position: absolute; background: rgb(0, 0, 0) none repeat scroll 0% 0%; z-index: 999999;align-content: center")
+                };
+            }
+
+        })
     });
 </script>
 </body>
 </html>
+
+

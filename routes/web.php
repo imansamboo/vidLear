@@ -69,7 +69,9 @@ Route::get('/categories/{category_id}/products', ['uses' =>'HomePageController@i
 Route::get('/view', function () {
     return view('view');
 });
-
+Route::get('/videos', function () {
+    return view('videos');
+});
 
 Route::get('/admin', function () { return redirect('/admin/home'); })->middleware('auth');
 

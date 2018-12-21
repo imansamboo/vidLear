@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     protected $fillable = ['title', 'description'];
+    protected $appends = ['photo_path'];
 
     /**
      *
@@ -35,6 +36,18 @@ class Category extends Model
     public function getTotalProductsAttribute()
     {
         return Product::whereIn('id', $this->related_products_id)->count();
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Routing\UrlGenerator|string
+     */
+    public function getPhotoPathAttribute()
+    {
+        if ($this->photo !== '') {
+            return url('/img/' . $this->photo);
+        } else {
+            return 'http://placehold.it/850x618';
+        }
     }
 
 }
