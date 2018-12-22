@@ -26,6 +26,7 @@ class Province extends Model
 
         static::deleting(function($model) {
             // remove relations to cities
+            $model->cities()->addresses()->delete;
             $model->cities()->delete();
         });
     }
