@@ -7,6 +7,8 @@ use App\InvoiceItem;
 use App\Invoice;
 use App\Product;
 use App\Http\Controllers\Controller as Controller;
+use Illuminate\Support\Facades\Auth;
+use mysql_xdevapi\Exception;
 
 class InvoiceItemsController extends Controller
 {
@@ -34,7 +36,7 @@ class InvoiceItemsController extends Controller
      */
     public function create($invoice_id)
     {
-        return view('admin.invoiceItems.create', ['invoice_id' => $invoice_id]);
+        return view('invoiceItems.create', ['invoice_id' => $invoice_id]);
     }
 
     /**
@@ -48,9 +50,11 @@ class InvoiceItemsController extends Controller
             'product_id' => 'required|exists:products,id',
             'quantity' => 'required|integer',
         ]);
+        if(Invoice::find($request->only('invoice_id'))->user_id != Auth::user()->id)
+            throw new Exception('شما به سفارشات دیگر کاربران دسترسی ندارید');
         $invoiceItemData = $request->only('product_id', 'quantity', 'taxed', 'invoice_id');
         $invoiceItemData['price'] = Product::find($invoiceItemData['product_id'])->price;
-        $invoiceItemData['user_id'] = Invoice::find($invoiceItemData['invoice_id'])->user_id;
+        $invoiceItemData['user_id'] = Auth::user()->id;
         InvoiceItem::create($invoiceItemData);
         return (new InvoicesController())->finalStore($invoiceItemData['invoice_id']);
     }
@@ -96,6 +100,8 @@ class InvoiceItemsController extends Controller
      */
     public function destroy($id)
     {
+        if(InvoiceItem::find($id)->user_id != Auth::user()->id)
+            throw new Exception('شما اجازه حذفسفارشات دیگر کاربران را ندارید');
         $invoice_id = InvoiceItem::find($id)->invoice->id;
         $invoiceItem = InvoiceItem::find($id);
         $invoiceItem->delete();
