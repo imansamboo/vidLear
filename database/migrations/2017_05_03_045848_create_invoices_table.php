@@ -17,7 +17,7 @@ class CreateInvoicesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('address_id')->unsigned();
-            $table->string('status')->default('waiting-payment');
+            $table->string('status')->default('unpaid');
             $table->string('sender');
             $table->decimal('sub-total_payment', 18, 2);
             $table->decimal('tax_payment', 18, 2);

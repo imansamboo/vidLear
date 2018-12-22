@@ -10,7 +10,7 @@ use App\Invoice;
 use App\Product;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller as Controller;
-
+use mysql_xdevapi\Exception;
 
 
 class InvoicesController extends Controller
@@ -28,8 +28,9 @@ class InvoicesController extends Controller
     {
         $q = $request->get('q');
         $invoices = Invoice::where('id', 'LIKE', '%'.$q.'%')
+            ->where('user_id', '=', Auth::user()->id)
             ->orderBy('id')->paginate(10);
-        return view('admin.invoices.index', compact('invoices', 'q'));
+        return view('invoices.index', compact('invoices', 'q'));
     }
 
     /**
@@ -39,7 +40,7 @@ class InvoicesController extends Controller
      */
     public function create()
     {
-        return view('admin.invoices.create');
+        return view('invoices.create');
     }
 
 
@@ -58,9 +59,12 @@ class InvoicesController extends Controller
                 'product_id' => 'required|exists:products,id',
                 'quantity' => 'required',
                 'address_id' => 'required|exists:addresses,id',
-                'status' => 'required',
             ]);
-            $invoiceData = $request->only('user_id', 'address_id', 'status');
+            $invoiceData = $request->only( 'address_id');
+            $invoiceData['user_id'] = Auth::user()->id;
+            if(Address::find($invoiceData['address_id'])->user_id != Auth::user()->id){
+                throw new Exception(' ما نمیتوانید برای دیگری ثبت سفارش نمایید');
+            }
             $invoiceData['fee'] = number_format(
                 (float)Fee::where(
                     'destination',
@@ -71,9 +75,10 @@ class InvoicesController extends Controller
                 '.',
                 '');
             $invoice = Invoice::create($invoiceData);
-            $invoiceItemData = $request->only('user_id', 'product_id', 'quantity', 'taxed');
+            $invoiceItemData = $request->only( 'product_id', 'quantity', 'taxed');
             $invoiceItemData['price'] = Product::find($request['product_id'])->price;
             $invoiceItemData['invoice_id'] = $invoice->id;
+            $invoiceItemData['user_id'] = $invoice->user_id;
             InvoiceItem::create($invoiceItemData);
             return $this->finalStore($invoice->id);
 
@@ -123,8 +128,10 @@ class InvoicesController extends Controller
      */
     public function show($id)
     {
+        if(Invoice::find($id)->user_id != Auth::user()->id)
+            throw new Exception('شما قادر به دیدن سفارش دیگران نمی باشید');
         flash('invoice id: ' . $id . ' saved.')->success()->important();
-        return view('admin.invoices.view', ['invoice' => Invoice::find($id)]);
+        return view('invoices.view', ['invoice' => Invoice::find($id)]);
     }
 
     /**
@@ -147,16 +154,7 @@ class InvoicesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $invoice = Invoice::findOrFail($id);
-        $this->validate($request, [
-            'name' => 'required',
-            'detail' => 'required',
-            'city_id' => 'required|integer|exists:cities,id',
-        ]);
-        $data = $request->only('name', 'city_id', 'detail');
-        $invoice->update($data);
-        flash($invoice->name . ' updated.')->success()->important();
-        return redirect()->route('admin.invoices.index');
+
     }
 
     /**
@@ -168,8 +166,10 @@ class InvoicesController extends Controller
     public function destroy($id)
     {
         $invoice = Invoice::find($id);
+        if($invoice->user_id != Auth::user()->id)
+            throw new Exception('شما قادر به حذف سفارش دیگران نیستید');
         $invoice->delete();
-        flash($invoice->name . ' deleted.')->success()->important();
+        flash($invoice->id . ' deleted.')->success()->important();
         return redirect()->route('admin.invoices.index');
     }
 }
