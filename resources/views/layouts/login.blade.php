@@ -1,8 +1,8 @@
 <form method="POST" id="login" onsubmit="" data-type="json" action="{{url('/login')}}">
-    <label for="email">
-        ایمیل :
+    <label for="mobile">
+        شماره تلفن همراه :
     </label>
-    <input type="email" class="form-control" name="email" id="email" required>
+    <input type="mobile" class="form-control" name="mobile" id="mobile" required>
     <br/>
     <label for="password">
         رمز عبور :
