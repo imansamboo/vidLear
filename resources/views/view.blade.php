@@ -154,34 +154,7 @@
             </div>
 
             <div class="modal-body">
-                <form method="POST" id="login" onsubmit="" data-type="json" action="{{url('/login')}}">
-                    <label for="email">
-                        ایمیل :
-                    </label>
-                    <input type="email" class="form-control" name="email" id="email" required>
-                    <br/>
-                    <label for="password">
-                        رمز عبور :
-                    </label>
-                    <input type="password" class="form-control" name="password" id="password" required>
-                    <br>
-
-                    <div class="form-check">
-                        <input class="form-check-input" name="remember" id="remember" type="checkbox">
-
-                        <label class="form-check-label" for="remember">
-                            Remember Me
-                        </label>
-                    </div>
-
-                    <div class="forgot_section">
-                        <a href="#" class="forgot_link">رمز عبور را فراموش کردم</a>
-                    </div>
-                    {!! Form::token() !!}
-
-
-                    <input type="submit" name="login" id="login" class="login_btn" value="ورود">
-                </form>
+                @include('layouts.login')
             </div>
         </div>
 
@@ -200,32 +173,15 @@
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">ثبت نام</h4>
+                <h5 class="modal-title">لطفا بمنظور عضویت در وب سایت اطلاعات خود را وارد بفرمائید.
+                </h5>
             </div>
 
             <div class="modal-body">
                 <p id="message"></p>
 
                 <div class="register_container">
-                    <form method="post" onsubmit="">
-                        <label for="email">
-                            ایمیل :
-                        </label>
-                        <input type="email" class="form-control" name="email" id="email" required>
-                        <br/>
-                        <label for="password">
-                            رمز عبور :
-                        </label>
-                        <input type="password" class="form-control" name="password" id="password" required>
-                        <br/>
-                        <label for="passwordConfirm">
-                            تکرار رمز عبور :
-                        </label>
-                        <input type="password" class="form-control" name="passwordConfirm" id="passwordConfirm"
-                               required>
-                        <br/>
-                        <input type="submit" name="register" id="register" class="register_btn" value="ثبت نام">
-                    </form>
+                    @include('layouts.register')
                 </div>
             </div>
         </div>

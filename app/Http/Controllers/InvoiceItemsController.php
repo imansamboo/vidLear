@@ -101,7 +101,7 @@ class InvoiceItemsController extends Controller
     public function destroy($id)
     {
         if(InvoiceItem::find($id)->user_id != Auth::user()->id)
-            throw new Exception('شما اجازه حذفسفارشات دیگر کاربران را ندارید');
+            throw new Exception('شما اجازه حذف سفارشات دیگر کاربران را ندارید');
         $invoice_id = InvoiceItem::find($id)->invoice->id;
         $invoiceItem = InvoiceItem::find($id);
         $invoiceItem->delete();

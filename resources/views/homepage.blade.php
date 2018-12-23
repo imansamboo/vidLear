@@ -2,6 +2,7 @@
 <html lang="en" dir="rtl">
 <head>
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--<meta name="viewport" content="width=1000; user-scalable=0;" />-->
@@ -55,37 +56,40 @@
                             </button>
                             <a class="navbar-brand" href="{{url('/')}}">LOGO</a>
                         </div>
-                        @if ($user = Auth::user())
-                            <ul class="nav navbar-nav menu-right">
-                                <li>
-                                    <a href="{{url('/logout')}}"  class="header-font"><i
-                                                class="fa fa-sign-out"
-                                                aria-hidden="true"></i>خروج از سامانه
-                                    </a>
-                                </li>
-                                <li>
-                                    @if ($user = Auth::user()->isAdmin == 1)
-                                    <a href="{{url('/admin')}}"  class="header-font"><i
-                                                class="fa fa-user"
-                                                aria-hidden="true"></i> داشبورد
-                                    </a>
-                                    @endif
+                        <div id="authenticate">
+                            @if ($user = Auth::user())
+                                <ul class="nav navbar-nav menu-right">
+                                    <li>
+                                        <a href="{{url('/logout')}}"  class="header-font"><i
+                                                    class="fa fa-sign-out"
+                                                    aria-hidden="true"></i>خروج از سامانه
+                                        </a>
+                                    </li>
+                                    <li>
+                                        @if ($user = Auth::user()->isAdmin == 1)
+                                            <a href="{{url('/admin')}}"  class="header-font"><i
+                                                        class="fa fa-user"
+                                                        aria-hidden="true"></i> داشبورد
+                                            </a>
+                                        @endif
 
-                                </li>
-                            </ul>
-                        @else
-                            <ul class="nav navbar-nav menu-right">
-                                <li><a href="#" data-toggle="modal" data-target="#loginAction" class="header-font"><i
-                                                class="fa fa-sign-in"
-                                                aria-hidden="true"></i> ورود به سامانه
-                                    </a>
-                                </li>
-                                <li><a href="#" data-toggle="modal" data-target="#registerAction" class="header-font"><i
-                                                class="fa fa-user-plus"
-                                                aria-hidden="true"></i> عضویت </a>
-                                </li>
-                            </ul>
-                        @endif
+                                    </li>
+                                </ul>
+                            @else
+                                <ul class="nav navbar-nav menu-right">
+                                    <li><a href="#" data-toggle="modal" data-target="#loginAction" class="header-font"><i
+                                                    class="fa fa-sign-in"
+                                                    aria-hidden="true"></i> ورود به سامانه
+                                        </a>
+                                    </li>
+                                    <li><a href="#" data-toggle="modal" data-target="#registerAction" class="header-font"><i
+                                                    class="fa fa-user-plus"
+                                                    aria-hidden="true"></i> عضویت </a>
+                                    </li>
+                                </ul>
+                            @endif
+                        </div>
+
                         <div id="navbar" class="navbar-collapse collapse">
 
                             <div class="col-md-6">
@@ -138,32 +142,7 @@
                 <h4 class="modal-title">ورود به پنل کاربری</h4>
             </div>
             <div class="modal-body">
-                <form method="POST" id="login" onsubmit="" data-type="json" action="{{url('/login')}}">
-                    <label for="email">
-                        ایمیل :
-                    </label>
-                    <input type="email" class="form-control" name="email" id="email" required>
-                    <br/>
-                    <label for="password">
-                        رمز عبور :
-                    </label>
-                    <input type="password" class="form-control" name="password" id="password" required>
-                    <br>
-                    <div class="form-check">
-                        <input class="form-check-input" name="remember" id="remember" type="checkbox">
-
-                        <label class="form-check-label" for="remember">
-                            Remember Me
-                        </label>
-                    </div>
-                    <div class="forgot_section">
-                        <a href="#" class="forgot_link">رمز عبور را فراموش کردم</a>
-                    </div>
-                    {!! Form::token() !!}
-
-
-                    <input type="submit" name="login" id="login" class="login_btn" value="ورود">
-                </form>
+                @include('layouts.login')
             </div>
         </div>
 
@@ -178,51 +157,13 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">ثبت نام</h4>
+                <h5 class="modal-title">لطفا بمنظور عضویت در وب سایت اطلاعات خود را وارد بفرمائید.
+                </h5>
             </div>
             <div class="modal-body">
                 <p id="message"></p>
                 <div class="register_container">
-                    <form method="POST" onsubmit="" action="{{url("/register")}}">
-                        <label for="name">
-                            نام :
-                        </label>
-                        <input type="name" class="form-control" name="name" id="name" required>
-                        <br/>
-                        <label for="email">
-                            ایمیل :
-                        </label>
-                        <input type="email" class="form-control" name="email" id="email" required>
-                        <br/>
-                        <label for="password">
-                            رمز عبور :
-                        </label>
-                        <input type="password" class="form-control" name="password" id="password" required>
-                        <br/>
-                        <label for="passwordConfirm">
-                            تکرار رمز عبور :
-                        </label>
-                        <input type="password" class="form-control" name="password_confirmation" id="passwordConfirm"
-                               required>
-                        <br/>
-
-                        <br/>
-                        <label for="mobile">
-                            موبایل:
-                        </label>
-                        <input type="text" class="form-control" name="mobile" id="mobile"
-                               required>
-                        <br/>
-                        <label for="nationalCode">
-                            کد ملی:
-                        </label>
-                        {!! Form::token() !!}
-                        <input type="text" class="form-control" name="nationalCode" id="nationalCode"
-                               required>
-
-                        <br/>
-                        <input type="submit" name="register" id="register" class="register_btn" value="ثبت نام">
-                    </form>
+                    @include('layouts.register')
                 </div>
             </div>
         </div>
@@ -552,8 +493,9 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="js2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js2/jquery.min.js"><\/script>')</script>
+<script src="{{asset('js2/jquery.min.js')}}"></script>
+    <script src="{{asset('js2/login.js')}}"></script>
+    <script>window.jQuery || document.write('<script src="js2/jquery.min.js"><\/script>')</script>
 <script src="js2/bootstrap.min.js"></script>
 <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 <script src="js2/holder.min.js"></script>
