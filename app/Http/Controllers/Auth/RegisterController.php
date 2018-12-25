@@ -40,6 +40,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
+        error_log(__LINE__ . "\n", 3, '/var/www/html/register.log');
         $this->middleware('guest');
     }
 
@@ -53,7 +54,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'mobile' => ['required', 'string', 'max:255'],
+            'mobile' => ['required', 'string', 'max:255'/*, 'unique:users'*/],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:4', 'confirmed'],
         ]);
@@ -67,16 +68,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $lastSendSMSCose = $this->sendSmsCode($data)[1];
-        return User::create([
+        error_log(var_export($data, 1) . "\n", 3, '/var/www/html/register.log');
+
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'mobile' =>$data['mobile'],
-            'nationalCode' =>$data['nationalCode'],
+            'mobile' => $data['mobile'],
             'isAdmin' => 0,
-            'last_sent_sms_code' => intval($lastSendSMSCose),
+            'last_sent_sms_code' => intval(12),
         ]);
+        $lastSendSMSCose = $this->sendSmsCode($data)[1];
+        $user->last_sent_sms_code = $lastSendSMSCose;
+        $user->save();
+        return response(['success' => true, 'user' => $user->name]);
 
     }
 

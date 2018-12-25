@@ -54,9 +54,10 @@ $(function() {
                     if(response.isAdmin){
                         $('body').removeClass('modal-open');
                         //$('div.modal-content').hide();
-                        $('div.loginAction').removeAttr( 'style' );
-                        $('div.loginAction').css( 'display', 'block' );
-                        $('div.loginAction').removeClass( 'in' );
+                        $('div#loginAction').removeAttr( 'style' );
+                        $('div#loginAction').css( 'display', 'block' );
+                        $('div#loginAction').removeClass( 'in' );
+                        $('div.modal-backdrop').hide();
 
                         $( "#authenticate" ).append( "<ul class=\"nav navbar-nav menu-right\">\n" +
                             "                                    <li>\n" +
@@ -76,9 +77,10 @@ $(function() {
                     }else{
                         $('div.modal-content').hide();
                         //$('body').removeClass('modal-open');
-                        $('div.loginAction').removeAttr( 'style' );
-                        $('div.loginAction').css( 'display', 'block' );
-                        $('div.loginAction').removeClass( 'in' );
+                        $('div#loginAction').removeAttr( 'style' );
+                        $('div#loginAction').css( 'display', 'block' );
+                        $('div#loginAction').removeClass( 'in' );
+                        $('div.modal-backdrop').hide();
                         $( "#authenticate" ).append( "<ul class=\"nav navbar-nav menu-right\">\n" +
                             "                                    <li>\n" +
                             "                                        <a href=\"/logout\"  class=\"header-font\"><i\n" +

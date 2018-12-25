@@ -1,4 +1,4 @@
-<form method="POST" onsubmit="" action="{{url("/register")}}">
+<form method="POST" onsubmit="" action="{{url("/register")}}" id="register">
     <label for="name">
         نام و نام خانوادگی :
     </label>
