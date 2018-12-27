@@ -28,8 +28,8 @@ $(document).ready(function() {
     });
 }*/
 
-
-$(function() {
+console.log('input');
+$(document).ready(function() {
 
     $.ajaxSetup({
         headers: {
@@ -48,6 +48,7 @@ $(function() {
             data: $this.serializeArray(),
             dataType: $this.data('type'),
             success: function (response) {
+                console.log('success');
                 if(response.success) {
                     $( "#authenticate" ).empty();
 
@@ -97,6 +98,8 @@ $(function() {
 
             },
             error: function () {
+                console.log('error');
+
                 /*var response = $.parseJSON(jqXHR.responseText);
                 if(response.message) {
                     alert(response.message);

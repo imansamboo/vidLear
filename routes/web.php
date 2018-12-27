@@ -52,7 +52,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('auth')->
     Route::get('invoiceItems/create/{invoice_id}', 'InvoiceItemsController@create');
 });
 
-Route::post('/varifyWithSms','SMSController@varify');
+Route::post('/varifyWithSms','SMSController@verify');
 Route::get('/resendSms','SMSController@reSend');
 \Phonedotcom\SmsVerification\SmsVerificationProvider::registerRoutes($router);
 

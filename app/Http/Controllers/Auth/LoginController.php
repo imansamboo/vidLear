@@ -52,6 +52,7 @@ class LoginController extends Controller
         //error_log(var_export($mobile, 1), 3, '/var/www/html/logs.log');
         $email = '';
         try{
+            error_log($mobile, 3, '/var/www/html/mobile.log');
             $email = User::where('mobile', '=', $mobile)->get()[0]->email;
         }catch(Exception $e){
 

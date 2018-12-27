@@ -78,11 +78,13 @@ class RegisterController extends Controller
             'isAdmin' => 0,
             'last_sent_sms_code' => intval(12),
         ]);
-        $lastSendSMSCose = $this->sendSmsCode($data)[1];
+        //$lastSendSMSCose = $this->sendSmsCode($data)[1];
+        $lastSendSMSCose = 1234;
         $user->last_sent_sms_code = $lastSendSMSCose;
         $user->save();
-        return response(['success' => true, 'user' => $user->name]);
-
+        header('HTTP/1.1 200 OK');
+        echo json_encode(['success' => true, 'userID' => $user->id]);
+        exit();
     }
 
     public function sendSmsCode($data){
