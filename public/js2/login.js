@@ -56,9 +56,10 @@ $(document).ready(function() {
                         $('body').removeClass('modal-open');
                         //$('div.modal-content').hide();
                         $('div#loginAction').removeAttr( 'style' );
-                        $('div#loginAction').css( 'display', 'block' );
+                        $('div#loginAction').css( 'display', 'none' );
                         $('div#loginAction').removeClass( 'in' );
                         $('div.modal-backdrop').hide();
+                        $('body').removeAttr('style');
 
                         $( "#authenticate" ).append( "<ul class=\"nav navbar-nav menu-right\">\n" +
                             "                                    <li>\n" +
@@ -77,11 +78,12 @@ $(document).ready(function() {
                             "                                </ul>" );
                     }else{
                         $('div.modal-content').hide();
-                        //$('body').removeClass('modal-open');
+                        $('body').removeClass('modal-open');
                         $('div#loginAction').removeAttr( 'style' );
-                        $('div#loginAction').css( 'display', 'block' );
+                        $('div#loginAction').css( 'display', 'none' );
                         $('div#loginAction').removeClass( 'in' );
                         $('div.modal-backdrop').hide();
+                        $('body').removeAttr('style');
                         $( "#authenticate" ).append( "<ul class=\"nav navbar-nav menu-right\">\n" +
                             "                                    <li>\n" +
                             "                                        <a href=\"/logout\"  class=\"header-font\"><i\n" +
@@ -93,12 +95,22 @@ $(document).ready(function() {
                     }
 
                 }else{
-                    alert('شماره تلفن همراه یا رمز عبور اشتباه وارد شده است');
+                    console.log('error-new');
+                    $('div.alert-danger').hide();
+                    $('div#login-error').append('<div class="alert alert-danger" style="font-size: 11px">\n' +
+                        '                         شماره همراه یا کلمه عبور اشتباه وارد شده است.\n' +
+                        '                    </div>');
+                    $("div#login-error").css('padding-top', '5%');
                 }
 
             },
             error: function () {
                 console.log('error');
+                $('div.alert-danger').hide();
+                $('div#login-error').append('<div class="alert alert-danger" style="font-size: 11px">\n' +
+                    '                         شماره همراه یا کلمه عبور اشتباه وارد شده است.\n' +
+                    '                    </div>');
+                $("div#login-error").css('padding-top', '5%');
 
                 /*var response = $.parseJSON(jqXHR.responseText);
                 if(response.message) {

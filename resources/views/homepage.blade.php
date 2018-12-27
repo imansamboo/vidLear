@@ -140,6 +140,12 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">ورود به پنل کاربری</h4>
+                <div id="login-error" {{--style="padding-top: 5%;"--}}>
+                    {{--<div class="alert alert-danger" style="font-size: 11px">
+                         شماره همراه یا کلمه عبور اشتباه وارد شده است.
+                    </div>--}}
+                    {{--$("div#login-error").css('padding-top', '5%')--}}
+                </div>
             </div>
             <div class="modal-body">
                 @include('layouts.login')
