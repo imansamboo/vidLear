@@ -14,16 +14,16 @@
     <title>دوره های تخصصی موسیقی - دوره آموزش نواختن پیانو سطح مقدماتی</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{asset('css2/bootstrap.min.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('css2/font-awesome.min.css')}}">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="{{asset('css2/ie10-viewport-bug-workaround.css')}}" rel="stylesheet">
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]>
-    <script src="{{asset('js2/ie8-responsive-file-warning.js')}}"></script><![endif]-->
-    <script src="{{asset('js2/ie-emulation-modes-warning.js')}}"></script>
+    <script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -32,129 +32,118 @@
     <![endif]-->
 
     <!-- Custom styles for this template -->
-    <link href="{{asset('css2/style.css')}}" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
 </head>
 <!-- NAVBAR
 ================================================== -->
 <body>
-
-<div class="navbar-wrapper-single">
-
-    <div class="container">
-
-        <div class="row">
-
-            <div class="col-md-5">
-                <nav class="navbar navbar-inverse navbar-static-top navbar-full">
-
-                    <div class="container">
-
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                                    data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" href="{{url('/')}}">LOGO</a>
-                        </div>
-
-                        <div id="navbar" class="navbar-collapse collapse">
-                            @if ($user = Auth::user())
-                                <ul class="nav navbar-nav menu-right">
-                                    <li>
-                                        <a href="{{url('/logout')}}"  class="header-font"><i
-                                                    class="fa fa-sign-out"
-                                                    aria-hidden="true"></i>خروج از سامانه
-                                        </a>
-                                    </li>
-                                    <li>
-                                        @if ($user = Auth::user()->isAdmin == 1)
-                                            <a href="{{url('/admin')}}"  class="header-font"><i
-                                                        class="fa fa-user"
-                                                        aria-hidden="true"></i> داشبورد
-                                            </a>
-                                        @endif
-
-                                    </li>
-                                </ul>
-                            @else
+<header class="header">
+    <div class="navbar-wrapper-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 col-xs-12 col-sm-12">
+                    <nav class="navbar navbar-inverse navbar-full">
+                        <div class="container">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                        data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="index.html">LOGO</a>
+                            </div>
+                            <div id="navbar" class="navbar-collapse collapse">
                                 <ul class="nav navbar-nav menu-right">
                                     <li><a href="#" data-toggle="modal" data-target="#loginAction" class="header-font"><i
-                                                    class="fa fa-sign-in"
-                                                    aria-hidden="true"></i> ورود به سامانه
-                                        </a>
+                                            class="fa fa-sign-in"
+                                            aria-hidden="true"></i> ورود به سامانه
+                                    </a>
                                     </li>
                                     <li><a href="#" data-toggle="modal" data-target="#registerAction" class="header-font"><i
-                                                    class="fa fa-user-plus"
-                                                    aria-hidden="true"></i> عضویت </a>
+                                            class="fa fa-user-plus"
+                                            aria-hidden="true"></i> عضویت </a>
+                                    </li>
+                                    <li class="nav-item dropdown category">
+                                        <a class="nav-link dropdown-toggle header-font" href="#" id="navbarDropdown"
+                                           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <img src="images/view-grid-menu.png">
+                                            دسته بندی
+                                        </a>
+                                        <div class="dropdown-menu nav-dropdown" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item nav-drop-item" href="#">تنظیم آهنگ</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item nav-drop-item" href="#">نوازندگی</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item nav-drop-item" href="#">میکس و مستر</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item nav-drop-item" href="#">پیانو</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item nav-drop-item" href="#">ساکسیفون</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item nav-drop-item" href="#">درامز</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item nav-drop-item" href="#">گیتار الکتریک</a>
+                                        </div>
                                     </li>
                                 </ul>
-                            @endif
-
                                 <div class="col-md-6">
-                                <form class="form-inline">
-
-                                    <div class="all-search" id="imaginary_container_n">
-
-                                        <div class="input-group stylish-input-group" id="search-box-btn">
-                                            <input type="text" class="form-control search-font" id="search-box"
-                                                   placeholder="جستجو در دوره های آنلاین موسیقی...">
-                                            <span class="input-group-addon">
+                                    <form class="form-inline">
+                                        <div class="all-search" id="imaginary_container_n">
+                                            <div class="input-group stylish-input-group" id="search-box-btn">
+                                                <input type="text" class="form-control search-font" id="search-box"
+                                                       placeholder="جستجو در دوره های آنلاین موسیقی...">
+                                                <span class="input-group-addon">
                                                 <button type="submit">
-                                                    <span class="glyphicon glyphicon-search"></span>
+                                                    <span class="glyphicon glyphicon-search search-color"></span>
                                                 </button>
                                             </span>
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </nav>
-            </div>
-
-            <div class="col-md-6">
-                <form class="form-inline">
-
-                    <div class="all-search-main" id="imaginary_container">
-
-                        <div class="input-group stylish-input-group">
-                            <input type="text" class="form-control search-font"
-                                   placeholder="جستجو در دوره های آنلاین موسیقی...">
-                            <span class="input-group-addon">
-                        <button type="submit">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </span>
-                        </div>
-                    </div>
-                </form>
+                    </nav>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</header>
 
 <!-- The Login Modal -->
 <!-- Login Modal -->
-
 <div class="modal fade" id="loginAction" role="dialog">
-
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-md">
 
         <!-- Login Modal content-->
-
         <div class="modal-content">
-
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">ورود به پنل کاربری</h4>
             </div>
-
             <div class="modal-body">
-                @include('layouts.login')
+                <div class="login-modal">
+                    <form method="post" onsubmit="">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                            <input type="email" name="lemail" id="lemail" class="form-control" placeholder="ایمیل" required autofocus />
+                        </div>
+                        <br/>
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                            <input type="password" name="lpassword" id="lpassword" class="form-control" placeholder="رمز عبور" required autofocus />
+                        </div>
+                        <br>
+                        <div class="forgot_section">
+                            <a href="#forgot" class="forgot_link">رمز عبور را فراموش کردم</a>
+                        </div>
+
+                        <input type="submit" name="login" id="login" class="login_btn" value="ورود">
+                    </form>
+                </div>
             </div>
         </div>
 
@@ -162,26 +151,38 @@
 </div>
 <!-- end Login Modal -->
 <!-- Register Modal -->
-
 <div class="modal fade" id="registerAction" role="dialog">
-
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-md">
 
         <!-- Register Modal content-->
-
         <div class="modal-content">
-
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h5 class="modal-title">لطفا بمنظور عضویت در وب سایت اطلاعات خود را وارد بفرمائید.
-                </h5>
+                <h4 class="modal-title">ثبت نام</h4>
             </div>
-
             <div class="modal-body">
                 <p id="message"></p>
-
                 <div class="register_container">
-                    @include('layouts.register')
+                    <div class="register-modal">
+                        <form method="post" onsubmit="">
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="ایمیل" required autofocus />
+                            </div>
+                            <br/>
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                <input type="password" name="password" id="password" class="form-control" placeholder="رمز عبور" required autofocus />
+                            </div>
+                            <br/>
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                <input type="password" name="passwordConfirm" id="passwordConfirm" class="form-control" placeholder="تایید رمز عبور" required autofocus />
+                            </div>
+                            <br/>
+                            <input type="submit" name="register" id="register" class="register_btn" value="ثبت نام">
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -192,14 +193,11 @@
 
 
 <!------ Products ---------->
-
 <div class="container sp-head">
-
     <div class="row">
-
         <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
             <p class="sp-head-title">
-                {{$product->name}}
+                دوره آموزش نواختن پیانو سطح مقدماتی
             </p>
             <p>
                 <a href="index.html" class="sp-head-link">صفحه نخست</a>
@@ -214,51 +212,99 @@
     </div>
 </div>
 
-
 <div class="container">
-
     <div class="row">
-
         <div class="col-md-3 col-xs-12 col-sm-12 col-lg-3 sp-sidebar-main">
             <!-- ////////////////// Sidebar /////////////////// -->
-
             <div class="sp-sidebar">
-
                 <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 rating sp-sidebar-rating">
-                    <i class="fa fa-2x fa-star"></i><i class="fa fa-2x fa-star">
+                    <div class="the-rate-star">
+                        <i class="fa fa-2x fa-star"></i><i class="fa fa-2x fa-star">
                     </i><i class="fa fa-2x fa-star"></i><i class="fa fa-2x fa-star">
                     </i><i class="fa fa-2x fa-star"></i>
+                    </div>
+                    <div class="sp-rating-num">
+                        <p class="sp-rating-code-one"> 4.8 </p><p class="sp-rating-code-two">از 5 رای </p>
+                    </div>
                 </div>
                 <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 sp-sidebar-data-main">
+                    <div class="discount">
+                        <span class="discount-per">50%</span>
+                        تخفیف
+                    </div>
                     <p class="sp-sidebar-data-title">اطلاعات دوره :</p>
 
                     <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
-                        <img src="{{url('img2/format-list-checkbox.png')}}">
+                        <img src="images/format-list-checkbox.png">
                         <p class="sp-sidebar-data">تعداد ویدئوها</p>
                         <p class="sp-sidebar-data">12</p>
                     </div>
                     <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
-                        <img src="{{url('img2/clock-outline.png')}}">
+                        <img src="images/clock-outline.png">
                         <p class="sp-sidebar-data">مدت زمان دوره</p>
                         <p class="sp-sidebar-data">07:48:29</p>
                     </div>
                     <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
-                        <img src="{{url('img2/account-group.png')}}">
+                        <img src="images/account-group.png">
                         <p class="sp-sidebar-data">تعداد دانشجویان</p>
                         <p class="sp-sidebar-data">125</p>
                     </div>
                 </div>
+                <div class="realPrice">
+                    150.000
+                </div>
                 <div class="sp-sidebar-buy-main">
-                    <a class="sp-sidebar-buy" href="#buy">خرید دوره | {{$product->price}} تومان</a>
+                    <a class="sp-sidebar-buy" href="#" data-toggle="modal" data-target="#buyAction">دانلود کامل دوره | 145000</a>
+
                 </div>
                 <div class="sp-sidebar-favor">
-                    <p><i class="fa fa-2x fa-heart" aria-hidden="true"></i> افزودن به لیست مورد علاقه ها</p>
+                    <p><a class="like-this"><i class="fa fa-2x fa-heart" aria-hidden="true"></i></a> افزودن به لیست مورد علاقه ها</p>
+                </div>
+            </div>
+
+            <!-- buy action -->
+            <div class="modal fade" id="buyAction" role="dialog">
+                <div class="modal-dialog modal-md">
+
+                    <!-- Register Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">خرید دوره آموزشی</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="buy_container">
+                                <form method="post" onsubmit="">
+                                    <div class="col-md-8">
+                                        <p class="buy-title">
+                                            دوره آموزش نواختن پیانو سطح مقدماتی
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p class="buy-price">
+                                            قیمت : 145,000 ریال
+                                        </p>
+                                    </div>
+                                    <div class="buy-body">
+                                        <p>
+                                            پرداخت از درگاه بانک با استفاده از کلیه کارت‌های عضو شتاب
+                                        </p>
+                                        <img src="images/saman-logo.png" class="buy-img">
+                                        <br>
+                                        <a href="#" class="btn btn-success btn-bank">پرداخت از درگاه بانک سامان</a>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <!-- ///////////////// menu 2 /////////////////////// -->
             <div class="sp-sidebar">
                 <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 sp-sidebar-owner-main">
-                    <img src="{{url('pics/user-pic.jpeg')}}" class="sp-sidebar-owner-pic">
+                    <img src="pics/user-pic.jpeg" class="sp-sidebar-owner-pic">
                     <p class="sp-sidebar-owner-name">حامد خالقی اصفهانی</p>
                 </div>
                 <p class="sp-sidebar-owner-desc">تیم تولید محتوای رستا آی تی آماده مشاوره رایگان ویژه دانشجویان فرانش
@@ -292,35 +338,31 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-9 col-xs-12 col-sm-12 col-lg-9 sp-body-main" >
+        <div class="col-md-9 col-xs-12 col-sm-12 col-lg-9 sp-body-main">
             <!-- ////////////////// Body /////////////////// -->
             <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 sp-body">
-                <div align="center" id="on-click-play">
-                    <div id="append-iframe"></div>
-
-                    <div class="sp-img">
-                        <img src="{{url('img2/video-cover.png')}}" class="img-responsive" >
-                    </div>
+                <div class="sp-img">
+                    <a href="#" class="round-button"><i class="fa fa-play fa-3x"></i></a>
+                    <img src="images/Rain-l.jpg" class="img-responsive">
                 </div>
-
             </div>
             <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 sp-body">
                 <div class="sp-body-data">
                     <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4">
                         <p>
-                            <img src="{{url('img2/the_key.png')}}" class="img-key">
+                            <img src="images/the_key.png" class="img-key">
                             دسترسی سریع
                         </p>
                     </div>
                     <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4">
                         <p>
-                            <img src="{{url('img2/the_chat.png')}}" class="img-other">
+                            <img src="images/the_chat.png" class="img-other">
                             ارتباط با استاد
                         </p>
                     </div>
                     <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4">
                         <p>
-                            <img src="{{url('img2/the_wallet.png')}}" class="img-other">
+                            <img src="images/the_wallet.png" class="img-other">
                             امکان بازگشت وجه
                         </p>
                     </div>
@@ -328,6 +370,7 @@
             </div>
             <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 sp-body sp-top-align">
                 <p class="sp-body-learn-title">توضیحات و سرفصل دوره</p>
+                <div class="tops-learn"></div>
                 <hr class="sp-body-learn-hr">
                 <p class="sp-body-learn-desc">این یک متن آزمایشی برای توضیحات این دوره آموزشی است.این یک متن آزمایشی
                     برای توضیحات این دوره آموزشی است.
@@ -347,6 +390,7 @@
                     است.</p>
 
                 <p class="sp-body-learn-title">سرفصل دوره</p>
+                <div class="tops-the-learn"></div>
                 <hr class="sp-body-learn-hr">
 
                 <!-- Timeline -->
@@ -364,12 +408,12 @@
                                 <div class="timeline-right">
                                     <p>مقدمه دوره</p>
                                     <div class="timeline-free">
-                                        <p>نمایش رایگان</p>
+                                        <p class="free-show">نمایش رایگان</p>
                                     </div>
                                 </div>
                                 <div class="timeline-left">
-
-                                    <a href="#" class="timeline-links"><p class="timeline-dl" style="margin-top: 0px;">10:42</p></a>
+                                    <p class="timeline-time">10:42</p>
+                                    <a href="#" class="timeline-links"><i class="fa fa-download dl-btn timeline-dl"></i></a>
                                 </div>
                             </div>
                         </article>
@@ -386,8 +430,8 @@
                                     <p>جلسه اول</p>
                                 </div>
                                 <div class="timeline-left">
-
-                                    <a href="#" class="timeline-links"><p class="timeline-dl isDisabled" style="margin-top: 0px;">10:42</p></a>
+                                    <p class="timeline-time-disabled">10:42</p>
+                                    <a href="#" class="isDisabled"><i class="fa fa-download dl-btn timeline-dl"></i></a>
                                 </div>
                             </div>
                         </article>
@@ -404,8 +448,8 @@
                                     <p>جلسه دوم</p>
                                 </div>
                                 <div class="timeline-left">
-
-                                    <a href="#" class="timeline-links"><p class="timeline-dl isDisabled" style="margin-top: 0px;">10:42</p></a>
+                                    <p class="timeline-time-disabled">10:42</p>
+                                    <a href="#" class="isDisabled"><i class="fa fa-download dl-btn timeline-dl"></i></a>
                                 </div>
                             </div>
                         </article>
@@ -422,8 +466,8 @@
                                     <p>جلسه سوم</p>
                                 </div>
                                 <div class="timeline-left">
-
-                                    <a href="#" class="timeline-links"><p class="timeline-dl isDisabled" style="margin-top: 0px;">10:42</p></a>
+                                    <p class="timeline-time-disabled">10:42</p>
+                                    <a href="#" class="isDisabled"><i class="fa fa-download dl-btn timeline-dl"></i></a>
                                 </div>
                             </div>
                         </article>
@@ -440,8 +484,8 @@
                                     <p>جلسه چهارم</p>
                                 </div>
                                 <div class="timeline-left">
-
-                                    <a href="#" class="timeline-links"><p class="timeline-dl isDisabled" style="margin-top: 0px;">10:42</p></a>
+                                    <p class="timeline-time-disabled">10:42</p>
+                                    <a href="#" class="isDisabled"><i class="fa fa-download dl-btn timeline-dl"></i></a>
                                 </div>
                             </div>
                         </article>
@@ -464,7 +508,7 @@
                             <i class="left fa fa-angle-double-right" aria-hidden="true"></i>
                         </a>
                         <a href="#new-products" data-slide="next" class="more-product"><i
-                                    class="left fa fa-angle-double-left" aria-hidden="true"></i>
+                                class="left fa fa-angle-double-left" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
@@ -476,7 +520,7 @@
                                 <div class="col-sm-3 col-md-4">
                                     <div class="col-item">
                                         <div class="photo">
-                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
+                                            <img src="images/350x260.png" class="img-responsive" alt="a"/>
                                         </div>
                                         <div class="info">
                                             <div class="row">
@@ -484,19 +528,19 @@
                                                     <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
                                                         پیانو سطح مقدماتی 1</a>
                                                 </div>
-                                                <div class="rating col-md-6">
+                                                <div class="teacher col-md-6">
                                                     <p class="product-tsize new-product">مهران عباسی</p>
                                                 </div>
                                                 <div class="rating col-md-6">
                                                     <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="gold-star fa fa-star"></i><i class="fa fa-star">
-                                                    </i><i class="fa fa-star"></i>
+                                                </i><i class="gold-star fa fa-star"></i><i class="fa fa-star">
+                                                </i><i class="fa fa-star"></i>
                                                 </div>
                                             </div>
                                             <p class="product-off left-float">180.000</p>
                                             <div class="clear-left">
-                                                <p class="right-float">
-                                                    <img src="{{url('img2/clock-outline.png')}}">07:48:29</p>
+                                                <img src="images/clock-outline.png" class="clock">
+                                                <p class="right-float">07:48:29</p>
                                                 <p class="left-float product-price">
                                                     145.000 تومان</p>
                                             </div>
@@ -508,7 +552,7 @@
                                 <div class="col-sm-3 col-md-4">
                                     <div class="col-item">
                                         <div class="photo">
-                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
+                                            <img src="images/350x260.png" class="img-responsive" alt="a"/>
                                         </div>
                                         <div class="info">
                                             <div class="row">
@@ -516,19 +560,19 @@
                                                     <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
                                                         پیانو سطح مقدماتی 2</a>
                                                 </div>
-                                                <div class="rating col-md-6">
+                                                <div class="teacher col-md-6">
                                                     <p class="product-tsize new-product">مهران عباسی</p>
                                                 </div>
                                                 <div class="rating col-md-6">
                                                     <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="fa fa-star"></i><i class="fa fa-star">
-                                                    </i><i class="fa fa-star"></i>
+                                                </i><i class="fa fa-star"></i><i class="fa fa-star">
+                                                </i><i class="fa fa-star"></i>
                                                 </div>
                                             </div>
                                             <p class="product-off left-float">180.000</p>
                                             <div class="clear-left">
-                                                <p class="right-float">
-                                                    <img src="{{url('img2/clock-outline.png')}}">07:48:29</p>
+                                                <img src="images/clock-outline.png" class="clock">
+                                                <p class="right-float">07:48:29</p>
                                                 <p class="left-float product-price">
                                                     145.000 تومان</p>
                                             </div>
@@ -540,7 +584,7 @@
                                 <div class="col-sm-3 col-md-4">
                                     <div class="col-item">
                                         <div class="photo">
-                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
+                                            <img src="images/350x260.png" class="img-responsive" alt="a"/>
                                         </div>
                                         <div class="info">
                                             <div class="row">
@@ -548,19 +592,19 @@
                                                     <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
                                                         پیانو سطح مقدماتی 3</a>
                                                 </div>
-                                                <div class="rating col-md-6">
+                                                <div class="teacher col-md-6">
                                                     <p class="product-tsize new-product">مهران عباسی</p>
                                                 </div>
                                                 <div class="rating col-md-6">
                                                     <i class="gold-star fa fa-star"></i><i class="fa fa-star">
-                                                    </i><i class="fa fa-star"></i><i class="fa fa-star">
-                                                    </i><i class="fa fa-star"></i>
+                                                </i><i class="fa fa-star"></i><i class="fa fa-star">
+                                                </i><i class="fa fa-star"></i>
                                                 </div>
                                             </div>
                                             <p class="product-off left-float">180.000</p>
                                             <div class="clear-left">
-                                                <p class="right-float">
-                                                    <img src="{{url('img2/clock-outline.png')}}">07:48:29</p>
+                                                <img src="images/clock-outline.png" class="clock">
+                                                <p class="right-float">07:48:29</p>
                                                 <p class="left-float product-price">
                                                     145.000 تومان</p>
                                             </div>
@@ -576,7 +620,7 @@
                                 <div class="col-sm-3 col-md-4">
                                     <div class="col-item">
                                         <div class="photo">
-                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
+                                            <img src="images/350x260.png" class="img-responsive" alt="a"/>
                                         </div>
                                         <div class="info">
                                             <div class="row">
@@ -584,19 +628,19 @@
                                                     <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
                                                         پیانو سطح مقدماتی 4</a>
                                                 </div>
-                                                <div class="rating col-md-6">
+                                                <div class="teacher col-md-6">
                                                     <p class="product-tsize new-product">مهران عباسی</p>
                                                 </div>
                                                 <div class="rating col-md-6">
                                                     <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="gold-star fa fa-star"></i>
+                                                </i><i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
+                                                </i><i class="gold-star fa fa-star"></i>
                                                 </div>
                                             </div>
                                             <p class="product-off left-float">180.000</p>
                                             <div class="clear-left">
-                                                <p class="right-float">
-                                                    <img src="{{url('img2/clock-outline.png')}}">07:48:29</p>
+                                                <img src="images/clock-outline.png" class="clock">
+                                                <p class="right-float">07:48:29</p>
                                                 <p class="left-float product-price">
                                                     145.000 تومان</p>
                                             </div>
@@ -608,7 +652,7 @@
                                 <div class="col-sm-3 col-md-4">
                                     <div class="col-item">
                                         <div class="photo">
-                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
+                                            <img src="images/350x260.png" class="img-responsive" alt="a"/>
                                         </div>
                                         <div class="info">
                                             <div class="row">
@@ -616,19 +660,19 @@
                                                     <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
                                                         پیانو سطح مقدماتی 5</a>
                                                 </div>
-                                                <div class="rating col-md-6">
+                                                <div class="teacher col-md-6">
                                                     <p class="product-tsize new-product">مهران عباسی</p>
                                                 </div>
                                                 <div class="rating col-md-6">
                                                     <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="gold-star fa fa-star"></i>
+                                                </i><i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
+                                                </i><i class="gold-star fa fa-star"></i>
                                                 </div>
                                             </div>
                                             <p class="product-off left-float">180.000</p>
                                             <div class="clear-left">
-                                                <p class="right-float">
-                                                    <img src="{{url('img2/clock-outline.png')}}">07:48:29</p>
+                                                <img src="images/clock-outline.png" class="clock">
+                                                <p class="right-float">07:48:29</p>
                                                 <p class="left-float product-price">
                                                     145.000 تومان</p>
                                             </div>
@@ -640,7 +684,7 @@
                                 <div class="col-sm-3 col-md-4">
                                     <div class="col-item">
                                         <div class="photo">
-                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
+                                            <img src="images/350x260.png" class="img-responsive" alt="a"/>
                                         </div>
                                         <div class="info">
                                             <div class="row">
@@ -648,19 +692,19 @@
                                                     <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
                                                         پیانو سطح مقدماتی 6</a>
                                                 </div>
-                                                <div class="rating col-md-6">
+                                                <div class="teacher col-md-6">
                                                     <p class="product-tsize new-product">مهران عباسی</p>
                                                 </div>
                                                 <div class="rating col-md-6">
                                                     <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="gold-star fa fa-star"></i>
+                                                </i><i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
+                                                </i><i class="gold-star fa fa-star"></i>
                                                 </div>
                                             </div>
                                             <p class="product-off left-float">180.000</p>
                                             <div class="clear-left">
-                                                <p class="right-float">
-                                                    <img src="{{url('img2/clock-outline.png')}}">07:48:29</p>
+                                                <img src="images/clock-outline.png" class="clock">
+                                                <p class="right-float">07:48:29</p>
                                                 <p class="left-float product-price">
                                                     145.000 تومان</p>
                                             </div>
@@ -688,7 +732,7 @@
                             <i class="left fa fa-angle-double-right" aria-hidden="true"></i>
                         </a>
                         <a href="#new-products-mobile" data-slide="next" class="more-product"><i
-                                    class="left fa fa-angle-double-left" aria-hidden="true"></i>
+                                class="left fa fa-angle-double-left" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
@@ -700,7 +744,7 @@
                                 <div class="col-sm-3 col-md-4">
                                     <div class="col-item">
                                         <div class="photo">
-                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
+                                            <img src="images/350x260.png" class="img-responsive" alt="a"/>
                                         </div>
                                         <div class="info">
                                             <div class="row">
@@ -708,19 +752,19 @@
                                                     <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
                                                         پیانو سطح مقدماتی 1</a>
                                                 </div>
-                                                <div class="rating col-md-6">
+                                                <div class="teacher col-md-6">
                                                     <p class="product-tsize new-product">مهران عباسی</p>
                                                 </div>
                                                 <div class="rating col-md-6">
                                                     <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="gold-star fa fa-star"></i><i class="fa fa-star">
-                                                    </i><i class="fa fa-star"></i>
+                                                </i><i class="gold-star fa fa-star"></i><i class="fa fa-star">
+                                                </i><i class="fa fa-star"></i>
                                                 </div>
                                             </div>
                                             <p class="product-off left-float">180.000</p>
                                             <div class="clear-left">
-                                                <p class="right-float">
-                                                    <img src="{{url('img2/clock-outline.png')}}">07:48:29</p>
+                                                <img src="images/clock-outline.png" class="clock">
+                                                <p class="right-float">07:48:29</p>
                                                 <p class="left-float product-price">
                                                     145.000 تومان</p>
                                             </div>
@@ -736,7 +780,7 @@
                                 <div class="col-sm-3 col-md-4">
                                     <div class="col-item">
                                         <div class="photo">
-                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
+                                            <img src="images/350x260.png" class="img-responsive" alt="a"/>
                                         </div>
                                         <div class="info">
                                             <div class="row">
@@ -744,19 +788,19 @@
                                                     <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
                                                         پیانو سطح مقدماتی 2</a>
                                                 </div>
-                                                <div class="rating col-md-6">
+                                                <div class="teacher col-md-6">
                                                     <p class="product-tsize new-product">مهران عباسی</p>
                                                 </div>
                                                 <div class="rating col-md-6">
                                                     <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="gold-star fa fa-star"></i>
+                                                </i><i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
+                                                </i><i class="gold-star fa fa-star"></i>
                                                 </div>
                                             </div>
                                             <p class="product-off left-float">180.000</p>
                                             <div class="clear-left">
-                                                <p class="right-float">
-                                                    <img src="{{url('img2/clock-outline.png')}}">07:48:29</p>
+                                                <img src="images/clock-outline.png" class="clock">
+                                                <p class="right-float">07:48:29</p>
                                                 <p class="left-float product-price">
                                                     145.000 تومان</p>
                                             </div>
@@ -772,7 +816,7 @@
                                 <div class="col-sm-3 col-md-4">
                                     <div class="col-item">
                                         <div class="photo">
-                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
+                                            <img src="images/350x260.png" class="img-responsive" alt="a"/>
                                         </div>
                                         <div class="info">
                                             <div class="row">
@@ -780,19 +824,19 @@
                                                     <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
                                                         پیانو سطح مقدماتی 3</a>
                                                 </div>
-                                                <div class="rating col-md-6">
+                                                <div class="teacher col-md-6">
                                                     <p class="product-tsize new-product">مهران عباسی</p>
                                                 </div>
                                                 <div class="rating col-md-6">
                                                     <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="gold-star fa fa-star"></i>
+                                                </i><i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
+                                                </i><i class="gold-star fa fa-star"></i>
                                                 </div>
                                             </div>
                                             <p class="product-off left-float">180.000</p>
                                             <div class="clear-left">
-                                                <p class="right-float">
-                                                    <img src="{{url('img2/clock-outline.png')}}')}}">07:48:29</p>
+                                                <img src="images/clock-outline.png" class="clock">
+                                                <p class="right-float">07:48:29</p>
                                                 <p class="left-float product-price">
                                                     145.000 تومان</p>
                                             </div>
@@ -825,16 +869,16 @@
 
                             <div>
                                 <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link">
-                                    درباره ما </a>
+                                درباره ما </a>
                                 <br><br>
                                 <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link"> تماس
-                                    باما </a>
+                                باما </a>
                                 <br><br>
                                 <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link">
-                                    قوانین و مقررات </a>
+                                قوانین و مقررات </a>
                                 <br><br>
                                 <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link">
-                                    عضویت در سایت </a>
+                                عضویت در سایت </a>
                             </div>
                             <br>
                         </div>
@@ -897,16 +941,16 @@
 
                             <div class="footer-line">
                                 <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link">
-                                    درباره ما </a>
+                                درباره ما </a>
                                 <br><br>
                                 <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link"> تماس
-                                    باما </a>
+                                باما </a>
                                 <br><br>
                                 <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link">
-                                    قوانین و مقررات </a>
+                                قوانین و مقررات </a>
                                 <br><br>
                                 <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link">
-                                    عضویت در سایت </a>
+                                عضویت در سایت </a>
                             </div>
 
                         </div>
@@ -921,14 +965,17 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="{{asset('js2/jquery.min.js')}}"></script>
-<script src="{{asset('js2/login.js')}}"></script>
-<script>window.jQuery || document.write('<script src="{{asset('js2/jquery.min.js')}}"><\/script>')</script>
-<script src="{{asset('js2/bootstrap.min.js')}}"></script>
+<script src="js/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+<script src="js/bootstrap.min.js"></script>
 <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-<script src="{{asset('js2/holder.min.js')}}"></script>
+<script src="js/holder.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="{{asset('js2/ie10-viewport-bug-workaround.js')}}"></script>
+<script src="js/ie10-viewport-bug-workaround.js"></script>
+
+<script src="js/ScrollMagic.min.js"></script>
+
+<script src="js/header-nav.js"></script>
 
 <script>
     $(document).ready(function () {
@@ -957,28 +1004,7 @@
             });
 
         }
-        var click=0;
-        $('#on-click-play').click(function () {
-            if(click == 0){
-                click++;
-                $('div.sp-img').hide();
-                $('#append-iframe').append('<div id="wait"><p> لطفا کمی صبرکنید </p>' +
-                    '<div id="Stellar_video_player" style="z-index: 1; position: relative;">' +
-                    '<div class="stellar_vp_mainContainer stellar_vp_effect1" align="left" style="width: 100%; height: 432px; position: absolute; background: rgb(0, 0, 0) none repeat scroll 0% 0%; z-index: 999999;align-content: center">' +
-                    '</div>' +
-                    '</div>')
-                $('#append-iframe').append('<iframe src="{{url('videos')}}" id="iframe" class="sp-img" width="860.5px" height="485.5px" class="img-responsive" scrolling="no" frameBorder="0" align="center"></iframe>');
-                document.getElementById("iframe").onload=function(){
-                    $('#wait').hide();
-                    $('.stellar_vp_mainContainer').removeAttr("style")
-                    $('.stellar_vp_mainContainer').css("style", "width: 100%; height: 432px; position: absolute; background: rgb(0, 0, 0) none repeat scroll 0% 0%; z-index: 999999;align-content: center")
-                };
-            }
-
-        })
     });
 </script>
 </body>
 </html>
-
-

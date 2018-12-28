@@ -260,7 +260,7 @@
                                     <div class="col-sm-3">
                                         <div class="col-item">
                                             <div class="photo">
-                                                <img src="img2/350x260.png" class="img-responsive" alt="a"/>
+                                                <a href="{{url('/products')}}/{{$newProduct->id}}"><img src={{asset('img2/'. (fmod($loop->index, 8) + 1) . '.jpg')}} class="img-responsive" alt="a"/></a>
                                             </div>
                                             <div class="info">
                                                 <div class="row">
@@ -353,7 +353,7 @@
                                                 <div class="col-sm-3">
                                                     <div class="col-item">
                                                         <div class="photo">
-                                                            <img src="img2/350x260.png" class="img-responsive" alt="a"/>
+                                                            <a href="{{url('/products')}}/{{$newProduct->id}}"><img src={{asset('img2/'.( 8 - fmod($loop->index, 8)) . '.jpg')}} class="img-responsive" alt="a"/></a>
                                                         </div>
                                                         <div class="info">
                                                             <div class="row">

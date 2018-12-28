@@ -180,20 +180,14 @@
             <div class="product-item">
                 <div class="col-item">
                     <div class="photo">
-                        <img src="{{asset('img2/350x260.png')}}" class="img-responsive" alt="a"/>
+                        <a class="product-fsize" href="{{url('/categories')}}/{{$category->id}}/products">
+                            <img src="{{asset('img2/'. (fmod($loop->index, 8) + 1) . '.jpg')}}" class="img-responsive" alt="a"/>
+                        </a>
                     </div>
                     <div class="info">
                         <div class="row">
                             <div class="price col-md-12">
                                 <a class="product-fsize" href="{{url('/categories')}}/{{$category->id}}/products">{{$category->title}}</a>
-                            </div>
-                            <div class="rating col-md-6">
-                                <p class="product-tsize new-product">مهران عباسی</p>
-                            </div>
-                            <div class="rating col-md-6">
-                                <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                </i><i class="gold-star fa fa-star"></i><i class="fa fa-star">
-                                </i><i class="fa fa-star"></i>
                             </div>
                         </div>
                         <div class="clearfix">

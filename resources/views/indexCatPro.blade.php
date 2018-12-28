@@ -180,7 +180,7 @@
                     <div class="product-item">
                         <div class="col-item">
                             <div class="photo">
-                                <img src="{{asset('img2/350x260.png')}}" class="img-responsive" alt="a"/>
+                                <a href="{{url('/products')}}/{{$product->id}}"><img src="{{asset('img2/'. (fmod($loop->index, 8) + 1) . '.jpg')}}" class="img-responsive" alt="a"/></a>
                             </div>
                             <div class="info">
                                 <div class="row">
@@ -196,12 +196,12 @@
                                         </i><i class="fa fa-star"></i>
                                     </div>
                                 </div>
-                                <p class="product-off left-float"> {{$product->price}}</p>
+                                <p class="product-off left-float"> تومان  {{$product->price}}</p>
                                 <div class="clear-left">
                                     <p class="right-float">
                                         <img src="{{asset('img2/clock-outline.png')}}">07:48:29</p>
                                     <p class="left-float product-price">
-                                        {{0.9*$product->price}}</p>
+                                       تومان  {{0.9*$product->price}}</p>
                                 </div>
                                 <div class="clearfix">
                                 </div>

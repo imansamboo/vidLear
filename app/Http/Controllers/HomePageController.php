@@ -74,7 +74,15 @@ class HomePageController extends Controller
     public function viewProduct($product)
     {
         $product = Product::where('id', '=', $product)->first();
-        return view('view', array('product' => $product ));
+        $catId = $product->categories[0]->id;
+        $products = Category::find($catId)->products;
+        $relatedProducts = array();
+        foreach ($products as $value){
+            if($value->id != $product->id){
+                $relatedProducts[] = $value;
+            }
+        }
+        return view('view', array('product' => $product , 'products' => $relatedProducts ));
     }
 
     /**
