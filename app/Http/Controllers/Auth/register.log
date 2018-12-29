@@ -8,3 +8,23 @@ array (
   'email' => 'dsdSDD@FFG.XOM',
   '_token' => 'becjl9fkHuiXq53bFAkCFJ41W9nf7VI2jHLbvjDH',
 )
+43
+43
+array (
+  'name' => 'sdsds',
+  'mobile' => 'ddsdsds',
+  'password' => '1234',
+  'password_confirmation' => '1234',
+  'email' => 'dsdSDD@FFG.com',
+  '_token' => 'lVL4GD3D3U0LNMKRckzsLBijGP0wYOXfi1ejac8t',
+)
+43
+43
+array (
+  'name' => 'ssd',
+  'mobile' => '21212',
+  'password' => '1234',
+  'password_confirmation' => '1234',
+  'email' => 'asdsasa@dsd.com',
+  '_token' => 'lVL4GD3D3U0LNMKRckzsLBijGP0wYOXfi1ejac8t',
+)

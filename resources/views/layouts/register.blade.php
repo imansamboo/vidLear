@@ -1,54 +1,55 @@
 <form method="POST" onsubmit="" action="{{url("/register")}}" id="register">
-    <label for="name">
-        نام و نام خانوادگی :
-    </label>
     <div id="name-error" {{--style="padding-top: 5%;"--}}>
         {{--<div class="alert alert-danger" style="font-size: 9px; padding: 5px; margin-bottom: 7px">
              شماره همراه یا کلمه عبور اشتباه وارد شده است.
         </div>--}}
     </div>
-    <input type="name" class="form-control" name="name" id="name" required>
+    <div class="input-group">
+        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+    <input placeholder="نام و نام خانوادگی " type="name" class="form-control" name="name" id="name" required>                    </div>
+
     <br/>
-    <label for="mobile">
-        شماره تلفن همراه:
-    </label>
     <div id="mobile-error" {{--style="padding-top: 5%;"--}}>
         {{--<div class="alert alert-danger" style="font-size: 9px; padding: 5px; margin-bottom: 7px">
             شماره همراه یا کلمه عبور اشتباه وارد شده است.
         </div>--}}
     </div>
-    <input type="text" class="form-control" name="mobile" id="mobile"
-           required>
-    <label for="password">
-        رمز عبور :
-    </label>
+        <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+    <input placeholder="شماره تلفن همراه" type="text" class="form-control" name="mobile" id="mobile"
+           required>                    </div>
+    <br>
     <div id="password-error" {{--style="padding-top: 5%;"--}}>
         {{--<div class="alert alert-danger" style="font-size: 9px; padding: 5px; margin-bottom: 7px">
             شماره همراه یا کلمه عبور اشتباه وارد شده است.
         </div>--}}
     </div>
-    <input type="password" class="form-control" name="password" id="password" required>
-    <br/>
-    <label for="passwordConfirm">
-        تکرار رمز عبور :
-    </label>
+            <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+    <input placeholder="رمز عبور" type="password" class="form-control" name="password" id="password" required>                    </div>
+
+            <br/>
     <div id="passwordConfirm-error" {{--style="padding-top: 5%;"--}}>
         {{--<div class="alert alert-danger" style="font-size: 9px; padding: 5px; margin-bottom: 7px">
             شماره همراه یا کلمه عبور اشتباه وارد شده است.
         </div>--}}
     </div>
-    <input type="password" class="form-control" name="password_confirmation" id="passwordConfirm"
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+    <input placeholder="تکرار رمز عبور" type="password" class="form-control" name="password_confirmation" id="passwordConfirm"
            required>
-    <br/>
-    <label for="email">
-        پست الکترونیک :
-    </label>
+                </div>
+
+                <br/>
     <div id="email-error" {{--style="padding-top: 5%;"--}}>
         {{--<div class="alert alert-danger" style="font-size: 9px; padding: 5px; margin-bottom: 7px">
             شماره همراه یا کلمه عبور اشتباه وارد شده است.
         </div>--}}
     </div>
-    <input type="email" class="form-control" name="email" id="email" required>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+    <input placeholder="پست الکترونیک" type="email" class="form-control" name="email" id="email" required>
+                    </div>
     <br/>
     {!! Form::token() !!}
     <input type="submit" name="register" id="register" class="register_btn" value="ثبت نام">
