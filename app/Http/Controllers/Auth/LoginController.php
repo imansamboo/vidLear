@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Auth;
+use mysql_xdevapi\Exception;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -76,14 +78,44 @@ class LoginController extends Controller
         return redirect('/homepage');
     }
 
-    public function resetPassword(Request $request){
+    /**
+     * @param Request $request
+     */
+    public function resetPassword(Request $request)
+    {
         if(isset($_POST['mobile'])){
-            if(User::where('mobile' , '=', $_POST['mobile'])->count() > 0 ){
-
+            if(User::where('mobile' , '=', $request->post('mobile'))->count() > 0 ){
+                $user = User::where('mobile' , '=', $request->post('mobile'))->get()[0];
+                $user->last_sent_sms_code = 123456;
+                $user->save();
                 header('HTTP/1.1 200 OK');
-                echo json_encode(['success, true']);
+                echo json_encode(['success' => true , 'userId' => $user->id]);
+            }else{
+                throw new Exception('phone number does not exist');
             }
 
         }
     }
+
+    /**
+     * @param Request $request
+     */
+    public function checkReset(Request $request)
+    {
+        if(isset($_POST['last_sent_sms_code']) && isset($_POST['userId']) && isset($_POST['password'])){
+            if(User::where('id' , '=', $request->post('userId'))->count() > 0 ){
+                $user = User::where('id' , '=', $request->post('userId'))->get()[0];
+                if($user->last_sent_sms_code == $request->post('last_sent_sms_code')){
+                    $user->password = Hash::make($request->post('password'));
+                    $user->save();
+                    header('HTTP/1.1 200 OK');
+                    echo json_encode(['success, true']);
+                }
+            }else{
+                throw new Exception('phone number does not exist');
+            }
+
+        }
+    }
+
 }
