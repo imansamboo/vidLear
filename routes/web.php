@@ -16,6 +16,11 @@
 Route::get('/', function () {
     return redirect(route('homepage'));
 });
+//
+Route::post('/passReset', 'SMSController@resetPassword');
+/*Route::post('/passReset', function (){
+    error_log(__DIR__  .'/../reset.log', 3 , '/var/www/html/address.log');
+});*/
 Route::get('/homepage', 'HomePageController@index')->name('homepage');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

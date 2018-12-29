@@ -40,7 +40,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        error_log("constructed", 3, '/var/www/html/logs.log');
+        error_log("constructed", 3, __DIR__ .'/logs.log');
         $this->middleware('guest')->except('logout');
     }
 
@@ -51,16 +51,16 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $mobile = $request->only('mobile')['mobile'];
-        //error_log(var_export($mobile, 1), 3, '/var/www/html/logs.log');
+        //error_log(var_export($mobile, 1), 3, __DIR__ .'/logs.log');
         $email = '';
         try{
-            error_log($mobile, 3, '/var/www/html/mobile.log');
+            error_log($mobile, 3, __DIR__ .'/mobile.log');
             $email = User::where('mobile', '=', $mobile)->get()[0]->email;
         }catch(Exception $e){
 
         }
         $credentials = array_merge(array('email' => $email) ,$request->only( 'password'));
-        //error_log(var_export($credentials, 1), 3, '/var/www/html/logs.log');
+        //error_log(var_export($credentials, 1), 3, __DIR__ .'/logs.log');
         $authSuccess = Auth::attempt($credentials, $request->has('remember'));
 
         if($authSuccess) {
@@ -76,46 +76,6 @@ class LoginController extends Controller
         $request->session()->flush();
         $request->session()->regenerate();
         return redirect('/homepage');
-    }
-
-    /**
-     * @param Request $request
-     */
-    public function resetPassword(Request $request)
-    {
-        if(isset($_POST['mobile'])){
-            if(User::where('mobile' , '=', $request->post('mobile'))->count() > 0 ){
-                $user = User::where('mobile' , '=', $request->post('mobile'))->get()[0];
-                $user->last_sent_sms_code = 123456;
-                $user->save();
-                header('HTTP/1.1 200 OK');
-                echo json_encode(['success' => true , 'userId' => $user->id]);
-            }else{
-                throw new Exception('phone number does not exist');
-            }
-
-        }
-    }
-
-    /**
-     * @param Request $request
-     */
-    public function checkReset(Request $request)
-    {
-        if(isset($_POST['last_sent_sms_code']) && isset($_POST['userId']) && isset($_POST['password'])){
-            if(User::where('id' , '=', $request->post('userId'))->count() > 0 ){
-                $user = User::where('id' , '=', $request->post('userId'))->get()[0];
-                if($user->last_sent_sms_code == $request->post('last_sent_sms_code')){
-                    $user->password = Hash::make($request->post('password'));
-                    $user->save();
-                    header('HTTP/1.1 200 OK');
-                    echo json_encode(['success, true']);
-                }
-            }else{
-                throw new Exception('phone number does not exist');
-            }
-
-        }
     }
 
 }

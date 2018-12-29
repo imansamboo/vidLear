@@ -40,7 +40,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        error_log(__LINE__ . "\n", 3, '/var/www/html/register.log');
+        error_log(__LINE__ . "\n", 3, __DIR__ . '/register.log');
         $this->middleware('guest');
     }
 
@@ -68,7 +68,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        error_log(var_export($data, 1) . "\n", 3, '/var/www/html/register.log');
+        error_log(var_export($data, 1) . "\n", 3, __DIR__ . '/register.log');
 
         $user = User::create([
             'name' => $data['name'],
@@ -87,6 +87,10 @@ class RegisterController extends Controller
         exit();
     }
 
+    /**
+     * @param $data
+     * @return array
+     */
     public function sendSmsCode($data){
         $apiKey = 'b12ff8f6ebc6e316d7955bf74e7dfc65';
         $number = $data['mobile'];
