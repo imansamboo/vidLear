@@ -75,4 +75,15 @@ class LoginController extends Controller
         $request->session()->regenerate();
         return redirect('/homepage');
     }
+
+    public function resetPassword(Request $request){
+        if(isset($_POST['mobile'])){
+            if(User::where('mobile' , '=', $_POST['mobile'])->count() > 0 ){
+
+                header('HTTP/1.1 200 OK');
+                echo json_encode(['success, true']);
+            }
+
+        }
+    }
 }
