@@ -55,7 +55,8 @@
                             <a class="navbar-brand" href="{{url('/')}}">LOGO</a>
                         </div>
                         <div id="navbar" class="navbar-collapse collapse">
-                            @if ($user = Auth::user())
+                            <div id="authenticate">
+                                @if ($user = Auth::user())
                                 <ul class="nav navbar-nav menu-right">
                                     <li>
                                         <a href="{{url('/logout')}}"  class="header-font"><i
@@ -86,6 +87,7 @@
                                     </li>
                                 </ul>
                             @endif
+                            </div>
                             <div class="col-md-6">
                                 <form class="form-inline" method="GET" action="{{url('/categories')}}">
                                     <div class="all-search-main" id="imaginary_container">
@@ -297,6 +299,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="{{asset('js2/jquery.min.js')}}"></script>
 <script src="{{asset('js2/login.js')}}"></script>
+<script src="{{asset('js2/register.js')}}"></script>
 <script>window.jQuery || document.write('<script src="{{asset('js2/jquery.min.js')}}"><\/script>')</script>
 <script src="{{asset('js2/bootstrap.min.js')}}"></script>
 <!-- Just to make our placeholder images work. Don't actually copy the next line! -->

@@ -62,37 +62,39 @@
                         </div>
 
                         <div id="navbar" class="navbar-collapse collapse">
-                            @if ($user = Auth::user())
-                                <ul class="nav navbar-nav menu-right">
-                                    <li>
-                                        <a href="{{url('/logout')}}"  class="header-font"><i
-                                                    class="fa fa-sign-out"
-                                                    aria-hidden="true"></i>خروج از سامانه
-                                        </a>
-                                    </li>
-                                    <li>
-                                        @if ($user = Auth::user()->isAdmin == 1)
-                                            <a href="{{url('/admin')}}"  class="header-font"><i
-                                                        class="fa fa-user"
-                                                        aria-hidden="true"></i> داشبورد
+                            <div id="authenticate">
+                                @if ($user = Auth::user())
+                                    <ul class="nav navbar-nav menu-right">
+                                        <li>
+                                            <a href="{{url('/logout')}}"  class="header-font"><i
+                                                        class="fa fa-sign-out"
+                                                        aria-hidden="true"></i>خروج از سامانه
                                             </a>
-                                        @endif
+                                        </li>
+                                        <li>
+                                            @if ($user = Auth::user()->isAdmin == 1)
+                                                <a href="{{url('/admin')}}"  class="header-font"><i
+                                                            class="fa fa-user"
+                                                            aria-hidden="true"></i> داشبورد
+                                                </a>
+                                            @endif
 
-                                    </li>
-                                </ul>
-                            @else
-                                <ul class="nav navbar-nav menu-right">
-                                    <li><a href="#" data-toggle="modal" data-target="#loginAction" class="header-font"><i
-                                                    class="fa fa-sign-in"
-                                                    aria-hidden="true"></i> ورود به سامانه
-                                        </a>
-                                    </li>
-                                    <li><a href="#" data-toggle="modal" data-target="#registerAction" class="header-font"><i
-                                                    class="fa fa-user-plus"
-                                                    aria-hidden="true"></i> عضویت </a>
-                                    </li>
-                                </ul>
-                            @endif
+                                        </li>
+                                    </ul>
+                                @else
+                                    <ul class="nav navbar-nav menu-right">
+                                        <li><a href="#" data-toggle="modal" data-target="#loginAction" class="header-font"><i
+                                                        class="fa fa-sign-in"
+                                                        aria-hidden="true"></i> ورود به سامانه
+                                            </a>
+                                        </li>
+                                        <li><a href="#" data-toggle="modal" data-target="#registerAction" class="header-font"><i
+                                                        class="fa fa-user-plus"
+                                                        aria-hidden="true"></i> عضویت </a>
+                                        </li>
+                                    </ul>
+                                @endif
+                            </div>
 
                                 <div class="col-md-6">
                                 <form class="form-inline">
@@ -695,6 +697,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="{{asset('js2/jquery.min.js')}}"></script>
 <script src="{{asset('js2/login.js')}}"></script>
+<script src="{{asset('js2/register.js')}}"></script>
 <script>window.jQuery || document.write('<script src="{{asset('js2/jquery.min.js')}}"><\/script>')</script>
 <script src="{{asset('js2/bootstrap.min.js')}}"></script>
 <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
