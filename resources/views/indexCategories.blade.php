@@ -11,7 +11,7 @@
     <link rel="icon" href="../../favicon.ico">
     -->
 
-    <title>دوره های تخصصی موسیقی - محصولات</title>
+    <title>دسته بندی های تخصصی موسیقی - محصولات</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('css2/bootstrap.min.css')}}" rel="stylesheet">
@@ -87,38 +87,21 @@
                                 </ul>
                             @endif
                             <div class="col-md-6">
-                                <form class="form-inline">
-                                    <div class="all-search" id="imaginary_container_n">
-                                        <div class="input-group stylish-input-group" id="search-box-btn">
-                                            <input type="text" class="form-control search-font" id="search-box" name="q"
-                                                   placeholder="جستجو در دوره های آنلاین موسیقی...">
+                                <form class="form-inline" method="GET" action="{{url('/categories')}}">
+                                    <div class="all-search-main" id="imaginary_container">
+                                        <div class="input-group stylish-input-group">
+                                            <input name="q" class="form-control search-font" placeholder="جستجو در دسته بندی های آنلاین موسیقی..." type="text">
                                             <span class="input-group-addon">
                                                 <button type="submit">
-                                                    <span class="glyphicon glyphicon-search"></span>
+                                                    <span class="glyphicon glyphicon-search search-color"></span>
                                                 </button>
                                             </span>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
+                                </form>                            </div>
                         </div>
                     </div>
                 </nav>
-            </div>
-            <div class="col-md-6">
-                <form class="form-inline">
-                    <div class="all-search-main" id="imaginary_container">
-                        <div class="input-group stylish-input-group">
-                            <input type="text" class="form-control search-font"
-                                   placeholder="جستجو در دوره های آنلاین موسیقی..." name="q">
-                            <span class="input-group-addon">
-                        <button type="submit">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </span>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
     </div>
@@ -173,7 +156,7 @@
     <div class="row">
         <div class="col-md-12">
             <p class="new-product"><i class="fa fa-bars" aria-hidden="true"></i>
-                محصولات</p>
+                دسته بندی ها</p>
         </div>
         @foreach($categories as $category)
         <div class="col-md-3">

@@ -91,7 +91,7 @@ class RegisterController extends Controller
         $apiKey = 'b12ff8f6ebc6e316d7955bf74e7dfc65';
         $number = $data['mobile'];
         $message = 'کد تایید هویت شما';
-        $key = mt_rand(1000,9999);
+        $key = mt_rand(100000,999999);
         $message .= "\n" . $key . "\n" ." می باشد.";
 
         $params = array('api' => $apiKey, 'number' => $number, 'msg' => $message);

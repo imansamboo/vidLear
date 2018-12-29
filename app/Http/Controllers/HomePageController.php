@@ -27,7 +27,8 @@ class HomePageController extends Controller
             array(
                 'categories' => Category::limit(7)->get(),
                 'products' => $products,
-            ));
+            )
+        );
     }
 
     /**
@@ -64,7 +65,7 @@ class HomePageController extends Controller
             }
             $productContainer[] = $productsArray;
         }
-        return view('indexCatPro', ['productContainer' => $productContainer]);
+        return view('indexCatPro', ['productContainer' => $productContainer, 'categoryId' => $category_id]);
     }
 
     /**
@@ -74,15 +75,32 @@ class HomePageController extends Controller
     public function viewProduct($product)
     {
         $product = Product::where('id', '=', $product)->first();
-        $catId = $product->categories[0]->id;
-        $products = Category::find($catId)->products;
+        if(count($product->categories) > 0){
+            $catId = $product->categories[0]->id;
+            $products = Category::find($catId)->products;
+        }else{
+            $products = Product::all();
+        }
         $relatedProducts = array();
+        $i = 0;
         foreach ($products as $value){
-            if($value->id != $product->id){
+            if($value->id != $product->id && $i < 100){
                 $relatedProducts[] = $value;
+                $i++;
             }
         }
-        return view('view', array('product' => $product , 'products' => $relatedProducts ));
+        $products = array();
+
+        $count = count($relatedProducts) - 1;
+        for($i=0; 3*$i < $count; $i++){
+            $innerProducts = array();
+            for($j=0; $j<3; $j++){
+                if(isset($relatedProducts[3*$i + $j]))
+                $innerProducts[] = $relatedProducts[3*$i + $j];
+            }
+            $products[] = $innerProducts;
+        }
+        return view('view', array('product' => $product , 'products' => $products ));
     }
 
     /**

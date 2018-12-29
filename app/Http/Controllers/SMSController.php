@@ -54,7 +54,7 @@ class SMSController extends Controller
         $apiKey = 'b12ff8f6ebc6e316d7955bf74e7dfc65';
         $number = Auth::user()->mobile;
         $message = 'کد تایید هویت شما';
-        $key = mt_rand(1000,9999);
+        $key = mt_rand(100000,999999);
         $user = User::find(Auth::user()->id);
         $user->update(
             array(

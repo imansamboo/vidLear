@@ -74,6 +74,7 @@
                                         @endif
 
                                     </li>
+
                                 </ul>
                             @else
                                 <ul class="nav navbar-nav menu-right">
@@ -93,11 +94,11 @@
                         <div id="navbar" class="navbar-collapse collapse">
 
                             <div class="col-md-6">
-                                <form class="form-inline">
+                                <form class="form-inline" method="GET" action="{{url('/products')}}">
                                     <div class="all-search" id="imaginary_container_n">
                                         <div class="input-group stylish-input-group" id="search-box-btn">
                                             <input type="text" class="form-control search-font" id="search-box"
-                                                   placeholder="جستجو در دوره های آنلاین موسیقی...">
+                                                name="q"   placeholder="جستجو در دوره های آنلاین موسیقی...">
                                             <span class="input-group-addon">
                                                 <button type="submit">
                                                     <span class="glyphicon glyphicon-search"></span>
@@ -112,10 +113,10 @@
                 </nav>
             </div>
             <div class="col-md-6">
-                <form class="form-inline">
+                <form class="form-inline" method="GET" action="{{url('/products')}}">
                     <div class="all-search-main" id="imaginary_container">
                         <div class="input-group stylish-input-group">
-                            <input type="text" class="form-control search-font"
+                            <input type="text" name="q" class="form-control search-font"
                                    placeholder="جستجو در دوره های آنلاین موسیقی...">
                             <span class="input-group-addon">
                         <button type="submit">

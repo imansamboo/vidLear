@@ -87,40 +87,25 @@
                                 </ul>
                             @endif
                             <div class="col-md-6">
-                                <form class="form-inline">
-                                    <div class="all-search" id="imaginary_container_n">
-                                        <div class="input-group stylish-input-group" id="search-box-btn">
-                                            <input type="text" class="form-control search-font" id="search-box" name="q"
-                                                   placeholder="جستجو در دوره های آنلاین موسیقی...">
+                                <form class="form-inline" method="GET" action="{{url('/categories/' . $categoryId . '/products')}}">
+                                    <div class="all-search-main" id="imaginary_container">
+                                        <div class="input-group stylish-input-group">
+                                            <input name="q" class="form-control search-font" placeholder="جستجو در دسته بندی های آنلاین موسیقی..." type="text">
                                             <span class="input-group-addon">
                                                 <button type="submit">
-                                                    <span class="glyphicon glyphicon-search"></span>
+                                                    <span class="glyphicon glyphicon-search search-color"></span>
                                                 </button>
                                             </span>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
+                                </form>                            </div>
                         </div>
                     </div>
                 </nav>
             </div>
-            <div class="col-md-6">
-                <form class="form-inline">
-                    <div class="all-search-main" id="imaginary_container">
-                        <div class="input-group stylish-input-group">
-                            <input type="text" class="form-control search-font"
-                                   placeholder="جستجو در دوره های آنلاین موسیقی..." name="q">
-                            <span class="input-group-addon">
-                        <button type="submit">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </span>
-                        </div>
-                    </div>
-                </form>
-            </div>
         </div>
+    </div>
+</div>
     </div>
 </div>
 

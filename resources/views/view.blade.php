@@ -274,13 +274,14 @@
                     </div>
                     <div class="col-md-6 sp-sidebar-share-lin">
                         <p class="sp-sidebar-share-icons">
-                            <a class="sp-sidebar-share-link" href="https://facebook.com" target="_blank">
+                            <a class="sp-sidebar-share-link" href="https://www.facebook.com/sharer/sharer.php?u={{url()->full()}}" target="_blank">
                                 <i class="fa fa-facebook-official" aria-hidden="true"></i>
                             </a>
-                            <a class="sp-sidebar-share-link" href="https://www.twitter.com" target="_blank">
+                            </a>
+                            <a class="sp-sidebar-share-link" href="https://twitter.com/home?status={{url()->full()}}" target="_blank">
                                 <i class="fa fa-twitter" aria-hidden="true"></i>
                             </a>
-                            <a class="sp-sidebar-share-link" href="https://www.linkedin.com/" target="_blank">
+                            <a class="sp-sidebar-share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=&title={{$product->name}}}&summary={{$product->description}}&source={{url()->full()}}" target="_blank">
                                 <i class="fa fa-linkedin" aria-hidden="true"></i>
                             </a>
                             <a class="sp-sidebar-share-link" href="#" target="_blank">
@@ -370,8 +371,7 @@
                                 <div class="timeline-left">
 
                                     <a href="#" class="timeline-links"><p class="timeline-dl" style="margin-top: 0px;">10:42</p></a>
-                                </div>
-                            </div>
+                                </div>                            </div>
                         </article>
                     </div>
 
@@ -387,9 +387,8 @@
                                 </div>
                                 <div class="timeline-left">
 
-                                    <a href="#" class="timeline-links"><p class="timeline-dl isDisabled" style="margin-top: 0px;">10:42</p></a>
-                                </div>
-                            </div>
+                                    <a href="#" class="timeline-links isDisabled"><p class="timeline-dl isDisabled" style="margin-top: 0px;color: dimgrey;">10:42</p></a>
+                                </div>                            </div>
                         </article>
                     </div>
 
@@ -405,9 +404,8 @@
                                 </div>
                                 <div class="timeline-left">
 
-                                    <a href="#" class="timeline-links"><p class="timeline-dl isDisabled" style="margin-top: 0px;">10:42</p></a>
-                                </div>
-                            </div>
+                                    <a href="#" class="timeline-links isDisabled"><p class="timeline-dl isDisabled" style="margin-top: 0px;;color: dimgrey;">10:42</p></a>
+                                </div>                             </div>
                         </article>
                     </div>
 
@@ -423,9 +421,8 @@
                                 </div>
                                 <div class="timeline-left">
 
-                                    <a href="#" class="timeline-links"><p class="timeline-dl isDisabled" style="margin-top: 0px;">10:42</p></a>
-                                </div>
-                            </div>
+                                    <a href="#" class="timeline-links isDisabled"><p class="timeline-dl isDisabled" style="margin-top: 0px;;color: dimgrey;">10:42</p></a>
+                                </div>                             </div>
                         </article>
                     </div>
 
@@ -441,9 +438,8 @@
                                 </div>
                                 <div class="timeline-left">
 
-                                    <a href="#" class="timeline-links"><p class="timeline-dl isDisabled" style="margin-top: 0px;">10:42</p></a>
-                                </div>
-                            </div>
+                                    <a href="#" class="timeline-links isDisabled"><p class="timeline-dl isDisabled" style="margin-top: 0px;;color: dimgrey;">10:42</p></a>
+                                </div>                             </div>
                         </article>
                     </div>
 
@@ -460,217 +456,59 @@
                 <div class="col-md-3">
                     <!-- Controls -->
                     <div class="controls pull-right">
-                        <a href="#new-products" data-slide="prev" class="more-product">
+                        <a href="#new-products-mobile" data-slide="prev" class="more-product">
                             <i class="left fa fa-angle-double-right" aria-hidden="true"></i>
                         </a>
-                        <a href="#new-products" data-slide="next" class="more-product"><i
+                        <a href="#new-products-mobile" data-slide="next" class="more-product"><i
                                     class="left fa fa-angle-double-left" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
-                <div id="new-products" class="carousel slide" data-ride="carousel" data-interval="false">
+                <div id="new-products-mobile" class="carousel slide" data-ride="carousel" data-interval="false">
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
-                        <div class="item active">
-                            <div class="row">
-                                <div class="col-sm-3 col-md-4">
-                                    <div class="col-item">
-                                        <div class="photo">
-                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
-                                        </div>
-                                        <div class="info">
+                        @foreach($products as $newProducts)
+                            @if ($loop->first)
+                                <div class="item  active">
+                                    @else
+                                        <div class="item">
+                                            @endif
                                             <div class="row">
-                                                <div class="price col-md-12">
-                                                    <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
-                                                        پیانو سطح مقدماتی 1</a>
-                                                </div>
-                                                <div class="rating col-md-6">
-                                                    <p class="product-tsize new-product">مهران عباسی</p>
-                                                </div>
-                                                <div class="rating col-md-6">
-                                                    <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="gold-star fa fa-star"></i><i class="fa fa-star">
-                                                    </i><i class="fa fa-star"></i>
-                                                </div>
-                                            </div>
-                                            <p class="product-off left-float">180.000</p>
-                                            <div class="clear-left">
-                                                <p class="right-float">
-                                                    <img src="{{url('img2/clock-outline.png')}}">07:48:29</p>
-                                                <p class="left-float product-price">
-                                                    145.000 تومان</p>
-                                            </div>
-                                            <div class="clearfix">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3 col-md-4">
-                                    <div class="col-item">
-                                        <div class="photo">
-                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
-                                        </div>
-                                        <div class="info">
-                                            <div class="row">
-                                                <div class="price col-md-12">
-                                                    <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
-                                                        پیانو سطح مقدماتی 2</a>
-                                                </div>
-                                                <div class="rating col-md-6">
-                                                    <p class="product-tsize new-product">مهران عباسی</p>
-                                                </div>
-                                                <div class="rating col-md-6">
-                                                    <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="fa fa-star"></i><i class="fa fa-star">
-                                                    </i><i class="fa fa-star"></i>
-                                                </div>
-                                            </div>
-                                            <p class="product-off left-float">180.000</p>
-                                            <div class="clear-left">
-                                                <p class="right-float">
-                                                    <img src="{{url('img2/clock-outline.png')}}">07:48:29</p>
-                                                <p class="left-float product-price">
-                                                    145.000 تومان</p>
-                                            </div>
-                                            <div class="clearfix">
+                                                @foreach($newProducts as $newProduct)
+                                                    <div class="col-sm-3 col-md-4">
+                                                        <div class="col-item">
+                                                            <div class="photo">
+                                                                <a href="{{url('/products')}}/{{$newProduct->id}}"><img src={{asset('img2/'. (fmod($loop->index, 8) + 1) . '.jpg')}} class="img-responsive" alt="a"/></a>
+                                                            </div>
+                                                            <div class="info">
+                                                                <div class="row">
+                                                                    <div class="price col-md-12">
+                                                                        <a class="product-fsize" href="{{url('/products')}}/{{$newProduct->id}}">{{$newProduct->name}}</a>
+                                                                    </div>
+                                                                    <div class="rating col-md-6">
+                                                                        <p class="product-tsize new-product">مهران عباسی</p>
+                                                                    </div>
+                                                                    <div class="rating col-md-6">
+                                                                        <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
+                                                                        </i><i class="gold-star fa fa-star"></i><i class="fa fa-star">
+                                                                        </i><i class="fa fa-star"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <p class="product-off left-float"> تومان {{$newProduct->price}} </p>
+                                                                <div class="clear-left">
+                                                                    <p class="right-float">
+                                                                        <img src="{{asset('img2/clock-outline.png')}}">07:48:29</p>
+                                                                    <p class="left-float product-price"> تومان {{0.9*$newProduct->price}} </p>
+                                                                </div>
+                                                                <div class="clearfix">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3 col-md-4">
-                                    <div class="col-item">
-                                        <div class="photo">
-                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
-                                        </div>
-                                        <div class="info">
-                                            <div class="row">
-                                                <div class="price col-md-12">
-                                                    <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
-                                                        پیانو سطح مقدماتی 3</a>
-                                                </div>
-                                                <div class="rating col-md-6">
-                                                    <p class="product-tsize new-product">مهران عباسی</p>
-                                                </div>
-                                                <div class="rating col-md-6">
-                                                    <i class="gold-star fa fa-star"></i><i class="fa fa-star">
-                                                    </i><i class="fa fa-star"></i><i class="fa fa-star">
-                                                    </i><i class="fa fa-star"></i>
-                                                </div>
-                                            </div>
-                                            <p class="product-off left-float">180.000</p>
-                                            <div class="clear-left">
-                                                <p class="right-float">
-                                                    <img src="{{url('img2/clock-outline.png')}}">07:48:29</p>
-                                                <p class="left-float product-price">
-                                                    145.000 تومان</p>
-                                            </div>
-                                            <div class="clearfix">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-sm-3 col-md-4">
-                                    <div class="col-item">
-                                        <div class="photo">
-                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
-                                        </div>
-                                        <div class="info">
-                                            <div class="row">
-                                                <div class="price col-md-12">
-                                                    <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
-                                                        پیانو سطح مقدماتی 4</a>
-                                                </div>
-                                                <div class="rating col-md-6">
-                                                    <p class="product-tsize new-product">مهران عباسی</p>
-                                                </div>
-                                                <div class="rating col-md-6">
-                                                    <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="gold-star fa fa-star"></i>
-                                                </div>
-                                            </div>
-                                            <p class="product-off left-float">180.000</p>
-                                            <div class="clear-left">
-                                                <p class="right-float">
-                                                    <img src="{{url('img2/clock-outline.png')}}">07:48:29</p>
-                                                <p class="left-float product-price">
-                                                    145.000 تومان</p>
-                                            </div>
-                                            <div class="clearfix">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3 col-md-4">
-                                    <div class="col-item">
-                                        <div class="photo">
-                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
-                                        </div>
-                                        <div class="info">
-                                            <div class="row">
-                                                <div class="price col-md-12">
-                                                    <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
-                                                        پیانو سطح مقدماتی 5</a>
-                                                </div>
-                                                <div class="rating col-md-6">
-                                                    <p class="product-tsize new-product">مهران عباسی</p>
-                                                </div>
-                                                <div class="rating col-md-6">
-                                                    <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="gold-star fa fa-star"></i>
-                                                </div>
-                                            </div>
-                                            <p class="product-off left-float">180.000</p>
-                                            <div class="clear-left">
-                                                <p class="right-float">
-                                                    <img src="{{url('img2/clock-outline.png')}}">07:48:29</p>
-                                                <p class="left-float product-price">
-                                                    145.000 تومان</p>
-                                            </div>
-                                            <div class="clearfix">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3 col-md-4">
-                                    <div class="col-item">
-                                        <div class="photo">
-                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
-                                        </div>
-                                        <div class="info">
-                                            <div class="row">
-                                                <div class="price col-md-12">
-                                                    <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
-                                                        پیانو سطح مقدماتی 6</a>
-                                                </div>
-                                                <div class="rating col-md-6">
-                                                    <p class="product-tsize new-product">مهران عباسی</p>
-                                                </div>
-                                                <div class="rating col-md-6">
-                                                    <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="gold-star fa fa-star"></i>
-                                                </div>
-                                            </div>
-                                            <p class="product-off left-float">180.000</p>
-                                            <div class="clear-left">
-                                                <p class="right-float">
-                                                    <img src="{{url('img2/clock-outline.png')}}">07:48:29</p>
-                                                <p class="left-float product-price">
-                                                    145.000 تومان</p>
-                                            </div>
-                                            <div class="clearfix">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                        @endforeach
                     </div>
                 </div>
             </div>
@@ -695,114 +533,48 @@
                 <div id="new-products-mobile" class="carousel slide" data-ride="carousel" data-interval="false">
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
-                        <div class="item active">
-                            <div class="row">
-                                <div class="col-sm-3 col-md-4">
-                                    <div class="col-item">
-                                        <div class="photo">
-                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
-                                        </div>
-                                        <div class="info">
+                        @foreach($products as $newProducts)
+                            @if ($loop->first)
+                                <div class="item  active">
+                                    @else
+                                        <div class="item">
+                                            @endif
                                             <div class="row">
-                                                <div class="price col-md-12">
-                                                    <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
-                                                        پیانو سطح مقدماتی 1</a>
-                                                </div>
-                                                <div class="rating col-md-6">
-                                                    <p class="product-tsize new-product">مهران عباسی</p>
-                                                </div>
-                                                <div class="rating col-md-6">
-                                                    <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="gold-star fa fa-star"></i><i class="fa fa-star">
-                                                    </i><i class="fa fa-star"></i>
-                                                </div>
-                                            </div>
-                                            <p class="product-off left-float">180.000</p>
-                                            <div class="clear-left">
-                                                <p class="right-float">
-                                                    <img src="{{url('img2/clock-outline.png')}}">07:48:29</p>
-                                                <p class="left-float product-price">
-                                                    145.000 تومان</p>
-                                            </div>
-                                            <div class="clearfix">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-sm-3 col-md-4">
-                                    <div class="col-item">
-                                        <div class="photo">
-                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
-                                        </div>
-                                        <div class="info">
-                                            <div class="row">
-                                                <div class="price col-md-12">
-                                                    <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
-                                                        پیانو سطح مقدماتی 2</a>
-                                                </div>
-                                                <div class="rating col-md-6">
-                                                    <p class="product-tsize new-product">مهران عباسی</p>
-                                                </div>
-                                                <div class="rating col-md-6">
-                                                    <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="gold-star fa fa-star"></i>
-                                                </div>
-                                            </div>
-                                            <p class="product-off left-float">180.000</p>
-                                            <div class="clear-left">
-                                                <p class="right-float">
-                                                    <img src="{{url('img2/clock-outline.png')}}">07:48:29</p>
-                                                <p class="left-float product-price">
-                                                    145.000 تومان</p>
-                                            </div>
-                                            <div class="clearfix">
+                                                @foreach($newProducts as $newProduct)
+                                                    <div class="col-sm-3 col-md-4">
+                                                        <div class="col-item">
+                                                            <div class="photo">
+                                                                <a href="{{url('/products')}}/{{$newProduct->id}}"><img src={{asset('img2/'. (fmod($loop->index, 8) + 1) . '.jpg')}} class="img-responsive" alt="a"/></a>
+                                                            </div>
+                                                            <div class="info">
+                                                                <div class="row">
+                                                                    <div class="price col-md-12">
+                                                                        <a class="product-fsize" href="{{url('/products')}}/{{$newProduct->id}}">{{$newProduct->name}}</a>
+                                                                    </div>
+                                                                    <div class="rating col-md-6">
+                                                                        <p class="product-tsize new-product">مهران عباسی</p>
+                                                                    </div>
+                                                                    <div class="rating col-md-6">
+                                                                        <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
+                                                                        </i><i class="gold-star fa fa-star"></i><i class="fa fa-star">
+                                                                        </i><i class="fa fa-star"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <p class="product-off left-float"> تومان {{$newProduct->price}} </p>
+                                                                <div class="clear-left">
+                                                                    <p class="right-float">
+                                                                        <img src="{{asset('img2/clock-outline.png')}}">07:48:29</p>
+                                                                    <p class="left-float product-price"> تومان {{0.9*$newProduct->price}} </p>
+                                                                </div>
+                                                                <div class="clearfix">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-sm-3 col-md-4">
-                                    <div class="col-item">
-                                        <div class="photo">
-                                            <img src="{{url('img2/350x260.png')}}" class="img-responsive" alt="a"/>
-                                        </div>
-                                        <div class="info">
-                                            <div class="row">
-                                                <div class="price col-md-12">
-                                                    <a class="product-fsize" href="show-product.html">دوره آموزش نواختن
-                                                        پیانو سطح مقدماتی 3</a>
-                                                </div>
-                                                <div class="rating col-md-6">
-                                                    <p class="product-tsize new-product">مهران عباسی</p>
-                                                </div>
-                                                <div class="rating col-md-6">
-                                                    <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                    </i><i class="gold-star fa fa-star"></i>
-                                                </div>
-                                            </div>
-                                            <p class="product-off left-float">180.000</p>
-                                            <div class="clear-left">
-                                                <p class="right-float">
-                                                    <img src="{{url('img2/clock-outline.png')}}')}}">07:48:29</p>
-                                                <p class="left-float product-price">
-                                                    145.000 تومان</p>
-                                            </div>
-                                            <div class="clearfix">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                        @endforeach
                     </div>
                 </div>
             </div>
