@@ -60,13 +60,14 @@
                                 <div id="authenticate">
                                     @if ($user = Auth::user())
                                         <ul class="nav navbar-nav menu-right">
+                                            <li><a href="{{url('/clientarea')}}" class="header-font"><i class="fa fa-user" aria-hidden="true"></i> ناحیه کاربری</a></li>
                                             <li>
                                                 <a href="{{url('/logout')}}"  class="header-font"><i
                                                             class="fa fa-sign-out"
                                                             aria-hidden="true"></i>خروج از سامانه
                                                 </a>
                                             </li>
-                                            <li>
+                                            {{--<li>
                                                 @if ($user = Auth::user()->isAdmin == 1)
                                                     <a href="{{url('/admin')}}"  class="header-font"><i
                                                                 class="fa fa-user"
@@ -74,7 +75,7 @@
                                                     </a>
                                                 @endif
 
-                                            </li>
+                                            </li>--}}
 
                                         </ul>
                                     @else

@@ -5,19 +5,29 @@ $(document).ready(function(){
     var j =0;
     $('i.fa-star').on('click', function (e){
         e.preventDefault();
-        var $this = $(this);
-        var id = $this.attr('id');
-        if(j == 0){
-            for(i=0; i < id ; i++){
-                newStars += '<i class="fa fa-2x fa-star" style="color: #FFC106;"></i>';
-                console.log(newStars);
+        if( $('i.fa-sign-in').length > 0 ){
+            forceLogin();
+        }else {
+            var $this = $(this);
+            var id = $this.attr('id');
+            if (j == 0) {
+                for (i = 0; i < id; i++) {
+                    newStars += '<i class="fa fa-2x fa-star" style="color: #FFC106;"></i>';
+                    console.log(newStars);
+                }
+                $('div.the-rate-star').empty();
+                $('div.the-rate-star').append(newStars);
+
+                j = 1;
+            } else {
+
             }
-            $('div.the-rate-star').empty();
-            $('div.the-rate-star').append(newStars);
-
-            j = 1;
-        }else{
-
         }
+
     })
+    $('button.close').on('click', function(e){
+        e.preventDefault();
+        close();
+    })
+
 });

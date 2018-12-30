@@ -16,6 +16,18 @@
 Route::get('/', function () {
     return redirect(route('homepage'));
 });
+Route::get('/clientarea', function () {
+    return view('clientarea', ['categories' => App\Category::all()]);
+});
+Route::get('/favorite', function () {
+    return view('favorite', ['categories' => App\Category::all()]);
+});
+Route::get('/settings', function () {
+    return view('settings', ['categories' => App\Category::all()]);
+});
+Route::get('/transactions', function () {
+    return view('transactions', ['categories' => App\Category::all()]);
+});
 //
 Route::get('/passReset', 'SMSController@resetPassword');
 Route::get('/verifyReset', 'SMSController@checkReset');

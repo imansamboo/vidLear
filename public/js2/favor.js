@@ -2,14 +2,23 @@ console.log('rate');
 $(document).ready(function(){
     var j =0;
     $('i.fa-heart').on('click', function (){
-        var $this = $(this);
-        if(j == 0){
-            $this.css( 'color', 'red' )
-            j = 1;
+        if( $('i.fa-sign-in').length > 0 ){
+            forceLogin();
         }else{
-            $this.removeAttr('style');
-            j = 0;
+            var $this = $(this);
+            if(j == 0){
+                $this.css( 'color', 'red' )
+                j = 1;
+            }else{
+                $this.removeAttr('style');
+                j = 0;
+            }
         }
+
+    })
+    $('button.close').on('click', function(e){
+        e.preventDefault();
+        close();
     })
 });
 

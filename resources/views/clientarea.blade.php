@@ -136,10 +136,6 @@
     </div>
 
 </header>
-
-<!-- The Login Modal -->
-<!-- Login Modal -->
-
 <div class="modal fade" id="loginAction" role="dialog">
 
     <div class="modal-dialog modal-md">
@@ -193,55 +189,183 @@
 </div>
 <!-- end Register Modal -->
 
+<div class="main-clientarea">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-xs-12 col-sm-12 col-lg-3 sp-sidebar-main">
+                <!-- ////////////////// Sidebar /////////////////// -->
 
-<!------ Products ---------->
-<div class="container product">
-    <div class="row">
-        <div class="col-md-12">
-            <p class="new-product"><i class="fa fa-bars" aria-hidden="true"></i>
-                محصولات</p>
-        </div>
-        @foreach($products as $product)
-        <div class="col-md-3">
-            <div class="product-item">
-                <div class="col-item">
-                    <div class="photo">
-                        <a href="{{url('/products')}}/{{$product->id}}"><img src="{{asset('img2/'. (fmod($loop->index, 8) + 1) . '.jpg')}}" class="img-responsive" alt="a"/></a>
+                <!-- ///////////////// menu 1 /////////////////////// -->
+                <div class="sp-sidebar">
+                    <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 sp-sidebar-owner-main">
+                        <img src="pics/user-pic.jpeg" class="sp-sidebar-owner-pic">
+                        <p class="sp-sidebar-owner-name">حامد خالقی اصفهانی</p>
                     </div>
-                    <div class="info">
-                        <div class="row">
-                            <div class="price col-md-12">
-                                <a class="product-fsize" href="{{url('/products')}}/{{$product->id}}">{{$product->name}}</a>
-                            </div>
-                            <div class="rating col-md-6">
-                                <p class="product-tsize new-product">مهران عباسی</p>
-                            </div>
-                            <div class="rating col-md-6">
-                                <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                </i><i class="gold-star fa fa-star"></i><i class="fa fa-star">
-                                </i><i class="fa fa-star"></i>
+                    <div class="sp-sidebar-profile">
+                        <div class="profile-option-1">
+                            <a href="{{url('/clientarea')}}" class="active-link">
+                                <div class="active-profile"></div>
+                                <i class="fa fa-3x fa-graduation-cap" aria-hidden="true"></i>
+                                <p class="profile-txt">
+                                    دوره های خریداری شده
+                                </p>
+                            </a>
+                        </div>
+                        <hr>
+                        <div class="profile-option-2">
+                            <a href="{{url('transactions')}}" class="profile-link">
+                                <i class="fa fa-3x fa-credit-card" aria-hidden="true"></i>
+                                <p class="profile-txt">
+                                    تراکنش های مالی
+                                </p>
+                            </a>
+                        </div>
+                        <hr>
+                        <div class="profile-option-3">
+                            <a href="{{url('favorite')}}" class="profile-link">
+                                <i class="fa fa-3x fa-heart" aria-hidden="true"></i>
+                                <p class="profile-txt">
+                                    علاقه مندی ها
+                                </p>
+                            </a>
+                        </div>
+                        <hr>
+                        <div class="profile-option-4">
+                            <a href="{{url('settings')}}" class="profile-link">
+                                <i class="fa fa-3x fa-cogs" aria-hidden="true"></i>
+                                <p class="profile-txt">
+                                    تنظیمات پروفایل
+                                </p>
+                            </a>
+                        </div>
+                        <hr>
+                        <div class="profile-option-5">
+                            <a href="{{url('/logout')}}" class="profile-link">
+                                <i class="fa fa-3x fa-sign-out" aria-hidden="true"></i>
+                                <p class="profile-txt">
+                                    خروج
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-md-9 col-xs-12 col-sm-12 col-lg-9 sp-body-main">
+                <!-- ////////////////// Body /////////////////// -->
+
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 sp-body sp-top-align">
+                    <p class="sp-body-learn-title">دوره های خریداری شده</p>
+                    <hr class="sp-body-learn-hr">
+                    <div class="col-md-4">
+                        <div class="product-item">
+                            <div class="col-item">
+                                <div class="photo">
+                                    <img src="{{asset('img2/350x260.png')}}" class="img-responsive" alt="a"/>
+                                </div>
+                                <div class="info">
+                                    <div class="row">
+                                        <div class="price col-md-12">
+                                            <a class="product-fsize" href="show-product.html">دوره آموزش نواختن پیانو سطح مقدماتی</a>
+                                        </div>
+                                        <div class="teacher col-md-6">
+                                            <p class="product-tsize new-product">مهران عباسی</p>
+                                        </div>
+                                        <div class="rating col-md-6">
+                                            <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
+                                        </i><i class="gold-star fa fa-star"></i><i class="fa fa-star">
+                                        </i><i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="product-off left-float">180.000</p>
+                                    <div class="clear-left">
+                                        <img src="{{asset('img2/clock-outline.png')}}" class="clock">
+                                        <p class="right-float">07:48:29</p>
+                                        <p class="left-float product-price">
+                                            145.000 تومان</p>
+                                    </div>
+                                    <div class="clearfix">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <p class="product-off left-float"> تومان {{$product->price}}</p>
-                        <div class="clear-left">
-                            <p class="right-float">
-                                <img src="{{asset('img2/clock-outline.png')}}">07:48:29</p>
-                            <p class="left-float product-price"> تومان {{0.9*$product->price}}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="product-item">
+                            <div class="col-item">
+                                <div class="photo">
+                                    <img src="{{asset('img2/350x260.png')}}" class="img-responsive" alt="a"/>
+                                </div>
+                                <div class="info">
+                                    <div class="row">
+                                        <div class="price col-md-12">
+                                            <a class="product-fsize" href="show-product.html">دوره آموزش نواختن پیانو سطح مقدماتی</a>
+                                        </div>
+                                        <div class="teacher col-md-6">
+                                            <p class="product-tsize new-product">مهران عباسی</p>
+                                        </div>
+                                        <div class="rating col-md-6">
+                                            <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
+                                        </i><i class="gold-star fa fa-star"></i><i class="fa fa-star">
+                                        </i><i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="product-off left-float">180.000</p>
+                                    <div class="clear-left">
+                                        <img src="{{asset('img2/clock-outline.png')}}" class="clock">
+                                        <p class="right-float">07:48:29</p>
+                                        <p class="left-float product-price">
+                                            145.000 تومان</p>
+                                    </div>
+                                    <div class="clearfix">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="clearfix">
+                    </div>
+                    <div class="col-md-4">
+                        <div class="product-item">
+                            <div class="col-item">
+                                <div class="photo">
+                                    <img src="{{asset('img2/350x260.png')}}" class="img-responsive" alt="a"/>
+                                </div>
+                                <div class="info">
+                                    <div class="row">
+                                        <div class="price col-md-12">
+                                            <a class="product-fsize" href="show-product.html">دوره آموزش نواختن پیانو سطح مقدماتی</a>
+                                        </div>
+                                        <div class="teacher col-md-6">
+                                            <p class="product-tsize new-product">مهران عباسی</p>
+                                        </div>
+                                        <div class="rating col-md-6">
+                                            <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
+                                        </i><i class="gold-star fa fa-star"></i><i class="fa fa-star">
+                                        </i><i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <p class="product-off left-float">180.000</p>
+                                    <div class="clear-left">
+                                        <img src="{{asset('img2/clock-outline.png')}}" class="clock">
+                                        <p class="right-float">07:48:29</p>
+                                        <p class="left-float product-price">
+                                            145.000 تومان</p>
+                                    </div>
+                                    <div class="clearfix">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        @endforeach
-
     </div>
-    {!! $products->appends(compact('q'))->links() !!}
 </div>
 
 
 <!--footer-->
+<div class="sticky-stopper"></div>
 <footer class="nb-footer fixed-bottom">
     <div class="container">
         <div class="row" id="footsize">
@@ -254,16 +378,16 @@
 
                             <div>
                                 <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link">
-                                    درباره ما </a>
+                                درباره ما </a>
                                 <br><br>
                                 <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link"> تماس
-                                    باما </a>
+                                باما </a>
                                 <br><br>
                                 <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link">
-                                    قوانین و مقررات </a>
+                                قوانین و مقررات </a>
                                 <br><br>
                                 <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link">
-                                    عضویت در سایت </a>
+                                عضویت در سایت </a>
                             </div>
                             <br>
                         </div>
@@ -324,18 +448,18 @@
                         <div class="col-md-3" id="footer-end">
                             <p>منو</p>
 
-                            <div>
+                            <div class="footer-line">
                                 <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link">
-                                    درباره ما </a>
+                                درباره ما </a>
                                 <br><br>
                                 <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link"> تماس
-                                    باما </a>
+                                باما </a>
                                 <br><br>
                                 <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link">
-                                    قوانین و مقررات </a>
+                                قوانین و مقررات </a>
                                 <br><br>
                                 <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link">
-                                    عضویت در سایت </a>
+                                عضویت در سایت </a>
                             </div>
 
                         </div>
@@ -356,7 +480,7 @@
 <script src="{{asset('js2/reset-password.js')}}"></script>
 <script>window.jQuery || document.write('<script src="js2/jquery.min.js"><\/script>')</script>
 <script src="{{asset('js2/bootstrap.min.js')}}"></script>
-<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<!-- Just to make our placeholder img2 work. Don't actually copy the next line! -->
 <script src="{{asset('js2/holder.min.js')}}"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="{{asset('js2/ie10-viewport-bug')}}-workaround.js"></script>
@@ -364,6 +488,7 @@
 <script src="{{asset('js2/ScrollMagic.min.js')}}"></script>
 
 <script src="{{asset('js2/index-header-nav.js')}}"></script>
+
 <script>
     $(document).ready(function () {
 
