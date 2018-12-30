@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<meta name="viewport" content="width=1000; user-scalable=0;" />-->
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
@@ -11,7 +12,7 @@
     <link rel="icon" href="../../favicon.ico">
     -->
 
-    <title>دوره های تخصصی موسیقی - دوره آموزش نواختن پیانو سطح مقدماتی</title>
+    <title>دوره های تخصصی موسیقی</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('css2/bootstrap.min.css')}}" rel="stylesheet">
@@ -34,117 +35,125 @@
     <!-- Custom styles for this template -->
     <link href="{{asset('css2/style.css')}}" rel="stylesheet">
 
-</head>
-<!-- NAVBAR
+</head><!-- NAVBAR
 ================================================== -->
 <body>
+<header class="header">
+    <div class="navbar-wrapper-single">
 
-<div class="navbar-wrapper-single">
+        <div class="container">
 
-    <div class="container">
+            <div class="row">
 
-        <div class="row">
+                <div class="col-md-5 col-xs-12 col-sm-12">
+                    <nav class="navbar navbar-inverse navbar-static-top navbar-full">
 
-            <div class="col-md-5">
-                <nav class="navbar navbar-inverse navbar-static-top navbar-full">
+                        <div class="container">
 
-                    <div class="container">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                        data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="{{url('/')}}">LOGO</a>
+                            </div>
 
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                                    data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" href="{{url('/')}}">LOGO</a>
-                        </div>
-
-                        <div id="navbar" class="navbar-collapse collapse">
-                            <div id="authenticate">
-                                @if ($user = Auth::user())
-                                    <ul class="nav navbar-nav menu-right">
-                                        <li>
-                                            <a href="{{url('/logout')}}"  class="header-font"><i
-                                                        class="fa fa-sign-out"
-                                                        aria-hidden="true"></i>خروج از سامانه
-                                            </a>
-                                        </li>
-                                        <li>
-                                            @if ($user = Auth::user()->isAdmin == 1)
-                                                <a href="{{url('/admin')}}"  class="header-font"><i
-                                                            class="fa fa-user"
-                                                            aria-hidden="true"></i> داشبورد
+                            <div id="navbar" class="navbar-collapse collapse">
+                                <div id="authenticate">
+                                    @if ($user = Auth::user())
+                                        <ul class="nav navbar-nav menu-right">
+                                            <li>
+                                                <a href="{{url('/logout')}}"  class="header-font"><i
+                                                            class="fa fa-sign-out"
+                                                            aria-hidden="true"></i>خروج از سامانه
                                                 </a>
-                                            @endif
+                                            </li>
+                                            <li>
+                                                @if ($user = Auth::user()->isAdmin == 1)
+                                                    <a href="{{url('/admin')}}"  class="header-font"><i
+                                                                class="fa fa-user"
+                                                                aria-hidden="true"></i> داشبورد
+                                                    </a>
+                                                @endif
 
-                                        </li>
-                                    </ul>
-                                @else
-                                    <ul class="nav navbar-nav menu-right">
-                                        <li><a href="#" data-toggle="modal" data-target="#loginAction" class="header-font"><i
-                                                        class="fa fa-sign-in"
-                                                        aria-hidden="true"></i> ورود به سامانه
-                                            </a>
-                                        </li>
-                                        <li><a href="#" data-toggle="modal" data-target="#registerAction" class="header-font"><i
-                                                        class="fa fa-user-plus"
-                                                        aria-hidden="true"></i> عضویت </a>
-                                        </li>
-                                    </ul>
-                                @endif
-                            </div>
+                                            </li>
+                                            <li class="nav-item dropdown category">
+                                                <a class="nav-link dropdown-toggle header-font" href="#" id="navbarDropdown"
+                                                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <img src="{{asset('img2/view-grid-menu.png')}}">
+                                                    دسته بندی
+                                                </a>
+                                                <div class="dropdown-menu nav-dropdown" aria-labelledby="navbarDropdown">
+                                                    @foreach($categories as  $category)
+                                                        <a class="dropdown-item nav-drop-item" href="{{url('/categories/' . $category->id . '/products')}}">{{$category->title}}</a>
+                                                        <div class="dropdown-divider"></div>
+                                                    @endforeach
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    @else
+                                        <ul class="nav navbar-nav menu-right">
+                                            <li><a href="#" data-toggle="modal" data-target="#loginAction" class="header-font"><i
+                                                            class="fa fa-sign-in"
+                                                            aria-hidden="true"></i> ورود به سامانه
+                                                </a>
+                                            </li>
+                                            <li><a href="#" data-toggle="modal" data-target="#registerAction" class="header-font"><i
+                                                            class="fa fa-user-plus"
+                                                            aria-hidden="true"></i> عضویت </a>
+                                            </li>
+                                            <li class="nav-item dropdown category">
+                                                <a class="nav-link dropdown-toggle header-font" href="#" id="navbarDropdown"
+                                                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <img src="{{asset('img2/view-grid-menu.png')}}">
+                                                    دسته بندی
+                                                </a>
+                                                <div class="dropdown-menu nav-dropdown" aria-labelledby="navbarDropdown">
+                                                    @foreach($categories as  $category)
+                                                        <a class="dropdown-item nav-drop-item" href="{{url('/categories/' . $category->id . '/products')}}">{{$category->title}}</a>
+                                                        <div class="dropdown-divider"></div>
+                                                    @endforeach
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    @endif
+                                </div>
 
-                                <div class="col-md-6">
-                                <form class="form-inline">
-
-                                    <div class="all-search" id="imaginary_container_n">
-
-                                        <div class="input-group stylish-input-group" id="search-box-btn">
-                                            <input type="text" class="form-control search-font" id="search-box"
-                                                   placeholder="جستجو در دوره های آنلاین موسیقی...">
-                                            <span class="input-group-addon">
-                                                <button type="submit">
-                                                    <span class="glyphicon glyphicon-search"></span>
-                                                </button>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-
-            <div class="col-md-6">
-                <form class="form-inline">
-
-                    <div class="all-search-main" id="imaginary_container">
-
-                        <div class="input-group stylish-input-group">
-                            <input type="text" class="form-control search-font"
-                                   placeholder="جستجو در دوره های آنلاین موسیقی...">
-                            <span class="input-group-addon">
+                                <div class="col-md-6 col-lg-6 col-sm-6">
+                                    <form class="form-inline" method="GET" action="{{url('/products')}}">
+                                        <div class="all-search-main" id="imaginary_container">
+                                            <div class="input-group stylish-input-group">
+                                                <input name="q" type="text" class="form-control search-font"
+                                                       placeholder="جستجو در دوره های آنلاین موسیقی...">
+                                                <span class="input-group-addon">
                         <button type="submit">
-                            <span class="glyphicon glyphicon-search"></span>
+                            <span class="glyphicon glyphicon-search search-color"></span>
                         </button>
                     </span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </nav>
+                </div>
+
             </div>
         </div>
     </div>
-</div>
+
+</header>
 
 <!-- The Login Modal -->
 <!-- Login Modal -->
 
 <div class="modal fade" id="loginAction" role="dialog">
 
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-md">
 
         <!-- Login Modal content-->
 
@@ -152,7 +161,10 @@
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+
                 <h4 class="modal-title">ورود به پنل کاربری</h4>
+                <div id="login-error">
+                </div>
             </div>
 
             <div class="modal-body">
@@ -167,7 +179,7 @@
 
 <div class="modal fade" id="registerAction" role="dialog">
 
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-md">
 
         <!-- Register Modal content-->
 
@@ -204,13 +216,11 @@
                 {{$product->name}}
             </p>
             <p>
-                <a href="index.html" class="sp-head-link">صفحه نخست</a>
+                <a href="{{url('/')}}" class="sp-head-link">صفحه نخست</a>
                 <i class="fa fa-angle-left" aria-hidden="true"></i>
-                <a href="index.html" class="sp-head-link">آموزش ها</a>
+                <a href="{{url('/categories/' . $product->categories[0]->id . '/products')}}" class="sp-head-link-active">{{$product->categories[0]->title}}</a>
                 <i class="fa fa-angle-left" aria-hidden="true"></i>
-                <a href="index.html" class="sp-head-link-active">نواختن پیانو</a>
-                <i class="fa fa-angle-left" aria-hidden="true"></i>
-                <a href="index.html" class="sp-head-link">دوره آموزش نواختن پیانو سطح مقدماتی</a>
+                <a href="{{url('/products/' . $product->id)}}" class="sp-head-link">{{$product->name}}</a>
             </p>
         </div>
     </div>
@@ -223,40 +233,53 @@
 
         <div class="col-md-3 col-xs-12 col-sm-12 col-lg-3 sp-sidebar-main">
             <!-- ////////////////// Sidebar /////////////////// -->
-
             <div class="sp-sidebar">
-
                 <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 rating sp-sidebar-rating">
-                    <i class="fa fa-2x fa-star"></i><i class="fa fa-2x fa-star">
-                    </i><i class="fa fa-2x fa-star"></i><i class="fa fa-2x fa-star">
-                    </i><i class="fa fa-2x fa-star"></i>
+                    <div class="the-rate-star">
+                        <i class="fa fa-2x fa-star" id="5"></i>
+                        <i class="fa fa-2x fa-star" id="4"></i>
+                        <i class="fa fa-2x fa-star" id="3"></i>
+                        <i class="fa fa-2x fa-star" id="2"></i>
+                        <i class="fa fa-2x fa-star" id="1"></i>
+                    </div>
+                    <div class="sp-rating-num">
+                        <p class="sp-rating-code-one"> 4.8 </p><p class="sp-rating-code-two">از 5 رای </p>
+                    </div>
                 </div>
                 <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 sp-sidebar-data-main">
+                    <div class="discount">
+                        <span class="discount-per">50%</span>
+                        تخفیف
+                    </div>
                     <p class="sp-sidebar-data-title">اطلاعات دوره :</p>
 
                     <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
-                        <img src="{{url('img2/format-list-checkbox.png')}}">
+                        <img src="{{asset('img2/format-list-checkbox.png')}}">
                         <p class="sp-sidebar-data">تعداد ویدئوها</p>
                         <p class="sp-sidebar-data">12</p>
                     </div>
                     <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
-                        <img src="{{url('img2/clock-outline.png')}}">
+                        <img src="{{asset('img2/clock-outline.png')}}">
                         <p class="sp-sidebar-data">مدت زمان دوره</p>
                         <p class="sp-sidebar-data">07:48:29</p>
                     </div>
                     <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
-                        <img src="{{url('img2/account-group.png')}}">
+                        <img src="{{asset('img2/account-group.png')}}">
                         <p class="sp-sidebar-data">تعداد دانشجویان</p>
                         <p class="sp-sidebar-data">125</p>
                     </div>
                 </div>
+                <div class="realPrice">
+                    {{$product->price}}
+                </div>
                 <div class="sp-sidebar-buy-main">
-                    <a class="sp-sidebar-buy" href="#buy">خرید دوره | {{$product->price}} تومان</a>
+                    <a class="sp-sidebar-buy" href="#buy">خرید دوره | {{0.8 * $product->price}} تومان</a>
                 </div>
                 <div class="sp-sidebar-favor">
-                    <p><i class="fa fa-2x fa-heart" aria-hidden="true"></i> افزودن به لیست مورد علاقه ها</p>
+                    <p><a class="like-this"><i class="fa fa-2x fa-heart" aria-hidden="true"></i></a> افزودن به لیست مورد علاقه ها</p>
                 </div>
             </div>
+
             <!-- ///////////////// menu 2 /////////////////////// -->
             <div class="sp-sidebar">
                 <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 sp-sidebar-owner-main">
@@ -298,14 +321,10 @@
         <div class="col-md-9 col-xs-12 col-sm-12 col-lg-9 sp-body-main" >
             <!-- ////////////////// Body /////////////////// -->
             <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 sp-body">
-                <div align="center" id="on-click-play">
-                    <div id="append-iframe"></div>
-
-                    <div class="sp-img">
-                        <img src="{{url('img2/video-cover.png')}}" class="img-responsive" >
-                    </div>
+                <div class="sp-img">
+                    <a href="#" class="round-button"><i class="fa fa-play fa-3x"></i></a>
+                    <img src="{{asset('img2//Rain-l.jpg')}}" class="img-responsive">
                 </div>
-
             </div>
             <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 sp-body">
                 <div class="sp-body-data">
@@ -694,65 +713,52 @@
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="{{asset('js2/jquery.min.js')}}"></script>
-<script src="{{asset('js2/login.js')}}"></script>
-<script src="{{asset('js2/register.js')}}"></script>
-<script>window.jQuery || document.write('<script src="{{asset('js2/jquery.min.js')}}"><\/script>')</script>
-<script src="{{asset('js2/bootstrap.min.js')}}"></script>
-<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-<script src="{{asset('js2/holder.min.js')}}"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="{{asset('js2/ie10-viewport-bug-workaround.js')}}"></script>
+        <script src="{{asset('js2/jquery.min.js')}}"></script>
+        <script src="{{asset('js2/login2.js')}}"></script>
+        <script src="{{asset('js2/register.js')}}"></script>
+        <script src="{{asset('js2/favor.js')}}"></script>
+        <script src="{{asset('js2/rate.js')}}"></script>
+        <script src="{{asset('js2/invoice.js')}}"></script>
+        <script src="{{asset('js2/reset-password.js')}}"></script>
+        <script>window.jQuery || document.write('<script src="js2/jquery.min.js"><\/script>')</script>
+        <script src="{{asset('js2/bootstrap.min.js')}}"></script>
+        <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+        <script src="{{asset('js2/holder.min.js')}}"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="{{asset('js2/ie10-viewport-bug')}}-workaround.js"></script>
 
-<script>
-    $(document).ready(function () {
+        <script src="{{asset('js2/ScrollMagic.min.js')}}"></script>
 
-        var $sticky = $('.sticky');
-        var $stickyrStopper = $('.sticky-stopper');
-        if (!!$sticky.offset()) { // make sure ".sticky" element exists
+        <script src="{{asset('js2/index-header-nav.js')}}"></script>
+        <script>
+            $(document).ready(function () {
 
-            var generalSidebarHeight = $sticky.innerHeight();
-            var stickyTop = $sticky.offset().top;
-            var stickOffset = 0;
-            var stickyStopperPosition = $stickyrStopper.offset().top;
-            var stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset;
-            var diff = stopPoint + stickOffset;
+                var $sticky = $('.sticky');
+                var $stickyrStopper = $('.sticky-stopper');
+                if (!!$sticky.offset()) { // make sure ".sticky" element exists
 
-            $(window).scroll(function () { // scroll event
-                var windowTop = $(window).scrollTop(); // returns number
+                    var generalSidebarHeight = $sticky.innerHeight();
+                    var stickyTop = $sticky.offset().top;
+                    var stickOffset = 0;
+                    var stickyStopperPosition = $stickyrStopper.offset().top;
+                    var stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset;
+                    var diff = stopPoint + stickOffset;
 
-                if (stopPoint < windowTop) {
-                    $sticky.css({position: 'absolute', top: diff});
-                } else if (stickyTop < windowTop + stickOffset) {
-                    $sticky.css({position: 'fixed', top: stickOffset});
-                } else {
-                    $sticky.css({position: 'absolute', top: 'initial'});
+                    $(window).scroll(function () { // scroll event
+                        var windowTop = $(window).scrollTop(); // returns number
+
+                        if (stopPoint < windowTop) {
+                            $sticky.css({position: 'absolute', top: diff});
+                        } else if (stickyTop < windowTop + stickOffset) {
+                            $sticky.css({position: 'fixed', top: stickOffset});
+                        } else {
+                            $sticky.css({position: 'absolute', top: 'initial'});
+                        }
+                    });
+
                 }
             });
-
-        }
-        var click=0;
-        $('#on-click-play').click(function () {
-            if(click == 0){
-                click++;
-                $('div.sp-img').hide();
-                $('#append-iframe').append('<div id="wait"><p> لطفا کمی صبرکنید </p>' +
-                    '<div id="Stellar_video_player" style="z-index: 1; position: relative;">' +
-                    '<div class="stellar_vp_mainContainer stellar_vp_effect1" align="left" style="width: 100%; height: 432px; position: absolute; background: rgb(0, 0, 0) none repeat scroll 0% 0%; z-index: 999999;align-content: center">' +
-                    '</div>' +
-                    '</div>')
-                $('#append-iframe').append('<iframe src="{{url('videos')}}" id="iframe" class="sp-img" width="860.5px" height="485.5px" class="img-responsive" scrolling="no" frameBorder="0" align="center"></iframe>');
-                document.getElementById("iframe").onload=function(){
-                    $('#wait').hide();
-                    $('.stellar_vp_mainContainer').removeAttr("style")
-                    $('.stellar_vp_mainContainer').css("style", "width: 100%; height: 432px; position: absolute; background: rgb(0, 0, 0) none repeat scroll 0% 0%; z-index: 999999;align-content: center")
-                };
-            }
-
-        })
-    });
-</script>
+        </script>
 </body>
 </html>
 

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\CategoryProduct;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Product;
 use App\User;
+use Illuminate\Support\Facades\App;
 
 class HomePageController extends Controller
 {
@@ -40,7 +42,8 @@ class HomePageController extends Controller
         $q = $request->get('q');
         $products = Product::where('name', 'LIKE', '%'.$q.'%')
             ->orderBy('name')->paginate(16);
-        return view('index', compact('products', 'q'));
+        $categories = Category::all();
+        return view('index', compact('products', 'q', 'categories'));
     }
 
 
@@ -51,6 +54,7 @@ class HomePageController extends Controller
      */
     public function indexProductsOfCategory($category_id, Request $request)
     {
+        $categories = Category::all();
         $q = $request->get('q');
         $products = Category::where('id', '=', $category_id)
             ->get()[0]
@@ -65,7 +69,7 @@ class HomePageController extends Controller
             }
             $productContainer[] = $productsArray;
         }
-        return view('indexCatPro', ['productContainer' => $productContainer, 'categoryId' => $category_id]);
+        return view('indexCatPro', ['productContainer' => $productContainer, 'categoryId' => $category_id, 'categories' => $categories]);
     }
 
     /**
@@ -74,6 +78,7 @@ class HomePageController extends Controller
      */
     public function viewProduct($product)
     {
+        $categories = Category::all();
         $product = Product::where('id', '=', $product)->first();
         if(count($product->categories) > 0){
             $catId = $product->categories[0]->id;
@@ -100,7 +105,7 @@ class HomePageController extends Controller
             }
             $products[] = $innerProducts;
         }
-        return view('view', array('product' => $product , 'products' => $products ));
+        return view('view', array('product' => $product , 'products' => $products , 'categories' => $categories));
     }
 
     /**

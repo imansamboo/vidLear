@@ -27,7 +27,7 @@ $(document).ready(function() {
 
     });
 }*/
-
+var li = $('li.category').html();
 console.log('input');
 $(document).ready(function() {
 
@@ -73,6 +73,11 @@ $(document).ready(function() {
                             "                                                        class=\"fa fa-user\"\n" +
                             "                                                        aria-hidden=\"true\"></i> داشبورد\n" +
                             "                                            </a>\n" +
+                            "\n" +
+                            "                                    </li>\n" +
+                            "                                            <li class=\"nav-item dropdown category\">\n" +
+                            li +
+                            "                                            </li>\n" +
                             "                                </ul>" );
                     }else{
                         $('div.modal-content').hide();
