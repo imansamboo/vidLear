@@ -265,7 +265,14 @@
                     <a class="sp-sidebar-buy" href="#buy">خرید دوره | {{0.8 * $product->price}} تومان</a>
                 </div>
                 <div class="sp-sidebar-favor">
-                    <p><a class="like-this"><i class="fa fa-2x fa-heart" aria-hidden="true"></i></a> افزودن به لیست مورد علاقه ها</p>
+                    <p><a class="like-this">
+                            @if($isFavored == 1)
+                                <i class="fa fa-2x fa-heart" aria-hidden="true" style="color: red"></i>
+                            @else
+                                <i class="fa fa-2x fa-heart" aria-hidden="true"></i>
+                            @endif
+
+                        </a> افزودن به لیست مورد علاقه ها</p>
                 </div>
             </div>
 

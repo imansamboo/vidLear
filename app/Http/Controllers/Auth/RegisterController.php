@@ -40,7 +40,6 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        error_log(__LINE__ . "\n", 3, __DIR__ . '/register.log');
         $this->middleware('guest');
     }
 
@@ -68,7 +67,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        error_log(var_export($data, 1) . "\n", 3, __DIR__ . '/register.log');
 
         $user = User::create([
             'name' => $data['name'],

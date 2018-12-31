@@ -91,7 +91,7 @@ Route::get('/videos', function () {
 });
 
 Route::get('/admin', function () { return redirect('/admin/home'); })->middleware('auth');
-
+Route::get('/favorProduct', 'FavorsController@update');
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/home', 'HomeController@index');
     Route::resource('users', 'Admin\UsersController');

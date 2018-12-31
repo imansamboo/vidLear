@@ -6,8 +6,10 @@ use App\CategoryProduct;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Product;
+use App\Favor;
 use App\User;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 
 class HomePageController extends Controller
 {
@@ -78,6 +80,13 @@ class HomePageController extends Controller
      */
     public function viewProduct($product)
     {
+        $isFavored = 0;
+        if(Auth::user()){
+            $count = Favor::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->count();
+            if($count > 0){
+                $isFavored = Favor::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->get()[0]->isFavored;
+            }
+        }
         $categories = Category::all();
         $product = Product::where('id', '=', $product)->first();
         if(count($product->categories) > 0){
@@ -105,7 +114,14 @@ class HomePageController extends Controller
             }
             $products[] = $innerProducts;
         }
-        return view('view', array('product' => $product , 'products' => $products , 'categories' => $categories));
+        return view('view',
+            array(
+                'product' => $product ,
+                'products' => $products ,
+                'categories' => $categories,
+                'isFavored'=> $isFavored
+            )
+        );
     }
 
     /**

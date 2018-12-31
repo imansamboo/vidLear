@@ -40,7 +40,6 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        error_log("constructed", 3, __DIR__ .'/logs.log');
         $this->middleware('guest')->except('logout');
     }
 
@@ -54,7 +53,6 @@ class LoginController extends Controller
         //error_log(var_export($mobile, 1), 3, __DIR__ .'/logs.log');
         $email = '';
         try{
-            error_log($mobile, 3, __DIR__ .'/mobile.log');
             $email = User::where('mobile', '=', $mobile)->get()[0]->email;
         }catch(Exception $e){
 

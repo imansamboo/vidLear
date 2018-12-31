@@ -1,6 +1,12 @@
 console.log('rate');
+var color;
+//color[0] = '#D1D1D1';
 $(document).ready(function(){
-    var j =0;
+    if($('i.fa-heart').css('color') == 'rgb(255, 0, 0)'){
+       var j = 1;
+    }else{
+        var j =0;
+    }
     $('i.fa-heart').on('click', function (){
         if( $('i.fa-sign-in').length > 0 ){
             forceLogin();
@@ -13,6 +19,14 @@ $(document).ready(function(){
                 $this.removeAttr('style');
                 j = 0;
             }
+            $.get({
+                url: window.location.origin + '/favorProduct',
+                data: {
+                },
+                dataType: 'JSON',
+                success: function (response) {
+                }
+            });
         }
 
     })

@@ -27,7 +27,6 @@ class SMSController extends Controller
      */
     public function verify()
     {
-        error_log(var_export($_POST, 1), 3, __DIR__ . '/sms.log');
         if(isset($_POST['last_sent_sms_code']) &&
             isset($_POST['userID']) &&
             $_POST['last_sent_sms_code'] == User::find($_POST['userID'])->last_sent_sms_code
@@ -88,8 +87,6 @@ class SMSController extends Controller
      */
     public function resetPassword()
     {
-        error_log(var_export($_GET, 1), 3 , __DIR__ . '/../../../reset.log');
-        //error_log(/*$_POST['mobile']*/ 123, 3, __DIR__ .'/reset.log');
         if(isset($_GET['mobile'])){
             if(User::where('mobile' , '=', $_GET['mobile'])->count() > 0 ){
                 $user = User::where('mobile' , '=', $_GET['mobile'])->get()[0];
@@ -124,7 +121,5 @@ class SMSController extends Controller
 
         }
     }
-
-
 
 }
