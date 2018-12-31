@@ -60,6 +60,7 @@ Route::get('/home', function () {
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('categories', 'CategoriesController');
     Route::resource('products', 'ProductsController');
+    Route::resource('videos', 'videosController');
     Route::resource('provinces', 'ProvincesController');
     Route::resource('cities', 'CitiesController');
     Route::resource('addresses', 'AddressesController');

@@ -19,6 +19,7 @@ class Product extends Model
         static::deleting(function($model) {
             // remove relations to category
             $model->categories()->detach();
+            $model->videos()->delete();
         });
     }
 
@@ -28,6 +29,14 @@ class Product extends Model
     public function categories()
     {
         return $this->belongsToMany('App\Category');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function videos()
+    {
+        return $this->hasMany('App\ProductVideo');
     }
 
     /**
