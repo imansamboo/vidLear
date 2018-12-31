@@ -1,0 +1,2142 @@
+/*!
+ *  Font Awesome 4.0.3 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
+/* FONT PATH
+ * -------------------------- */
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../fonts/fontawesome-webfont.eot?v=4.0.3');
+  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.0.3') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff?v=4.0.3') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.0.3') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.0.3#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.fa-stellar {
+  display: inline-block;
+  font-family: FontAwesome !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  line-height: 1 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+/* makes the font 33% larger relative to the icon container */
+.fa-stellar-lg {
+  font-size: 1.3333333333333333em;
+  line-height: 0.75em;
+  vertical-align: -15%;
+}
+.fa-stellar-2x {
+  font-size: 2em;
+}
+.fa-stellar-3x {
+  font-size: 3em;
+}
+.fa-stellar-4x {
+  font-size: 4em;
+}
+.fa-stellar-5x {
+  font-size: 5em;
+}
+.fa-stellar-fw {
+  width: 1.2857142857142858em;
+  text-align: center;
+}
+.fa-stellar-ul {
+  padding-left: 0;
+  margin-left: 2.142857142857143em;
+  list-style-type: none;
+}
+.fa-stellar-ul > li {
+  position: relative;
+}
+.fa-stellar-li {
+  position: absolute;
+  left: -2.142857142857143em;
+  width: 2.142857142857143em;
+  top: 0.14285714285714285em;
+  text-align: center;
+}
+.fa-stellar-li.fa-stellar-lg {
+  left: -1.8571428571428572em;
+}
+.fa-stellar-border {
+  padding: .2em .25em .15em;
+  border: solid 0.08em #eeeeee;
+  border-radius: .1em;
+}
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
+}
+.fa.pull-left {
+  margin-right: .3em;
+}
+.fa.pull-right {
+  margin-left: .3em;
+}
+.fa-stellar-spin {
+  -webkit-animation: spin 2s infinite linear;
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+}
+@-moz-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(359deg);
+  }
+}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+  }
+}
+@-o-keyframes spin {
+  0% {
+    -o-transform: rotate(0deg);
+  }
+  100% {
+    -o-transform: rotate(359deg);
+  }
+}
+@-ms-keyframes spin {
+  0% {
+    -ms-transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(359deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+.fa-stellar-rotate-90 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+  transform-origin: 0 0;
+}
+.fa-stellar-rotate-180 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.fa-stellar-rotate-270 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+.fa-stellar-flip-horizontal {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);
+  -webkit-transform: scale(-1, 1);
+  -moz-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+}
+.fa-stellar-flip-vertical {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1);
+  -webkit-transform: scale(1, -1);
+  -moz-transform: scale(1, -1);
+  -ms-transform: scale(1, -1);
+  -o-transform: scale(1, -1);
+  transform: scale(1, -1);
+}
+.fa-stellar-stack {
+  position: relative;
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  vertical-align: middle;
+}
+.fa-stellar-stack-1x,
+.fa-stellar-stack-2x {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+.fa-stellar-stack-1x {
+  line-height: inherit;
+}
+.fa-stellar-stack-2x {
+  font-size: 2em;
+}
+.fa-stellar-inverse {
+  color: #ffffff;
+}
+/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+   readers do not read off random characters that represent icons */
+.fa-stellar-glass:before {
+  content: "\f000";
+}
+.fa-stellar-music:before {
+  content: "\f001";
+}
+.fa-stellar-search:before {
+  content: "\f002";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1);
+}
+}
+.fa-stellar-envelope-o:before {
+  content: "\f003";
+}
+.fa-stellar-heart:before {
+  content: "\f004";
+}
+.fa-stellar-star:before {
+  content: "\f005";
+}
+.fa-stellar-star-o:before {
+  content: "\f006";
+}
+.fa-stellar-user:before {
+  content: "\f007";
+}
+.fa-stellar-film:before {
+  content: "\f008";
+}
+.fa-stellar-th-large:before {
+  content: "\f009";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 9px;
+  padding-bottom: 8px;
+  padding-top: 9px;
+}
+.fa-stellar-th:before {
+  content: "\f00a";
+}
+.fa-stellar-th-list:before {
+  content: "\f00b";
+    position: absolute;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 10px;
+    padding-top: 3px;
+
+}
+.fa-stellar-check:before {
+  content: "\f00c";
+  position: absolute;
+  padding-left: 13px;
+  padding-top: 5px;
+  left: 0px;
+  font-size: 13px !important;
+}
+.fa-stellar-times:before {
+  content: "\f00d";
+}
+.fa-stellar-search-plus:before {
+  content: "\f00e";
+}
+.fa-stellar-search-minus:before {
+  content: "\f010";
+}
+.fa-stellar-power-off:before {
+  content: "\f011";
+}
+.fa-stellar-signal:before {
+  content: "\f012";
+}
+.fa-stellar-trash-o:before {
+  content: "\f014";
+}
+.fa-stellar-home:before {
+  content: "\f015";
+}
+.fa-stellar-file-o:before {
+  content: "\f016";
+}
+.fa-stellar-clock-o:before {
+  content: "\f017";
+}
+.fa-stellar-road:before {
+  content: "\f018";
+}
+.fa-stellar-download:before {
+  content: "\f019";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1);
+}
+.fa-stellar-download-zoom:before {
+  content: "\f019";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1.2);
+}
+.fa-stellar-arrow-circle-o-down:before {
+  content: "\f01a";
+}
+.fa-stellar-arrow-circle-o-up:before {
+  content: "\f01b";
+}
+.fa-stellar-inbox:before {
+  content: "\f01c";
+}
+.fa-stellar-play-circle-o:before {
+  content: "\f01d";
+}
+.fa-stellar-rotate-right:before,
+.fa-stellar-repeat:before {
+  content: "\f01e";
+}
+.fa-stellar-gear:before,
+.fa-stellar-cog:before {
+  content: "\f013";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1);
+}
+.fa-stellar-cog-zoom:before {
+  content: "\f013";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1.2);
+}
+.fa-stellar-refresh:before {
+  content: "\f021";
+}
+.fa-stellar-list-alt:before {
+  content: "\f022";
+    position: absolute;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 10px;
+    padding-top: 3px;
+}
+.fa-stellar-lock:before {
+  content: "\f023";
+}
+.fa-stellar-flag:before {
+  content: "\f024";
+}
+.fa-stellar-headphones:before {
+  content: "\f025";
+}
+.fa-stellar-volume-off:before {
+  content: "\f026";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1);
+}
+.fa-stellar-volume-off-zoom:before {
+  content: "\f026";
+  position: absolute;
+  padding-left: 7px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1.2);
+}
+.fa-stellar-volume-down:before {
+  content: "\f027";
+}
+.fa-stellar-volume-up:before {
+  content: "\f028";
+  position: absolute;
+  padding-left: 9px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1);
+  /* background: cadetblue; */
+}
+.fa-stellar-volume-up-zoom:before {
+  content: "\f028";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1.2);
+}
+.fa-stellar-qrcode:before {
+  content: "\f029";
+}
+.fa-stellar-barcode:before {
+  content: "\f02a";
+}
+.fa-stellar-tag:before {
+  content: "\f02b";
+}
+.fa-stellar-tags:before {
+  content: "\f02c";
+}
+.fa-stellar-book:before {
+  content: "\f02d";
+}
+.fa-stellar-bookmark:before {
+  content: "\f02e";
+}
+.fa-stellar-print:before {
+  content: "\f02f";
+}
+.fa-stellar-camera:before {
+  content: "\f030";
+}
+.fa-stellar-font:before {
+  content: "\f031";
+}
+.fa-stellar-bold:before {
+  content: "\f032";
+}
+.fa-stellar-italic:before {
+  content: "\f033";
+}
+.fa-stellar-text-height:before {
+  content: "\f034";
+}
+.fa-stellar-text-width:before {
+  content: "\f035";
+}
+.fa-stellar-align-left:before {
+  content: "\f036";
+}
+.fa-stellar-align-center:before {
+  content: "\f037";
+}
+.fa-stellar-align-right:before {
+  content: "\f038";
+}
+.fa-stellar-align-justify:before {
+  content: "\f039";
+}
+.fa-stellar-list:before {
+  content: "\f03a";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  
+  transform: scale(1);
+}
+.fa-stellar-list-zoom:before {
+  content: "\f03a";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  
+  transform: scale(1.2);
+}
+.fa-stellar-dedent:before,
+.fa-stellar-outdent:before {
+  content: "\f03b";
+  position:absolute;
+  padding-left: 8px; 
+  padding-right: 8px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  line-height: normal;
+  left: 5px;
+}
+.fa-stellar-indent:before {
+  content: "\f03c";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  line-height: normal;
+  /* left: 5px; */
+}
+.fa-stellar-video-camera:before {
+  content: "\f03d";
+}
+.fa-stellar-picture-o:before {
+  content: "\f03e";
+}
+.fa-stellar-pencil:before {
+  content: "\f040";
+}
+.fa-stellar-map-marker:before {
+  content: "\f041";
+}
+.fa-stellar-adjust:before {
+  content: "\f042";
+}
+.fa-stellar-tint:before {
+  content: "\f043";
+}
+.fa-stellar-edit:before,
+.fa-stellar-pencil-square-o:before {
+  content: "\f044";
+}
+.fa-stellar-share-square-o:before {
+  content: "\f045";
+  position: absolute;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-bottom: 8px;
+  padding-top: 9px;
+  line-height: normal;
+  /* left: 5px; */
+}
+.fa-stellar-check-square-o:before {
+  content: "\f046";
+  position: absolute;
+  padding-left: 13px;
+  padding-top: 5px;
+  left: 0px;
+  font-size: 13px !important;
+}
+.fa-stellar-arrows:before {
+  content: "\f047";
+}
+.fa-stellar-step-backward:before {
+  content: "\f048";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1);
+}
+.fa-stellar-backward:before {
+  content: "\f04a";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1);
+}
+.fa-stellar-random:before {
+  content: "\f074";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1);
+}
+.fa-stellar-random-zoom:before {
+  content: "\f074";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1.2);
+}
+.fa-stellar-toggle-off:before {
+  content: "\f204";
+  position: absolute;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1);
+}
+.fa-stellar-toggle-off-zoom:before {
+  content: "\f204";
+  position: absolute;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1.2);
+}
+.fa-stellar-toggle-on:before {
+  content: "\f205";
+  position: absolute;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1);
+}
+.fa-stellar-toggle-on-zoom:before {
+  content: "\f205";
+  position: absolute;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1.2);
+}
+.fa-stellar-forward:before {
+  content: "\f04e";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1);
+}
+.fa-stellar-step-forward:before {
+  content: "\f051";
+  position: absolute;
+  padding-left: 12px;
+  padding-right: 11px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1);
+  /* background: blueviolet; */
+}
+.fa-stellar-step-forward-zoom:before {
+  content: "\f051";
+  position: absolute;
+  padding-left: 11px;
+  padding-right: 11px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  
+  transform: scale(1.2);;
+}
+.fa-stellar-fast-backward:before {
+  content: "\f049";
+    position: absolute;
+    right: 269px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+.fa-stellar-play:before {
+    content: "\f04b";
+    position: absolute;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 14px;
+    padding-top: 14px;
+    line-height: normal;
+    transform: scale(1);
+}
+.fa-stellar-play-zoom:before {
+    content: "\f04b";
+    position: absolute;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 14px;
+    padding-top: 14px;
+    line-height: normal;
+    transform: scale(1.2);
+}
+.fa-stellar-playScreen.dark:before {
+    content: "\f04b";
+    position: absolute;
+    font-size: 22px;
+    /* padding-left: 29px; */
+    /* padding-right: 27px; */
+    /* padding-bottom: 25px; */
+    /* padding-top: 25px; */
+    /* background: rgba(0, 0, 0, 0.7); */
+    line-height: normal;
+    left: 50%;
+    top: 50%;
+    margin-left: -8.6px;
+    margin-top: -11.5px;
+}
+.fa-stellar-playScreen.light:before {
+    content: "\f04b";
+    position: absolute;
+    font-size: 22px;
+    /* padding-left: 29px; */
+    /* padding-right: 27px; */
+    /* padding-bottom: 25px; */
+    /* padding-top: 25px; */
+    /* background: rgba(0, 0, 0, 0.7); */
+    line-height: normal;
+    left: 50%;
+    top: 50%;
+    margin-left: -8.6px;
+    margin-top: -11.5px;
+}
+.fa-stellar-playAD:before {
+  content: "\f04b";
+    position: absolute;
+    top: 7px;
+    right: 9px;
+    color: rgb(255, 255, 255);
+}
+.fa-stellar-pause:before {
+	content: "\f04c";
+	position: absolute;
+	padding-left: 16px;
+	padding-right: 16px;
+	padding-bottom: 14px;
+	padding-top: 14px;
+	line-height: normal;
+	transform: scale(1);
+}
+.fa-stellar-pause-zoom:before {
+	content: "\f04c";
+	position: absolute;
+	padding-left: 16px;
+	padding-right: 16px;
+	padding-bottom: 14px;
+	padding-top: 14px;
+	line-height: normal;
+	transform: scale(1.2);
+}
+.fa-stellar-pauseAD:before {
+  content: "\f04c";
+    position: absolute;
+    top: 7px;
+    right: 9px;
+    color: rgb(255, 255, 255);
+}
+.fa-stellar-stop:before {
+  content: "\f04d";
+}
+.fa-stellar-fast-forward:before {
+  content: "\f050";
+}
+.fa-stellar-step-forward-ad:before {
+  content: "\f051";
+    position: absolute;
+	top: 0;
+	right: 17px;
+	color: #fff;
+	padding-top: 32px;
+	padding-bottom: 32px;
+}
+.fa-stellar-eject:before {
+  content: "\f052";
+}
+.fa-stellar-chevron-left:before {
+  content: "\f053";
+  position: absolute;
+  padding-left: 10.5px;
+  padding-right: 10.5px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1);
+}
+.fa-stellar-chevron-left-zoom:before {
+  content: "\f053";
+  position: absolute;
+  padding-left: 10.5px;
+  padding-right: 10.5px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1.2);
+}
+.fa-stellar-chevron-right:before {
+  content: "\f054";
+  position: absolute;
+  padding-left: 10.5px;
+  padding-right: 10.5px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1);
+}
+.fa-stellar-chevron-right-zoom:before {
+  content: "\f054";
+  position: absolute;
+  padding-left: 10.5px;
+  padding-right: 10.5px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1.2);
+}
+.fa-stellar-plus-circle:before {
+  content: "\f055";
+}
+.fa-stellar-minus-circle:before {
+  content: "\f056";
+}
+.fa-stellar-times-circle:before {
+  content: "\f057";
+  position: absolute;
+  top: 0px !important;
+  left: 0px !important;
+  padding-left: 10px;
+  padding-right: 7px;
+  padding-bottom: 8px;
+  padding-top: 6px;
+  line-height: normal;
+}
+.fa-stellar-check-circle:before {
+  content: "\f058";
+}
+.fa-stellar-question-circle:before {
+  content: "\f059";
+}
+.fa-stellar-info-circle:before {
+  content: "\f05a";
+  position: absolute;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  line-height: normal;
+  transform: scale(1);
+}
+.fa-stellar-info-circle-zoom:before {
+  content: "\f05a";
+  position: absolute;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  line-height: normal;
+  transform: scale(1.2);
+}
+.fa-stellar-crosshairs:before {
+  content: "\f05b";
+}
+.fa-stellar-times-circle-o:before {
+  content: "\f05c";
+}
+.fa-stellar-check-circle-o:before {
+  content: "\f05d";
+  position: absolute;
+  padding-left: 13px;
+  padding-top: 5px;
+  left: 0px;
+  font-size: 13px !important;
+}
+.fa-stellar-ban:before {
+  content: "\f05e";
+}
+.fa-stellar-arrow-left:before {
+  content: "\f060";
+}
+.fa-stellar-arrow-right:before {
+  content: "\f061";
+}
+.fa-stellar-arrow-up:before {
+  content: "\f062";
+}
+.fa-stellar-arrow-down:before {
+  content: "\f063";
+}
+.fa-stellar-mail-forward:before,
+.fa-stellar-share:before {
+  content: "\f064";
+}
+.fa-stellar-share-alt:before {
+    content: "\f1e0";
+    position: absolute;    
+    padding-left: 8px;    
+    padding-right: 9px;    
+	padding-bottom: 8px;    
+    padding-top: 9px;    
+}
+.fa-stellar-expand:before {
+  content: "\f065";
+}
+.fa-stellar-compress:before {
+  content: "\f066";
+}
+.fa-stellar-expandAD:before {
+  content: "\f065";
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding-right: 10px;
+  padding-top: 10px;
+  color: #ffffff;
+  cursor: pointer;
+}
+.fa-stellar-compressAD:before {
+  content: "\f066";
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding-right: 10px;
+  padding-top: 10px;
+  color: #ffffff;
+  cursor: pointer;
+}
+.fa-stellar-plus:before {
+  content: "\f067";
+}
+.fa-stellar-minus:before {
+  content: "\f068";
+}
+.fa-stellar-asterisk:before {
+  content: "\f069";
+}
+.fa-stellar-exclamation-circle:before {
+  content: "\f06a";
+}
+.fa-stellar-gift:before {
+  content: "\f06b";
+}
+.fa-stellar-leaf:before {
+  content: "\f06c";
+}
+.fa-stellar-fire:before {
+  content: "\f06d";
+}
+.fa-stellar-eye:before {
+  content: "\f06e";
+}
+.fa-stellar-eye-slash:before {
+  content: "\f070";
+}
+.fa-stellar-warning:before,
+.fa-stellar-exclamation-triangle:before {
+  content: "\f071";
+}
+.fa-stellar-plane:before {
+  content: "\f072";
+}
+.fa-stellar-calendar:before {
+  content: "\f073";
+}
+.fa-stellar-comment:before {
+  content: "\f075";
+}
+.fa-stellar-magnet:before {
+  content: "\f076";
+}
+.fa-stellar-chevron-up:before {
+  content: "\f077";
+    position: absolute;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 7px;
+    padding-top: 5px;
+}
+.fa-stellar-chevron-down:before {
+  content: "\f078";
+    position: absolute;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 7px;
+    padding-top: 5px;
+}
+.fa-stellar-retweet:before {
+  content: "\f079";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  
+  transform: scale(1);
+}
+.fa-stellar-retweet-zoom:before {
+  content: "\f079";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  
+  transform: scale(1.2);
+}
+.fa-stellar-shopping-cart:before {
+  content: "\f07a";
+}
+.fa-stellar-folder:before {
+  content: "\f07b";
+}
+.fa-stellar-folder-open:before {
+  content: "\f07c";
+}
+.fa-stellar-arrows-v:before {
+  content: "\f07d";
+}
+.fa-stellar-arrows-h:before {
+  content: "\f07e";
+}
+.fa-stellar-bar-chart-o:before {
+  content: "\f080";
+}
+.fa-stellar-twitter-square:before {
+  content: "\f081";
+  position: absolute;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  line-height: normal;
+  left: 5px;
+}
+.fa-stellar-facebook-square:before {
+  content: "\f082";
+    position: absolute;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+	line-height: normal;
+}
+.fa-stellar-camera-retro:before {
+  content: "\f083";
+}
+.fa-stellar-key:before {
+  content: "\f084";
+}
+.fa-stellar-comments:before {
+  content: "\f086";
+}
+.fa-stellar-thumbs-o-up:before {
+  content: "\f087";
+}
+.fa-stellar-thumbs-o-down:before {
+  content: "\f088";
+}
+.fa-stellar-star-half:before {
+  content: "\f089";
+}
+.fa-stellar-heart-o:before {
+  content: "\f08a";
+}
+.fa-stellar-sign-out:before {
+  content: "\f08b";
+}
+.fa-stellar-linkedin-square:before {
+  content: "\f08c";
+}
+.fa-stellar-thumb-tack:before {
+  content: "\f08d";
+}
+.fa-stellar-external-link:before {
+  content: "\f08e";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 16px;
+  padding-top: 16px;
+  line-height: normal;
+  transform: scale(1);
+}
+.fa-stellar-external-link-zoom:before {
+  content: "\f08e";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 16px;
+  padding-top: 16px;
+  line-height: normal;
+  transform: scale(1.2);
+}
+.fa-stellar-sign-in:before {
+  content: "\f090";
+}
+.fa-stellar-trophy:before {
+  content: "\f091";
+}
+.fa-stellar-github-square:before {
+  content: "\f092";
+}
+.fa-stellar-upload:before {
+  content: "\f093";
+}
+.fa-stellar-lemon-o:before {
+  content: "\f094";
+}
+.fa-stellar-phone:before {
+  content: "\f095";
+}
+.fa-stellar-square-o:before {
+  content: "\f096";
+}
+.fa-stellar-bookmark-o:before {
+  content: "\f097";
+}
+.fa-stellar-phone-square:before {
+  content: "\f098";
+}
+.fa-stellar-twitter:before {
+  content: "\f099";
+  position: absolute;
+  padding-left: 9px;  
+  padding-right: 8px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  transform: scale(1);  
+}
+.fa-stellar-twitter-zoom:before {
+  content: "\f099";
+  position: absolute;
+  padding-left: 9px;  
+  padding-right: 8px;
+  padding-bottom: 8px;
+  padding-top: 8px; 
+  transform: scale(1.2);  
+}
+.fa-stellar-facebook:before {
+  content: "\f09a";
+  position: absolute;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 8px;
+  padding-top: 9px;
+  transform: scale(1);
+}
+.fa-stellar-facebook-zoom:before {
+  content: "\f09a";
+  position: absolute;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 8px;
+  padding-top: 9px;
+  transform: scale(1.2);
+}
+.fa-stellar-github:before {
+  content: "\f09b";
+}
+.fa-stellar-unlock:before {
+  content: "\f09c";
+}
+.fa-stellar-credit-card:before {
+  content: "\f09d";
+}
+.fa-stellar-rss:before {
+  content: "\f09e";
+}
+.fa-stellar-hdd-o:before {
+  content: "\f0a0";
+}
+.fa-stellar-bullhorn:before {
+  content: "\f0a1";
+}
+.fa-stellar-bell:before {
+  content: "\f0f3";
+}
+.fa-stellar-certificate:before {
+  content: "\f0a3";
+}
+.fa-stellar-hand-o-right:before {
+  content: "\f0a4";
+}
+.fa-stellar-hand-o-left:before {
+  content: "\f0a5";
+}
+.fa-stellar-hand-o-up:before {
+  content: "\f0a6";
+}
+.fa-stellar-hand-o-down:before {
+  content: "\f0a7";
+}
+.fa-stellar-arrow-circle-left:before {
+  content: "\f0a8";
+}
+.fa-stellar-arrow-circle-right:before {
+  content: "\f0a9";
+}
+.fa-stellar-arrow-circle-up:before {
+  content: "\f0aa";
+}
+.fa-stellar-arrow-circle-down:before {
+  content: "\f0ab";
+}
+.fa-stellar-globe:before {
+  content: "\f0ac";
+}
+.fa-stellar-wrench:before {
+  content: "\f0ad";
+}
+.fa-stellar-tasks:before {
+  content: "\f0ae";
+}
+.fa-stellar-filter:before {
+  content: "\f0b0";
+}
+.fa-stellar-briefcase:before {
+  content: "\f0b1";
+}
+.fa-stellar-arrows-alt:before {
+  content: "\f0b2";
+}
+.fa-stellar-tv:before,
+.fa-stellar-television:before {
+  content: "\f26c";
+}
+.fa-stellar-tv-expand:before,
+.fa-stellar-television-expand:before {
+  content: "\f26c";
+}
+.fa-stellar-tv-compress:before,
+.fa-stellar-television-compress:before {
+  content: "\f26c";
+}
+.fa-stellar-group:before,
+.fa-stellar-users:before {
+  content: "\f0c0";
+}
+.fa-stellar-chain:before,
+.fa-stellar-link:before {
+  content: "\f0c1";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1);
+}
+.fa-stellar-chain-zoom:before,
+.fa-stellar-link-zoom:before {
+  content: "\f0c1";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1.2);
+}
+.fa-stellar-cloud:before {
+  content: "\f0c2";
+}
+.fa-stellar-flask:before {
+  content: "\f0c3";
+}
+.fa-stellar-cut:before,
+.fa-stellar-scissors:before {
+  content: "\f0c4";
+}
+.fa-stellar-copy:before,
+.fa-stellar-files-o:before {
+  content: "\f0c5";
+}
+.fa-stellar-paperclip:before {
+  content: "\f0c6";
+}
+.fa-stellar-save:before,
+.fa-stellar-floppy-o:before {
+  content: "\f0c7";
+}
+.fa-stellar-square:before {
+  content: "\f0c8";
+}
+.fa-stellar-bars:before {
+  content: "\f0c9";
+  position: absolute;
+  padding-left: 9px; 
+  padding-right: 9px;
+  padding-bottom: 8px;
+  padding-top: 9px;
+}
+.fa-stellar-list-ul:before {
+  content: "\f0ca";
+  position: absolute;  
+  padding-left: 8px;  
+  padding-right: 8px;  padding-bottom: 8px;  padding-top: 8px;  
+}
+.fa-stellar-list-ol:before {
+  content: "\f0cb";
+}
+.fa-stellar-strikethrough:before {
+  content: "\f0cc";
+}
+.fa-stellar-underline:before {
+  content: "\f0cd";
+}
+.fa-stellar-table:before {
+  content: "\f0ce";
+}
+.fa-stellar-magic:before {
+  content: "\f0d0";
+}
+.fa-stellar-truck:before {
+  content: "\f0d1";
+}
+.fa-stellar-pinterest:before {
+  content: "\f0d2";
+}
+.fa-stellar-pinterest-square:before {
+  content: "\f0d3";
+}
+.fa-stellar-google-plus-square:before {
+  content: "\f0d4";
+}
+.fa-stellar-google-plus:before {
+  content: "\f0d5";
+  position: absolute;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-bottom: 7px;
+  padding-top: 9px;
+  transform: scale(1);
+}
+.fa-stellar-google-plus-zoom:before {
+  content: "\f0d5";
+  position: absolute;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-bottom: 7px;
+  padding-top: 9px;
+  transform: scale(1.2);
+}
+.fa-stellar-money:before {
+  content: "\f0d6";
+}
+.fa-stellar-caret-down:before {
+  content: "\f0d7";
+}
+.fa-stellar-caret-up:before {
+  content: "\f0d8";
+}
+.fa-stellar-caret-left:before {
+  content: "\f0d9";
+}
+.fa-stellar-caret-right:before {
+  content: "\f0da";
+  position: absolute;
+  padding-left: 13px;
+  padding-top: 5px;
+  left: 0px;
+  font-size: 13px !important;
+}
+.fa-stellar-columns:before {
+  content: "\f0db";
+}
+.fa-stellar-unsorted:before,
+.fa-stellar-sort:before {
+  content: "\f0dc";
+}
+.fa-stellar-sort-down:before,
+.fa-stellar-sort-asc:before {
+  content: "\f0dd";
+    position: absolute;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-bottom: 15px;
+  padding-top: 11px;
+}
+.fa-stellar-sort-up:before,
+.fa-stellar-sort-desc:before {
+  content: "\f0de";
+  position: absolute;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-bottom: 11px;
+  padding-top: 15px;
+}
+.fa-stellar-envelope:before {
+  content: "\f0e0";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+}
+.fa-stellar-linkedin:before {
+  content: "\f0e1";
+}
+.fa-stellar-rotate-left:before,
+.fa-stellar-undo:before {
+  content: "\f0e2";
+}
+.fa-stellar-legal:before,
+.fa-stellar-gavel:before {
+  content: "\f0e3";
+}
+.fa-stellar-dashboard:before,
+.fa-stellar-tachometer:before {
+  content: "\f0e4";
+}
+.fa-stellar-comment-o:before {
+  content: "\f0e5";
+}
+.fa-stellar-comments-o:before {
+  content: "\f0e6";
+}
+.fa-stellar-flash:before,
+.fa-stellar-bolt:before {
+  content: "\f0e7";
+}
+.fa-stellar-sitemap:before {
+  content: "\f0e8";
+}
+.fa-stellar-umbrella:before {
+  content: "\f0e9";
+}
+.fa-stellar-paste:before,
+.fa-stellar-clipboard:before {
+  content: "\f0ea";
+}
+.fa-stellar-lightbulb-o:before {
+  content: "\f0eb";
+}
+.fa-stellar-exchange:before {
+  content: "\f0ec";
+}
+.fa-stellar-cloud-download:before {
+  content: "\f0ed";
+}
+.fa-stellar-cloud-upload:before {
+  content: "\f0ee";
+}
+.fa-stellar-user-md:before {
+  content: "\f0f0";
+}
+.fa-stellar-stethoscope:before {
+  content: "\f0f1";
+}
+.fa-stellar-suitcase:before {
+  content: "\f0f2";
+}
+.fa-stellar-bell-o:before {
+  content: "\f0a2";
+}
+.fa-stellar-coffee:before {
+  content: "\f0f4";
+}
+.fa-stellar-cutlery:before {
+  content: "\f0f5";
+}
+.fa-stellar-file-text-o:before {
+  content: "\f0f6";
+}
+.fa-stellar-building-o:before {
+  content: "\f0f7";
+}
+.fa-stellar-hospital-o:before {
+  content: "\f0f8";
+}
+.fa-stellar-ambulance:before {
+  content: "\f0f9";
+}
+.fa-stellar-medkit:before {
+  content: "\f0fa";
+}
+.fa-stellar-fighter-jet:before {
+  content: "\f0fb";
+}
+.fa-stellar-beer:before {
+  content: "\f0fc";
+}
+.fa-stellar-h-square:before {
+  content: "\f0fd";
+}
+.fa-stellar-plus-square:before {
+  content: "\f0fe";
+}
+.fa-stellar-angle-double-left:before {
+  content: "\f100";
+  position: absolute;      
+  padding-left: 14px;      
+  padding-right: 19px;      
+  padding-bottom: 0px;      
+  padding-top: 0px;      
+  /* background: #ff0000; */;
+}
+.fa-stellar-angle-double-right:before {
+  content: "\f101";
+  position: absolute;
+    
+  padding-left: 18px;
+    
+  padding-right: 19px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+.fa-stellar-angle-double-up:before {
+  content: "\f102";
+  position: absolute;
+  padding-left: 2px;
+  padding-right: 3px;
+  padding-bottom: 15px;
+  padding-top: 11px;
+}
+.fa-stellar-angle-double-down:before {
+  content: "\f103";
+  position: absolute;
+  padding-left: 2px;
+  padding-right: 3px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+.fa-stellar-close:before{
+  content: "\f00d";
+  position: absolute;
+  top: 0px !important;
+  left: 0px !important;
+  padding-left: 10px;
+  padding-right: 7px;
+  padding-bottom: 8px;
+  padding-top: 6px;
+  line-height: normal;
+}
+.fa-stellar-angle-left:before {
+  content: "\f104";
+    
+  position: absolute;      
+  padding-left: 14px;      
+  padding-right: 19px;      
+  padding-bottom: 0px;      
+  padding-top: 0px;      
+}
+.fa-stellar-angle-right:before {
+  content: "\f105";
+    position: absolute;
+    padding-left: 14px;
+    padding-right: 19px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+.fa-stellar-angle-up:before {
+  content: "\f106";
+    position: absolute;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-bottom: 15px;
+    padding-top: 11px;
+}
+.fa-stellar-angle-down:before {
+  content: "\f107";
+    position: absolute;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-bottom: 11px;
+    padding-top: 15px;
+}
+.fa-stellar-desktop-expand:before {
+  content: "\f108";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1);
+}
+.fa-stellar-desktop-expand-zoom:before {
+  content: "\f108";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1.2);
+}
+.fa-stellar-desktop-compress:before {
+  content: "\f108";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1);
+}
+.fa-stellar-desktop-compress-zoom:before {
+  content: "\f108";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1.2);
+}
+.fa-stellar-laptop:before {
+  content: "\f109";
+}
+.fa-stellar-tablet:before {
+  content: "\f10a";
+}
+.fa-stellar-mobile-phone:before,
+.fa-stellar-mobile:before {
+  content: "\f10b";
+}
+.fa-stellar-circle-o:before {
+  content: "\f10c";
+}
+.fa-stellar-quote-left:before {
+  content: "\f10d";
+}
+.fa-stellar-quote-right:before {
+  content: "\f10e";
+}
+.fa-stellar-spinner:before {
+  content: "\f110";
+}
+.fa-stellar-circle:before {
+  content: "\f111";
+}
+.fa-stellar-mail-reply:before,
+.fa-stellar-reply:before {
+  content: "\f112";
+    position: absolute;
+    right: 269px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+	line-height: normal;
+  left: 5px;
+}
+.fa-stellar-github-alt:before {
+  content: "\f113";
+}
+.fa-stellar-folder-o:before {
+  content: "\f114";
+}
+.fa-stellar-folder-open-o:before {
+  content: "\f115";
+}
+.fa-stellar-smile-o:before {
+  content: "\f118";
+}
+.fa-stellar-frown-o:before {
+  content: "\f119";
+}
+.fa-stellar-meh-o:before {
+  content: "\f11a";
+}
+.fa-stellar-gamepad:before {
+  content: "\f11b";
+}
+.fa-stellar-keyboard-o:before {
+  content: "\f11c";
+}
+.fa-stellar-flag-o:before {
+  content: "\f11d";
+}
+.fa-stellar-flag-checkered:before {
+  content: "\f11e";
+}
+.fa-stellar-terminal:before {
+  content: "\f120";
+}
+.fa-stellar-code:before {
+  content: "\f121";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1);
+}
+.fa-stellar-code-zoom:before {
+  content: "\f121";
+  position: absolute;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  line-height: normal;
+  transform: scale(1.2);
+}
+.fa-stellar-reply-all:before {
+  content: "\f122";
+}
+.fa-stellar-mail-reply-all:before {
+  content: "\f122";
+}
+.fa-stellar-star-half-empty:before,
+.fa-stellar-star-half-full:before,
+.fa-stellar-star-half-o:before {
+  content: "\f123";
+}
+.fa-stellar-location-arrow:before {
+  content: "\f124";
+}
+.fa-stellar-crop:before {
+  content: "\f125";
+}
+.fa-stellar-code-fork:before {
+  content: "\f126";
+}
+.fa-stellar-unlink:before,
+.fa-stellar-chain-broken:before {
+  content: "\f127";
+}
+.fa-stellar-question:before {
+  content: "\f128";
+}
+.fa-stellar-info:before {
+    content: "\f129";
+    position: absolute;
+    padding-left: 13px;
+    padding-right: 14px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    line-height: normal;
+    /* left: 5px; */
+}
+}
+.fa-stellar-exclamation:before {
+  content: "\f12a";
+}
+.fa-stellar-superscript:before {
+  content: "\f12b";
+}
+.fa-stellar-subscript:before {
+  content: "\f12c";
+}
+.fa-stellar-eraser:before {
+  content: "\f12d";
+}
+.fa-stellar-puzzle-piece:before {
+  content: "\f12e";
+}
+.fa-stellar-microphone:before {
+  content: "\f130";
+}
+.fa-stellar-microphone-slash:before {
+  content: "\f131";
+}
+.fa-stellar-shield:before {
+  content: "\f132";
+}
+.fa-stellar-calendar-o:before {
+  content: "\f133";
+}
+.fa-stellar-fire-extinguisher:before {
+  content: "\f134";
+}
+.fa-stellar-rocket:before {
+  content: "\f135";
+}
+.fa-stellar-maxcdn:before {
+  content: "\f136";
+}
+.fa-stellar-chevron-circle-left:before {
+  content: "\f137";
+  position: absolute;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  line-height: normal;
+  transform: scale(1);
+}
+.fa-stellar-chevron-circle-left-zoom:before {
+  content: "\f137";
+  position: absolute;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  line-height: normal;
+  transform: scale(1.2);
+}
+.fa-stellar-chevron-circle-right:before {
+  content: "\f138";
+  position: absolute;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  line-height: normal;
+  transform: scale(1);
+}
+.fa-stellar-chevron-circle-right-zoom:before {
+  content: "\f138";
+  position: absolute;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  line-height: normal;
+  transform: scale(1.2);
+}
+.fa-stellar-chevron-circle-up:before {
+  content: "\f139";
+}
+.fa-stellar-chevron-circle-down:before {
+  content: "\f13a";
+}
+.fa-stellar-html5:before {
+  content: "\f13b";
+}
+.fa-stellar-css3:before {
+  content: "\f13c";
+}
+.fa-stellar-anchor:before {
+  content: "\f13d";
+}
+.fa-stellar-unlock-alt:before {
+  content: "\f13e";
+}
+.fa-stellar-bullseye:before {
+  content: "\f140";
+}
+.fa-stellar-ellipsis-h:before {
+  content: "\f141";
+}
+.fa-stellar-ellipsis-v:before {
+  content: "\f142";
+}
+.fa-stellar-rss-square:before {
+  content: "\f143";
+}
+.fa-stellar-play-circle:before {
+  content: "\f144";
+}
+.fa-stellar-ticket:before {
+  content: "\f145";
+}
+.fa-stellar-minus-square:before {
+  content: "\f146";
+}
+.fa-stellar-minus-square-o:before {
+  content: "\f147";
+}
+.fa-stellar-level-up:before {
+  content: "\f148";
+}
+.fa-stellar-level-down:before {
+  content: "\f149";
+}
+.fa-stellar-check-square:before {
+  content: "\f14a";
+}
+.fa-stellar-pencil-square:before {
+  content: "\f14b";
+}
+.fa-stellar-external-link-square:before {
+  content: "\f14c";
+}
+.fa-stellar-share-square:before {
+  content: "\f14d";
+  position: absolute;    
+    padding-left: 8px;    
+    padding-right: 9px;    
+	padding-bottom: 8px;    
+    padding-top: 9px;    
+}
+.fa-stellar-compass:before {
+  content: "\f14e";
+}
+.fa-stellar-toggle-down:before,
+.fa-stellar-caret-square-o-down:before {
+  content: "\f150";
+}
+.fa-stellar-toggle-up:before,
+.fa-stellar-caret-square-o-up:before {
+  content: "\f151";
+}
+.fa-stellar-toggle-right:before,
+.fa-stellar-caret-square-o-right:before {
+  content: "\f152";
+}
+.fa-stellar-euro:before,
+.fa-stellar-eur:before {
+  content: "\f153";
+}
+.fa-stellar-gbp:before {
+  content: "\f154";
+}
+.fa-stellar-dollar:before,
+.fa-stellar-usd:before {
+  content: "\f155";
+}
+.fa-stellar-rupee:before,
+.fa-stellar-inr:before {
+  content: "\f156";
+}
+.fa-stellar-cny:before,
+.fa-stellar-rmb:before,
+.fa-stellar-yen:before,
+.fa-stellar-jpy:before {
+  content: "\f157";
+}
+.fa-stellar-ruble:before,
+.fa-stellar-rouble:before,
+.fa-stellar-rub:before {
+  content: "\f158";
+}
+.fa-stellar-won:before,
+.fa-stellar-krw:before {
+  content: "\f159";
+}
+.fa-stellar-bitcoin:before,
+.fa-stellar-btc:before {
+  content: "\f15a";
+}
+.fa-stellar-file:before {
+  content: "\f15b";
+}
+.fa-stellar-file-text:before {
+  content: "\f15c";
+}
+.fa-stellar-sort-alpha-asc:before {
+  content: "\f15d";
+}
+.fa-stellar-sort-alpha-desc:before {
+  content: "\f15e";
+}
+.fa-stellar-sort-amount-asc:before {
+  content: "\f160";
+}
+.fa-stellar-sort-amount-desc:before {
+  content: "\f161";
+}
+.fa-stellar-sort-numeric-asc:before {
+  content: "\f162";
+}
+.fa-stellar-sort-numeric-desc:before {
+  content: "\f163";
+}
+.fa-stellar-thumbs-up:before {
+  content: "\f164";
+}
+.fa-stellar-thumbs-down:before {
+  content: "\f165";
+}
+.fa-stellar-youtube-square:before {
+  content: "\f166";
+}
+.fa-stellar-youtube:before {
+  content: "\f167";
+}
+.fa-stellar-xing:before {
+  content: "\f168";
+}
+.fa-stellar-xing-square:before {
+  content: "\f169";
+}
+.fa-stellar-youtube-play:before {
+  content: "\f16a";
+  position: absolute;
+  color: #ffffff;
+  font-size: 94px;
+}
+.fa-stellar-dropbox:before {
+  content: "\f16b";
+}
+.fa-stellar-stack-overflow:before {
+  content: "\f16c";
+}
+.fa-stellar-instagram:before {
+  content: "\f16d";
+}
+.fa-stellar-flickr:before {
+  content: "\f16e";
+}
+.fa-stellar-adn:before {
+  content: "\f170";
+}
+.fa-stellar-bitbucket:before {
+  content: "\f171";
+}
+.fa-stellar-bitbucket-square:before {
+  content: "\f172";
+}
+.fa-stellar-tumblr:before {
+  content: "\f173";
+}
+.fa-stellar-tumblr-square:before {
+  content: "\f174";
+}
+.fa-stellar-long-arrow-down:before {
+  content: "\f175";
+}
+.fa-stellar-long-arrow-up:before {
+  content: "\f176";
+}
+.fa-stellar-long-arrow-left:before {
+  content: "\f177";
+}
+.fa-stellar-long-arrow-right:before {
+  content: "\f178";
+}
+.fa-stellar-apple:before {
+  content: "\f179";
+}
+.fa-stellar-windows:before {
+  content: "\f17a";
+}
+.fa-stellar-android:before {
+  content: "\f17b";
+}
+.fa-stellar-linux:before {
+  content: "\f17c";
+}
+.fa-stellar-dribbble:before {
+  content: "\f17d";
+}
+.fa-stellar-skype:before {
+  content: "\f17e";
+}
+.fa-stellar-foursquare:before {
+  content: "\f180";
+}
+.fa-stellar-trello:before {
+  content: "\f181";
+}
+.fa-stellar-female:before {
+  content: "\f182";
+}
+.fa-stellar-male:before {
+  content: "\f183";
+}
+.fa-stellar-gittip:before {
+  content: "\f184";
+}
+.fa-stellar-sun-o:before {
+  content: "\f185";
+}
+.fa-stellar-moon-o:before {
+  content: "\f186";
+}
+.fa-stellar-archive:before {
+  content: "\f187";
+}
+.fa-stellar-bug:before {
+  content: "\f188";
+}
+.fa-stellar-vk:before {
+  content: "\f189";
+}
+.fa-stellar-weibo:before {
+  content: "\f18a";
+}
+.fa-stellar-renren:before {
+  content: "\f18b";
+}
+.fa-stellar-pagelines:before {
+  content: "\f18c";
+}
+.fa-stellar-stack-exchange:before {
+  content: "\f18d";
+}
+.fa-stellar-arrow-circle-o-right:before {
+  content: "\f18e";
+}
+.fa-stellar-arrow-circle-o-left:before {
+  content: "\f190";
+}
+.fa-stellar-toggle-left:before,
+.fa-stellar-caret-square-o-left:before {
+  content: "\f191";
+}
+.fa-stellar-dot-circle-o:before {
+  content: "\f192";
+}
+.fa-stellar-wheelchair:before {
+  content: "\f193";
+}
+.fa-stellar-vimeo-square:before {
+  content: "\f194";
+}
+.fa-stellar-turkish-lira:before,
+.fa-stellar-try:before {
+  content: "\f195";
+}
+.fa-stellar-plus-square-o:before {
+  content: "\f196";
+}
+.fa-stellar-play-indicator:before {
+    content: "\f04b";
+    /* position: absolute; */
+    /* padding-left: 16px; */
+    /* padding-right: 16px; */
+    /* padding-bottom: 14px; */
+    /* padding-top: 14px; */
+    /* line-height: normal; */
+    /* transform: scale(1); */
+}
+
+
+
+
+.fa-stellar-iOSBtnScreen.dark:before {
+    content: "\f028";
+    position: absolute;
+	color: #000;
+	font-size: 115px;
+	line-height: normal;
+}
+.fa-stellar-iOSBtnScreen.light:before {
+    content: "\f028";
+    position: absolute;
+	color: #fbfbfb;
+	font-size: 115px;
+	line-height: normal;
+}
+.stellar_vp_iOSVolumeButtonScreen {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -49px 0px 0px -59px;
+    width: 98px;
+    height: 118px;
+    z-index: 2147483647;
+}
+@keyframes pulse_animation {
+	0% { transform: scale(0.8); }
+   50% { transform: scale(1); }
+   100% { transform: scale(0.8); }
+}
+.pulse {
+	animation-name: pulse_animation;
+	animation-duration: 2000ms;
+	transform-origin:70% 70%;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+
+
+
