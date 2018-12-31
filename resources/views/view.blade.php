@@ -225,11 +225,17 @@
             <div class="sp-sidebar">
                 <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 rating sp-sidebar-rating">
                     <div class="the-rate-star">
-                        <i class="fa fa-2x fa-star" id="5"></i>
-                        <i class="fa fa-2x fa-star" id="4"></i>
-                        <i class="fa fa-2x fa-star" id="3"></i>
-                        <i class="fa fa-2x fa-star" id="2"></i>
-                        <i class="fa fa-2x fa-star" id="1"></i>
+                        @if($rating == 0)
+                            <i class="fa fa-2x fa-star" id="5"></i>
+                            <i class="fa fa-2x fa-star" id="4"></i>
+                            <i class="fa fa-2x fa-star" id="3"></i>
+                            <i class="fa fa-2x fa-star" id="2"></i>
+                            <i class="fa fa-2x fa-star" id="1"></i>
+                        @else
+                            @for ($i = 0; $i < $rating; $i++)
+                                <i class="fa fa-2x fa-star" style="color:  #FFC106;pointer-events: none;" ></i>
+                            @endfor
+                        @endif
                     </div>
                     <div class="sp-rating-num">
                         <p class="sp-rating-code-one"> 4.8 </p><p class="sp-rating-code-two">از 5 رای </p>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CategoryProduct;
+use App\Rating;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Product;
@@ -81,10 +82,15 @@ class HomePageController extends Controller
     public function viewProduct($product)
     {
         $isFavored = 0;
+        $rating = 0;
         if(Auth::user()){
             $count = Favor::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->count();
             if($count > 0){
                 $isFavored = Favor::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->get()[0]->isFavored;
+            }
+            $count = Rating::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->count();
+            if($count > 0){
+                $rating = Rating::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->get()[0]->rating;
             }
         }
         $categories = Category::all();
@@ -119,7 +125,8 @@ class HomePageController extends Controller
                 'product' => $product ,
                 'products' => $products ,
                 'categories' => $categories,
-                'isFavored'=> $isFavored
+                'isFavored'=> $isFavored,
+                'rating' => $rating,
             )
         );
     }

@@ -25,6 +25,10 @@ $(document).ready(function(){
                 },
                 dataType: 'JSON',
                 success: function (response) {
+                },
+                error: function (response) {
+
+
                 }
             });
         }

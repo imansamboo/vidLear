@@ -28,7 +28,6 @@ class FavorsController extends Controller
     {
         $product_id = substr(url()->previous(), strpos(url()->previous(), 'products' ) + 9);
         $user_id = Auth::user()->id;
-        $product_id = $product_id;
         $count = Favor::where('user_id', '=', $user_id)->where('product_id', '=', $product_id)->count();
         if($count > 0){
             $favor = Favor::where('user_id', '=', $user_id)->where('product_id', '=', $product_id)->get()[0];
