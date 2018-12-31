@@ -33,9 +33,9 @@ class VideosController extends Controller
     public function index(Request $request)
     {
         $q = $request->get('q');
-        $productVideos = ProductVideo::where('title', 'LIKE', '%'.$q.'%')
-        ->orderBy('name')->paginate(10);
-        return view('admin.videos.index', compact('productVideos', 'q'));
+        $videos = ProductVideo::where('title', 'LIKE', '%'.$q.'%')
+        ->orderBy('title')->paginate(10);
+        return view('admin.videos.index', compact('videos', 'q'));
     }
 
     /**
@@ -59,13 +59,13 @@ class VideosController extends Controller
 
       $this->validate($request, [
           'title' => 'required|unique:product_videos',
-          'product_id' => 'required|exists:products',
+          'product_id' => 'required|exists:products,id',
           'video' => 'required',
       ]);
       $data = $request->only('title', 'product_id', 'duration');
 
       if ($request->hasFile('video')) {
-          $data['photo'] = $this->saveVideo($request->file('video'));
+          $data['video'] = $this->saveVideo($request->file('video'));
       }
 
       $productVideo = ProductVideo::create($data);
