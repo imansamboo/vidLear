@@ -61,6 +61,7 @@ class VideosController extends Controller
           'title' => 'required|unique:product_videos',
           'product_id' => 'required|exists:products,id',
           'video' => 'required',
+          'file' => 'max:100000',
       ]);
       $data = $request->only('title', 'product_id', 'duration');
 

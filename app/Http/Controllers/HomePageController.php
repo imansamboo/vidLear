@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CategoryProduct;
+use App\ProductVideo;
 use App\Rating;
 use Illuminate\Http\Request;
 use App\Category;
@@ -83,6 +84,7 @@ class HomePageController extends Controller
     {
         $isFavored = 0;
         $rating = 0;
+        $videos = array();
         if(Auth::user()){
             $count = Favor::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->count();
             if($count > 0){
@@ -91,6 +93,10 @@ class HomePageController extends Controller
             $count = Rating::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->count();
             if($count > 0){
                 $rating = Rating::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->get()[0]->rating;
+            }
+            $count = ProductVideo::where('product_id', '=', $product)->count();
+            if($count > 0){
+                $videos = ProductVideo::where('product_id', '=', $product)->get();
             }
         }
         $categories = Category::all();
@@ -127,6 +133,7 @@ class HomePageController extends Controller
                 'categories' => $categories,
                 'isFavored'=> $isFavored,
                 'rating' => $rating,
+                'videos' => $videos,
             )
         );
     }
