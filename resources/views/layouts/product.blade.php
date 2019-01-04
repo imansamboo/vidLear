@@ -125,6 +125,8 @@
                         <p class="sp-sidebar-data">125</p>
                     </div>
                 </div>
+
+
                 <div class="sp-sidebar-buy-main">
                     <a class="sp-sidebar-buy" href="#buy">دانلود کامل دوره | 145000</a>
                 </div>

@@ -79,6 +79,19 @@
                                                             aria-hidden="true"></i>خروج از سامانه
                                                 </a>
                                             </li>
+                                            <li id="main-nav" class="nav-item dropdown category">
+                                                <a class="nav-link dropdown-toggle header-font" href="#" id="navbarDropdown"
+                                                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <img src="{{asset('img2/view-grid-menu.png')}}">
+                                                    دسته بندی
+                                                </a>
+                                                <div class="dropdown-menu nav-dropdown" aria-labelledby="navbarDropdown">
+                                                    @foreach($categories as  $category)
+                                                        <a class="dropdown-item nav-drop-item" href="{{url('/categories/' . $category->id . '/products')}}">{{$category->title}}</a>
+                                                        <div class="dropdown-divider"></div>
+                                                    @endforeach
+                                                </div>
+                                            </li>
                                             {{--<li>
                                                 @if ($user = Auth::user()->isAdmin == 1)
                                                     <a href="{{url('/admin')}}"  class="header-font"><i
@@ -101,7 +114,7 @@
                                                             class="fa fa-user-plus"
                                                             aria-hidden="true"></i> عضویت </a>
                                             </li>
-                                            <li class="nav-item dropdown category">
+                                            <li id="main-nav" class="nav-item dropdown category">
                                                 <a class="nav-link dropdown-toggle header-font" href="#" id="navbarDropdown"
                                                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <img src="{{asset('img2/view-grid-menu.png')}}">

@@ -78,12 +78,19 @@
                         <p class="sp-sidebar-data">125</p>
                     </div>
                 </div>
-                <div class="realPrice">
-                    {{$product->price}}
-                </div>
-                <div class="sp-sidebar-buy-main">
-                    <a class="sp-sidebar-buy" href="#buy">خرید دوره | {{((100 - $product->discount)/100)*$product->price}} تومان</a>
-                </div>
+                @if($productBuy)
+                    <div class="sp-sidebar-buy-main">
+                        <a class="sp-sidebar-buy" href="#"> دوره خریداری شده است</a>
+                    </div>
+                @else
+                    <div class="realPrice">
+                        {{$product->price}}
+                    </div>
+                    <div class="sp-sidebar-buy-main">
+                        <a class="sp-sidebar-buy" href="{{url('/payInvoice/' . $product->id)}}">خرید دوره | {{((100 - $product->discount)/100)*$product->price}} تومان</a>
+                    </div>
+                @endif
+
                 <div class="sp-sidebar-favor">
                     <img id="load-favor" src="{{asset('img/loader.gif')}}"  style="width: 4%;display: none">
                     <p id="like-it"><a class="like-this">
@@ -178,50 +185,96 @@
                 <hr class="sp-body-learn-hr">
 
                 <!-- Timeline -->
-                <div class="timeline">
-                    <!-- Line component -->
-                    <div class="line line-color"></div>
+                @if($productBuy)
+                    <div class="timeline">
+                        <!-- Line component -->
+                        <div class="line line-color"></div>
 
-                    <div class="the-hover">
-                        <div class="separator line-color"></div>
-                        <article class="panel panel-default panel-outline">
-                            <div class="panel-heading icon">
-                                <p class="the-number">1</p>
-                            </div>
-                            <div class="panel-body">
-                                <div class="timeline-right">
-                                    <p>مقدمه دوره</p>
-                                    <div class="timeline-free">
-                                        <p>نمایش رایگان</p>
+                        <div class="the-hover">
+                            <div class="separator line-color"></div>
+                            <article class="panel panel-default panel-outline">
+                                <div class="panel-heading icon">
+                                    <p class="the-number">1</p>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="timeline-right">
+                                        <p>مقدمه دوره</p>
                                     </div>
-                                </div>
-                                <div class="timeline-left">
+                                    <div class="timeline-left">
 
-                                    <a href="{{$videos[0]->video}}" class="timeline-links"><p class="timeline-dl" style="margin-top: 0px;">{{gmdate("i:s", $videos[0]->duration)}}</p></a>
-                                </div>                            </div>
-                        </article>
-                    </div>
-                    @foreach($videos as $video)
-                        @if($loop->index != 0)
-                            <div class="the-hover">
-                        <div class="separator line-color"></div>
-                        <article class="panel panel-default panel-outline">
-                            <div class="panel-heading icon">
-                                <i class="fa fa-lock lock-icon"></i>
-                            </div>
-                            <div class="panel-body">
-                                <div class="timeline-right">
-                                    <p>{{$video->title}}</p>
-                                </div>
-                                <div class="timeline-left">
+                                        <a href="{{$videos[0]->video}}" class="timeline-links"><p class="timeline-dl" style="margin-top: 0px;">{{gmdate("i:s", $videos[0]->duration)}}</p></a>
+                                    </div>                            </div>
+                            </article>
+                        </div>
+                        @foreach($videos as $video)
+                            @if($loop->index != 0)
+                                <div class="the-hover">
+                                    <div class="separator line-color"></div>
+                                    <article class="panel panel-default panel-outline">
+                                        <div class="panel-heading icon">
+                                            <p class="the-number">{{$loop->index + 1}}</p>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="timeline-right">
+                                                <p>{{$video->title}}</p>
+                                            </div>
+                                            <div class="timeline-left">
 
-                                    <a href="{{$video->video}}" class="timeline-links isDisabled"><p class="timeline-dl isDisabled" style="margin-top: 0px;color: dimgrey;">{{gmdate("i:s", $video->duration)}}</p></a>
-                                </div>                            </div>
-                        </article>
+                                                <a href="{{$video->video}}" class="timeline-links "><p class="timeline-dl" style="margin-top: 0px;">{{gmdate("i:s", $video->duration)}}</p></a>
+                                            </div>                            </div>
+                                    </article>
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
-                        @endif
-                    @endforeach
-                </div>
+
+                @else
+                    <div class="timeline">
+                        <!-- Line component -->
+                        <div class="line line-color"></div>
+
+                        <div class="the-hover">
+                            <div class="separator line-color"></div>
+                            <article class="panel panel-default panel-outline">
+                                <div class="panel-heading icon">
+                                    <p class="the-number">1</p>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="timeline-right">
+                                        <p>مقدمه دوره</p>
+                                        <div class="timeline-free">
+                                            <p>نمایش رایگان</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-left">
+
+                                        <a href="{{$videos[0]->video}}" class="timeline-links"><p class="timeline-dl" style="margin-top: 0px;">{{gmdate("i:s", $videos[0]->duration)}}</p></a>
+                                    </div>                            </div>
+                            </article>
+                        </div>
+                        @foreach($videos as $video)
+                            @if($loop->index != 0)
+                                <div class="the-hover">
+                                    <div class="separator line-color"></div>
+                                    <article class="panel panel-default panel-outline">
+                                        <div class="panel-heading icon">
+                                            <i class="fa fa-lock lock-icon"></i>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="timeline-right">
+                                                <p>{{$video->title}}</p>
+                                            </div>
+                                            <div class="timeline-left">
+
+                                                <a href="{{$video->video}}" class="timeline-links isDisabled"><p class="timeline-dl isDisabled" style="margin-top: 0px;color: dimgrey;">{{gmdate("i:s", $video->duration)}}</p></a>
+                                            </div>                            </div>
+                                    </article>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                @endif
+
                 <!-- /Timeline -->
 
             </div>

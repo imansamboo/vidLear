@@ -3,10 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Product extends Model
 {
-    protected $fillable = ['name', 'photo',  'price', 'description'];
+    protected $fillable = ['name', 'photo',  'price', 'description', 'discount'];
     protected $appends = ['photo_path'];
 
     /**

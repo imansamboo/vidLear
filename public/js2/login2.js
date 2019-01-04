@@ -27,6 +27,7 @@ $(document).ready(function() {
 
     });
 }*/
+var mainNav = '<li id="main-nav" class="nav-item dropdown category">' + $("#main-nav").html() + '</li>';
 var li = $('li.category').html();
 console.log('input');
 $(document).ready(function() {
@@ -76,6 +77,7 @@ $(document).ready(function() {
                             "                                                    aria-hidden=\"true\"></i>خروج از سامانه\n" +
                             "                                        </a>\n" +
                             "                                    </li>\n" +
+                            mainNav +
                             "                                </ul>" );
                     }else{
                         $('div.modal-content').hide();

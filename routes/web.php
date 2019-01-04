@@ -21,6 +21,7 @@ Route::get('/clientarea', function () {
     return view('clientarea', ['categories' => App\Category::all()]);
 });
 Route::get('/favorite', 'HomePageController@favorOfUser');
+Route::get('/clientarea', 'HomePageController@getInvoicesOfUser');
 Route::get('/settings', function () {
     return view('settings', ['categories' => App\Category::all()]);
 });
@@ -92,6 +93,8 @@ Route::get('/videos', function () {
 
 Route::get('/admin', function () { return redirect('/admin/home'); })->middleware('auth');
 Route::get('/favorProduct', 'FavorsController@update');
+Route::get('/payInvoice/{productId}', 'Invoices2Controller@firstStore');
+Route::post('/payInvoice/{id}', 'Invoices2Controller@store');
 Route::get('/rateProduct', 'RatingsController@store');
 Route::get('/getRating', 'RatingsController@getRating');
 Route::get('/isRated', 'RatingsController@isRated');
@@ -144,8 +147,6 @@ Route::get('/registerDiscount', function () {
         $product->discount = $discount;
         $product->save();
     }
-
-
 });
 
 

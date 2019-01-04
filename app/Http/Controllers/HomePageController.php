@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CategoryProduct;
+use App\Invoice2;
 use App\ProductVideo;
 use App\Rating;
 use Illuminate\Http\Request;
@@ -87,6 +88,7 @@ class HomePageController extends Controller
         $totalDuration = 0;
         $videos = array();
         $averageRate = "بدون رای";
+        $productBuy = false;
         if(Auth::user()){
             $count = Favor::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->count();
             if($count > 0){
@@ -95,6 +97,13 @@ class HomePageController extends Controller
             $count = Rating::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->count();
             if($count > 0){
                 $rating = Rating::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->get()[0]->rating;
+            }
+            $count = Invoice2::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->count();
+            if($count > 0){
+                $buyStatus = Invoice2::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->get()[0]->status;
+                if($buyStatus == 'موفق'){
+                    $productBuy = true;
+                }
             }
         }
         $voterCount = Rating::where('product_id', '=', $product)->count();
@@ -152,6 +161,7 @@ class HomePageController extends Controller
                 'totalDuration' => $totalDuration,
                 'voterCount' => $voterCount,
                 'averageRate' => $averageRate,
+                'productBuy' => $productBuy
             )
         );
     }
@@ -172,8 +182,8 @@ class HomePageController extends Controller
     {
         $this->middleware('auth');
         $products = array();
-        if(Favor::where('user_id', '=', Auth::user()->id)->count() > 0){
-            $favors = Favor::where('user_id', '=', Auth::user()->id)->get();
+        if(Favor::where('user_id', '=', Auth::user()->id)->where('isFavored', '=', 1)->count() > 0){
+            $favors = Favor::where('user_id', '=', Auth::user()->id)->where('isFavored', '=', 1)->get();
             /*$i = 0;
             $j = 0;
             foreach ($favors as $favor){
@@ -187,6 +197,27 @@ class HomePageController extends Controller
             }
         }
         return view('favorite', ['categories' => Category::all(), 'products' => $products]);
+    }
+
+    public function getInvoicesOfUser()
+    {
+        $this->middleware('auth');
+        $products = array();
+        if(Invoice2::where('user_id', '=', Auth::user()->id)->where('status', '=', 'موفق')->count() > 0){
+            $invoices = Invoice2::where('user_id', '=', Auth::user()->id)->where('status', '=', 'موفق')->get();
+            /*$i = 0;
+            $j = 0;
+            foreach ($favors as $favor){
+                $products[$i][] = Product::find($favor->product_id);
+                if(fmod($j, 3) == 2)
+                    $i++;
+                $j++;
+            }*/
+            foreach ($invoices as $invoice){
+                $products[] = Product::find($invoice->product_id);
+            }
+        }
+        return view('clientarea', ['categories' => Category::all(), 'products' => $products]);
     }
 
 }

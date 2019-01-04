@@ -82,30 +82,26 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>آموزش پیانو</td>
-                            <td>1397/10/22</td>
-                            <td>150.000 ریال</td>
-                            <td>548452054</td>
-                            <td class="transaction-success">موفق</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>آموزش پیانو</td>
-                            <td>1397/10/22</td>
-                            <td>150.000 ریال</td>
-                            <td>548452054</td>
-                            <td class="transaction-faild">ناموفق</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>آموزش پیانو</td>
-                            <td>1397/10/22</td>
-                            <td>150.000 ریال</td>
-                            <td>548452054</td>
-                            <td class="transaction-faild">پرداخت نشده</td>
-                        </tr>
+                        @if(App\Invoice2::where('user_id', '=', Auth::user()->id)->count() > 0)
+                            @foreach(App\Invoice2::where('user_id', '=', Auth::user()->id)->get() as $invoice)
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>{{$invoice->product->name}}</td>
+                                    <td>{{$invoice->updated_at}}</td>
+                                    <td>{{10*($invoice->price)}} ریال</td>
+                                    <td>548452054</td>
+                                    @if($invoice->status == 'موفق')
+                                    <td class="transaction-success">{{$invoice->status}}</td>
+                                    @else
+                                    <td class="transaction-faild">{{$invoice->status}}</td>
+                                    @endif
+                                </tr>
+                            @endforeach
+                        @else
+                           <tr>
+                               <td colspan="6"> <p class="sp-body-learn-title">سفارشی تا کنون ثبت نشده است</p></td>
+                           </tr>
+                        @endif
                         </tbody>
                     </table>
                 </div>
