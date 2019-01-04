@@ -1,4 +1,4 @@
-
+var action1 = '';
 $(document).ready(function() {
     console.log('resister input');
 
@@ -19,6 +19,8 @@ $(document).ready(function() {
             url: $this.attr('action'),
             data: $this.serializeArray(),
             dataType: $this.data('type'),
+            beforeSend: function() { $('img#loading').show();$(".register_btn").hide(); },
+            complete: function() { $('img#loading').hide(); $(".register_btn").show();},
             success: function (status, response) {
                 var x= status;
                 console.log('success');
@@ -37,11 +39,12 @@ $(document).ready(function() {
                     '            <div class="modal-body">\n' +
                     '                <p id="message"></p>\n' +
                     '                <div class="register_container">\n' +
-                    '                    <form method="POST" onsubmit="" action="/varifyWithSms" id="sms">\n' +
+                    '                    <form method="GET" onsubmit="" action="/varifyWithSms" id="sms">\n' +
                     '    <label for="last_sent_sms_code">\n' +
                     '        کد ارسالی :\n' +
                     '    </label>\n' +
                     '    <input class="form-control" name="last_sent_sms_code" id="last_sent_sms_code" required="" type="text">\n' +
+                    '<center><img src="/img/loader.gif" id="loading" style="width: 4%;display: none"></center>' +
                     '    <br>\n' +
                     '<input name="_token" value="5PhJYPM78BTujzr6DldrRCdKfCcda1098ecp0ZTE" type="hidden">\n' +
                     '<input name="userID" value="' + userID +
@@ -64,6 +67,8 @@ $(document).ready(function() {
                         url: $this.attr('action'),
                         data: $this.serializeArray(),
                         dataType: $this.data('type'),
+                        beforeSend: function() { $('img#loading').show();$(".register_btn").hide(); },
+                        complete: function() { $('img#loading').hide(); $(".register_btn").show();},
                         success: function (response) {
                             console.log('success sms varify');
                             $('div#registerAction > div.modal-dialog').hide();

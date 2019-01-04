@@ -51,6 +51,8 @@
     <input placeholder="پست الکترونیک" type="email" class="form-control" name="email" id="email" required>
                     </div>
     <br/>
+    <center><img src="{{asset('img/loader.gif')}}" id="loading" style="width: 4%;display: none"></center>
     {!! Form::token() !!}
+
     <input type="submit" name="register" id="register" class="register_btn" value="ثبت نام">
 </form>

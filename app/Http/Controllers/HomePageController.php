@@ -84,7 +84,9 @@ class HomePageController extends Controller
     {
         $isFavored = 0;
         $rating = 0;
+        $totalDuration = 0;
         $videos = array();
+        $averageRate = "بدون رای";
         if(Auth::user()){
             $count = Favor::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->count();
             if($count > 0){
@@ -94,9 +96,21 @@ class HomePageController extends Controller
             if($count > 0){
                 $rating = Rating::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->get()[0]->rating;
             }
-            $count = ProductVideo::where('product_id', '=', $product)->count();
-            if($count > 0){
-                $videos = ProductVideo::where('product_id', '=', $product)->get();
+        }
+        $voterCount = Rating::where('product_id', '=', $product)->count();
+        if($voterCount > 0){
+            $ratings = Rating::where('product_id', '=', $product)->get();
+            $averageRate = 0;
+            foreach ($ratings as $value){
+                $averageRate += $value->rating;
+            }
+            $averageRate = $averageRate/$voterCount;
+        }
+        $videoCount = ProductVideo::where('product_id', '=', $product)->count();
+        if($videoCount > 0){
+            $videos = ProductVideo::where('product_id', '=', $product)->get();
+            foreach ($videos as $video){
+                $totalDuration += $video->duration;
             }
         }
         $categories = Category::all();
@@ -134,6 +148,10 @@ class HomePageController extends Controller
                 'isFavored'=> $isFavored,
                 'rating' => $rating,
                 'videos' => $videos,
+                'videoCount' => $videoCount,
+                'totalDuration' => $totalDuration,
+                'voterCount' => $voterCount,
+                'averageRate' => $averageRate,
             )
         );
     }

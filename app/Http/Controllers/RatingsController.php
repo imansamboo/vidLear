@@ -21,21 +21,16 @@ class RatingsController extends Controller
      */
     public function __construct()
     {
+        sleep(1);
         $this->middleware('auth');
 
     }
 
     public function isRated()
     {
-        $product_id = substr(url()->previous(), strpos(url()->previous(), 'products' ) + 9);
-        $user_id = Auth::user()->id;
-        $count = Rating::where('user_id', '=', $user_id)->where('product_id', '=', $product_id)->count();
-        if($count > 0){
-            throw new Exception("you can't access again", 404);
-        }else{
-            header('HTTP/1.1 200 OK');
-            echo json_encode(['success' => true , 'userId' => $user_id, 'product_id' => $product_id, 'isFavored' => 1]);
-        }
+        header('HTTP/1.1 200 OK');
+        echo json_encode(['success' => true ]);
+
     }
 
     /**
@@ -57,8 +52,23 @@ class RatingsController extends Controller
                     'rating' => $rating
                 )
             );
+            $voterCount = Rating::where('product_id', '=', $product_id)->count();
+            $ratings = Rating::where('product_id', '=', $product_id)->get();
+            $averageRate = 0;
+            foreach ($ratings as $value){
+                $averageRate += $value->rating;
+            }
+            $averageRate = $averageRate/$voterCount;
             header('HTTP/1.1 200 OK');
-            echo json_encode(['success' => true , 'userId' => $user_id, 'product_id' => $product_id, 'rating' => $rating]);
+            echo json_encode([
+                'success' => true ,
+                'userId' => $user_id,
+                'status' => 'OK',
+                'product_id' => $product_id,
+                'rating' => $rating ,
+                'averageRate' =>number_format((float)$averageRate, 1, '.', ''),
+                'voterCount' =>$voterCount
+            ]);
         }
     }
 

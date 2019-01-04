@@ -47,6 +47,8 @@ $(document).ready(function() {
             url: $this.attr('action'),
             data: $this.serializeArray(),
             dataType: $this.data('type'),
+            beforeSend: function() { $('img#loading').show();$(".login_btn").hide();$('a#forgot').hide(); },
+            complete: function() { $('img#loading').hide(); $(".login_btn").show();$('a#forgot').show();},
             success: function (response) {
                 console.log('success');
                 if(response.success) {
@@ -63,16 +65,17 @@ $(document).ready(function() {
 
                         $( "#authenticate" ).append( "<ul class=\"nav navbar-nav menu-right\">\n" +
                             "                                    <li>\n" +
+                            "                                            <a href=\"\/clientarea\"  class=\"header-font\"><i\n" +
+                            "                                                        class=\"fa fa-user\"\n" +
+                            "                                                        aria-hidden=\"true\"></i> ناحیه کاربری\n" +
+                            "                                            </a>\n" +
+                            "</li>\n" +
+                            "                                    <li>\n" +
                             "                                        <a href=\"/logout\"  class=\"header-font\"><i\n" +
                             "                                                    class=\"fa fa-sign-out\"\n" +
                             "                                                    aria-hidden=\"true\"></i>خروج از سامانه\n" +
                             "                                        </a>\n" +
                             "                                    </li>\n" +
-                            "                                    <li>\n" +
-                            "                                            <a href=\"\/admin\"  class=\"header-font\"><i\n" +
-                            "                                                        class=\"fa fa-user\"\n" +
-                            "                                                        aria-hidden=\"true\"></i> داشبورد\n" +
-                            "                                            </a>\n" +
                             "                                </ul>" );
                     }else{
                         $('div.modal-content').hide();
@@ -83,6 +86,12 @@ $(document).ready(function() {
                         $('div.modal-backdrop').hide();
                         $('body').removeAttr('style');
                         $( "#authenticate" ).append( "<ul class=\"nav navbar-nav menu-right\">\n" +
+                            "                                    <li>\n" +
+                            "                                            <a href=\"\/clientarea\"  class=\"header-font\"><i\n" +
+                            "                                                        class=\"fa fa-user\"\n" +
+                            "                                                        aria-hidden=\"true\"></i> ناحیه کاربری\n" +
+                            "                                            </a>\n" +
+                            "</li>\n" +
                             "                                    <li>\n" +
                             "                                        <a href=\"/logout\"  class=\"header-font\"><i\n" +
                             "                                                    class=\"fa fa-sign-out\"\n" +
@@ -95,20 +104,18 @@ $(document).ready(function() {
                 }else{
                     console.log('error-new');
                     $('div.alert-danger').hide();
-                    $('div#login-error').append('<div class="alert alert-danger" style="font-size: 11px">\n' +
+                    $('div#login-error').prepend('<div class="alert alert-danger" style="font-size: 11px">\n' +
                         '                         شماره همراه یا کلمه عبور اشتباه وارد شده است.\n' +
                         '                    </div>');
-                    $("div#login-error").css('padding-top', '5%');
                 }
 
             },
             error: function () {
                 console.log('error');
                 $('div.alert-danger').hide();
-                $('div#login-error').append('<div class="alert alert-danger" style="font-size: 11px">\n' +
+                $('div#login-error').prepend('<div class="alert alert-danger" style="font-size: 11px">\n' +
                     '                         شماره همراه یا کلمه عبور اشتباه وارد شده است.\n' +
                     '                    </div>');
-                $("div#login-error").css('padding-top', '5%');
 
                 /*var response = $.parseJSON(jqXHR.responseText);
                 if(response.message) {

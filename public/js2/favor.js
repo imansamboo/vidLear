@@ -1,5 +1,6 @@
 console.log('rate');
 var color;
+var address = "/laravel/vidLear/public";
 //color[0] = '#D1D1D1';
 $(document).ready(function(){
     if($('i.fa-heart').css('color') == 'rgb(255, 0, 0)'){
@@ -24,6 +25,8 @@ $(document).ready(function(){
                 data: {
                 },
                 dataType: 'JSON',
+                beforeSend: function() { $('#load-favor').show();$("#like-it").hide(); },
+                complete: function() { $('#load-favor').hide(); $("#like-it").show();},
                 success: function (response) {
                 },
                 error: function (response) {

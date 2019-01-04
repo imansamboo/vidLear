@@ -13,6 +13,7 @@
 
 
 
+
 Route::get('/', function () {
     return redirect(route('homepage'));
 });
@@ -70,7 +71,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('auth')->
     Route::get('invoiceItems/create/{invoice_id}', 'InvoiceItemsController@create');
 });
 
-Route::post('/varifyWithSms','SMSController@verify');
+Route::get('/varifyWithSms','SMSController@verify');
 Route::get('/resendSms','SMSController@reSend');
 \Phonedotcom\SmsVerification\SmsVerificationProvider::registerRoutes($router);
 
@@ -85,7 +86,7 @@ Route::get('/categories', 'HomePageController@indexCategories');
 Route::get('/products/{product}', ['uses' =>'HomePageController@viewProduct']);
 Route::get('/categories/{category_id}/products', ['uses' =>'HomePageController@indexProductsOfCategory']);
 Route::get('/view', function () {
-    return view('view');
+    return view('view2');
 });
 Route::get('/videos', function () {
     return view('videos');
@@ -94,6 +95,7 @@ Route::get('/videos', function () {
 Route::get('/admin', function () { return redirect('/admin/home'); })->middleware('auth');
 Route::get('/favorProduct', 'FavorsController@update');
 Route::get('/rateProduct', 'RatingsController@store');
+Route::get('/getRating', 'RatingsController@getRating');
 Route::get('/isRated', 'RatingsController@isRated');
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/home', 'HomeController@index');
@@ -102,6 +104,50 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
 });
 
+Route::get('/registerRate', function () {
+    $idArray = array();
+    foreach(App\Product::all() as $product){
+        $idArray[] = $product->id;
+    }
+    foreach (App\User::all() as $user){
+        App\Rating::create(
+            array(
+                'user_id' => $user->id,
+                'product_id' => $idArray[mt_rand(0, count($idArray) - 1)],
+                'rating' => mt_rand(1,5)
+            )
+        );
+    }
 
+});
+
+Route::get('/registerVideos', function () {
+    $idArray = array('مقدمه', 'جلسه اول', 'جلسه دوم', 'جلسه سوم', 'جلسه چهارم');
+
+    foreach(App\Product::all() as $product){
+        for($i = 0; $i < 5; $i++){
+            $video = App\ProductVideo::create(
+                 array(
+                    'title' => $idArray[$i],
+                    'duration' => mt_rand(300, 500),
+                    'product_id' => $product->id,
+                    'video' => $i . '.mp4',
+                )
+            );
+            $video->priority = (string)$i;
+            $video->save();
+        }
+    }
+
+});
+Route::get('/registerDiscount', function () {
+    foreach(App\Product::all() as $product){
+        $discount = number_format(((float)mt_rand(0, 100)), 2, '.', '');
+        $product->discount = $discount;
+        $product->save();
+    }
+
+
+});
 
 

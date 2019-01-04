@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProductVideo extends Model
 {
     protected $table = 'product_videos';
-    protected $fillable = ['title', 'duration','product_id', 'video'];
+    protected $fillable = ['title', 'duration','product_id', 'video', 'priority'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

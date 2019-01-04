@@ -15,6 +15,7 @@ $('a.forgot_link').click(function (e) {
         '    <input class="form-control" name="mobile" id="mobile" required="" type="text">\n' +
         '    <br>\n' +
         '    <input name="_token" value="ZvB2aRGv9LD55V7QQs2m4bRBpJb5yMlIZXo42znw" type="hidden">\n' +
+        '<center><img src="/img/loader.gif" id="loading" style="width: 4%;display: none"></center>' +
         '\n' +
         '\n' +
         '    <button type="submit" id="reset" class="login_btn">مرحله بعد</button>\n' +
@@ -29,6 +30,8 @@ $('a.forgot_link').click(function (e) {
             url: $this.attr('action'),
             data: $this.serializeArray(),
             dataType: $this.data('type'),
+            beforeSend: function() { $('img#loading').show();$(".login_btn").hide();$('a#forgot').hide(); },
+            complete: function() { $('img#loading').hide(); $(".login_btn").show();$('a#forgot').show();},
             success: function (response) {
                 $('div.alert-danger').hide();
                 console.log('success');
@@ -43,6 +46,7 @@ $('a.forgot_link').click(function (e) {
                     '          پسورد جدید :\n' +
                     '    </label>\n' +
                     '    <input class="form-control" name="password" id="password" required="" type="text">\n' +
+                    '<center><img src="/img/loader.gif" id="loading" style="width: 4%;display: none"></center>' +
                     '    <br>\n' +
                     '    <input name="_token" value="ZvB2aRGv9LD55V7QQs2m4bRBpJb5yMlIZXo42znw" type="hidden">\n' +
                     '<input name="userId" value="' + response.userId +
@@ -60,6 +64,8 @@ $('a.forgot_link').click(function (e) {
                         url: $this.attr('action'),
                         data: $this.serializeArray(),
                         dataType: $this.data('type'),
+                        beforeSend: function() { $('img#loading').show();$(".login_btn").hide();$('a#forgot').hide(); },
+                        complete: function() {console.log('complete'); $('img#loading').hide(); $(".login_btn").show();$('a#forgot').show();},
                         success: function (response) {
                             console.log('success verify');
                             $('div#loginAction > div.modal-dialog').hide();
@@ -85,6 +91,7 @@ $('a.forgot_link').click(function (e) {
 
                         },
                         error: function (xhr, status, error) {
+                            $('img#loading').hide(); $(".login_btn").show();$('a#forgot').show();
                             $('div.alert-danger').hide();
                             $('div#login-error').append('<div class="alert alert-danger" style="font-size: 11px">\n' +
                                 '                         کد تایید وارد شده صحیح نمی باشد یا رمز عبور کمتر از چهار کاراکتر می باشد.\n' +

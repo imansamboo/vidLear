@@ -15,23 +15,24 @@ use Illuminate\Http\Request;
 
 class SMSController extends Controller
 {
-    /*public function __construct()
+    public function __construct()
     {
-        error_log(1 . "\n", 3, __DIR__ . '/sms.log');
-        $this->verify();
+        /*error_log(1 . "\n", 3, __DIR__ . '/sms.log');
+        $this->verify();*/
+        sleep(1);
 
-    }*/
+    }
 
     /**
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function verify()
     {
-        if(isset($_POST['last_sent_sms_code']) &&
-            isset($_POST['userID']) &&
-            $_POST['last_sent_sms_code'] == User::find($_POST['userID'])->last_sent_sms_code
+        if(isset($_GET['last_sent_sms_code']) &&
+            isset($_GET['userID']) &&
+            $_GET['last_sent_sms_code'] == User::find($_GET['userID'])->last_sent_sms_code
         ){
-            $user = User::find($_POST['userID']);
+            $user = User::find($_GET['userID']);
             $user->update(
                 array(
                     'sms_varified' => 1

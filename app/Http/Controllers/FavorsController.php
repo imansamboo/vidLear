@@ -20,6 +20,7 @@ class FavorsController extends Controller
      */
     public function __construct()
     {
+        sleep(1);
         $this->middleware('auth');
 
     }
@@ -43,6 +44,7 @@ class FavorsController extends Controller
                     'isFavored' => 1
                 )
             );
+
             header('HTTP/1.1 200 OK');
             echo json_encode(['success' => true , 'userId' => $user_id, 'product_id' => $product_id, 'isFavored' => 1]);
         }
