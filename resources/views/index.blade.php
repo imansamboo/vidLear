@@ -23,16 +23,19 @@
                                 <p class="product-tsize new-product">مهران عباسی</p>
                             </div>
                             <div class="rating col-md-6">
-                                <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                </i><i class="gold-star fa fa-star"></i><i class="fa fa-star">
-                                </i><i class="fa fa-star"></i>
+                                @for($i=0; $i < $product->getAverageRating(); $i++)
+                                    <i class="gold-star fa fa-star"></i>
+                                @endfor
+                                @for($i=0; $i < (5 - $product->getAverageRating()); $i++)
+                                    <i class="fa fa-star"></i>
+                                @endfor
                             </div>
                         </div>
                         <p class="product-off left-float"> تومان {{$product->price}}</p>
                         <div class="clear-left">
                             <p class="right-float">
-                                <img src="{{asset('img2/clock-outline.png')}}">07:48:29</p>
-                            <p class="left-float product-price"> تومان {{0.9*$product->price}}</p>
+                                <img src="{{asset('img2/clock-outline.png')}}">{{$product->getLength()}}</p>
+                            <p class="left-float product-price"> تومان {{((100 - $product->discount)/100)*$product->price}}</p>
                         </div>
                         <div class="clearfix">
                         </div>

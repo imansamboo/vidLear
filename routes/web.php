@@ -20,9 +20,7 @@ Route::get('/', function () {
 Route::get('/clientarea', function () {
     return view('clientarea', ['categories' => App\Category::all()]);
 });
-Route::get('/favorite', function () {
-    return view('favorite', ['categories' => App\Category::all()]);
-});
+Route::get('/favorite', 'HomePageController@favorOfUser');
 Route::get('/settings', function () {
     return view('settings', ['categories' => App\Category::all()]);
 });

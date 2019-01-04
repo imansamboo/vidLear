@@ -40,6 +40,21 @@ class Product extends Model
     }
 
     /**
+     * @return false|string
+     */
+    public function getLength()
+    {
+        $length = 0;
+        if ($this->videos()->count() > 0) {
+            foreach ($this->videos as $video){
+                $length += $video->duration;
+            }
+        }
+
+        return gmdate("H:i:s",$length);
+    }
+
+    /**
      * @return |null
      */
     public function getCategoryListsAttribute()
@@ -70,5 +85,28 @@ class Product extends Model
             return 'http://placehold.it/850x618';
         }
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function ratings()
+    {
+        return $this->hasMany('App\Rating');
+    }
+
+    public function getAverageRating()
+    {
+        $averageRate = 0;
+        $count = $this->ratings()->count();
+        if ($count > 0) {
+            foreach ($this->ratings as $rating){
+                $averageRate += $rating->rating;
+            }
+            $averageRate = $averageRate/$count;
+            $averageRate = floor($averageRate);
+        }
+        return $averageRate;
+    }
+
 
 }

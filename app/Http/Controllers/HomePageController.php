@@ -73,7 +73,7 @@ class HomePageController extends Controller
             }
             $productContainer[] = $productsArray;
         }
-        return view('indexCatPro', ['productContainer' => $productContainer, 'categoryId' => $category_id, 'categories' => $categories]);
+        return view('indexCatPro', ['productContainer' => $productContainer, 'categoryId' => $category_id, 'categories' => $categories, 'category' => Category::find($category_id)]);
     }
 
     /**
@@ -166,6 +166,27 @@ class HomePageController extends Controller
         $categories = Category::where('title', 'LIKE', '%'.$q.'%')
             ->orderBy('title')->paginate(16);
         return view('indexCategories', compact('categories', 'q'));
+    }
+
+    public function favorOfUser()
+    {
+        $this->middleware('auth');
+        $products = array();
+        if(Favor::where('user_id', '=', Auth::user()->id)->count() > 0){
+            $favors = Favor::where('user_id', '=', Auth::user()->id)->get();
+            /*$i = 0;
+            $j = 0;
+            foreach ($favors as $favor){
+                $products[$i][] = Product::find($favor->product_id);
+                if(fmod($j, 3) == 2)
+                    $i++;
+                $j++;
+            }*/
+            foreach ($favors as $favor){
+                $products[] = Product::find($favor->product_id);
+            }
+        }
+        return view('favorite', ['categories' => Category::all(), 'products' => $products]);
     }
 
 }

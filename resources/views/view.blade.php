@@ -82,7 +82,7 @@
                     {{$product->price}}
                 </div>
                 <div class="sp-sidebar-buy-main">
-                    <a class="sp-sidebar-buy" href="#buy">خرید دوره | {{0.8 * $product->price}} تومان</a>
+                    <a class="sp-sidebar-buy" href="#buy">خرید دوره | {{((100 - $product->discount)/100)*$product->price}} تومان</a>
                 </div>
                 <div class="sp-sidebar-favor">
                     <img id="load-favor" src="{{asset('img/loader.gif')}}"  style="width: 4%;display: none">
@@ -100,19 +100,12 @@
             <!-- ///////////////// menu 2 /////////////////////// -->
             <div class="sp-sidebar">
                 <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 sp-sidebar-owner-main">
-                    <img src="{{url('pics/user-pic.jpeg')}}" class="sp-sidebar-owner-pic">
-                    <p class="sp-sidebar-owner-name">مهران عباسی</p>
+                    @if(isset($product->author_photo))
+                    <img src="{{url('pics/'. $product->author_photo)}}" class="sp-sidebar-owner-pic">
+                    @endif
+                    <p class="sp-sidebar-owner-name">{{$product->author}}</p>
                 </div>
-                <p class="sp-sidebar-owner-desc">
-                
-مهران عباسی تنظیم کننده موسیقی پاپ متولد ۵ مهر ۱۳۶۳ است.
-
-از سن ۶ سالگی علاقه خود را به موسیقی الکترونیک دنبال کرد، جهت تکمیل دوران راهنمایی به مدرسه خوارزمی تهران نقل مکان کرد و در تهران فعالیت موسیقی خود را آغاز کرد.
-
-در سال ۸۳ با آشنایی با کوشان حداد (عضو گروه اشکان و کوشان) گروه نئورین را تاسیس کردند.
-
-پس از شرکت در ۴ مسابقه بین المللی موسیقی الکترونیک ۴ رتبه جهانی (به ترتیب مقام نهم، چهارم و دوبار مقام اول را از پنج قاره) خوب را کسب کردند.
-                </p>
+                <p class="sp-sidebar-owner-desc">{{$product->author_description}}</p>
             </div>
 
             <!-- ///////////////// menu 3 /////////////////////// -->
@@ -271,19 +264,22 @@
                                                                         <a class="product-fsize" href="{{url('/products')}}/{{$newProduct->id}}">{{$newProduct->name}}</a>
                                                                     </div>
                                                                     <div class="rating col-md-6">
-                                                                        <p class="product-tsize new-product">مهران عباسی</p>
+                                                                        <p class="product-tsize new-product">{{$newProduct->author}}</p>
                                                                     </div>
                                                                     <div class="rating col-md-6">
-                                                                        <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                                        </i><i class="gold-star fa fa-star"></i><i class="fa fa-star">
-                                                                        </i><i class="fa fa-star"></i>
+                                                                        @for($i=0; $i < $newProduct->getAverageRating(); $i++)
+                                                                            <i class="gold-star fa fa-star"></i>
+                                                                        @endfor
+                                                                        @for($i=0; $i < (5 - $newProduct->getAverageRating()); $i++)
+                                                                            <i class="fa fa-star"></i>
+                                                                        @endfor
                                                                     </div>
                                                                 </div>
                                                                 <p class="product-off left-float"> تومان {{$newProduct->price}} </p>
                                                                 <div class="clear-left">
                                                                     <p class="right-float">
-                                                                        <img src="{{asset('img2/clock-outline.png')}}">07:48:29</p>
-                                                                    <p class="left-float product-price"> تومان {{0.9*$newProduct->price}} </p>
+                                                                        <img src="{{asset('img2/clock-outline.png')}}">{{$newProduct->getLength()}}</p>
+                                                                    <p class="left-float product-price"> تومان {{((100 - $newProduct->discount)/100)*$newProduct->price}} </p>
                                                                 </div>
                                                                 <div class="clearfix">
                                                                 </div>
@@ -337,19 +333,22 @@
                                                                             <a class="product-fsize" href="{{url('/products')}}/{{$newProduct->id}}">{{$newProduct->name}}</a>
                                                                         </div>
                                                                         <div class="rating col-md-6">
-                                                                            <p class="product-tsize new-product">مهران عباسی</p>
+                                                                            <p class="product-tsize new-product">{{$newProduct->author}}</p>
                                                                         </div>
                                                                         <div class="rating col-md-6">
-                                                                            <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                                            </i><i class="gold-star fa fa-star"></i><i class="fa fa-star">
-                                                                            </i><i class="fa fa-star"></i>
+                                                                            @for($i=0; $i < $newProduct->getAverageRating(); $i++)
+                                                                                <i class="gold-star fa fa-star"></i>
+                                                                            @endfor
+                                                                            @for($i=0; $i < (5 - $newProduct->getAverageRating()); $i++)
+                                                                                <i class="fa fa-star"></i>
+                                                                            @endfor
                                                                         </div>
                                                                     </div>
                                                                     <p class="product-off left-float"> تومان {{$newProduct->price}} </p>
                                                                     <div class="clear-left">
                                                                         <p class="right-float">
-                                                                            <img src="{{asset('img2/clock-outline.png')}}">07:48:29</p>
-                                                                        <p class="left-float product-price"> تومان {{0.9*$newProduct->price}} </p>
+                                                                            <img src="{{asset('img2/clock-outline.png')}}">{{$newProduct->getLength()}}</p>
+                                                                        <p class="left-float product-price"> تومان {{((100 - $newProduct->discount)/100)*$newProduct->price}} </p>
                                                                     </div>
                                                                     <div class="clearfix">
                                                                     </div>

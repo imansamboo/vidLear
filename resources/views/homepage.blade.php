@@ -89,19 +89,22 @@
                                                                     <a class="product-fsize" href="{{url('/products')}}/{{$newProduct->id}}">{{$newProduct->name}}</a>
                                                                 </div>
                                                                 <div class="rating col-md-6">
-                                                                    <p class="product-tsize new-product">مهران عباسی</p>
+                                                                    <p class="product-tsize new-product">{{$newProduct->author}}</p>
                                                                 </div>
                                                                 <div class="rating col-md-6">
-                                                                    <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                                    </i><i class="gold-star fa fa-star"></i><i class="fa fa-star">
-                                                                    </i><i class="fa fa-star"></i>
+                                                                    @for($i=0; $i < $newProduct->getAverageRating(); $i++)
+                                                                        <i class="gold-star fa fa-star"></i>
+                                                                    @endfor
+                                                                    @for($i=0; $i < (5 - $newProduct->getAverageRating()); $i++)
+                                                                        <i class="fa fa-star"></i>
+                                                                    @endfor
                                                                 </div>
                                                             </div>
                                                             <p class="product-off left-float"> تومان {{$newProduct->price}} </p>
                                                             <div class="clear-left">
                                                                 <p class="right-float">
-                                                                    <img src="img2/clock-outline.png">07:48:29</p>
-                                                                <p class="left-float product-price"> تومان {{0.9*$newProduct->price}} </p>
+                                                                    <img src="img2/clock-outline.png">{{$newProduct->getLength()}}</p>
+                                                                <p class="left-float product-price"> تومان {{((100 - $newProduct->discount)/100)*$newProduct->price}} </p>
                                                             </div>
                                                             <div class="clearfix">
                                                             </div>
@@ -183,19 +186,22 @@
                                                                     <a class="product-fsize" href="{{url('/products')}}/{{$newProduct->id}}">{{$newProduct->name}}</a>
                                                                 </div>
                                                                 <div class="rating col-md-6">
-                                                                    <p class="product-tsize new-product">مهران عباسی</p>
+                                                                    <p class="product-tsize new-product">{{$newProduct->author}}</p>
                                                                 </div>
                                                                 <div class="rating col-md-6">
-                                                                    <i class="gold-star fa fa-star"></i><i class="gold-star fa fa-star">
-                                                                    </i><i class="gold-star fa fa-star"></i><i class="fa fa-star">
-                                                                    </i><i class="fa fa-star"></i>
+                                                                    @for($i=0; $i < $newProduct->getAverageRating(); $i++)
+                                                                        <i class="gold-star fa fa-star"></i>
+                                                                    @endfor
+                                                                    @for($i=0; $i < (5 - $newProduct->getAverageRating()); $i++)
+                                                                            <i class="fa fa-star"></i>
+                                                                    @endfor
                                                                 </div>
                                                             </div>
                                                             <p class="product-off left-float"> تومان {{$newProduct->price}} </p>
                                                             <div class="clear-left">
                                                                 <p class="right-float">
-                                                                    <img src="img2/clock-outline.png">07:48:29</p>
-                                                                <p class="left-float product-price"> تومان {{0.9*$newProduct->price}} </p>
+                                                                    <img src="img2/clock-outline.png">{{$newProduct->getLength()}}</p>
+                                                                <p class="left-float product-price"> تومان {{((100 - $newProduct->discount)/100)*$newProduct->price}} </p>
                                                             </div>
                                                             <div class="clearfix">
                                                             </div>

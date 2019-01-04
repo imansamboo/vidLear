@@ -7,13 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--<meta name="viewport" content="width=1000; user-scalable=0;" />-->
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
+    @if(isset($product->description))
+        <meta name="description" content="{{$product->description}}">
+    @endif
     <meta name="author" content="">
     <!--
     <link rel="icon" href="../../favicon.ico">
     -->
 
-    <title>دوره های تخصصی موسیقی</title>
+    @if(isset($product->name))
+        <title>{{$product->name}}</title>
+    @elseif(isset($category->title))
+        <title> {{$category->title}}</title>
+    @else
+        <title>دوره های تخصصی موسیقی</title>
+    @endif
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('css2/bootstrap.min.css')}}" rel="stylesheet">

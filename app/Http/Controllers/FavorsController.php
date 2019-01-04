@@ -25,6 +25,9 @@ class FavorsController extends Controller
 
     }
 
+    /**
+     * @param Request $request
+     */
     public function update(Request $request)
     {
         $product_id = substr(url()->previous(), strpos(url()->previous(), 'products' ) + 9);

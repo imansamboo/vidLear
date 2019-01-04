@@ -281,7 +281,7 @@
                                                 <div class="clear-left">
                                                     <p class="right-float">
                                                         <img src="img2/clock-outline.png">07:48:29</p>
-                                                    <p class="left-float product-price"> تومان {{0.9*$newProduct->price}} </p>
+                                                    <p class="left-float product-price"> تومان {{((100 - $newProduct->discount)/100)*$newProduct->price}} </p>
                                                 </div>
                                                 <div class="clearfix">
                                                 </div>
@@ -374,7 +374,7 @@
                                                             <div class="clear-left">
                                                                 <p class="right-float">
                                                                     <img src="img2/clock-outline.png">07:48:29</p>
-                                                                <p class="left-float product-price"> تومان {{0.9*$newProduct->price}} </p>
+                                                                <p class="left-float product-price"> تومان {{((100 - $newProduct->discount)/100)*$newProduct->price}} </p>
                                                             </div>
                                                             <div class="clearfix">
                                                             </div>
