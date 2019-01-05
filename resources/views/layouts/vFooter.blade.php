@@ -112,9 +112,7 @@
 <script src="{{asset('js2/register.js')}}"></script>
 <script src="{{asset('js2/favor.js')}}"></script>
 <script src="{{asset('js2/rate.js')}}"></script>
-{{--
 <script src="{{asset('js2/invoice.js')}}"></script>
---}}
 <script src="{{asset('js2/reset-password.js')}}"></script>
 <script>window.jQuery || document.write('<script src="js2/jquery.min.js"><\/script>')</script>
 <script src="{{asset('js2/bootstrap.min.js')}}"></script>

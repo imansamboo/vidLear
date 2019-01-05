@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +21,8 @@ Route::get('/', function () {
 Route::get('/favorite', 'HomePageController@favorOfUser');
 Route::get('/clientarea', 'HomePageController@getInvoicesOfUser');
 Route::get('/settings', function () {
-    return view('settings', ['categories' => App\Category::all()]);
-});
+    return view('settings', ['categories' => App\Category::all(), 'error' => array(), 'user' => Auth::user()]);
+})->name('setting');
 Route::get('/transactions', function () {
     return view('transactions', ['categories' => App\Category::all()]);
 });

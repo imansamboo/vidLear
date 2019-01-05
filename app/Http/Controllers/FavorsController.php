@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\UrlGenerator;
 
 
+
 class FavorsController extends Controller
 {
     /**

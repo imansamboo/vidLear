@@ -25,9 +25,9 @@ class HomePageController extends Controller
     public function index()
     {
         $products = array();
-        $count = Product::count();
+        $count = Product::where('isPublish', '=', 1)->count();
         for($i = 0; 4 * $i < $count-5 && 4 * $i < 36; $i++){
-            $products[]= Product::offset(4*$i)->limit(4)->get();
+            $products[]= Product::where('isPublish', '=', 1)->offset(4*$i)->limit(4)->get();
         }
         return view(
             'homepage',
@@ -46,6 +46,7 @@ class HomePageController extends Controller
     {
         $q = $request->get('q');
         $products = Product::where('name', 'LIKE', '%'.$q.'%')
+            ->where('isPublish', '=', 1)
             ->orderBy('name')->paginate(16);
         $categories = Category::all();
         return view('index', compact('products', 'q', 'categories'));
@@ -59,11 +60,17 @@ class HomePageController extends Controller
      */
     public function indexProductsOfCategory($category_id, Request $request)
     {
+        $products = array();
         $categories = Category::all();
         $q = $request->get('q');
-        $products = Category::where('id', '=', $category_id)
+        $productsAll = Category::where('id', '=', $category_id)
             ->get()[0]
             ->products;
+        foreach ($productsAll as $product)
+        {
+            if($product->isPublish == 1)
+                $products[] = $product;
+        }
         $count = count($products);
         $productContainer = array();
         for($i = 0;  4*$i < $count; $i++){
@@ -77,12 +84,16 @@ class HomePageController extends Controller
         return view('indexCatPro', ['productContainer' => $productContainer, 'categoryId' => $category_id, 'categories' => $categories, 'category' => Category::find($category_id)]);
     }
 
+
     /**
      * @param $product
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Exception
      */
     public function viewProduct($product)
     {
+        if(Product::find($product)->isPublish == 0)
+            throw new \Exception('you can\'t access to this product');
         $isFavored = 0;
         $rating = 0;
         $totalDuration = 0;

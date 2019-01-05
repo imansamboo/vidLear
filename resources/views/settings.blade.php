@@ -10,7 +10,9 @@
                 <!-- ///////////////// menu 1 /////////////////////// -->
                 <div class="sp-sidebar">
                     <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 sp-sidebar-owner-main">
-                        <img src="pics/user-pic.jpeg" class="sp-sidebar-owner-pic">
+                        @if(isset($user->photo))
+                            <img src="{{asset('/pics/' .$user->photo )}}" class="sp-sidebar-owner-pic profile-pic">
+                        @endif
                         <p class="sp-sidebar-owner-name">حامد خالقی اصفهانی</p>
                     </div>
                     <div class="sp-sidebar-profile">
@@ -80,22 +82,25 @@
                                 <div class="form-group">
                                     <p>تصویر پروفایل</p>
                                     <div class="profile-settings">
-                                        <img src="pics/user-pic.jpeg" class="sp-sidebar-owner-pic profile-pic">
-                                        <input accept="image/*" id="fileInput" style="display: none;" type="file">
-                                        <button class="profile-picture profile-pic-btn" onclick="document.getElementById('fileInput').click();">
+                                        @if(isset($user->photo))
+                                        <img src="{{asset('/pics/' .$user->photo )}}" class="sp-sidebar-owner-pic profile-pic">
+                                        @endif
+                                        <input accept="image/*" id="fileInput" name="photo" style="" type="file">
+
+                                        {{--<button class="profile-picture profile-pic-btn" >
                                             <span class="captionSpan">تغییر تصویر</span>
-                                        </button>
+                                        </button>--}}
                                     </div>
                                 </div>
                                 <br><br><br>
                                 <br><br><br>
                                 <div class="form-group">
                                     <p>نام و نام خانوادگی</p>
-                                    <input type="text" class="form-control profile-settings-input" name="name" value="{{Auth::user()->name}}" id="name" placeholder="نام حقیقی و به فارسی بنویسید">
+                                    <input type="text" class="form-control profile-settings-input" name="name" value="{{$user->name}}" id="name" placeholder="نام حقیقی و به فارسی بنویسید">
                                 </div>
                                 <div class="form-group">
                                     <p>پست الکترونیک (ایمیل)</p>
-                                    <input type="email" class="form-control profile-settings-input" name="email" value="{{Auth::user()->email}}" id="email" placeholder="example : test@test.com">
+                                    <input type="email" class="form-control profile-settings-input" name="email" value="{{$user->email}}" id="email" placeholder="example : test@test.com">
                                 </div>
                             </div>
                         </div>
@@ -110,28 +115,28 @@
                                 <div class="form-group">
                                     <p>تاریخ تولد</p>
                                     <div class="date">
-                                        <select class="form-control date-day" name="day" value="{{Auth::user()->day}}" id="day">
+                                        <select class="form-control date-day" name="day"  id="day">
                                             @for($i = 1; $i < 31; $i++)
-                                                <option value="{{$i}}">{{$i}}</option>
+                                                <option value="{{$i}}" @if($user->day == $i) selected @endif>{{$i}}</option>
                                             @endfor
                                         </select>
-                                        <select class="form-control date-month" name="month" value="{{Auth::user()->month}}" id="month">
-                                            <option value="فروردین">فروردین</option>
-                                            <option value="اردیبهشت">اردیبهشت</option>
-                                            <option value="خرداد">خرداد</option>
-                                            <option value="تیر">تیر</option>
-                                            <option value="مرداد">مرداد</option>
-                                            <option value="شهریور">شهریور</option>
-                                            <option value="مهر">مهر</option>
-                                            <option value="آبان">آبان</option>
-                                            <option value="آذر">آذر</option>
-                                            <option value="دی">دی</option>
-                                            <option value="بهمن">بهمن</option>
-                                            <option value="اسفند">اسفند</option>
+                                        <select class="form-control date-month" name="month"  id="month">
+                                            <option value="1" @if($user->month == 1) selected @endif >فروردین</option>
+                                            <option value="2" @if($user->month == 2) selected @endif >اردیبهشت</option>
+                                            <option value="3" @if($user->month == 3) selected @endif >خرداد</option>
+                                            <option value="4" @if($user->month == 4) selected @endif >تیر</option>
+                                            <option value="5" @if($user->month == 5) selected @endif >مرداد</option>
+                                            <option value="6" @if($user->month == 6) selected @endif >شهریور</option>
+                                            <option value="7" @if($user->month == 7) selected @endif >مهر</option>
+                                            <option value="8" @if($user->month == 8) selected @endif >آبان</option>
+                                            <option value="9" @if($user->month == 9) selected @endif >آذر</option>
+                                            <option value="10" @if($user->month == 10) selected @endif >دی</option>
+                                            <option value="11" @if($user->month == 11) selected @endif >بهمن</option>
+                                            <option value="12" @if($user->month == 12) selected @endif >اسفند</option>
                                         </select>
-                                        <select class="form-control date-year" name="year" value="{{Auth::user()->year}}" id="year">
+                                        <select class="form-control date-year" name="year"  id="year">
                                             @for($i = 1330; $i < 1400; $i++)
-                                                <option value="{{$i}}">{{$i}}</option>
+                                                <option value="{{$i}}" @if($user->year == $i) selected @endif>{{$i}}</option>
                                             @endfor
                                         </select>
                                     </div>
@@ -139,12 +144,12 @@
                                 </div>
                                 <div class="form-group">
                                     <p>تیتر شغلی یا حرفه</p>
-                                    <input type="text" class="form-control profile-settings-input" id="job" name="job" value="{{Auth::user()->job}}" placeholder="نام سمت یا حرفه ایی که در آن متخصص هستید.">
+                                    <input type="text" class="form-control profile-settings-input" id="job" name="job" value="{{$user->job}}" placeholder="نام سمت یا حرفه ایی که در آن متخصص هستید.">
                                     <p style="padding-top: 10px;font-size: 13px;">برای مثال: طراح رابط کاربری، برنامه‌نویس، تصویرساز، دبیر شیمی</p>
                                 </div>
                                 <div class="form-group">
                                     <p>درباره من</p>
-                                    <textarea class="form-control profile-settings-input profile-bio" name="bio" value="{{Auth::user()->bio}}" id="bio" placeholder="توضیحی مختصر و مفید درباره خودتان و حرفه‌ایی که در آن تخصص دارید، برای آشنایی بیشتر داشنجویان با شما"></textarea>
+                                    <textarea class="form-control profile-settings-input profile-bio" name="bio" value="{{$user->bio}}" id="bio" placeholder="توضیحی مختصر و مفید درباره خودتان و حرفه‌ایی که در آن تخصص دارید، برای آشنایی بیشتر داشنجویان با شما">{{$user->bio}}</textarea>
                                 </div>
                             </div>
                             <hr class="the-hr">
@@ -157,27 +162,27 @@
                                 <div class="col-md-9">
                                     <div class="form-group">
                                         <p>سایت</p>
-                                        <input type="text" class="form-control profile-settings-input" name="site" value="{{Auth::user()->site}}" id="site" placeholder="http://www.example.com">
+                                        <input type="text" class="form-control profile-settings-input" name="site" value="{{$user->site}}" id="site" placeholder="http://www.example.com">
                                     </div>
                                     <div class="form-group">
                                         <p>تلگرام</p>
-                                        <input type="text" class="form-control profile-settings-input" name="telegram" value="{{Auth::user()->telegram}}" id="telegram" placeholder="https://t.me/...">
+                                        <input type="text" class="form-control profile-settings-input" name="telegram" value="{{$user->telegram}}" id="telegram" placeholder="https://t.me/...">
                                     </div>
                                     <div class="form-group">
                                         <p>لینکدین</p>
-                                        <input type="text" class="form-control profile-settings-input" name="linkedin" value="{{Auth::user()->linkedin}}" id="linkedin" placeholder="https://www.linkedin.com/in/...">
+                                        <input type="text" class="form-control profile-settings-input" name="linkedin" value="{{$user->linkedin}}" id="linkedin" placeholder="https://www.linkedin.com/in/...">
                                     </div>
                                     <div class="form-group">
                                         <p>توئیتر</p>
-                                        <input type="text" class="form-control profile-settings-input" name="twitter" value="{{Auth::user()->twitter}}" id="twitter" placeholder="https://www.twitter.com/...">
+                                        <input type="text" class="form-control profile-settings-input" name="twitter" value="{{$user->twitter}}" id="twitter" placeholder="https://www.twitter.com/...">
                                     </div>
                                     <div class="form-group">
                                         <p>فیسبوک</p>
-                                        <input type="text" class="form-control profile-settings-input" name="facebook" value="{{Auth::user()->facebook}}" id="facebook" placeholder="https://www.facebook.com/...">
+                                        <input type="text" class="form-control profile-settings-input" name="facebook" value="{{$user->facebook}}" id="facebook" placeholder="https://www.facebook.com/...">
                                     </div>
                                     <div class="form-group">
                                         <p>اینستاگرام</p>
-                                        <input type="text" class="form-control profile-settings-input" name="instagram" value="{{Auth::user()->instagram}}" id="instagram" placeholder="https://www.instagram.com/...">
+                                        <input type="text" class="form-control profile-settings-input" name="instagram" value="{{$user->instagram}}" id="instagram" placeholder="https://www.instagram.com/...">
                                     </div>
                                 </div>
                             </div>
@@ -188,7 +193,11 @@
                                         تغییر رمز عبور
                                     </p>
                                 </div>
+
                                 <div class="col-md-9">
+                                    @if(count($error) > 0)
+                                    <p class="help-block" style="color: red">{{$error[0]}}</p>
+                                    @endif
                                     <div class="form-group">
                                         <p>رمز عبور جدید</p>
                                         <input type="password" class="form-control profile-settings-input" name="new-password" id="new-password" placeholder="رمزعبور جدید خود را وارد کنید.">
