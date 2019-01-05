@@ -1,4 +1,4 @@
-@include('layouts.iHeader')
+@include('layouts.vHeader')
 
 <!------ Products ---------->
 

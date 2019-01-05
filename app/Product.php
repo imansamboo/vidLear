@@ -81,7 +81,7 @@ class Product extends Model
     public function getPhotoPathAttribute()
     {
         if ($this->photo !== '') {
-            return url('/img/' . $this->photo);
+            return url('/img2/' . $this->photo);
         } else {
             return 'http://placehold.it/850x618';
         }

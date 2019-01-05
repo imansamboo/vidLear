@@ -1,4 +1,9 @@
 var action1 = '';
+if(window.location.origin == "https://parto.me"){
+    address = window.location.origin + "/laravel/vidLear/public";
+}else{
+    address = window.location.origin;
+}
 $(document).ready(function() {
     console.log('resister input');
 
@@ -39,7 +44,9 @@ $(document).ready(function() {
                     '            <div class="modal-body">\n' +
                     '                <p id="message"></p>\n' +
                     '                <div class="register_container">\n' +
-                    '                    <form method="GET" onsubmit="" action="/varifyWithSms" id="sms">\n' +
+                    '                    <form method="GET" onsubmit="" action="' +
+                    address +
+                    '/varifyWithSms" id="sms">\n' +
                     '    <label for="last_sent_sms_code">\n' +
                     '        کد ارسالی :\n' +
                     '    </label>\n' +

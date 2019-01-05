@@ -1,5 +1,11 @@
 console.log('rate');
 var color;
+var address = '';
+if(window.location.origin == "https://parto.me"){
+     address = window.location.origin + "/laravel/vidLear/public";
+}else{
+    address = window.location.origin;
+}
 var address = "/laravel/vidLear/public";
 //color[0] = '#D1D1D1';
 $(document).ready(function(){
@@ -21,7 +27,7 @@ $(document).ready(function(){
                 j = 0;
             }
             $.get({
-                url: window.location.origin + '/favorProduct',
+                url: address + '/favorProduct',
                 data: {
                 },
                 dataType: 'JSON',

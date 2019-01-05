@@ -12,7 +12,7 @@
             <div class="product-item">
                 <div class="col-item">
                     <div class="photo">
-                        <a href="{{url('/products')}}/{{$product->id}}"><img src="{{asset('img2/'. (fmod($loop->index, 8) + 1) . '.jpg')}}" class="img-responsive" alt="a"/></a>
+                        <a href="{{url('/products')}}/{{$product->id}}"><img src="{{asset('img2/'. $product->photo)}}" class="img-responsive" alt="a"/></a>
                     </div>
                     <div class="info">
                         <div class="row">

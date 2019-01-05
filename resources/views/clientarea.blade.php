@@ -79,7 +79,7 @@
                             <div class="product-item">
                                 <div class="col-item">
                                     <div class="photo">
-                                        <img src="{{asset('img2/350x260.png')}}" class="img-responsive" alt="a"/>
+                                        <img src="{{asset('img2/'. $product->photo)}}" class="img-responsive" alt="a"/>
                                     </div>
                                     <div class="info">
                                         <div class="row">

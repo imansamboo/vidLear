@@ -17,9 +17,6 @@
 Route::get('/', function () {
     return redirect(route('homepage'));
 });
-Route::get('/clientarea', function () {
-    return view('clientarea', ['categories' => App\Category::all()]);
-});
 Route::get('/favorite', 'HomePageController@favorOfUser');
 Route::get('/clientarea', 'HomePageController@getInvoicesOfUser');
 Route::get('/settings', function () {
@@ -92,6 +89,7 @@ Route::get('/videos', function () {
 });
 
 Route::get('/admin', function () { return redirect('/admin/home'); })->middleware('auth');
+Route::post('/user/update', 'UsersController@update')->middleware('auth')->name('user.update');
 Route::get('/favorProduct', 'FavorsController@update');
 Route::get('/payInvoice/{productId}', 'Invoices2Controller@firstStore');
 Route::post('/payInvoice/{id}', 'Invoices2Controller@store');
@@ -146,6 +144,14 @@ Route::get('/registerDiscount', function () {
         $discount = number_format(((float)mt_rand(0, 100)), 2, '.', '');
         $product->discount = $discount;
         $product->save();
+    }
+});
+Route::get('/registerPhotos', function () {
+    $i = 0;
+    foreach(App\Product::all() as $product){
+        $product->photo = (fmod($i, 8) + 1) . '.jpg';
+        $product->save();
+        $i++;
     }
 });
 

@@ -1,3 +1,8 @@
+if(window.location.origin == "https://parto.me"){
+    address = window.location.origin + "/laravel/vidLear/public";
+}else{
+    address = window.location.origin;
+}
 function sleep (time) {
     return new Promise((resolve) => setTimeout(resolve, time));
 }
@@ -8,7 +13,9 @@ $('a.forgot_link').click(function (e) {
     console.log('reset');
     $('h4.modal-title').empty();
     $('h4.modal-title').append('لطفا شماره همراه خود را جهت بازنشانی رمز عبور وارد نمایید.');
-    var x = $('div.modal-body').first().html('<form method="GET" id="password-reset" onsubmit="" data-type="json" action="/passReset">\n' +
+    var x = $('div.modal-body').first().html('<form method="GET" id="password-reset" onsubmit="" data-type="json" action="' +
+        address +
+        '/passReset">\n' +
         '    <label for="mobile">\n' +
         '        شماره تلفن همراه :\n' +
         '    </label>\n' +
@@ -37,7 +44,9 @@ $('a.forgot_link').click(function (e) {
                 console.log('success');
                 $('h4.modal-title').empty();
                 $('h4.modal-title').append('کد دریافتی را وارد نمایید.');
-                var x = $('div.modal-body').first().html('<form method="GET" id="verify-reset" onsubmit="" data-type="json" action="/verifyReset">\n' +
+                var x = $('div.modal-body').first().html('<form method="GET" id="verify-reset" onsubmit="" data-type="json" action="' +
+                    address +
+                    '/verifyReset">\n' +
                     '    <label for="last_sent_sms_code">\n' +
                     '        کد دریافتی :\n' +
                     '    </label>\n' +

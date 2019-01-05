@@ -14,7 +14,7 @@ class ProductsController extends Controller
     protected function savePhoto(UploadedFile $photo)
     {
         $fileName = str_random(40) . '.' . $photo->guessClientExtension();
-        $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img';
+        $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img2';
         $photo->move($destinationPath, $fileName);
         return $fileName;
     }
@@ -154,7 +154,7 @@ class ProductsController extends Controller
      */
     public function deletePhoto($filename)
     {
-        $path = public_path() . DIRECTORY_SEPARATOR . 'img'
+        $path = public_path() . DIRECTORY_SEPARATOR . 'img2'
             . DIRECTORY_SEPARATOR . $filename;
         return File::delete($path);
     }

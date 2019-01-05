@@ -55,7 +55,7 @@
                 videoPlayerWidth:800,                                          //fixed total player width (only for playerLayout: "fixedSize")
                 videoPlayerHeight:460,                                         //fixed total player height (only for playerLayout: "fixedSize")
                 videoRatio: 16/9,                                              //set any video ratio (calculate video width/video height)
-                videoRatioStretch: true,                                      //adjust video ratio for case when playlist is "opened" : true/false
+                videoRatioStretch: false,                                      //adjust video ratio for case when playlist is "opened" : true/false
                 iOSPlaysinline: true,                                          //on iOS device: play videos inline (like on desktop) or in Fullscreen by default: true/false
                 autoplay:false,                              				   //autoplay when webpage loads: true/false
                 colorAccent:"#ff0000",                                         //plugin colors accent (hexadecimal or RGB value - http://www.colorpicker.com/)
@@ -85,7 +85,7 @@
                 lightBoxThumbnailHeight: 0,                                  //lightbox thumbnail image height
                 lightBoxCloseOnOutsideClick: true,                             //close lightbox when clicked outside of player area
                 <!-- PLAYLIST SETTINGS -->
-                playlist:"Right playlist",                                     //choose playlist type: "Right playlist", "Bottom playlist", "Off"
+                playlist:"Off",                                     //choose playlist type: "Right playlist", "Bottom playlist", "Off"
                 playlistScrollType:"inset",                                    //choose scrollbar type: "light","minimal","light-2","light-3","light-thick","light-thin","inset","inset-2","inset-3","rounded","rounded-dots","3d","dark","minimal-dark","dark-2","dark-3","dark-thick","dark-thin","inset-dark","inset-2-dark","inset-3-dark","rounded-dark","rounded-dots-dark","3d-dark","3d-thick-dark"
                 playlistBehaviourOnPageload:"closed",                //choose playlist behaviour when webpage loads: "closed", "opened (default)" (not apply to Vimeo player)
                 <!-- VIMEO PLAYER SETTINGS -->
@@ -148,7 +148,7 @@
                 embedBtnTooltipTxt:"Embed",
                 shareBtnTooltipTxt:"Share",
                 volumeTooltipTxt:"Volume",
-                playlistBtnClosedTooltipTxt:"Show playlist",
+                playlistBtnClosedTooltipTxt:"Hide playlist",
                 playlistBtnOpenedTooltipTxt:"Hide playlist",
                 facebookBtnTooltipTxt:"Share on Facebook",
                 twitterBtnTooltipTxt:"Share on Twitter",
@@ -175,7 +175,7 @@
                     {
                         videoType:"HTML5",                                                              //choose video type: "HTML5", "youtube", "vimeo", "image"
                         title:"{{$video->title}}",                                                            //video title
-                        mp4HD:"{{asset('videos/'. $video->video)}}",
+                        mp4HD:"{{asset('http://backino.net/leech/files/How_to_Master_Your_Music_in_5_Simple_Steps_%5Bh-QCQiOkufc%5D_%5Btag22%5D.mp4')}}",
                         enable_mp4_download:false,                                                        //enable download button for self hosted videos: true, false
                         imageUrl:"{{asset('img2//Rain-l.jpg')}}",                                             //display image instead of playing video
                         imageTimer:4, 																	  //set time how long image will display

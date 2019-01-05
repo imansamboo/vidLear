@@ -27,6 +27,12 @@ $(document).ready(function() {
 
     });
 }*/
+var address = '';
+if(window.location.origin == "https://parto.me"){
+    address = window.location.origin + "/laravel/vidLear/public";
+}else{
+    address = window.location.origin;
+}
 var mainNav = '<li id="main-nav" class="nav-item dropdown category">' + $("#main-nav").html() + '</li>';
 console.log('input');
 $(document).ready(function() {
@@ -65,13 +71,17 @@ $(document).ready(function() {
 
                         $( "#authenticate" ).append( "<ul class=\"nav navbar-nav menu-right\">\n" +
                             "                                    <li>\n" +
-                            "                                            <a href=\"\/clientarea\"  class=\"header-font\"><i\n" +
+                            "                                            <a href=\"" +
+                            address +
+                            "\/clientarea\"  class=\"header-font\"><i\n" +
                             "                                                        class=\"fa fa-user\"\n" +
                             "                                                        aria-hidden=\"true\"></i> ناحیه کاربری\n" +
                             "                                            </a>\n" +
                             "</li>\n" +
                             "                                    <li>\n" +
-                            "                                        <a href=\"/logout\"  class=\"header-font\"><i\n" +
+                            "                                        <a href=\"" +
+                            address +
+                            "/logout\"  class=\"header-font\"><i\n" +
                             "                                                    class=\"fa fa-sign-out\"\n" +
                             "                                                    aria-hidden=\"true\"></i>خروج از سامانه\n" +
                             "                                        </a>\n" +

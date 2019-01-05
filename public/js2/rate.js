@@ -1,7 +1,10 @@
 console.log('invoice');
 var newStars = '';
-var address = '/laravel/vidLear/public';
-$(document).ready(function(){
+if(window.location.origin == "https://parto.me"){
+    address = window.location.origin + "/laravel/vidLear/public";
+}else{
+    address = window.location.origin;
+}$(document).ready(function(){
     var stars = $('i.fa-star');
     var j =0;
     $('i.fa-star').on('click', function (e){
@@ -21,7 +24,7 @@ $(document).ready(function(){
                     var id = $this.attr('id');
                     if (j == 0) {
                         $.get({
-                            url: window.location.origin + '/rateProduct',
+                            url: address + '/rateProduct',
                             data: {
                                 rating: id
                             },
