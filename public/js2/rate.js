@@ -14,7 +14,7 @@ if(window.location.origin == "https://parto.me"){
         }else {
             var $this = $(this);
             $.get({
-                url: window.location.origin + '/isRated',
+                url: address + '/isRated',
                 data: {
                 },
                 dataType: 'JSON',

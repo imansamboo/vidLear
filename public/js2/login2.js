@@ -27,6 +27,11 @@ $(document).ready(function() {
 
     });
 }*/
+if(window.location.origin == "https://parto.me"){
+    address = window.location.origin + "/laravel/vidLear/public";
+}else{
+    address = window.location.origin;
+}
 var mainNav = '<li id="main-nav" class="nav-item dropdown category">' + $("#main-nav").html() + '</li>';
 var li = $('li.category').html();
 if(window.location.origin == "https://parto.me"){

@@ -4,8 +4,16 @@
 <div class="container product">
     <div class="row">
         <div class="col-md-12">
+            @if($q == '')
             <p class="new-product"><i class="fa fa-bars" aria-hidden="true"></i>
-                محصولات</p>
+                محصولات
+            </p>
+            @else
+                <p class="new-product"><i class="fa fa-bars" aria-hidden="true"></i>
+                    نتیجه جستجو برای " {{$q}}"
+                </p>
+
+            @endif
         </div>
         @foreach($products as $product)
         <div class="col-md-3">

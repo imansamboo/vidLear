@@ -70,8 +70,8 @@
             <div id="new-products" class="carousel slide" data-ride="carousel" data-interval="false">
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
-                    @foreach($products as $newProducts)
-                        @if ($loop->last)
+                    @foreach($news as $newProducts)
+                        @if ($loop->first)
                             <div class="item  active">
                                 @else
                                     <div class="item">

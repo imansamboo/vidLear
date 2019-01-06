@@ -10,7 +10,9 @@
                 <!-- ///////////////// menu 1 /////////////////////// -->
                 <div class="sp-sidebar">
                     <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 sp-sidebar-owner-main">
-                        <img src="pics/user-pic.jpeg" class="sp-sidebar-owner-pic">
+                        @if(isset($user->photo))
+                            <img src="{{asset('/pics/' .$user->photo )}}" class="sp-sidebar-owner-pic profile-pic">
+                        @endif
                         <p class="sp-sidebar-owner-name">حامد خالقی اصفهانی</p>
                     </div>
                     <div class="sp-sidebar-profile">

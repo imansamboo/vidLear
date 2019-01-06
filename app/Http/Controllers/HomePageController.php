@@ -25,15 +25,20 @@ class HomePageController extends Controller
     public function index()
     {
         $products = array();
+        $news = array();
         $count = Product::where('isPublish', '=', 1)->count();
         for($i = 0; 4 * $i < $count-5 && 4 * $i < 36; $i++){
             $products[]= Product::where('isPublish', '=', 1)->offset(4*$i)->limit(4)->get();
+        }
+        for($i = 0; 4 * $i < $count-5 && 4 * $i < 36; $i++){
+            $news[]= Product::where('isPublish', '=', 1)->orderBy('created_at', 'DESC')->offset(4*$i)->limit(4)->get();
         }
         return view(
             'homepage',
             array(
                 'categories' => Category::limit(7)->get(),
                 'products' => $products,
+                'news' => $news,
             )
         );
     }
@@ -47,7 +52,7 @@ class HomePageController extends Controller
         $q = $request->get('q');
         $products = Product::where('name', 'LIKE', '%'.$q.'%')
             ->where('isPublish', '=', 1)
-            ->orderBy('name')->paginate(16);
+            ->orderBy('name')->paginate(20);
         $categories = Category::all();
         return view('index', compact('products', 'q', 'categories'));
     }
@@ -186,7 +191,7 @@ class HomePageController extends Controller
         $q = $request->get('q');
         $categories = Category::where('title', 'LIKE', '%'.$q.'%')
             ->orderBy('title')->paginate(16);
-        return view('indexCategories', compact('categories', 'q'));
+        return view('indexCategories', compact('categories', 'q', 'q'));
     }
 
     public function favorOfUser()
@@ -207,7 +212,7 @@ class HomePageController extends Controller
                 $products[] = Product::find($favor->product_id);
             }
         }
-        return view('favorite', ['categories' => Category::all(), 'products' => $products]);
+        return view('favorite', ['categories' => Category::all(), 'products' => $products, 'user' => Auth::user()]);
     }
 
     public function getInvoicesOfUser()
@@ -228,7 +233,7 @@ class HomePageController extends Controller
                 $products[] = Product::find($invoice->product_id);
             }
         }
-        return view('clientarea', ['categories' => Category::all(), 'products' => $products]);
+        return view('clientarea', ['categories' => Category::all(), 'products' => $products, 'user' => Auth::user()]);
     }
 
 }

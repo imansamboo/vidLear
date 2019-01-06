@@ -8,8 +8,10 @@
     @foreach($productContainer as $productArray)
         <div class="row">
             <div class="col-md-12">
-                {{--<p class="new-product"><i class="fa fa-bars" aria-hidden="true"></i>
-                    محصولات</p>--}}
+                <div class="col-md-12">
+                    <p class="new-product"><i class="fa fa-bars" aria-hidden="true"></i>
+                        {{$category->title}}</p>
+                </div>
             @foreach($productArray as $product)
                 <div class="col-md-3">
                     <div class="product-item">

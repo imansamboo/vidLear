@@ -44,7 +44,7 @@ $('a.forgot_link').click(function (e) {
                 console.log('success');
                 $('h4.modal-title').empty();
                 $('h4.modal-title').append('کد دریافتی را وارد نمایید.');
-                var x = $('div.modal-body').first().html('<form method="GET" id="verify-reset" onsubmit="" data-type="json" action="' +
+                var x = $('div.modal-body').first().html('<div id="login-error"></div><form method="GET" id="verify-reset" onsubmit="" data-type="json" action="' +
                     address +
                     '/verifyReset">\n' +
                     '    <label for="last_sent_sms_code">\n' +

@@ -8,6 +8,7 @@
         <div class="col-md-12">
             <p class="new-product"><i class="fa fa-bars" aria-hidden="true"></i>
                 دسته بندی ها</p>
+
         </div>
         @foreach($categories as $category)
         <div class="col-md-3">

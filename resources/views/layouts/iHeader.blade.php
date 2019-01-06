@@ -136,7 +136,7 @@
                                         <div class="all-search-main" id="imaginary_container">
                                             <div class="input-group stylish-input-group">
                                                 <input name="q" type="text" class="form-control search-font"
-                                                       placeholder="جستجو در دوره های آنلاین موسیقی...">
+                                                       placeholder="جستجو در دوره های آنلاین موسیقی..." @if(isset($q) && $q != '')value="{{$q}}" @endif>
                                                 <span class="input-group-addon">
                         <button type="submit">
                             <span class="glyphicon glyphicon-search search-color"></span>

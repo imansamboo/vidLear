@@ -352,11 +352,11 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
 
                 <h4 class="modal-title">ورود به پنل کاربری</h4>
-                <div id="login-error">
-                </div>
             </div>
 
             <div class="modal-body">
+                <div id="login-error">
+                </div>
                 @include('layouts.login')
             </div>
         </div>

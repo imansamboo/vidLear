@@ -38,10 +38,11 @@ $(document).ready(function() {
                     '            <div class="modal-header">\n' +
                     '                <button type="button" class="close" data-dismiss="modal">×</button>\n' +
                     '                <h5 class="modal-title">لطفا کد ارسالی را جهت تایید نهایی وارد نمایید.</h5>' +
-                    '                <div id="sms-verify-error" >\n' +
-                    '                </div>\n' +
+
                     '            </div>\n' +
                     '            <div class="modal-body">\n' +
+                    '                <div id="sms-verify-error" >\n' +
+                    '                </div>\n' +
                     '                <p id="message"></p>\n' +
                     '                <div class="register_container">\n' +
                     '                    <form method="GET" onsubmit="" action="' +

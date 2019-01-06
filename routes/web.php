@@ -24,7 +24,7 @@ Route::get('/settings', function () {
     return view('settings', ['categories' => App\Category::all(), 'error' => array(), 'user' => Auth::user()]);
 })->name('setting');
 Route::get('/transactions', function () {
-    return view('transactions', ['categories' => App\Category::all()]);
+    return view('transactions', ['categories' => App\Category::all(), 'user' => Auth::user()]);
 });
 //
 Route::get('/passReset', 'SMSController@resetPassword');
