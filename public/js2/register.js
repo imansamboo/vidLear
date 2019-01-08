@@ -86,8 +86,11 @@ $(document).ready(function() {
                                 '    <div class="modal-content">\n' +
                                 '        <div class="modal-header">\n' +
                                 '            <button type="button" class="close" data-dismiss="modal">×</button>\n' +
-                                '            <h5 class="modal-title" style="color: #00a65a">عملیات عضویت شما باموفقیت انجام شد. از گزینه "ورود به سامانه"  استفاده نمایید.</h5>\n' +
+
                                 '        </div>\n' +
+                                '<div class="modal-body>"' +
+                                '            <h4 class="modal-title" style="color: black">عملیات عضویت شما باموفقیت انجام شد. از گزینه "ورود به سامانه"  استفاده نمایید.</h4>\n' +
+                                '</div>'+
                                 '    </div>\n' +
                                 '</div>');
                         },

@@ -1,3 +1,10 @@
+var rand = function() {
+    return Math.random().toString(36).substr(2); // remove `0.`
+};
+
+var token = function() {
+    return rand() + rand(); // to make it longer
+};
 if(window.location.origin == "https://parto.me"){
     address = window.location.origin + "/laravel/vidLear/public";
 }else{
@@ -7,13 +14,13 @@ function sleep (time) {
     return new Promise((resolve) => setTimeout(resolve, time));
 }
 //console.log(document.location.origin);
-$('a.forgot_link').click(function (e) {
+$('a#forgot').click(function (e) {
     e.preventDefault();
     $('div#login-error').empty()
     console.log('reset');
     $('h4.modal-title').empty();
     $('h4.modal-title').append('لطفا شماره همراه خود را جهت بازنشانی رمز عبور وارد نمایید.');
-    var x = $('div.modal-body').first().html('<form method="GET" id="password-reset" onsubmit="" data-type="json" action="' +
+    var x = $('div.modal-body').first().html('<div id="login-error"></div><form method="GET" id="password-reset" onsubmit="" data-type="json" action="' +
         address +
         '/passReset">\n' +
         '    <label for="mobile">\n' +
@@ -21,10 +28,12 @@ $('a.forgot_link').click(function (e) {
         '    </label>\n' +
         '    <input class="form-control" name="mobile" id="mobile" required="" type="text">\n' +
         '    <br>\n' +
-        '    <input name="_token" value="ZvB2aRGv9LD55V7QQs2m4bRBpJb5yMlIZXo42znw" type="hidden">\n' +
+        '    <input name="_token" value="' +
+        token() +
+        '" type="hidden">\n' +
         '<center><img src="/img/loader.gif" id="loading" style="width: 4%;display: none"></center>' +
         '\n' +
-        '\n' +
+        '<a href="#login-again" class="forgot_link">رمز را به یاد آوردم</a>\n' +
         '    <button type="submit" id="reset" class="login_btn">مرحله بعد</button>\n' +
         '</form>');
     $('form#password-reset').on('submit', function (e) {
@@ -57,10 +66,13 @@ $('a.forgot_link').click(function (e) {
                     '    <input class="form-control" name="password" id="password" required="" type="text">\n' +
                     '<center><img src="/img/loader.gif" id="loading" style="width: 4%;display: none"></center>' +
                     '    <br>\n' +
-                    '    <input name="_token" value="ZvB2aRGv9LD55V7QQs2m4bRBpJb5yMlIZXo42znw" type="hidden">\n' +
+                    '    <input name="_token" value="' +
+                    token() +
+                    '" type="hidden">\n' +
                     '<input name="userId" value="' + response.userId +
                     '" type="hidden">' +
                     '\n' +
+                    '<a href="#login-again" class="forgot_link">رمز را به یاد آوردم</a>\n' +
                     '\n' +
                     '    <button type="submit" id="reset" class="login_btn">مرحله بعد</button>\n' +
                     '</form>');

@@ -20,6 +20,7 @@ Route::get('/', function () {
 });
 Route::get('/favorite', 'HomePageController@favorOfUser');
 Route::get('/clientarea', 'HomePageController@getInvoicesOfUser');
+Route::get('/products/{product}/video/{vid}', ['uses' =>'HomePageController@viewProductVideo']);
 Route::get('/settings', function () {
     return view('settings', ['categories' => App\Category::all(), 'error' => array(), 'user' => Auth::user()]);
 })->name('setting');

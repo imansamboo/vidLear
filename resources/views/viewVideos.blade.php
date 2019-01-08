@@ -1,4 +1,4 @@
-@include('layouts.vHeader')
+@include('layouts.vvHeader')
 
 <!------ Products ---------->
 
@@ -203,8 +203,7 @@
                                     <div class="timeline-left">
 
                                         <a href="{{url('/products/' . $product->id)}}" class="timeline-links"><p class="timeline-dl" style="margin-top: 0px;">{{gmdate("i:s", $videos[0]->duration)}}</p></a>
-                                    </div>
-                                </div>
+                                    </div>                            </div>
                             </article>
                         </div>
                         @foreach($videos as $video)
@@ -221,57 +220,7 @@
                                             </div>
                                             <div class="timeline-left">
 
-                                                <a @if(Auth::user())href="{{'/products/'. $product->id.'/video/' . $video->id}}"@endif class="timeline-links "><p class="timeline-dl" style="margin-top: 0px;">{{gmdate("i:s", $video->duration)}}</p></a>
-                                            </div>                            </div>
-                                    </article>
-                                </div>
-                            @endif
-                        @endforeach
-                    </div>
-
-                @else
-                    <div class="timeline">
-                        <!-- Line component -->
-                        <div class="line line-color"></div>
-
-                        <div class="the-hover">
-                            <div class="separator line-color"></div>
-                            <article class="panel panel-default panel-outline">
-                                <div class="panel-heading icon">
-                                    <p class="the-number">1</p>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="timeline-right">
-                                        <p>مقدمه دوره</p>
-                                        <div class="timeline-free">
-                                            <p>نمایش رایگان</p>
-                                        </div>
-                                    </div>
-                                    <div class="timeline-left">
-
-                                        <a href="{{url('/products/' . $product->id)}}" class="timeline-links"><p class="timeline-dl" style="margin-top: 0px;">{{gmdate("i:s", $videos[0]->duration)}}</p></a>
-                                    </div>                            </div>
-                            </article>
-                        </div>
-                        @foreach($videos as $video)
-                            @if($loop->index != 0)
-                                <div class="the-hover">
-                                    <div class="separator line-color"></div>
-                                    <article class="panel panel-default panel-outline">
-                                        <div class="panel-heading icon">
-                                            <i class="fa fa-lock lock-icon"></i>
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="timeline-right">
-                                                <p>{{$video->title}}</p>
-                                            </div>
-                                            <div class="timeline-left">
-                                                @if(Auth::user())
-
-                                                <a href="javascript:javascript:forceBuy();" class="timeline-links isDisabled"><p class="timeline-dl isDisabled" style="margin-top: 0px;color: dimgrey;">{{gmdate("i:s", $video->duration)}}</p></a>
-                                                @elseif(!Auth::user())
-                                                    <a href="javascript:forceLogin();" class="timeline-links isDisabled"><p class="timeline-dl isDisabled" style="margin-top: 0px;color: dimgrey;">{{gmdate("i:s", $video->duration)}}</p></a>
-                                                @endif
+                                                <a href="{{url('/products/' . $product->id . '/video/' . $video->id)}}" class="timeline-links "><p class="timeline-dl" style="margin-top: 0px;">{{gmdate("i:s", $video->duration)}}</p></a>
                                             </div>                            </div>
                                     </article>
                                 </div>
@@ -428,3 +377,6 @@
         <!--footer-->
         <div class="sticky-stopper"></div>
 @include('layouts.vFooter')
+
+
+

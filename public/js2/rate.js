@@ -63,5 +63,10 @@ if(window.location.origin == "https://parto.me"){
         e.preventDefault();
         close();
     })
+    $('i.fa-star').on('click', function (e){
+        e.preventDefault();
+        if( $('i.fa-sign-in').length > 0 ){
+            forceLogin();
+        }
 
 });

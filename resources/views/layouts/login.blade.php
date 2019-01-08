@@ -19,7 +19,7 @@
     </div>
     <br>
     <div class="forgot_section">
-        <a href="#forgot" class="forgot_link">رمز عبور را فراموش کردم</a>
+        <a href="#forgot" id="forgot" class="forgot_link">رمز عبور را فراموش کردم</a>
     </div>
     <center><img src="{{asset('img/loader.gif')}}" id="loading" style="width: 4%;display: none"></center>
 

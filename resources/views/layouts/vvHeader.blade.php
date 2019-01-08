@@ -23,7 +23,7 @@
         <title>دوره های تخصصی موسیقی</title>
     @endif
 
-<!-- Bootstrap core CSS -->
+    <!-- Bootstrap core CSS -->
     <link href="{{asset('css2/bootstrap.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css2/font-awesome.min.css')}}">
 
@@ -174,8 +174,8 @@
 
                     {
                         videoType:"HTML5",                                                              //choose video type: "HTML5", "youtube", "vimeo", "image"
-                        title:"{{$videos[0]->title}}",                                                            //video title
-                        mp4HD:"{{asset('/videos/' . $videos[0]->video)}}",
+                        title:"{{$vid->title}}",                                                            //video title
+                        mp4HD:"{{asset('/videos/' . $vid->video)}}",
                         enable_mp4_download:false,                                                        //enable download button for self hosted videos: true, false
                         imageUrl:"{{asset('img2//Rain-l.jpg')}}",                                             //display image instead of playing video
                         imageTimer:4, 																	  //set time how long image will display
@@ -391,3 +391,4 @@
     </div>
 </div>
 <!-- end Register Modal -->
+

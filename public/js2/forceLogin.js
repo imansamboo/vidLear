@@ -6,3 +6,7 @@ function forceLogin() {
     $('#loginAction').css('padding-right', '11px');
     $('body').append('<div class="modal-backdrop fade in"></div>');
 }
+
+function forceBuy() {
+    alert('buy')
+}
