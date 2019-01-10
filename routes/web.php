@@ -25,7 +25,15 @@ Route::get('/settings', function () {
     return view('settings', ['categories' => App\Category::all(), 'error' => array(), 'user' => Auth::user()]);
 })->name('setting');
 Route::get('/transactions', function () {
-    return view('transactions', ['categories' => App\Category::all(), 'user' => Auth::user()]);
+    return view('transactions', [
+        'categories' => App\Category::all(),
+        'user' => Auth::user(),
+        'status' => [
+            -1 => 'ناموفق',
+            0 => 'موفق',
+            1 => 'پرداخت نشده',
+        ]
+    ]);
 });
 //
 Route::get('/passReset', 'SMSController@resetPassword');
@@ -152,6 +160,15 @@ Route::get('/registerPhotos', function () {
     $i = 0;
     foreach(App\Product::all() as $product){
         $product->photo = (fmod($i, 8) + 1) . '.jpg';
+        $product->save();
+        $i++;
+    }
+});
+
+Route::get('/registerTotal', function () {
+    $i = 0;
+    foreach(App\Product::all() as $product){
+        $product->total_sell_amount = mt_rand(1, 45);
         $product->save();
         $i++;
     }

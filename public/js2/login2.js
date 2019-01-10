@@ -1,3 +1,4 @@
+
 /*
 $(document).ready(function() {
     $.ajaxSetup({
@@ -41,7 +42,6 @@ if(window.location.origin == "https://parto.me"){
 }
 console.log('input');
 $(document).ready(function() {
-
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

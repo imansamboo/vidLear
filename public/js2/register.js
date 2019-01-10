@@ -52,7 +52,9 @@ $(document).ready(function() {
                     '        کد ارسالی :\n' +
                     '    </label>\n' +
                     '    <input class="form-control" name="last_sent_sms_code" id="last_sent_sms_code" required="" type="text">\n' +
-                    '<center><img src="/img/loader.gif" id="loading" style="width: 4%;display: none"></center>' +
+                    '<center><img src="' +
+                    address +
+                    '/img/loader.gif" id="loading" style="width: 4%;display: none"></center>' +
                     '    <br>\n' +
                     '<input name="_token" value="5PhJYPM78BTujzr6DldrRCdKfCcda1098ecp0ZTE" type="hidden">\n' +
                     '<input name="userID" value="' + userID +
@@ -83,15 +85,16 @@ $(document).ready(function() {
                             $('div#registerAction').append('<div class="modal-dialog modal-sm">\n' +
                                 '\n' +
                                 '    <!-- Register Modal content-->\n' +
-                                '    <div class="modal-content">\n' +
+                                '    <div class="modal-content" style="background: #D9E9D2">\n' +
                                 '        <div class="modal-header">\n' +
                                 '            <button type="button" class="close" data-dismiss="modal">×</button>\n' +
 
                                 '        </div>\n' +
-                                '<div class="modal-body>"' +
-                                '            <h4 class="modal-title" style="color: black">عملیات عضویت شما باموفقیت انجام شد. از گزینه "ورود به سامانه"  استفاده نمایید.</h4>\n' +
+                                '<div class="modal-body><div class="register-modal" style="padding-right: 5%;padding-left: 5%;">' +
+                                '            <div class="alert alert-success" style="font-size: 15px">عملیات عضویت شما باموفقیت انجام شد. از گزینه "ورود به سامانه"  استفاده نمایید.</div>\n' +
+                                '</div>' +
                                 '</div>'+
-                                '    </div>\n' +
+                                '</div>\n' +
                                 '</div>');
                         },
                         error: function () {

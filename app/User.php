@@ -69,7 +69,7 @@ class User extends Authenticatable implements MustVerifyEmailContract
      */
     public function orders()
     {
-        return $this->hasMany('App\Invoice');
+        return $this->hasMany('App\PtOrder');
     }
 
     /**

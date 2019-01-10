@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Address;
 use App\Fee;
 use Illuminate\Http\Request;
-use App\Invoice2;
+use App\PtOrder;
 use App\Product;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller as Controller;
@@ -39,9 +39,17 @@ class Invoices2Controller extends Controller
     public function store(Request $request, $id = null)
     {
 
-        $invoice = Invoice2::find($id);
-        $invoice->status = $_POST['status'];
+        $invoice = PtOrder::find($id);
+        $invoice->payment_result = $_POST['payment_result'];
+        $invoice->au = $_POST['au'];
         $invoice->save();
+        $product = Product::find($invoice->product_id);
+        $product->update(
+            array(
+                'total_sell_price' => $invoice->price + $product->total_sell_price,
+                'total_sell_amount' => 1 + $product->total_sell_amount,
+            )
+        );
         return redirect(url('/products/' . $invoice->product_id ));
 
 
@@ -49,18 +57,23 @@ class Invoices2Controller extends Controller
 
     public function firstStore(Request $request, $productId = null)
     {
-        $count = Invoice2::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $productId)->count();
+        $count = PtOrder::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $productId)->count();
         if($count > 0){
-            $invoice = Invoice2::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $productId)->get()[0];
+            $invoice = PtOrder::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $productId)->get()[0];
             return view('peymentInvoice', ['id' => $invoice->id, 'price' => $invoice->price]);
         }
-
+        $date = new \jDateTime(true, true, 'Asia/Tehran');
+        $shamsiDate = $date->date("j F Y H:i");
         $product = Product::find($productId);
-        $invoice = Invoice2::create(
+        $invoice = PtOrder::create(
             array(
                 'user_id' => Auth::user()->id,
                 'price' => ((100 - $product->discount)/100)*$product->price,
                 'product_id' => $productId,
+                'date' =>  date("Y-m-d",time()),
+                'shamsi_date' => $shamsiDate,
+                'payment_result' => null,
+                'au' => null,
             )
         );
         return view('peymentInvoice', ['id' => $invoice->id, 'price' => $invoice->price]);

@@ -1,11 +1,12 @@
 <h1>مبلغ {{$price}}</h1>
 <ul>
     <form action="{{url('/payInvoice/'. $id)}}" method="POST">
-        <select name="status">
-            <option value="پرداخت نشده">پرداخت نشده</option>
-            <option value="ناموفق">ناموفق</option>
-            <option value="موفق">موفق</option>
+        <select name="payment_result">
+            <option value="1">پرداخت نشده</option>
+            <option value="-1">ناموفق</option>
+            <option value="0">موفق</option>
         </select>
+        <input type="hidden" name="au" value="{{mt_rand(111111, 999999999)}}">
         <input name="id" value="{{$id}}" type="hidden">
         {{ Form::token()}}
         <input type="submit" value="انجام تراکنش">

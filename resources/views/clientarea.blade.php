@@ -81,7 +81,7 @@
                             <div class="product-item">
                                 <div class="col-item">
                                     <div class="photo">
-                                        <img src="{{asset('img2/'. $product->photo)}}" class="img-responsive" alt="a"/>
+                                        <a class="product-fsize" href="{{url('/products/' . $product->id)}}"><img src="{{asset('img2/'. $product->photo)}}" class="img-responsive" alt="a"/></a>
                                     </div>
                                     <div class="info">
                                         <div class="row">
@@ -98,12 +98,10 @@
                                                 <i class="fa fa-star"></i>
                                             @endfor
                                         </div>
-                                        <p class="product-off left-float"> تومان {{((100 - $product->discount)/100)*$product->price}}</p>
                                         <div class="clear-left">
                                             <img src="{{asset('img2/clock-outline.png')}}" class="clock">
                                             <p class="right-float">{{$product->getLength()}}</p>
-                                            <p class="left-float product-price">
-                                                تومان {{$product->price}} </p>
+
                                         </div>
                                         <div class="clearfix">
                                         </div>

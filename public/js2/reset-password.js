@@ -1,7 +1,3 @@
-var rand = function() {
-    return Math.random().toString(36).substr(2); // remove `0.`
-};
-
 var token = function() {
     return rand() + rand(); // to make it longer
 };
@@ -13,6 +9,19 @@ if(window.location.origin == "https://parto.me"){
 function sleep (time) {
     return new Promise((resolve) => setTimeout(resolve, time));
 }
+var loginForm = $('#login').html();
+/*function rememberAgain() {
+    $('div#login-error').empty()
+    console.log('reset');
+    $('h4.modal-title').empty();
+    $('h4.modal-title').append('ورود به پنل کاربری');
+    var x = $('div.modal-body').first().html(loginForm);
+}*/
+var rand = function() {
+    return Math.random().toString(36).substr(2); // remove `0.`
+};
+
+
 //console.log(document.location.origin);
 $('a#forgot').click(function (e) {
     e.preventDefault();
@@ -31,11 +40,19 @@ $('a#forgot').click(function (e) {
         '    <input name="_token" value="' +
         token() +
         '" type="hidden">\n' +
-        '<center><img src="/img/loader.gif" id="loading" style="width: 4%;display: none"></center>' +
+        '<center><img src="' +
+        address +
+        '/img/loader.gif" id="loading" style="width: 4%;display: none"></center>' +
         '\n' +
-        '<a href="#login-again" class="forgot_link">رمز را به یاد آوردم</a>\n' +
+        '<a href="' +
+        document.location.href +
+        '" id="login-again" class="forgot_link">رمز را به یاد آوردم</a>\n' +
         '    <button type="submit" id="reset" class="login_btn">مرحله بعد</button>\n' +
         '</form>');
+    /*$('a#login-again').click(function (e) {
+        e.preventDefault();
+        rememberAgain();
+    })*/
     $('form#password-reset').on('submit', function (e) {
         e.preventDefault();
         var $this = $(this);
@@ -64,7 +81,9 @@ $('a#forgot').click(function (e) {
                     '          پسورد جدید :\n' +
                     '    </label>\n' +
                     '    <input class="form-control" name="password" id="password" required="" type="text">\n' +
-                    '<center><img src="/img/loader.gif" id="loading" style="width: 4%;display: none"></center>' +
+                    '<center><img src="' +
+                    address +
+                    '/img/loader.gif" id="loading" style="width: 4%;display: none"></center>' +
                     '    <br>\n' +
                     '    <input name="_token" value="' +
                     token() +
@@ -72,7 +91,9 @@ $('a#forgot').click(function (e) {
                     '<input name="userId" value="' + response.userId +
                     '" type="hidden">' +
                     '\n' +
-                    '<a href="#login-again" class="forgot_link">رمز را به یاد آوردم</a>\n' +
+                    '<a href="' +
+                    document.location.href +
+                    '" id="login-again" class="forgot_link">رمز را به یاد آوردم</a>\n' +
                     '\n' +
                     '    <button type="submit" id="reset" class="login_btn">مرحله بعد</button>\n' +
                     '</form>');
@@ -140,4 +161,12 @@ $('a#forgot').click(function (e) {
 
     })
 
+
+
+
 })
+/*$('a#login-again').click(function (e) {
+    e.preventDefault();
+    rememberAgain();
+})*/
+

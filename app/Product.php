@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Product extends Model
 {
-    protected $fillable = ['name', 'photo',  'price', 'description', 'discount'];
+    protected $fillable = ['name', 'photo',  'price', 'description', 'discount', 'total_sell_amount', 'total_sell_price'];
     protected $appends = ['photo_path'];
 
     /**

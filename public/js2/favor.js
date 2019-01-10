@@ -14,7 +14,7 @@ $(document).ready(function(){
     }else{
         var j =0;
     }
-    $('i.fa-heart').on('click', function (){
+    $('a.like-this').on('click', function (){
         if( $('i.fa-sign-in').length > 0 ){
             forceLogin();
         }else{
@@ -31,8 +31,8 @@ $(document).ready(function(){
                 data: {
                 },
                 dataType: 'JSON',
-                beforeSend: function() { $('#load-favor').show();$("#like-it").hide(); },
-                complete: function() { $('#load-favor').hide(); $("#like-it").show();},
+                beforeSend: function() { $('#load-favor').show();$(".like-it").hide(); },
+                complete: function() { $('#load-favor').hide(); $(".like-it").show();},
                 success: function (response) {
                 },
                 error: function (response) {

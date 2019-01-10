@@ -4,19 +4,18 @@ if(window.location.origin == "https://parto.me"){
     address = window.location.origin + "/laravel/vidLear/public";
 }else{
     address = window.location.origin;
-}$(document).ready(function(){
+}$(document).ready(function() {
     var stars = $('i.fa-star');
-    var j =0;
-    $('i.fa-star').on('click', function (e){
+    var j = 0;
+    $('i.fa-star').on('click', function (e) {
         e.preventDefault();
-        if( $('i.fa-sign-in').length > 0 ){ 
+        if ($('i.fa-sign-in').length > 0) {
             forceLogin();
-        }else {
+        } else {
             var $this = $(this);
             $.get({
                 url: address + '/isRated',
-                data: {
-                },
+                data: {},
                 dataType: 'JSON',
 
 
@@ -31,12 +30,20 @@ if(window.location.origin == "https://parto.me"){
                             dataType: 'JSON',
                             success: function (response) {
                                 console.log(response);
-                                $('#load-rate').hide(); $("#star1-load").show(); $("#star2-load").show();
-                                $('p.sp-rating-code-one').empty();$('p.sp-rating-code-one').append(response.averageRate);
-                                $('p.sp-rating-code-two').empty();$('p.sp-rating-code-two').append( 'از ' + response.voterCount + ' رای' );
+                                $('#load-rate').hide();
+                                $("#star1-load").show();
+                                $("#star2-load").show();
+                                $('p.sp-rating-code-one').empty();
+                                $('p.sp-rating-code-one').append(response.averageRate);
+                                $('p.sp-rating-code-two').empty();
+                                $('p.sp-rating-code-two').append('از ' + response.voterCount + ' رای');
 
                             },
-                            beforeSend: function() { $('#load-rate').show();$("#star1-load").hide(); $("#star2-load").hide();},
+                            beforeSend: function () {
+                                $('#load-rate').show();
+                                $("#star1-load").hide();
+                                $("#star2-load").hide();
+                            },
                         });
                         for (i = 0; i < id; i++) {
                             newStars += '<i class="fa fa-2x fa-star" style="color: #FFC106;"></i>';
@@ -59,14 +66,15 @@ if(window.location.origin == "https://parto.me"){
         }
 
     })
-    $('button.close').on('click', function(e){
+    $('button.close').on('click', function (e) {
         e.preventDefault();
         close();
     })
-    $('i.fa-star').on('click', function (e){
+    $('i.fa-star').on('click', function (e) {
         e.preventDefault();
-        if( $('i.fa-sign-in').length > 0 ){
+        if ($('i.fa-sign-in').length > 0) {
             forceLogin();
         }
 
-});
+    });
+})

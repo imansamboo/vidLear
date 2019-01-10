@@ -59,22 +59,10 @@
                         <div class="col-md-6">
                             <div class="footer-blog">
                                 <p>وبلاگ</p>
-
-                                <a href="#" class="footer-link"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                                    عنوان مطلب مرتبط با وبلاگ در این
-                                    بخش درج میشود. </a>
-                                <br>
-                                <a href="#" class="footer-link"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                                    عنوان مطلب مرتبط با وبلاگ در این
-                                    بخش درج میشود. </a>
-                                <br>
-                                <a href="#" class="footer-link"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                                    عنوان مطلب مرتبط با وبلاگ در این
-                                    بخش درج میشود. </a>
-                                <br>
-                                <a href="#" class="footer-link"><i class="fa fa-arrow-left" aria-hidden="true"></i>
-                                    عنوان مطلب مرتبط با وبلاگ در این
-                                    بخش درج میشود. </a>
+                                @foreach(App\Blog::all() as $blog)
+                                    <a href="#" class="footer-link"><i class="fa fa-arrow-left" aria-hidden="true"></i>{{$blog->title}}</a>
+                                    <br>
+                                @endforeach
                             </div>
                         </div>
                         <div class="col-md-3" id="footer-end">

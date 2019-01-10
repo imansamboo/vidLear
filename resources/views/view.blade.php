@@ -93,14 +93,17 @@
 
                 <div class="sp-sidebar-favor">
                     <img id="load-favor" src="{{asset('img/loader.gif')}}"  style="width: 4%;display: none">
-                    <p id="like-it"><a class="like-this">
+                    <a class="like-this">
+                        <p id="like-it">
                             @if($isFavored == 1)
                                 <i class="fa fa-2x fa-heart" aria-hidden="true" style="color: red"></i>
                             @else
                                 <i class="fa fa-2x fa-heart" aria-hidden="true"></i>
                             @endif
 
-                        </a> افزودن به لیست مورد علاقه ها</p>
+                         افزودن به لیست مورد علاقه ها
+                        </p>
+                    </a>
                 </div>
             </div>
 

@@ -84,18 +84,18 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @if(App\Invoice2::where('user_id', '=', Auth::user()->id)->count() > 0)
-                            @foreach(App\Invoice2::where('user_id', '=', Auth::user()->id)->get() as $invoice)
+                        @if(App\PtOrder::where('user_id', '=', Auth::user()->id)->count() > 0)
+                            @foreach(App\PtOrder::where('user_id', '=', Auth::user()->id)->get() as $invoice)
                                 <tr>
                                     <th scope="row">1</th>
                                     <td>{{$invoice->product->name}}</td>
-                                    <td>{{$invoice->updated_at}}</td>
+                                    <td>{{$invoice->shamsi_date}}</td>
                                     <td>{{10*($invoice->price)}} ریال</td>
-                                    <td>548452054</td>
-                                    @if($invoice->status == 'موفق')
-                                    <td class="transaction-success">{{$invoice->status}}</td>
+                                    <td>{{$invoice->au}}</td>
+                                    @if($invoice->payment_result == 0)
+                                    <td class="transaction-success">موفق</td>
                                     @else
-                                    <td class="transaction-faild">{{$invoice->status}}</td>
+                                    <td class="transaction-faild">پرداخت نشده</td>
                                     @endif
                                 </tr>
                             @endforeach

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\CategoryProduct;
 use App\Invoice2;
 use App\ProductVideo;
+use App\PtOrder;
 use App\Rating;
 use Illuminate\Http\Request;
 use App\Category;
@@ -26,12 +27,16 @@ class HomePageController extends Controller
     {
         $products = array();
         $news = array();
+        $mostSell = array();
         $count = Product::where('isPublish', '=', 1)->count();
         for($i = 0; 4 * $i < $count-5 && 4 * $i < 36; $i++){
             $products[]= Product::where('isPublish', '=', 1)->offset(4*$i)->limit(4)->get();
         }
         for($i = 0; 4 * $i < $count-5 && 4 * $i < 36; $i++){
             $news[]= Product::where('isPublish', '=', 1)->orderBy('created_at', 'DESC')->offset(4*$i)->limit(4)->get();
+        }
+        for($i = 0; 4 * $i < $count-5 && 4 * $i < 36; $i++){
+            $mostSell[]= Product::where('isPublish', '=', 1)->orderBy('total_sell_amount', 'DESC')->offset(4*$i)->limit(4)->get();
         }
         return view(
             'homepage',
@@ -40,6 +45,7 @@ class HomePageController extends Controller
                 'categories2' => Category::all(),
                 'products' => $products,
                 'news' => $news,
+                'mostSell' => $mostSell,
             )
         );
     }
@@ -115,10 +121,10 @@ class HomePageController extends Controller
             if($count > 0){
                 $rating = Rating::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->get()[0]->rating;
             }
-            $count = Invoice2::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->count();
+            $count = PtOrder::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->count();
             if($count > 0){
-                $buyStatus = Invoice2::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->get()[0]->status;
-                if($buyStatus == 'موفق'){
+                $buyStatus = PtOrder::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->get()[0]->payment_result;
+                if($buyStatus == 0){
                     $productBuy = true;
                 }
             }
@@ -220,8 +226,8 @@ class HomePageController extends Controller
     {
         $this->middleware('auth');
         $products = array();
-        if(Invoice2::where('user_id', '=', Auth::user()->id)->where('status', '=', 'موفق')->count() > 0){
-            $invoices = Invoice2::where('user_id', '=', Auth::user()->id)->where('status', '=', 'موفق')->get();
+        if(PtOrder::where('user_id', '=', Auth::user()->id)->where('payment_result', '=', 0)->count() > 0){
+            $invoices = PtOrder::where('user_id', '=', Auth::user()->id)->where('payment_result', '=', 0)->get();
             /*$i = 0;
             $j = 0;
             foreach ($favors as $favor){
@@ -258,10 +264,10 @@ class HomePageController extends Controller
             if ($count > 0) {
                 $rating = Rating::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->get()[0]->rating;
             }
-            $count = Invoice2::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->count();
+            $count = PtOrder::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->count();
             if ($count > 0) {
-                $buyStatus = Invoice2::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->get()[0]->status;
-                if ($buyStatus == 'موفق') {
+                $buyStatus = PtOrder::where('user_id', '=', Auth::user()->id)->where('product_id', '=', $product)->get()[0]->payment_result;
+                if ($buyStatus == 0) {
                     $productBuy = true;
                 }
             }
