@@ -240,8 +240,8 @@
 
             <div class="row">
 
-                <div class="col-md-5 col-xs-12 col-sm-12">
-                    <nav class="navbar navbar-inverse navbar-static-top navbar-full">
+                <div class="col-md-5 col-lg-5 col-sm-5">
+                    <nav class="navbar navbar-inverse" style="width: 115%">
 
                         <div class="container">
 
@@ -266,6 +266,10 @@
                                                             class="fa fa-sign-out"
                                                             aria-hidden="true"></i>خروج از سامانه
                                                 </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" data-toggle="modal" data-target="#blog" class="header-font"><i class="fa fa-adn" aria-hidden="true"></i> بلاگ </a>
+                                            </li>
 
                                             <li id="main-nav" class="nav-item dropdown category">
                                                 <a class="nav-link dropdown-toggle header-font" href="#" id="navbarDropdown"
@@ -281,6 +285,7 @@
                                                 </div>
                                             </li>
 
+
                                         </ul>
                                     @else
                                         <ul class="nav navbar-nav menu-right">
@@ -292,6 +297,9 @@
                                             <li><a href="#" data-toggle="modal" data-target="#registerAction" class="header-font"><i
                                                             class="fa fa-user-plus"
                                                             aria-hidden="true"></i> عضویت </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" data-toggle="modal" data-target="#blog" class="header-font"><i class="fa fa-adn" aria-hidden="true"></i> بلاگ </a>
                                             </li>
                                             <li id="main-nav" class="nav-item dropdown category">
                                                 <a class="nav-link dropdown-toggle header-font" href="#" id="navbarDropdown"

@@ -52,9 +52,10 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        $data['mobile'] = intval($data['mobile']);
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'mobile' => ['required', 'string', 'max:255'/*, 'unique:users'*/],
+            'mobile' => ['required','numeric','min:10000000', 'max:10000000000', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:4', 'confirmed'],
         ]);
@@ -79,7 +80,9 @@ class RegisterController extends Controller
         ]);
         //$lastSendSMSCose = $this->sendSmsCode($data)[1];
         $lastSendSMSCose = 1234;
+
         $user->last_sent_sms_code = $lastSendSMSCose;
+        $user->regsister_sms_count = $user->regsister_sms_count + 1;
         $user->save();
         header('HTTP/1.1 200 OK');
         echo json_encode(['success' => true, 'userID' => $user->id]);

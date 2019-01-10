@@ -80,20 +80,96 @@
                                 <br><br>
                                 <i class="fa fa-arrow-left" aria-hidden="true"></i><a href="#" class="footer-link">
                                     عضویت در سایت </a>
+                                @if(isset($result))
+                                    @if($result == 0)
+                                    <div class="modal fade in" id="resultAction" role="dialog" style="display: block;">
+                                        <div class="modal-dialog modal-md">
+
+                                            <!-- Login Modal content-->
+                                            <div class="b2"></div>
+                                            <div class="bb2" style="display: block;"></div>
+                                            <button id="go2" style="display: none;">
+                                                GO
+                                            </button>
+                                            <div class="message2 comein2">
+                                                <div class="check2 scaledown2" style="padding-top: 15%;">
+                                                    ✔
+                                                </div>
+                                                <p style="font-size:150%;padding-bottom: 7%;">
+                                                    تراکنش موفق بود
+                                                </p>
+
+                                                <button id="ok2">
+                                                    باشه
+                                                </button>
+                                            </div>
+                                        </div></div>
+                                        @else
+                                        <div class="modal fade in" id="registerAction" role="dialog" style="display: block;">
+                                            <div class="modal-dialog modal-md">
+
+                                                <!-- Login Modal content-->
+                                                <div class="b2"></div>
+                                                <div class="bb2" style="display: block;"></div>
+                                                <button id="go2" style="display: none;">
+                                                    GO
+                                                </button>
+                                                <div class="message2 comein2">
+                                                    <div class="check2 scaledown2" width="50%" style="padding-top: 10%;;background: red ; width:70px; height:70px">
+                                                        !
+                                                    </div>
+                                                    <p style="font-size:150%;padding-bottom: 7%">
+                                                        تراکنش ناموفق بود
+                                                    </p>
+
+                                                    <button id="ok2" style="background: red">
+                                                        باشه
+                                                    </button>
+                                                </div>
+                                            </div></div>
+                                        @endif
+                                @endif
                             </div>
 
                         </div>
                     </div>
                 </div>
             </div>
-        </div>position: block;;
+        </div>
     </div>
 </footer>
+
 <!--end-footer-->
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <script src="{{asset('js2/jquery.min.js')}}"></script>
+@if(isset($result))
+    <script>
+        $('#ok2').click(function(){
+            $('div#resultAction').hide();
+            $('#go2').click();
+        });
+        $('#go2').click(function(){
+            go(500);
+
+        });
+
+
+        //setTimeout(function(){go(50)},700);
+        //setTimeout(function(){go(500)},2000);
+
+        function go(nr) {
+            $('.bb2').fadeToggle(200);
+            $('.message2').toggleClass('comein2');
+            $('.check2').toggleClass('scaledown2');
+            $('#go2').fadeToggle(nr);
+            location.replace(address  + "/products/{{$product->id}}");
+        }
+    </script>
+@endif
+
+<script src="{{asset('js2/ok.js')}}"></script>
 <script src="{{asset('js2/closeDial.js')}}"></script>
 <script src="{{asset('js2/forceLogin.js')}}"></script>
 <script src="{{asset('js2/login2.js')}}"></script>

@@ -58,13 +58,24 @@ class LoginController extends Controller
         }catch(Exception $e){
 
         }
+        if($email = User::where('mobile', '=', $mobile)->get()[0]->sms_varified != 1){
+            return response([
+                'success' => false,
+                'sms_varified' => User::where('mobile', '=',$mobile)->get()[0]->sms_varified == 1 ,
+                'mes' => 'شماره تلفن همراه شما ارزیابی نشده است، از گزینه فرموشی رمز عبور استفاده نمایید.']);
+            exit();
+        }
         $credentials = array_merge(array('email' => $email) ,$request->only( 'password'));
         //error_log(var_export($credentials, 1), 3, __DIR__ .'/logs.log');
         $authSuccess = Auth::attempt($credentials, $request->has('remember'));
 
         if($authSuccess) {
             $request->session()->regenerate();
-            return response(['success' => true,'isAdmin' => Auth::user()->isAdmin == 1]);
+            return response([
+                'success' => true,
+                'isAdmin' => Auth::user()->isAdmin == 1,
+                'sms_varified' => User::where('mobile', '=',$mobile)->get()[0]->sms_varified == 1 ,
+            ]);
         }
 
         return

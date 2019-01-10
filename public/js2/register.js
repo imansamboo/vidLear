@@ -82,20 +82,27 @@ $(document).ready(function() {
                         success: function (response) {
                             console.log('success sms varify');
                             $('div#registerAction > div.modal-dialog').hide();
-                            $('div#registerAction').append('<div class="modal-dialog modal-sm">\n' +
+                            $('div#registerAction').append('<div class="modal-dialog modal-md">\n' +
                                 '\n' +
-                                '    <!-- Register Modal content-->\n' +
-                                '    <div class="modal-content" style="background: #D9E9D2">\n' +
-                                '        <div class="modal-header">\n' +
-                                '            <button type="button" class="close" data-dismiss="modal">×</button>\n' +
-
+                                '        <!-- Login Modal content-->\n' +
+                                '        <div class="b2"></div>\n' +
+                                '        <div class="bb2" style="display: block;"></div>\n' +
+                                '        <button id="go2" style="display: none;">\n' +
+                                '            GO\n' +
+                                '        </button>\n' +
+                                '        <div class="message2 comein2">\n' +
+                                '            <div class="check2 scaledown2">\n' +
+                                '                ✔\n' +
+                                '            </div>\n' +
+                                '            <p>\n' +
+                                '                عضویت شما موفقیت امیز بود\n' +
+                                '            </p>\n' +
+                                '\n' +
+                                '            <button id="ok2">\n' +
+                                '                باشه\n' +
+                                '            </button>\n' +
                                 '        </div>\n' +
-                                '<div class="modal-body><div class="register-modal" style="padding-right: 5%;padding-left: 5%;">' +
-                                '            <div class="alert alert-success" style="font-size: 15px">عملیات عضویت شما باموفقیت انجام شد. از گزینه "ورود به سامانه"  استفاده نمایید.</div>\n' +
-                                '</div>' +
-                                '</div>'+
-                                '</div>\n' +
-                                '</div>');
+                                '    </div>');
                         },
                         error: function () {
                             console.log('error sms varify');
@@ -147,6 +154,11 @@ $(document).ready(function() {
                                 '            فرمت پست الکترونیک وارد شده صحیح نمی باشد.\n' +
                                 '        </div>');
                         }
+                    }else if(x == 'mobile'){
+                        $('div#mobile-error').append('<div class="alert alert-danger" style="font-size: 9px; padding: 5px; margin-bottom: 7px">\n' +
+                            '            تعداد ارقام وارد شده صحیح نمی باشد یا شماره تلفن همراه قبلا ثبت شده است.\n' +
+                            '        </div>');
+
                     }
                 }
 

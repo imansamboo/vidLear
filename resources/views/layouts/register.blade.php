@@ -5,7 +5,7 @@
         </div>--}}
     </div>
     <div class="input-group">
-        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
     <input placeholder="نام و نام خانوادگی " type="name" class="form-control" name="name" id="name" required>                    </div>
 
     <br/>
@@ -15,8 +15,8 @@
         </div>--}}
     </div>
         <div class="input-group">
-            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-    <input placeholder="شماره تلفن همراه" type="text" class="form-control" name="mobile" id="mobile"
+            <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+    <input placeholder="شماره تلفن همراه" type="number" class="form-control" name="mobile" id="mobile"
            required>                    </div>
     <br>
     <div id="password-error" {{--style="padding-top: 5%;"--}}>
@@ -47,7 +47,7 @@
         </div>--}}
     </div>
                     <div class="input-group">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
     <input placeholder="پست الکترونیک" type="email" class="form-control" name="email" id="email" required>
                     </div>
     <br/>

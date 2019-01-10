@@ -92,9 +92,10 @@ class SMSController extends Controller
             if(User::where('mobile' , '=', $_GET['mobile'])->count() > 0 ){
                 $user = User::where('mobile' , '=', $_GET['mobile'])->get()[0];
                 $user->last_sent_sms_code = 123456;
+                $user->forget_sms_count = $user->forget_sms_count + 1;
                 $user->save();
                 header('HTTP/1.1 200 OK');
-                echo json_encode(['success' => true , 'userId' => $user->id]);
+                echo json_encode(['success' => true , 'userId' => $user->id, 'isFirst' => $user->forget_sms_count == 1 ]);
             }else{
                 throw new Exception('phone number does not exist');
             }
@@ -112,6 +113,7 @@ class SMSController extends Controller
                 $user = User::where('id' , '=', $_GET['userId'])->get()[0];
                 if($user->last_sent_sms_code == $_GET['last_sent_sms_code']){
                     $user->password = Hash::make($_GET['password']);
+                    $user->sms_varified = 1;
                     $user->save();
                     header('HTTP/1.1 200 OK');
                     echo json_encode(['success, true']);

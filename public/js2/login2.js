@@ -1,33 +1,3 @@
-
-/*
-$(document).ready(function() {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-    $('form#login').on('submit', function (e) {
-        e.preventDefault();
-
-        var formData = {
-            email: $('#email').val(),
-            password: $('#password').val(),
-        }
-        $.ajax({
-            type: "POST",
-            url: "/login",
-            data: formData,
-            success: function (data) {
-                location.reload();
-            },
-            error: function (data) {
-
-            }
-        });
-
-    });
-}*/
 if(window.location.origin == "https://parto.me"){
     address = window.location.origin + "/laravel/vidLear/public";
 }else{
@@ -35,6 +5,9 @@ if(window.location.origin == "https://parto.me"){
 }
 var mainNav = '<li id="main-nav" class="nav-item dropdown category">' + $("#main-nav").html() + '</li>';
 var li = $('li.category').html();
+var blog = '<li>\n' +
+    '                                                <a href="#" data-toggle="modal" data-target="#blog" class="header-font"><i class="fa fa-adn" aria-hidden="true"></i> بلاگ </a>\n' +
+    '                                            </li>';
 if(window.location.origin == "https://parto.me"){
     address = window.location.origin + "/laravel/vidLear/public";
 }else{
@@ -91,8 +64,13 @@ $(document).ready(function() {
                             "                                                    aria-hidden=\"true\"></i>خروج از سامانه\n" +
                             "                                        </a>\n" +
                             "                                    </li>\n" +
-                            mainNav +
+                            blog + mainNav +
                             "                                </ul>" );
+                        if ($('p.the-number').length > 0) {
+                            sleep(500).then(() => {
+                                location.reload();
+                            });
+                        }
                     }else{
                         $('div.modal-content').hide();
                         $('body').removeClass('modal-open');
@@ -118,15 +96,25 @@ $(document).ready(function() {
                             "                                                    aria-hidden=\"true\"></i>خروج از سامانه\n" +
                             "                                        </a>\n" +
                             "                                    </li>\n" +
+                            blog + mainNav +
                             "                                </ul>" );
                     }
 
                 }else{
-                    console.log('error-new');
-                    $('div.alert-danger').hide();
-                    $('div#login-error').prepend('<div class="alert alert-danger" style="font-size: 11px">\n' +
-                        '                         شماره همراه یا کلمه عبور اشتباه وارد شده است.\n' +
-                        '                    </div>');
+                    console.log(response.sms_varified);
+                    if(response.sms_varified === false){
+                        $('div.alert-danger').hide();
+                        $('div#login-error').prepend('<div class="alert alert-danger" style="font-size: 11px">\n' +
+                            response.mes +
+                            '                    </div>');
+                    }else{
+                        console.log('error-new');
+                        $('div.alert-danger').hide();
+                        $('div#login-error').prepend('<div class="alert alert-danger" style="font-size: 11px">\n' +
+                            '                         شماره همراه یا کلمه عبور اشتباه وارد شده است.\n' +
+                            '                    </div>');
+                    }
+
                 }
 
             },

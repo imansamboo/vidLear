@@ -24,6 +24,7 @@ $(document).ready(function(){
                 j = 1;
             }else{
                 $this.removeAttr('style');
+                $('i.fa-heart').removeAttr('style');
                 j = 0;
             }
             $.get({

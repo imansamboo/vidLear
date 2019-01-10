@@ -109,6 +109,7 @@
     });</script>--}}
 </body>
 <script src="{{asset('js2/closeDial.js')}}"></script>
+<script src="{{asset('js2/ok.js')}}"></script>
 <script src="{{asset('js2/forceLogin.js')}}"></script>
 <script src="{{asset('js2/login2.js')}}"></script>
 <script src="{{asset('js2/register.js')}}"></script>

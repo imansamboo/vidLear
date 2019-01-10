@@ -1,3 +1,30 @@
+
+
+
+<!-- mhere the success popup modal code -->
+
+<!-- Modal Success Popup -->
+<div class="modal fade success-popup" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="myModalLabel">Thank You !</h4>
+            </div>
+            <div class="modal-body text-center">
+                <img src="http://osmhotels.com//assets/check-true.jpg">
+                <p class="lead">Contact form successfully submitted. Thank you, We will get back to you soon!</p>
+                <a href="index.php" class="rd_more btn btn-default">Go to Home</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script></script>
+
+
+
 <html dir="rtl" lang="en"><head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -66,7 +93,7 @@
                                         <li id="main-nav" class="nav-item dropdown category">
                                             <a class="nav-link dropdown-toggle header-font" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <img src="http://127.0.0.1:8000/img2/view-grid-menu.png">
-                                                 دسته بندی
+                                                دسته بندی
                                             </a>
                                             <div class="dropdown-menu nav-dropdown" aria-labelledby="navbarDropdown">
                                                 <a class="dropdown-item nav-drop-item" href="http://127.0.0.1:8000/categories/12/products">پیانو</a>
@@ -116,6 +143,123 @@
         </div>
     </div>
 </header>
+<style>
+    @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400);
+    body, html {
+        height: 100%;
+        font-size: 20px;
+        font-family: Source Sans Pro;
+    }
+
+    .b, .bb {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url("http://i.imgur.com/kje4L5j.jpg");
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .bb {
+        background: url("http://i.imgur.com/bDBs0et.jpg");
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+        display: none;
+    }
+
+    #go {
+        position: absolute;
+        top: 30px;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        color: white;
+        border: 0;
+        background: #71c341;
+        width: 100px;
+        height: 30px;
+        border-radius: 6px;
+        font-size: 1rem;
+        transition: background 0.2s ease;
+        outline: none;
+    }
+    #go:hover {
+        background: #8ecf68;
+    }
+    #go:active {
+        background: #5a9f32;
+    }
+
+    .message {
+        position: absolute;
+        top: -200px;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        width: 300px;
+        background: white;
+        border-radius: 8px;
+        padding: 30px;
+        text-align: center;
+        font-weight: 300;
+        color: #2c2928;
+        opacity: 0;
+        transition: top 0.3s cubic-bezier(0.31, 0.25, 0.5, 1.5), opacity 0.2s ease-in-out;
+    }
+    .message .check {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(4);
+        width: 120px;
+        height: 110px;
+        background: #71c341;
+        color: white;
+        font-size: 3.8rem;
+        padding-top: 10px;
+        border-radius: 50%;
+        opacity: 0;
+        transition: transform 0.2s 0.25s cubic-bezier(0.31, 0.25, 0.5, 1.5), opacity 0.1s 0.25s ease-in-out;
+    }
+    .message .scaledown {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    .message p {
+        font-size: 1.1rem;
+        margin: 25px 0px;
+        padding: 0;
+    }
+    .message p:nth-child(2) {
+        font-size: 2.3rem;
+        margin: 40px 0px 0px 0px;
+    }
+    .message #ok {
+        position: relative;
+        color: white;
+        border: 0;
+        background: #71c341;
+        width: 100%;
+        height: 50px;
+        border-radius: 6px;
+        font-size: 1.2rem;
+        transition: background 0.2s ease;
+        outline: none;
+    }
+    .message #ok:hover {
+        background: #8ecf68;
+    }
+    .message #ok:active {
+        background: #5a9f32;
+    }
+
+    .comein {
+        top: 150px;
+        opacity: 1;
+    }
+</style>
+
+
 
 <!-- The Login Modal -->
 <!-- Login Modal -->
@@ -123,48 +267,23 @@
     <div class="modal-dialog modal-md">
 
         <!-- Login Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title">ورود به پنل کاربری</h4>
-
+        <div class='b'></div>
+        <div class='bb'></div>
+        <button id='go'>
+            GO
+        </button>
+        <div class='message'>
+            <div class='check'>
+                &#10004;
             </div>
-            <div class="modal-body">
-                <div class="login-modal">
-                    <div id="login-error"></div>
-                    <form method="POST" id="login" onsubmit="" data-type="json" action="http://127.0.0.1:8000/login">
-                        <div class="input-group">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                            <input name="mobile" id="mobile" class="form-control" placeholder="شماره تلفن همراه" required="" autofocus="" type="text">
-                        </div>
-                        <br>
-                        <div class="input-group">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                            <input name="password" id="lpassword&quot;" class="form-control" placeholder="رمز عبور" required="" autofocus="" type="password">
-                        </div>
-                        <br>
-                        <div class="form-check">
-                            <input class="form-check-input" name="remember" id="remember" type="checkbox">
+            <p>
+                عضویت شما موفقیت امیز بود
+            </p>
 
-                            <label class="form-check-label" for="remember">
-                                مرا به خاطر بسپار
-                            </label>
-                        </div>
-                        <br>
-                        <div class="forgot_section">
-                            <a href="#forgot" id="forgot" class="forgot_link">رمز عبور را فراموش کردم</a>
-                        </div>
-                        <center><img src="http://127.0.0.1:8000/img/loader.gif" id="loading" style="width: 4%;display: none"></center>
-
-                        <input name="_token" value="ABWjRoMe1YRD2rq5cAXvX90Z1iTDiz6rNWkUaxXo" type="hidden">
-                        <input name="login" id="login" class="login_btn" value="ورود" type="submit">
-                    </form>
-
-
-                </div>
-            </div>
+            <button id='ok'>
+                باشه
+            </button>
         </div>
-
     </div>
 </div>
 <!-- end Login Modal -->
@@ -2835,6 +2954,23 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="http://127.0.0.1:8000/js2/jquery.min.js"></script>
+<script>
+    $('#go').click(function(){go(50)});
+    console.log('*');
+    $('#ok').click(function(){go(500)});
+    console.log('**');
+
+
+    //setTimeout(function(){go(50)},700);
+    //setTimeout(function(){go(500)},2000);
+
+    function go(nr) {
+        $('.bb').fadeToggle(200);
+        $('.message').toggleClass('comein');
+        $('.check').toggleClass('scaledown');
+        $('#go').fadeToggle(nr);
+    }
+</script>
 <script src="http://127.0.0.1:8000/js2/login.js"></script>
 <script src="http://127.0.0.1:8000/js2/register.js"></script>
 <script src="http://127.0.0.1:8000/js2/reset-password.js"></script>

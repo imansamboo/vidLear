@@ -37,6 +37,8 @@ class User extends Authenticatable implements MustVerifyEmailContract
         "facebook",
         "instagram",
         "photo",
+        "regsister_sms_count",
+        "forget_sms_count",
     ];
 
     /**

@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return redirect(route('homepage'));
 });
+Route::get('/test', function () {
+    return view('success');
+});
 Route::get('/favorite', 'HomePageController@favorOfUser');
 Route::get('/clientarea', 'HomePageController@getInvoicesOfUser');
 Route::get('/products/{product}/video/{vid}', ['uses' =>'HomePageController@viewProductVideo']);

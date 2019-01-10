@@ -33,6 +33,7 @@
             <!-- ////////////////// Sidebar /////////////////// -->
             <div class="sp-sidebar">
                 <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 rating sp-sidebar-rating">
+                    @if(!$productBuy)<div id="shouldBuy"><p class="help-block label-danger" style="color: white;display: none"> برای ثبت رای نیاز دارید دوره را بخرید</p></div>@endif
                     <center><img id="load-rate" src="{{asset('img/loader.gif')}}"  style="width: 8%;display: none"></center>
                     <div class="the-rate-star" id="star1-load">
                         @if($rating == 0)

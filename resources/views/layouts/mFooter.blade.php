@@ -97,6 +97,7 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="{{asset('js2/jquery.min.js')}}"></script>
+<script src="{{asset('js2/ok.js')}}"></script>
 <script src="{{asset('js2/login.js')}}"></script>
 <script src="{{asset('js2/register.js')}}"></script>
 <script src="{{asset('js2/reset-password.js')}}"></script>

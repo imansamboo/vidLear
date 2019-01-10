@@ -1,5 +1,9 @@
 //var mainNav = '<li id="main-nav" class="nav-item dropdown category">' + $("#main-nav").html() + '</li>';
 var address = '';
+var mainNav = '<li id="main-nav" class="nav-item dropdown category">' + $("#main-nav").html() + '</li>';
+var blog = '<li>\n' +
+    '                                                <a href="#" data-toggle="modal" data-target="#blog" class="header-font"><i class="fa fa-adn" aria-hidden="true"></i> بلاگ </a>\n' +
+    '                                            </li>';
 if(window.location.origin == "https://parto.me"){
     address = window.location.origin + "/laravel/vidLear/public";
 }else{
@@ -30,6 +34,7 @@ $(document).ready(function() {
                 console.log('success');
                 if(response.success) {
                     $( "#authenticate" ).empty();
+                    console.log(response.sms_varified);
 
                     if(response.isAdmin){
                         $('body').removeClass('modal-open');
@@ -57,7 +62,7 @@ $(document).ready(function() {
                             "                                                    aria-hidden=\"true\"></i>خروج از سامانه\n" +
                             "                                        </a>\n" +
                             "                                    </li>\n" +
-                            /*mainNav +*/
+                            mainNav + blog +
                             "                                </ul>" );
                     }else{
                         $('div.modal-content').hide();
@@ -82,16 +87,25 @@ $(document).ready(function() {
                             "                                                    aria-hidden=\"true\"></i>خروج از سامانه\n" +
                             "                                        </a>\n" +
                             "                                    </li>\n" +
-                            /*mainNav +*/
+                            mainNav + blog +
                             "                                </ul>" );
                     }
 
                 }else{
-                    console.log('error-new');
-                    $('div.alert-danger').hide();
-                    $('div#login-error').prepend('<div class="alert alert-danger" style="font-size: 11px">\n' +
-                        '                         شماره همراه یا کلمه عبور اشتباه وارد شده است.\n' +
-                        '                    </div>');
+                    console.log(response.sms_varified);
+                    if(response.sms_varified === false){
+                        $('div.alert-danger').hide();
+                        $('div#login-error').prepend('<div class="alert alert-danger" style="font-size: 11px">\n' +
+                            response.mes +
+                            '                    </div>');
+                    }else{
+                        console.log('error-new');
+                        $('div.alert-danger').hide();
+                        $('div#login-error').prepend('<div class="alert alert-danger" style="font-size: 11px">\n' +
+                            '                         شماره همراه یا کلمه عبور اشتباه وارد شده است.\n' +
+                            '                    </div>');
+                    }
+
                 }
 
             },

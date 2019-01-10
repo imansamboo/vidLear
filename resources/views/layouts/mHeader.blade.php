@@ -43,8 +43,8 @@
     <div class="navbar-wrapper">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-lg-4 col-sm-4">
-                    <nav class="navbar navbar-inverse">
+                <div class="col-md-4 col-lg-4 col-sm-4" style="width: 45%">
+                    <nav class="navbar navbar-inverse" style="width: 120%">
                         <div class="container">
                             <div class="navbar-header">
                                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -67,6 +67,23 @@
                                                             aria-hidden="true"></i>خروج از سامانه
                                                 </a>
                                             </li>
+                                            <li>
+                                                <a href="#" data-toggle="modal" data-target="#blog" class="header-font"><i class="fa fa-adn" aria-hidden="true"></i> بلاگ </a>
+                                            </li>
+                                            <li id="main-nav" class="nav-item dropdown category">
+                                                <a class="nav-link dropdown-toggle header-font" href="#" id="navbarDropdown"
+                                                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <img src="{{asset('img2/view-grid-menu.png')}}">
+                                                    دسته بندی
+                                                </a>
+                                                <div class="dropdown-menu nav-dropdown" aria-labelledby="navbarDropdown">
+                                                    @foreach($categories as  $category)
+                                                        <a class="dropdown-item nav-drop-item" href="{{url('/categories/' . $category->id . '/products')}}">{{$category->title}}</a>
+                                                        <div class="dropdown-divider"></div>
+                                                    @endforeach
+                                                </div>
+                                            </li>
+
                                             {{--<li id="main-nav" class="nav-item dropdown category">
                                                 <a class="nav-link dropdown-toggle header-font" href="#" id="navbarDropdown"
                                                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -101,6 +118,22 @@
                                             <li><a href="#" data-toggle="modal" data-target="#registerAction" class="header-font"><i
                                                             class="fa fa-user-plus"
                                                             aria-hidden="true"></i> عضویت </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" data-toggle="modal" data-target="#blog" class="header-font"><i class="fa fa-adn" aria-hidden="true"></i> بلاگ </a>
+                                            </li>
+                                            <li id="main-nav" class="nav-item dropdown category">
+                                                <a class="nav-link dropdown-toggle header-font" href="#" id="navbarDropdown"
+                                                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <img src="{{asset('img2/view-grid-menu.png')}}">
+                                                    دسته بندی
+                                                </a>
+                                                <div class="dropdown-menu nav-dropdown" aria-labelledby="navbarDropdown">
+                                                    @foreach($categories as  $category)
+                                                        <a class="dropdown-item nav-drop-item" href="{{url('/categories/' . $category->id . '/products')}}">{{$category->title}}</a>
+                                                        <div class="dropdown-divider"></div>
+                                                    @endforeach
+                                                </div>
                                             </li>
                                             {{--<li id="main-nav" class="nav-item dropdown category">
                                                 <a class="nav-link dropdown-toggle header-font" href="#" id="navbarDropdown"
